@@ -1,0 +1,1257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Properties | Adhao Realty</title>
+  <meta name="description" content="Explore residential, commercial and land properties in Mumbai and Pune with Adhao Realty.">
+
+  <link rel="icon" type="image/webp" href="assets/logoweb.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #edbd55;
+      --gold-dark: #b98224;
+      --navy: #14202d;
+      --text: #17202b;
+      --muted: #737b83;
+      --background: #f8f7f3;
+      --border: #e9e7e1;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--background);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, select, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1180px, 94%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand img {
+      width: 90px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 23px;
+      margin-left: auto;
+    }
+
+    .main-nav a {
+      color: #252b31;
+      font-size: 12px;
+      font-weight: 600;
+      transition: color .2s;
+    }
+
+    .main-nav a:hover {
+      color: var(--gold-dark);
+    }
+
+    .gold-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 17px;
+      background: var(--gold);
+      color: #18202a;
+      font-size: 12px;
+      font-weight: 800;
+      transition: background .2s;
+    }
+
+    .gold-button:hover {
+      background: #ffd574;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: white;
+      padding: 6px 10px;
+      font-size: 20px;
+    }
+
+    /* PAGE HEADING */
+
+    .page-heading {
+      padding: 24px 0 17px;
+    }
+
+    .page-heading h1 {
+      font-size: clamp(25px, 3vw, 34px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.6px;
+      margin-bottom: 5px;
+    }
+
+    .page-heading p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* FILTER PANEL */
+
+    .filter-panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 13px;
+      margin-bottom: 19px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.025);
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) 125px;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .filter-field {
+      min-width: 0;
+    }
+
+    .filter-field label {
+      display: block;
+      color: #5f6670;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .filter-field select,
+    .filter-field input {
+      display: block;
+      width: 100%;
+      height: 39px;
+      border: 1px solid #e4e3de;
+      border-radius: 5px;
+      background: #fff;
+      color: #252b31;
+      padding: 0 10px;
+      font-size: 12px;
+      outline: none;
+    }
+
+    .filter-field select:focus,
+    .filter-field input:focus {
+      border-color: var(--gold-dark);
+    }
+
+    .search-button {
+      height: 39px;
+      border: 0;
+      border-radius: 5px;
+      color: white;
+      background: var(--gold-dark);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .search-button:hover {
+      background: #9b6d1e;
+    }
+
+    .clear-filters {
+      display: inline-block;
+      margin-top: 10px;
+      color: #936819;
+      background: transparent;
+      border: none;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* RESULT BAR */
+
+    .result-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 13px;
+    }
+
+    .result-count {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .result-count span {
+      color: var(--gold-dark);
+    }
+
+    .sort-control {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .sort-control select {
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 7px 9px;
+      background: white;
+      color: var(--text);
+      font-size: 11px;
+      outline: none;
+    }
+
+    /* PROPERTY GRID */
+
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+      padding-bottom: 40px;
+    }
+
+    .property-card {
+      min-width: 0;
+      position: relative;
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 2px 7px rgba(0,0,0,.035);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .property-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(0,0,0,.09);
+    }
+
+    .card-image-wrap {
+      height: 205px;
+      position: relative;
+      overflow: hidden;
+      background: #e9e7e1;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s;
+    }
+
+    .property-card:hover .card-image {
+      transform: scale(1.035);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 5px 9px;
+      border-radius: 4px;
+      background: var(--gold);
+      color: #29241b;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .favorite-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: grid;
+      place-items: center;
+      width: 31px;
+      height: 31px;
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 50%;
+      background: rgba(0,0,0,.18);
+      color: white;
+      font-size: 19px;
+      line-height: 1;
+      text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    }
+
+    .favorite-button.active {
+      color: #e94e5b;
+      background: white;
+      text-shadow: none;
+    }
+
+    .card-body {
+      padding: 12px 13px 13px;
+    }
+
+    .card-type {
+      color: #a77920;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .4px;
+      margin-bottom: 3px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .card-location {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 9px;
+    }
+
+    .card-price {
+      font-size: 19px;
+      font-weight: 800;
+      color: #151a20;
+      margin-bottom: 11px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      padding-top: 10px;
+      border-top: 1px solid #efeee9;
+      color: #666e76;
+      font-size: 11px;
+    }
+
+    .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-details-link {
+      display: block;
+    }
+
+    .status-label {
+      display: inline-block;
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 4px;
+      margin-bottom: 7px;
+      background: #edf5ee;
+      color: #286b3b;
+      font-weight: 700;
+    }
+
+    /* LOADING / EMPTY / ERROR */
+
+    .state-card {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: white;
+      padding: 45px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .state-card h2 {
+      font-size: 19px;
+      margin-bottom: 7px;
+    }
+
+    .state-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .state-card .gold-button {
+      margin-top: 16px;
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      background: #10171c;
+      color: white;
+      margin-top: 10px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 22px 0;
+    }
+
+    .footer-inner p {
+      color: #b8bec2;
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d1d5d8;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .main-nav {
+        gap: 13px;
+      }
+
+      .main-nav a {
+        font-size: 11px;
+      }
+
+      .filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .search-button {
+        grid-column: 1 / -1;
+      }
+
+      .property-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+      }
+
+      .card-image-wrap {
+        height: 185px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner {
+        min-height: 62px;
+        gap: 10px;
+      }
+
+      .brand img {
+        width: 75px;
+        height: 47px;
+      }
+
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+      }
+
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 61px;
+        left: 3%;
+        right: 3%;
+        padding: 10px;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0,0,0,.12);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .main-nav a {
+        padding: 11px 8px;
+        font-size: 13px;
+        border-bottom: 1px solid #f0efeb;
+      }
+
+      .header-cta {
+        padding: 9px 10px;
+        font-size: 10px;
+      }
+
+      .page-heading {
+        padding: 20px 0 14px;
+      }
+
+      .page-heading h1 {
+        font-size: 27px;
+      }
+
+      .page-heading p {
+        font-size: 12px;
+      }
+
+      .filter-panel {
+        padding: 10px;
+        margin-bottom: 15px;
+      }
+
+      .filters {
+        gap: 9px;
+      }
+
+      .filter-field label {
+        font-size: 10px;
+      }
+
+      .filter-field select,
+      .filter-field input {
+        height: 38px;
+        padding: 0 7px;
+        font-size: 11px;
+      }
+
+      .result-bar {
+        align-items: flex-start;
+      }
+
+      .result-count {
+        font-size: 12px;
+      }
+
+      .sort-control {
+        gap: 4px;
+        font-size: 10px;
+      }
+
+      .sort-control select {
+        padding: 6px;
+        max-width: 95px;
+      }
+
+      .property-grid {
+        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card-image-wrap {
+        height: 130px;
+      }
+
+      .card-body {
+        padding: 9px;
+      }
+
+      .card-type {
+        font-size: 8px;
+      }
+
+      .card-title {
+        font-size: 12px;
+      }
+
+      .card-location {
+        font-size: 10px;
+        margin-bottom: 7px;
+      }
+
+      .card-price {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+
+      .card-meta {
+        font-size: 9px;
+        gap: 6px;
+        padding-top: 7px;
+      }
+
+      .featured-badge {
+        top: 7px;
+        left: 7px;
+        padding: 4px 6px;
+        font-size: 8px;
+      }
+
+      .favorite-button {
+        top: 6px;
+        right: 6px;
+        width: 26px;
+        height: 26px;
+        font-size: 17px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .property-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-image-wrap {
+        height: 190px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a class="brand" href="index.html" aria-label="Adhao Realty Home">
+        <img src="assets/logoweb.webp" alt="Adhao Realty">
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="properties.html?city=Mumbai">Mumbai</a>
+        <a href="properties.html?city=Pune">Pune</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <a class="gold-button header-cta"
+         href="https://wa.me/917249310062?text=Hello%20Adhao%20Realty%2C%20I%20am%20interested%20in%20your%20property%20listings.%20Please%20share%20more%20details."
+         target="_blank" rel="noopener noreferrer">
+        Enquire Now
+      </a>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- PAGE TITLE -->
+    <section class="page-heading">
+      <h1>Properties</h1>
+      <p>Explore our wide range of residential and commercial properties in Mumbai &amp; Pune</p>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="filter-panel" aria-label="Property filters">
+      <form class="filters" id="filterForm">
+
+        <div class="filter-field">
+          <label for="cityFilter">City</label>
+          <select id="cityFilter">
+            <option value="">All Cities</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Pune">Pune</option>
+          </select>
+        </div>
+
+        <div class="filter-field">
+          <label for="typeFilter">Property Type</label>
+          <select id="typeFilter">
+            <option value="">All Types</option>
+            <option value="Residential">Residential</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Villa">Villa</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Office">Office Space</option>
+            <option value="Shop">Shop</option>
+            <option value="Plot">Plot / Land</option>
+          </select>
+        </div>
+
+        <div class="filter-field">
+          <label for="budgetFilter">Budget</label>
+          <select id="budgetFilter">
+            <option value="">Any Budget</option>
+            <option value="5000000">Up to ₹50 Lakh</option>
+            <option value="10000000">Up to ₹1 Crore</option>
+            <option value="20000000">Up to ₹2 Crore</option>
+            <option value="50000000">Up to ₹5 Crore</option>
+          </select>
+        </div>
+
+        <div class="filter-field">
+          <label for="bedroomFilter">Bedrooms</label>
+          <select id="bedroomFilter">
+            <option value="">Any Bedrooms</option>
+            <option value="1">1 BHK</option>
+            <option value="2">2 BHK</option>
+            <option value="3">3 BHK</option>
+            <option value="4">4+ BHK</option>
+          </select>
+        </div>
+
+        <button class="search-button" type="submit">⌕ &nbsp; Search</button>
+
+      </form>
+
+      <button class="clear-filters" type="button" id="clearFilters">
+        Clear all filters
+      </button>
+    </section>
+
+    <!-- RESULT COUNT AND SORT -->
+    <div class="result-bar">
+      <p class="result-count" id="resultCount">Loading properties...</p>
+
+      <label class="sort-control" for="sortFilter">
+        Sort by:
+        <select id="sortFilter">
+          <option value="latest">Latest</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="area-high">Largest Area</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- PROPERTY CARDS -->
+    <section class="property-grid" id="propertyGrid" aria-live="polite">
+      <div class="state-card">
+        <h2>Loading properties...</h2>
+        <p>Please wait while we load available listings.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="currentYear"></span> Adhao Realty. All rights reserved.</p>
+
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://wa.me/917249310062?text=Hello%20Adhao%20Realty%2C%20I%20am%20interested%20in%20your%20property%20listings.%20Please%20share%20more%20details."
+           target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+
+  <script>
+    const propertyGrid = document.getElementById("propertyGrid");
+    const resultCount = document.getElementById("resultCount");
+
+    const cityFilter = document.getElementById("cityFilter");
+    const typeFilter = document.getElementById("typeFilter");
+    const budgetFilter = document.getElementById("budgetFilter");
+    const bedroomFilter = document.getElementById("bedroomFilter");
+    const sortFilter = document.getElementById("sortFilter");
+    const filterForm = document.getElementById("filterForm");
+    const clearFilters = document.getElementById("clearFilters");
+
+    let allProperties = [];
+    let visibleProperties = [];
+    const favorites = new Set();
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    /* MOBILE NAVIGATION */
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    /* SAFE TEXT OUTPUT */
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    function normalise(value) {
+      return String(value ?? "").trim().toLowerCase();
+    }
+
+    /* PRICE FORMAT */
+    function formatPrice(value) {
+      if (value === null || value === undefined || value === "") {
+        return "Price on Request";
+      }
+
+      if (typeof value === "string" && /[₹a-z]/i.test(value)) {
+        return value;
+      }
+
+      const amount = Number(value);
+
+      if (!Number.isFinite(amount)) {
+        return String(value);
+      }
+
+      if (amount >= 10000000) {
+        return "₹" + (amount / 10000000).toLocaleString("en-IN", {
+          maximumFractionDigits: 2
+        }) + " Cr";
+      }
+
+      if (amount >= 100000) {
+        return "₹" + (amount / 100000).toLocaleString("en-IN", {
+          maximumFractionDigits: 2
+        }) + " Lakh";
+      }
+
+      return "₹" + amount.toLocaleString("en-IN");
+    }
+
+    /* PROPERTY IMAGES */
+    function getPropertyImage(property) {
+      let images = property.image_urls;
+
+      if (typeof images === "string") {
+        try {
+          images = JSON.parse(images);
+        } catch {
+          images = [images];
+        }
+      }
+
+      if (Array.isArray(images)) {
+        const validImage = images.find(image =>
+          typeof image === "string" &&
+          /^(https?:\/\/|assets\/)/i.test(image)
+        );
+
+        if (validImage) return validImage;
+      }
+
+      if (typeof images === "string" &&
+          /^(https?:\/\/|assets\/)/i.test(images)) {
+        return images;
+      }
+
+      return "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85";
+    }
+
+    function getPropertyCity(property) {
+      return String(property.city || property.location || "");
+    }
+
+    function getPropertyType(property) {
+      return String(property.property_type || "Property");
+    }
+
+    function getPropertyPriceNumber(property) {
+      const price = property.price;
+
+      if (typeof price === "number") return price;
+
+      if (typeof price === "string") {
+        const cleaned = price.replace(/[₹,\s]/g, "").toLowerCase();
+        const match = cleaned.match(/^([\d.]+)\s*(cr|crore|lakh|lac|l)?$/);
+
+        if (match) {
+          let amount = Number(match[1]);
+          const unit = match[2];
+
+          if (unit === "cr" || unit === "crore") amount *= 10000000;
+          if (unit === "lakh" || unit === "lac" || unit === "l") amount *= 100000;
+
+          return amount;
+        }
+
+        return Number(cleaned) || 0;
+      }
+
+      return 0;
+    }
+
+    /* NORMALISE QUERY VALUES */
+    function normaliseType(value) {
+      const type = normalise(value);
+
+      if (type.includes("apartment") || type.includes("flat")) return "residential";
+      if (type.includes("office")) return "commercial";
+      if (type.includes("shop")) return "commercial";
+      if (type.includes("land")) return "plot";
+
+      return type;
+    }
+
+    /* APPLY FILTERS */
+    function applyFilters() {
+      const city = normalise(cityFilter.value);
+      const type = normalise(typeFilter.value);
+      const budget = Number(budgetFilter.value) || 0;
+      const bedrooms = Number(bedroomFilter.value) || 0;
+
+      visibleProperties = allProperties.filter(property => {
+        const propertyCity = normalise(
+          property.city || property.location
+        );
+
+        const propertyType = normalise(property.property_type);
+        const price = getPropertyPriceNumber(property);
+        const beds = Number(property.bedrooms) || 0;
+
+        const matchesCity = !city || propertyCity.includes(city);
+
+        let matchesType = true;
+
+        if (type) {
+          if (type === "residential") {
+            matchesType =
+              propertyType.includes("residential") ||
+              propertyType.includes("apartment") ||
+              propertyType.includes("flat") ||
+              propertyType.includes("villa");
+          } else if (type === "commercial") {
+            matchesType =
+              propertyType.includes("commercial") ||
+              propertyType.includes("office") ||
+              propertyType.includes("shop");
+          } else if (type === "plot") {
+            matchesType =
+              propertyType.includes("plot") ||
+              propertyType.includes("land");
+          } else {
+            matchesType = propertyType.includes(type);
+          }
+        }
+
+        const matchesBudget = !budget || (price > 0 && price <= budget);
+
+        let matchesBedrooms = true;
+
+        if (bedrooms) {
+          if (bedrooms === 4) {
+            matchesBedrooms = beds >= 4;
+          } else {
+            matchesBedrooms = beds === bedrooms;
+          }
+        }
+
+        return matchesCity && matchesType &&
+          matchesBudget && matchesBedrooms;
+      });
+
+      sortProperties();
+    }
+
+    /* SORTING */
+    function sortProperties() {
+      const sorted = [...visibleProperties];
+
+      if (sortFilter.value === "price-low") {
+        sorted.sort((a, b) =>
+          getPropertyPriceNumber(a) - getPropertyPriceNumber(b)
+        );
+      } else if (sortFilter.value === "price-high") {
+        sorted.sort((a, b) =>
+          getPropertyPriceNumber(b) - getPropertyPriceNumber(a)
+        );
+      } else if (sortFilter.value === "area-high") {
+        sorted.sort((a, b) =>
+          (Number(b.area_sqft) || 0) - (Number(a.area_sqft) || 0)
+        );
+      } else {
+        sorted.sort((a, b) => {
+          if (Boolean(a.is_featured) !== Boolean(b.is_featured)) {
+            return Number(Boolean(b.is_featured)) -
+                   Number(Boolean(a.is_featured));
+          }
+
+          return new Date(b.created_at || 0) -
+                 new Date(a.created_at || 0);
+        });
+      }
+
+      renderProperties(sorted);
+    }
+
+    /* CARD MARKUP */
+    function renderProperties(properties) {
+      resultCount.innerHTML =
+        `<span>${properties.length}</span> Properties Found`;
+
+      if (!properties.length) {
+        propertyGrid.innerHTML = `
+          <div class="state-card">
+            <h2>No properties found</h2>
+            <p>Try changing the filters or clearing your search.</p>
+            <button class="gold-button" type="button"
+              onclick="document.getElementById('clearFilters').click()">
+              Clear Filters
+            </button>
+          </div>`;
+        return;
+      }
+
+      propertyGrid.innerHTML = properties.map(property => {
+        const id = escapeHTML(property.id || "");
+        const title = escapeHTML(property.title || "Property Listing");
+        const city = escapeHTML(getPropertyCity(property) || "Location on Request");
+        const type = escapeHTML(getPropertyType(property));
+        const price = escapeHTML(formatPrice(property.price));
+        const image = escapeHTML(getPropertyImage(property));
+
+        const area = Number(property.area_sqft) || 0;
+        const bedrooms = Number(property.bedrooms) || 0;
+        const bathrooms = Number(property.bathrooms) || 0;
+        const featured = Boolean(property.is_featured);
+        const isFavorite = favorites.has(String(property.id));
+
+        const meta = [];
+
+        if (area) {
+          meta.push(`<span>▧ ${area.toLocaleString("en-IN")} sq.ft.</span>`);
+        }
+
+        if (bedrooms) {
+          meta.push(`<span>▦ ${bedrooms} BHK</span>`);
+        }
+
+        if (bathrooms) {
+          meta.push(`<span>♨ ${bathrooms} Bath</span>`);
+        }
+
+        if (!meta.length) {
+          meta.push("<span>Contact for details</span>");
+        }
+
+        const detailURL = property.id
+          ? `property-details.html?id=${encodeURIComponent(property.id)}`
+          : `https://wa.me/917249310062?text=${encodeURIComponent(
+              "Hello Adhao Realty, I am interested in " + (property.title || "a property") + ". Please share more details."
+            )}`;
+
+        return `
+          <article class="property-card">
+            <div class="card-image-wrap">
+              <a class="card-details-link" href="${detailURL}"
+                 aria-label="View ${title}">
+                <img class="card-image"
+                     src="${image}"
+                     alt="${title}"
+                     loading="lazy"
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85'">
+              </a>
+
+              ${featured ? '<span class="featured-badge">Featured</span>' : ""}
+
+              <button class="favorite-button ${isFavorite ? "active" : ""}"
+                type="button"
+                data-favorite="${id}"
+                aria-label="Add ${title} to favorites"
+                aria-pressed="${isFavorite}">
+                ${isFavorite ? "♥" : "♡"}
+              </button>
+            </div>
+
+            <a class="card-details-link" href="${detailURL}">
+              <div class="card-body">
+                <div class="card-type">${type}</div>
+                <h2 class="card-title">${title}</h2>
+                <p class="card-location">${city}</p>
+                <p class="card-price">${price}</p>
+                <div class="card-meta">${meta.join("")}</div>
+              </div>
+            </a>
+          </article>`;
+      }).join("");
+
+      propertyGrid.querySelectorAll("[data-favorite]").forEach(button => {
+        button.addEventListener("click", event => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const id = button.dataset.favorite;
+          if (!id) return;
+
+          if (favorites.has(id)) {
+            favorites.delete(id);
+          } else {
+            favorites.add(id);
+          }
+
+          sortProperties();
+        });
+      });
+    }
+
+    /* FILTER EVENTS */
+    filterForm.addEventListener("submit", event => {
+      event.preventDefault();
+      applyFilters();
+    });
+
+    sortFilter.addEventListener("change", sortProperties);
+
+    clearFilters.addEventListener("click", () => {
+      cityFilter.value = "";
+      typeFilter.value = "";
+      budgetFilter.value = "";
+      bedroomFilter.value = "";
+      sortFilter.value = "latest";
+
+      const url = new URL(window.location.href);
+      url.search = "";
+      window.history.replaceState({}, "", url);
+
+      applyFilters();
+    });
+
+    /* READ CITY FROM URL */
+    function applyURLParameters() {
+      const params = new URLSearchParams(window.location.search);
+
+      const city = params.get("city");
+      const type = params.get("type");
+
+      if (city) {
+        const option = [...cityFilter.options].find(
+          item => normalise(item.value) === normalise(city)
+        );
+
+        if (option) cityFilter.value = option.value;
+      }
+
+      if (type) {
+        const option = [...typeFilter.options].find(
+          item => normalise(item.value) === normalise(type)
+        );
+
+        if (option) typeFilter.value = option.value;
+      }
+    }
+
+    /* LOAD PUBLISHED PROPERTIES FROM SUPABASE */
+    async function loadProperties() {
+      const client = window.supabaseClient;
+
+      if (!client || typeof client.from !== "function") {
+        resultCount.textContent = "Listings unavailable";
+
+        propertyGrid.innerHTML = `
+          <div class="state-card">
+            <h2>Unable to connect to property listings</h2>
+            <p>Please check the existing js/supabase.js configuration.</p>
+          </div>`;
+        return;
+      }
+
+      try {
+        const { data, error } = await client
+          .from("properties")
+          .select("*")
+          .eq("is_published", true)
+          .order("is_featured", { ascending: false })
+          .order("created_at", { ascending: false });
+
+        if (error) throw error;
+
+        allProperties = data || [];
+        applyURLParameters();
+        applyFilters();
+
+      } catch (error) {
+        console.error("Property loading error:", error);
+
+        resultCount.textContent = "Unable to load listings";
+
+        propertyGrid.innerHTML = `
+          <div class="state-card">
+            <h2>Properties could not be loaded</h2>
+            <p>Please try again later or contact Adhao Realty.</p>
+          </div>`;
+      }
+    }
+
+    loadProperties();
+  </script>
+
+</body>
+</html>
