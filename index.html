@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Adhao Realty | Find Your Perfect Property</title>
-  <meta name="description" content="Explore residential and commercial properties in Mumbai and Pune with Adhao Realty.">
+  <title>Adhao Realty | Your Trusted Real Estate Partner</title>
+  <meta name="description" content="Discover residential, commercial and investment properties across Mumbai and Pune with Adhao Realty.">
   <meta name="theme-color" content="#10251e">
 
+  <link rel="icon" href="assets/logoweb.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,60 +17,85 @@
   <style>
     :root {
       --green: #10251e;
-      --green2: #1c3b30;
+      --green-light: #1c3b30;
       --gold: #c9a96e;
       --cream: #f7f5f0;
       --white: #ffffff;
       --text: #242b27;
       --muted: #717873;
+      --border: #e5e8e3;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
     body {
-      margin: 0;
       font-family: "DM Sans", sans-serif;
       color: var(--text);
       background: var(--white);
+      line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    button, input, select { font: inherit; }
+    button, input, select {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
 
     .container {
-      width: min(1160px, 91%);
-      margin: auto;
+      width: min(1180px, 91%);
+      margin-inline: auto;
     }
 
-    header {
+    /* HEADER */
+
+    .site-header {
       background: var(--green);
-      color: white;
+      color: var(--white);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
       border-bottom: 1px solid #ffffff20;
     }
 
-    .nav {
-      min-height: 82px;
+    .navbar {
+      min-height: 86px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
     }
 
     .brand {
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
     }
 
-    .brand span { color: var(--gold); }
+    .site-logo {
+      width: 155px;
+      max-height: 68px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
 
-    nav {
+    .nav-links {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -77,117 +103,192 @@
       margin-left: auto;
     }
 
-    nav a {
-      color: #f1f1ed;
+    .nav-links a {
+      color: #f4f4ef;
       font-size: 14px;
+      font-weight: 500;
+      transition: color .2s;
     }
 
-    nav a:hover { color: var(--gold); }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
 
-    .nav-cta, .btn {
+    .btn {
+      min-height: 46px;
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      padding: 13px 20px;
-      border-radius: 5px;
-      font-weight: 700;
-      font-size: 14px;
+      gap: 8px;
+      padding: 12px 22px;
       border: 1px solid var(--gold);
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 13px;
       cursor: pointer;
+      transition: .2s ease;
+      text-align: center;
     }
 
-    .nav-cta, .btn-gold {
+    .btn-gold {
       background: var(--gold);
       color: var(--green);
     }
 
-    .hero {
-      background:
-        linear-gradient(90deg, rgba(9,28,21,.92), rgba(9,28,21,.62)),
-        url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85")
-        center/cover;
-      color: white;
-      min-height: 560px;
-      display: flex;
-      align-items: center;
+    .btn-gold:hover {
+      background: #dfc18a;
+      border-color: #dfc18a;
+      transform: translateY(-1px);
     }
 
-    .hero-content { max-width: 720px; padding: 85px 0; }
+    .btn-outline {
+      color: var(--white);
+      background: transparent;
+      border-color: #ffffff80;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(8, 27, 20, .94), rgba(8, 27, 20, .63)),
+        url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      padding: 90px 0;
+    }
 
     .eyebrow {
       color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 3px;
       font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       font-weight: 800;
     }
 
-    h1 {
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 1.1;
+    .hero h1 {
       margin: 20px 0;
-      letter-spacing: -1.5px;
+      font-size: clamp(40px, 6.2vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -1.7px;
+      font-weight: 700;
     }
 
-    .hero p {
-      color: #e2e7e2;
-      font-size: 17px;
-      line-height: 1.8;
-      max-width: 580px;
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-description {
+      max-width: 600px;
+      color: #e2e8e3;
+      font-size: 16px;
+      line-height: 1.9;
     }
 
     .hero-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 14px;
       margin-top: 30px;
     }
 
-    .btn-outline {
-      color: white;
-      border-color: #ffffff85;
-      background: transparent;
+    /* PROPERTY SEARCH */
+
+    .search-wrap {
+      position: relative;
+      z-index: 2;
+      margin-top: -35px;
     }
 
-    section { padding: 82px 0; }
+    .search-panel {
+      background: var(--white);
+      padding: 23px;
+      border-radius: 7px;
+      box-shadow: 0 12px 40px #10251e18;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr auto;
+      gap: 13px;
+      align-items: end;
+    }
 
-    .section-head {
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid #dce1db;
+      border-radius: 4px;
+      background: var(--white);
+      color: var(--text);
+      outline-color: var(--gold);
+    }
+
+    /* GENERAL SECTIONS */
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+    }
+
+    .section-heading.center {
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      color: var(--green);
+      font-size: clamp(29px, 4vw, 43px);
+      line-height: 1.2;
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .section-top {
       display: flex;
       justify-content: space-between;
       align-items: end;
       gap: 20px;
-      margin-bottom: 30px;
     }
 
-    .section-head h2 {
-      margin: 8px 0;
-      font-size: clamp(28px, 4vw, 39px);
+    .text-link {
       color: var(--green);
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
     }
 
-    .section-head p {
-      color: var(--muted);
-      margin: 0;
-      line-height: 1.7;
+    .text-link:hover {
+      color: #987640;
     }
 
-    .filter-bar {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    .filter-bar input, .filter-bar select {
-      min-height: 45px;
-      border: 1px solid #d9ddd8;
-      border-radius: 5px;
-      padding: 10px 13px;
-      background: white;
-      min-width: 160px;
-    }
-
-    .filter-bar input { flex: 1; }
+    /* PROPERTY CARDS */
 
     .property-grid {
       display: grid;
@@ -196,276 +297,711 @@
     }
 
     .property-card {
-      border: 1px solid #e6e8e4;
-      border-radius: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
       overflow: hidden;
-      background: white;
       transition: transform .2s, box-shadow .2s;
     }
 
     .property-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 32px #10251e12;
+      box-shadow: 0 15px 35px #10251e12;
+    }
+
+    .property-image-wrap {
+      height: 230px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
     }
 
     .property-image {
       width: 100%;
-      height: 225px;
+      height: 100%;
       object-fit: cover;
-      background: var(--cream);
       display: block;
     }
 
-    .property-body { padding: 20px; }
-
-    .property-type {
-      color: #876a38;
-      background: #f5eddd;
-      display: inline-block;
-      border-radius: 3px;
-      padding: 5px 9px;
-      font-size: 11px;
+    .property-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--gold);
+      color: var(--green);
+      font-size: 10px;
       font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 3px;
       text-transform: uppercase;
     }
 
-    .property-body h3 {
-      color: var(--green);
-      font-size: 19px;
-      margin: 13px 0 8px;
+    .property-content {
+      padding: 21px;
     }
 
-    .location {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .price {
-      color: var(--green);
-      font-size: 23px;
+    .property-type {
+      color: #8c6b36;
+      font-size: 11px;
       font-weight: 800;
-      margin: 18px 0 14px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
     }
 
-    .features {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .property-title {
+      margin: 9px 0 6px;
+      font-size: 19px;
+      color: var(--green);
+      line-height: 1.4;
+    }
+
+    .property-location {
       color: var(--muted);
       font-size: 12px;
-      border-top: 1px solid #eceeea;
-      padding-top: 14px;
+      line-height: 1.7;
     }
 
-    .property-actions { margin-top: 18px; }
+    .property-price {
+      margin: 16px 0;
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--green);
+    }
 
-    .property-actions .btn { width: 100%; }
+    .property-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .property-action {
+      margin-top: 18px;
+    }
+
+    .property-action .btn {
+      width: 100%;
+    }
 
     .empty-state {
       grid-column: 1 / -1;
-      text-align: center;
-      padding: 50px 20px;
+      padding: 45px 20px;
+      border-radius: 6px;
       background: var(--cream);
-      border-radius: 8px;
+      text-align: center;
       color: var(--muted);
-      line-height: 1.8;
     }
 
-    .about { background: var(--cream); }
+    .load-message {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 20px;
+    }
+
+    /* LOCATIONS */
+
+    .locations-section {
+      background: var(--cream);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .location-card {
+      min-height: 310px;
+      display: flex;
+      align-items: end;
+      padding: 30px;
+      color: var(--white);
+      border-radius: 6px;
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+      transition: transform .2s;
+    }
+
+    .location-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .location-mumbai {
+      background-image:
+        linear-gradient(0deg, #071b13e8, transparent 90%),
+        url("https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1000&q=80");
+    }
+
+    .location-pune {
+      background-image:
+        linear-gradient(0deg, #071b13e8, transparent 90%),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80");
+    }
+
+    .location-card h3 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .location-card p {
+      color: #e0e5df;
+      font-size: 13px;
+    }
+
+    /* ABOUT */
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      align-items: center;
       gap: 55px;
+      align-items: center;
     }
 
     .about-image {
       width: 100%;
-      height: 400px;
+      height: 440px;
+      border-radius: 6px;
       object-fit: cover;
-      border-radius: 8px;
     }
 
-    .about h2 {
-      font-size: clamp(30px, 4vw, 42px);
+    .about-copy h2 {
+      margin: 12px 0 20px;
       color: var(--green);
+      font-size: clamp(30px, 4vw, 43px);
       line-height: 1.2;
     }
 
-    .about p {
+    .about-copy p {
+      margin-bottom: 16px;
       color: var(--muted);
+      font-size: 14px;
       line-height: 1.9;
     }
 
-    .contact {
-      background: var(--green);
-      color: white;
-      text-align: center;
+    .about-copy .btn {
+      margin-top: 8px;
     }
 
-    .contact h2 { font-size: clamp(30px, 4vw, 42px); }
-
-    .contact p {
-      color: #d4ddd7;
-      line-height: 1.8;
+    .benefits {
+      margin-top: 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
-    footer {
-      background: #0a1913;
-      color: #dce3dd;
-      padding: 28px 0;
+    .benefit {
+      padding: 16px;
+      background: var(--cream);
+      border-left: 3px solid var(--gold);
+    }
+
+    .benefit strong {
+      display: block;
+      color: var(--green);
       font-size: 13px;
     }
 
-    .footer-inner {
+    .benefit span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* CONTACT */
+
+    .contact-section {
+      background: var(--green);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      margin: 12px 0;
+      font-size: clamp(30px, 4vw, 45px);
+    }
+
+    .contact-section p {
+      max-width: 620px;
+      margin: 0 auto 25px;
+      color: #d6dfd8;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      background: #091811;
+      color: #d9e0da;
+      padding: 48px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 35px;
+    }
+
+    .footer-logo {
+      width: 150px;
+      max-height: 70px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .footer-about {
+      color: #bdc9c0;
+      max-width: 350px;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .footer-title {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+      font-size: 12px;
+      color: #d5ddd6;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      padding-top: 20px;
+      border-top: 1px solid #ffffff20;
       display: flex;
       justify-content: space-between;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 15px;
+      color: #aebbb2;
+      font-size: 11px;
     }
 
-    #loadMessage {
-      color: var(--muted);
-      padding: 15px 0;
-    }
+    /* RESPONSIVE */
 
-    @media (max-width: 850px) {
-      .property-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .about-grid { gap: 30px; }
-      nav { gap: 16px; }
-      .nav-cta { display: none; }
+    @media (max-width: 900px) {
+      .navbar {
+        gap: 16px;
+      }
+
+      .site-logo {
+        width: 125px;
+      }
+
+      .nav-links {
+        gap: 17px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .search-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .property-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid {
+        gap: 30px;
+      }
     }
 
     @media (max-width: 600px) {
-      .nav { min-height: 70px; flex-wrap: wrap; padding: 15px 0; }
-      .brand { font-size: 20px; }
-      nav { order: 2; width: 100%; gap: 22px; margin: 0; }
-      nav a { font-size: 13px; }
-      .hero { min-height: 490px; }
-      .hero-content { padding: 65px 0; }
-      .hero p { font-size: 15px; }
-      section { padding: 58px 0; }
-      .section-head { display: block; }
-      .property-grid, .about-grid { grid-template-columns: 1fr; }
-      .property-image { height: 240px; }
-      .about-image { height: 290px; }
-      .filter-bar input, .filter-bar select { width: 100%; }
+      .navbar {
+        min-height: auto;
+        padding: 13px 0;
+        flex-wrap: wrap;
+      }
+
+      .site-logo {
+        width: 120px;
+        max-height: 52px;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        margin: 0;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .navbar > .btn {
+        padding: 9px 12px;
+        min-height: 38px;
+        font-size: 11px;
+      }
+
+      .hero {
+        min-height: 510px;
+      }
+
+      .hero-content {
+        padding: 65px 0 90px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .search-panel {
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+
+      .section {
+        padding: 62px 0;
+      }
+
+      .section-top {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .property-grid,
+      .location-grid,
+      .about-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .property-image-wrap {
+        height: 235px;
+      }
+
+      .location-card {
+        min-height: 260px;
+      }
+
+      .about-image {
+        height: 300px;
+      }
+
+      .benefits {
+        gap: 10px;
+      }
+
+      .footer-grid {
+        gap: 28px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home">ADHAO <span>REALTY</span></a>
 
-      <nav aria-label="Main navigation">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container navbar">
+
+      <a class="brand" href="#home" aria-label="Adhao Realty Home">
+        <img
+          src="assets/logoweb.webp"
+          alt="Adhao Realty Logo"
+          class="site-logo"
+        >
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#properties">Properties</a>
+        <a href="#locations">Locations</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <a class="nav-cta" href="#properties">Explore Properties</a>
+      <a class="btn btn-gold" href="#contact">Enquire Now</a>
+
     </div>
   </header>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-content">
+
           <div class="eyebrow">Your Trusted Real Estate Partner</div>
-          <h1>Find a Place<br>You'll Call Home.</h1>
-          <p>
-            Discover residential, commercial and investment opportunities
-            across Mumbai and Pune with Adhao Realty.
+
+          <h1>
+            Find Your Perfect<br>
+            <span>Place to Belong.</span>
+          </h1>
+
+          <p class="hero-description">
+            Discover exceptional residential, commercial and investment
+            opportunities across Mumbai and Pune. Your next property journey
+            starts with Adhao Realty.
           </p>
+
           <div class="hero-actions">
             <a class="btn btn-gold" href="#properties">Explore Properties</a>
-            <a class="btn btn-outline" href="#contact">Talk to Our Team</a>
+            <a class="btn btn-outline" href="#about">Discover Adhao Realty</a>
           </div>
+
         </div>
       </div>
     </section>
 
-    <section id="properties">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Find Your Next Property</div>
-            <h2>Featured Properties</h2>
-            <p>Explore available properties listed with Adhao Realty.</p>
-          </div>
+    <!-- PROPERTY SEARCH -->
+    <div class="container search-wrap">
+      <form class="search-panel" id="propertySearchForm">
+
+        <div class="field">
+          <label for="searchInput">Search Properties</label>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Location or property name"
+          >
         </div>
 
-        <div class="filter-bar">
-          <input id="searchInput" type="search"
-                 placeholder="Search by property or location..."
-                 aria-label="Search properties">
-
-          <select id="cityFilter" aria-label="Filter by city">
-            <option value="">All cities</option>
+        <div class="field">
+          <label for="cityFilter">Preferred City</label>
+          <select id="cityFilter">
+            <option value="">All Cities</option>
             <option value="Mumbai">Mumbai</option>
             <option value="Pune">Pune</option>
           </select>
+        </div>
 
-          <select id="typeFilter" aria-label="Filter by property type">
-            <option value="">All property types</option>
+        <div class="field">
+          <label for="typeFilter">Property Type</label>
+          <select id="typeFilter">
+            <option value="">All Types</option>
             <option value="Residential">Residential</option>
             <option value="Commercial">Commercial</option>
             <option value="Land">Land</option>
           </select>
         </div>
 
-        <p id="loadMessage" role="status">Loading available properties...</p>
+        <button class="btn btn-gold" type="submit">Search Properties</button>
+
+      </form>
+    </div>
+
+    <!-- FEATURED PROPERTIES -->
+    <section class="section" id="properties">
+      <div class="container">
+
+        <div class="section-top section-heading">
+          <div>
+            <div class="eyebrow">Handpicked Opportunities</div>
+            <h2>Featured Properties</h2>
+            <p>Explore property listings available through Adhao Realty.</p>
+          </div>
+
+          <a class="text-link" href="#properties">Explore Listings →</a>
+        </div>
+
+        <p class="load-message" id="loadMessage" role="status">
+          Loading available properties...
+        </p>
+
         <div class="property-grid" id="propertyGrid"></div>
+
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="container about-grid">
-        <img class="about-image"
-             src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80"
-             alt="Contemporary residential property"
-             loading="lazy">
+    <!-- LOCATIONS -->
+    <section class="section locations-section" id="locations">
+      <div class="container">
 
-        <div>
-          <div class="eyebrow">About Adhao Realty</div>
-          <h2>Making Your Property Journey Simpler.</h2>
-          <p>
-            Adhao Realty helps clients explore residential, commercial and
-            real estate investment opportunities across Mumbai and Pune.
-          </p>
-          <p>
-            Our goal is to make property discovery more transparent,
-            convenient and focused on your needs.
-          </p>
-          <a class="btn btn-gold" href="#contact">Connect With Us</a>
+        <div class="section-heading center">
+          <div class="eyebrow">Explore Popular Markets</div>
+          <h2>Find Your Place in the City</h2>
+          <p>Explore real estate opportunities across Mumbai and Pune.</p>
+        </div>
+
+        <div class="location-grid">
+
+          <a class="location-card location-mumbai" href="#properties"
+             data-city="Mumbai">
+            <div>
+              <h3>Mumbai</h3>
+              <p>Discover properties across Mumbai and its surrounding areas.</p>
+            </div>
+          </a>
+
+          <a class="location-card location-pune" href="#properties"
+             data-city="Pune">
+            <div>
+              <h3>Pune</h3>
+              <p>Explore residential and commercial opportunities in Pune.</p>
+            </div>
+          </a>
+
         </div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="eyebrow">Let's Find the Right Property</div>
-        <h2>Ready to Take the Next Step?</h2>
-        <p>Contact Adhao Realty to discuss your property requirements.</p>
-        <a class="btn btn-gold" id="contactButton"
-           href="https://wa.me/?text=Hello%20Adhao%20Realty%2C%20I%20am%20interested%20in%20your%20properties."
-           target="_blank" rel="noopener">Enquire on WhatsApp</a>
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+
+        <div>
+          <img
+            class="about-image"
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85"
+            alt="Modern luxury property"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="about-copy">
+          <div class="eyebrow">About Adhao Realty</div>
+
+          <h2>Real Estate Decisions Made with Confidence.</h2>
+
+          <p>
+            At Adhao Realty, we help individuals, families and investors
+            explore property opportunities that align with their goals.
+          </p>
+
+          <p>
+            From finding your next home to exploring commercial spaces and
+            investment opportunities, our focus is on clear communication,
+            thoughtful guidance and a smoother property journey.
+          </p>
+
+          <div class="benefits">
+            <div class="benefit">
+              <strong>Personalised Guidance</strong>
+              <span>Property options aligned with your needs.</span>
+            </div>
+
+            <div class="benefit">
+              <strong>Local Market Focus</strong>
+              <span>Mumbai and Pune opportunities.</span>
+            </div>
+
+            <div class="benefit">
+              <strong>Multiple Property Types</strong>
+              <span>Residential, commercial and land.</span>
+            </div>
+
+            <div class="benefit">
+              <strong>Client-Focused Service</strong>
+              <span>Support throughout your enquiry.</span>
+            </div>
+          </div>
+
+          <a class="btn btn-gold" href="#contact" style="margin-top:24px">
+            Talk to Our Team
+          </a>
+        </div>
+
       </div>
     </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+
+        <div class="eyebrow">Let's Start Your Property Journey</div>
+
+        <h2>Looking for the Right Property?</h2>
+
+        <p>
+          Tell us what you are looking for. Connect with Adhao Realty to
+          discuss residential, commercial or investment opportunities in
+          Mumbai and Pune.
+        </p>
+
+        <a
+          class="btn btn-gold"
+          id="contactButton"
+          href="https://wa.me/?text=Hello%20Adhao%20Realty%2C%20I%20am%20looking%20for%20a%20property."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Enquire on WhatsApp
+        </a>
+
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Adhao Realty. All rights reserved.</div>
-      <div>Residential · Commercial · Property Investments</div>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <a href="#home" aria-label="Adhao Realty Home">
+            <img
+              src="assets/logoweb.webp"
+              alt="Adhao Realty Logo"
+              class="footer-logo"
+              loading="lazy"
+            >
+          </a>
+
+          <p class="footer-about">
+            Your trusted real estate partner for residential, commercial and
+            investment opportunities across Mumbai and Pune.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#properties">Properties</a>
+            <a href="#locations">Locations</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Our Markets</h3>
+          <div class="footer-links">
+            <a href="#locations" data-footer-city="Mumbai">Mumbai</a>
+            <a href="#locations" data-footer-city="Pune">Pune</a>
+            <a href="#properties">Residential Properties</a>
+            <a href="#properties">Commercial Properties</a>
+            <a href="#properties">Investment Opportunities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> Adhao Realty. All rights reserved.</span>
+        <a href="#home">Back to Top ↑</a>
+      </div>
+
     </div>
   </footer>
 
+  <!-- SUPABASE LIBRARY MUST LOAD BEFORE YOUR CLIENT FILE -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js"></script>
 
@@ -476,23 +1012,29 @@
     const cityFilter = document.getElementById("cityFilter");
     const typeFilter = document.getElementById("typeFilter");
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
 
     let properties = [];
 
     function escapeHTML(value) {
-      return String(value ?? "").replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      })[char]);
+      return String(value ?? "").replace(/[&<>"']/g, function (char) {
+        return {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        }[char];
+      });
     }
 
     function formatPrice(value) {
       const amount = Number(value);
-      if (!Number.isFinite(amount) || amount <= 0) return "Price on request";
+
+      if (!Number.isFinite(amount) || amount <= 0) {
+        return "Price on Request";
+      }
 
       return amount.toLocaleString("en-IN", {
         style: "currency",
@@ -501,9 +1043,15 @@
       });
     }
 
-    function propertyImage(property) {
+    function getPropertyImage(property) {
       const images = property.image_urls;
-      if (Array.isArray(images) && images.length && /^https?:\/\//i.test(images[0])) {
+
+      if (
+        Array.isArray(images) &&
+        images.length > 0 &&
+        typeof images[0] === "string" &&
+        /^https?:\/\//i.test(images[0])
+      ) {
         return images[0];
       }
 
@@ -512,11 +1060,11 @@
 
     function renderProperties() {
       const search = searchInput.value.trim().toLowerCase();
-      const city = cityFilter.value.toLowerCase();
-      const type = typeFilter.value.toLowerCase();
+      const city = cityFilter.value.trim().toLowerCase();
+      const type = typeFilter.value.trim().toLowerCase();
 
-      const filtered = properties.filter(property => {
-        const text = [
+      const filtered = properties.filter(function (property) {
+        const searchableText = [
           property.title,
           property.city,
           property.location,
@@ -524,59 +1072,96 @@
           property.listing_type
         ].join(" ").toLowerCase();
 
-        return text.includes(search)
-          && (!city || String(property.city || "").toLowerCase() === city)
-          && (!type || String(property.property_type || "").toLowerCase() === type);
+        const matchesSearch = searchableText.includes(search);
+
+        const matchesCity =
+          !city || String(property.city || "").toLowerCase() === city;
+
+        const matchesType =
+          !type ||
+          String(property.property_type || "").toLowerCase() === type;
+
+        return matchesSearch && matchesCity && matchesType;
       });
 
-      if (!filtered.length) {
+      if (filtered.length === 0) {
         grid.innerHTML = `
           <div class="empty-state">
-            <strong>No matching properties found.</strong><br>
-            Please try another search or check back for new listings.
+            <strong>No published properties found.</strong><br>
+            Please change your filters or check back for new listings.
           </div>`;
         return;
       }
 
-      grid.innerHTML = filtered.map(property => {
+      grid.innerHTML = filtered.map(function (property) {
         const title = escapeHTML(property.title || "Property Listing");
+
         const location = escapeHTML(
-          [property.location, property.city].filter(Boolean).join(", ")
+          [property.location, property.city]
+            .filter(Boolean)
+            .join(", ")
         );
-        const image = escapeHTML(propertyImage(property));
-        const typeLabel = escapeHTML(property.property_type || "Property");
-        const listing = escapeHTML(property.listing_type || "Enquiry");
+
+        const type = escapeHTML(property.property_type || "Property");
+        const listingType = escapeHTML(property.listing_type || "Enquiry");
+        const image = escapeHTML(getPropertyImage(property));
+
         const bedrooms = Number(property.bedrooms) || 0;
         const bathrooms = Number(property.bathrooms) || 0;
         const area = Number(property.area_sqft) || 0;
 
-        const details = [
-          bedrooms ? `${bedrooms} Beds` : "",
-          bathrooms ? `${bathrooms} Baths` : "",
-          area ? `${area.toLocaleString("en-IN")} sq.ft.` : ""
-        ].filter(Boolean).map(escapeHTML).join(" · ");
+        const features = [];
 
-        const enquiry = encodeURIComponent(
-          `Hello Adhao Realty, I am interested in ${property.title || "a property"} in ${location}. Please share more details.`
+        if (bedrooms > 0) features.push(`${bedrooms} Beds`);
+        if (bathrooms > 0) features.push(`${bathrooms} Baths`);
+
+        if (area > 0) {
+          features.push(`${area.toLocaleString("en-IN")} sq.ft.`);
+        }
+
+        const featureHTML = features.length
+          ? `<div class="property-features">${features.map(escapeHTML).join(" · ")}</div>`
+          : "";
+
+        const message = encodeURIComponent(
+          `Hello Adhao Realty, I am interested in ${property.title || "a property"} at ${location || "your listing"}. Please share more details.`
         );
 
         return `
           <article class="property-card">
-            <img class="property-image"
-                 src="${image}"
-                 alt="${title}"
-                 loading="lazy"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80';">
-            <div class="property-body">
-              <span class="property-type">${typeLabel} · ${listing}</span>
-              <h3>${title}</h3>
-              <div class="location">📍 ${location || "Location on request"}</div>
-              <div class="price">${formatPrice(property.price)}</div>
-              ${details ? `<div class="features">${details}</div>` : ""}
-              <div class="property-actions">
-                <a class="btn btn-gold"
-                   href="https://wa.me/?text=${enquiry}"
-                   target="_blank" rel="noopener">Enquire About Property</a>
+            <div class="property-image-wrap">
+              <img
+                class="property-image"
+                src="${image}"
+                alt="${title}"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80';"
+              >
+              <span class="property-badge">${listingType}</span>
+            </div>
+
+            <div class="property-content">
+              <div class="property-type">${type}</div>
+
+              <h3 class="property-title">${title}</h3>
+
+              <p class="property-location">
+                📍 ${location || "Location available on enquiry"}
+              </p>
+
+              <div class="property-price">${formatPrice(property.price)}</div>
+
+              ${featureHTML}
+
+              <div class="property-action">
+                <a
+                  class="btn btn-gold"
+                  href="https://wa.me/?text=${message}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Enquire About Property
+                </a>
               </div>
             </div>
           </article>`;
@@ -585,13 +1170,19 @@
 
     async function loadProperties() {
       try {
-        if (!window.supabaseClient) {
-          throw new Error("Supabase client was not initialized. Check js/supabase.js.");
+        const client = window.supabaseClient;
+
+        if (!client) {
+          throw new Error(
+            "Supabase client is missing. Check js/supabase.js."
+          );
         }
 
-        const { data, error } = await window.supabaseClient
+        const { data, error } = await client
           .from("properties")
-          .select("id,title,property_type,listing_type,city,location,price,status,bedrooms,bathrooms,area_sqft,description,image_urls,is_featured,is_published,created_at")
+          .select(
+            "id,title,property_type,listing_type,city,location,price,status,bedrooms,bathrooms,area_sqft,description,image_urls,is_featured,is_published,created_at"
+          )
           .eq("is_published", true)
           .order("is_featured", { ascending: false })
           .order("created_at", { ascending: false });
@@ -599,28 +1190,59 @@
         if (error) throw error;
 
         properties = data || [];
+
         loadMessage.textContent = properties.length
           ? `${properties.length} published ${properties.length === 1 ? "property" : "properties"} available`
           : "No published properties are available yet.";
 
         renderProperties();
+
       } catch (error) {
-        console.error("Unable to load properties:", error);
+        console.error("Adhao Realty property loading error:", error);
+
         loadMessage.textContent =
-          "Properties could not be loaded. Please try again later.";
+          "Property listings are temporarily unavailable.";
+
         grid.innerHTML = `
           <div class="empty-state">
-            We couldn't load property listings right now.<br>
+            <strong>We couldn't load the property listings.</strong><br>
             Please try again later.
           </div>`;
       }
     }
 
+    document.getElementById("propertySearchForm").addEventListener(
+      "submit",
+      function (event) {
+        event.preventDefault();
+        renderProperties();
+
+        document.getElementById("properties").scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+    );
+
     searchInput.addEventListener("input", renderProperties);
     cityFilter.addEventListener("change", renderProperties);
     typeFilter.addEventListener("change", renderProperties);
 
+    document.querySelectorAll("[data-city]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        cityFilter.value = link.dataset.city;
+        renderProperties();
+      });
+    });
+
+    document.querySelectorAll("[data-footer-city]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        cityFilter.value = link.dataset.footerCity;
+        renderProperties();
+      });
+    });
+
     loadProperties();
   </script>
+
 </body>
 </html>
