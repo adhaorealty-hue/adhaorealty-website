@@ -61,5 +61,6 @@ document.getElementById("adminLoginForm").addEventListener("submit", async (even
   }
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
+if (!window.supabaseClient) {
+    message.textContent = "Supabase connection is not configured.";
+}
