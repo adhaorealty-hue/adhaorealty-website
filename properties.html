@@ -40,8 +40,8 @@
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     button, select, input {
@@ -59,7 +59,7 @@
 
     .container {
       width: min(1180px, 94%);
-      margin: 0 auto;
+      margin: auto;
     }
 
     /* HEADER */
@@ -77,7 +77,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 22px;
     }
 
     .brand img {
@@ -90,28 +90,28 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 23px;
+      gap: 22px;
       margin-left: auto;
     }
 
     .main-nav a {
-      color: #252b31;
       font-size: 12px;
       font-weight: 600;
       transition: color .2s;
     }
 
-    .main-nav a:hover {
+    .main-nav a:hover,
+    .main-nav a.active {
       color: var(--gold-dark);
     }
 
     .gold-button {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
-      border: none;
+      align-items: center;
+      padding: 10px 16px;
+      border: 0;
       border-radius: 5px;
-      padding: 10px 17px;
       background: var(--gold);
       color: #18202a;
       font-size: 12px;
@@ -142,13 +142,40 @@
       font-size: clamp(25px, 3vw, 34px);
       font-weight: 800;
       line-height: 1.2;
-      letter-spacing: -.6px;
       margin-bottom: 5px;
     }
 
     .page-heading p {
       color: var(--muted);
       font-size: 13px;
+    }
+
+    .city-notice {
+      display: none;
+      padding: 10px 13px;
+      margin: 0 0 14px;
+      background: #fff3d7;
+      border: 1px solid #f0dba9;
+      border-radius: 6px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .city-notice.visible {
+      display: flex;
+    }
+
+    .city-notice strong {
+      color: #815a18;
+    }
+
+    .city-notice button {
+      background: transparent;
+      border: 0;
+      color: #815a18;
+      font-weight: 800;
+      font-size: 11px;
     }
 
     /* FILTER PANEL */
@@ -181,22 +208,19 @@
       margin-bottom: 5px;
     }
 
-    .filter-field select,
-    .filter-field input {
-      display: block;
+    .filter-field select {
       width: 100%;
       height: 39px;
       border: 1px solid #e4e3de;
       border-radius: 5px;
-      background: #fff;
+      background: white;
       color: #252b31;
-      padding: 0 10px;
+      padding: 0 9px;
       font-size: 12px;
       outline: none;
     }
 
-    .filter-field select:focus,
-    .filter-field input:focus {
+    .filter-field select:focus {
       border-color: var(--gold-dark);
     }
 
@@ -215,7 +239,6 @@
     }
 
     .clear-filters {
-      display: inline-block;
       margin-top: 10px;
       color: #936819;
       background: transparent;
@@ -258,7 +281,6 @@
       background: white;
       color: var(--text);
       font-size: 11px;
-      outline: none;
     }
 
     /* PROPERTY GRID */
@@ -314,6 +336,7 @@
       color: #29241b;
       font-size: 10px;
       font-weight: 800;
+      pointer-events: none;
     }
 
     .favorite-button {
@@ -326,17 +349,15 @@
       height: 31px;
       border: 1px solid rgba(255,255,255,.75);
       border-radius: 50%;
-      background: rgba(0,0,0,.18);
+      background: rgba(0,0,0,.3);
       color: white;
       font-size: 19px;
       line-height: 1;
-      text-shadow: 0 1px 3px rgba(0,0,0,.5);
     }
 
     .favorite-button.active {
       color: #e94e5b;
       background: white;
-      text-shadow: none;
     }
 
     .card-body {
@@ -393,19 +414,6 @@
     .card-details-link {
       display: block;
     }
-
-    .status-label {
-      display: inline-block;
-      font-size: 10px;
-      padding: 3px 7px;
-      border-radius: 4px;
-      margin-bottom: 7px;
-      background: #edf5ee;
-      color: #286b3b;
-      font-weight: 700;
-    }
-
-    /* LOADING / EMPTY / ERROR */
 
     .state-card {
       grid-column: 1 / -1;
@@ -568,8 +576,7 @@
         font-size: 10px;
       }
 
-      .filter-field select,
-      .filter-field input {
+      .filter-field select {
         height: 38px;
         padding: 0 7px;
         font-size: 11px;
@@ -665,7 +672,6 @@
 
 <body>
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
 
@@ -679,8 +685,8 @@
       <nav class="main-nav" id="mainNav">
         <a href="index.html">Home</a>
         <a href="properties.html">Properties</a>
-        <a href="properties.html?city=Mumbai">Mumbai</a>
-        <a href="properties.html?city=Pune">Pune</a>
+        <a href="properties.html?city=Mumbai" data-city-link="Mumbai">Mumbai</a>
+        <a href="properties.html?city=Pune" data-city-link="Pune">Pune</a>
         <a href="index.html#about">About</a>
         <a href="index.html#contact">Contact</a>
       </nav>
@@ -696,13 +702,18 @@
 
   <main class="container">
 
-    <!-- PAGE TITLE -->
     <section class="page-heading">
-      <h1>Properties</h1>
-      <p>Explore our wide range of residential and commercial properties in Mumbai &amp; Pune</p>
+      <h1 id="pageTitle">Properties</h1>
+      <p id="pageDescription">
+        Explore our wide range of residential and commercial properties in Mumbai &amp; Pune.
+      </p>
     </section>
 
-    <!-- FILTERS -->
+    <div class="city-notice" id="cityNotice">
+      <strong id="cityNoticeText">Showing properties</strong>
+      <button type="button" id="clearCityNotice">Show All Cities ✕</button>
+    </div>
+
     <section class="filter-panel" aria-label="Property filters">
       <form class="filters" id="filterForm">
 
@@ -760,7 +771,6 @@
       </button>
     </section>
 
-    <!-- RESULT COUNT AND SORT -->
     <div class="result-bar">
       <p class="result-count" id="resultCount">Loading properties...</p>
 
@@ -775,7 +785,6 @@
       </label>
     </div>
 
-    <!-- PROPERTY CARDS -->
     <section class="property-grid" id="propertyGrid" aria-live="polite">
       <div class="state-card">
         <h2>Loading properties...</h2>
@@ -785,7 +794,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="currentYear"></span> Adhao Realty. All rights reserved.</p>
@@ -800,7 +808,6 @@
     </div>
   </footer>
 
-  <!-- SUPABASE -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js"></script>
 
@@ -824,13 +831,14 @@
       new Date().getFullYear();
 
     /* MOBILE NAVIGATION */
+
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
 
     menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "✕" : "☰";
+      const opened = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(opened));
+      menuToggle.textContent = opened ? "✕" : "☰";
     });
 
     mainNav.querySelectorAll("a").forEach(link => {
@@ -841,7 +849,8 @@
       });
     });
 
-    /* SAFE TEXT OUTPUT */
+    /* HELPER FUNCTIONS */
+
     function escapeHTML(value) {
       return String(value ?? "").replace(/[&<>"']/g, char => ({
         "&": "&amp;",
@@ -856,7 +865,6 @@
       return String(value ?? "").trim().toLowerCase();
     }
 
-    /* PRICE FORMAT */
     function formatPrice(value) {
       if (value === null || value === undefined || value === "") {
         return "Price on Request";
@@ -887,7 +895,6 @@
       return "₹" + amount.toLocaleString("en-IN");
     }
 
-    /* PROPERTY IMAGES */
     function getPropertyImage(property) {
       let images = property.image_urls;
 
@@ -900,12 +907,12 @@
       }
 
       if (Array.isArray(images)) {
-        const validImage = images.find(image =>
-          typeof image === "string" &&
-          /^(https?:\/\/|assets\/)/i.test(image)
+        const image = images.find(item =>
+          typeof item === "string" &&
+          /^(https?:\/\/|assets\/)/i.test(item)
         );
 
-        if (validImage) return validImage;
+        if (image) return image;
       }
 
       if (typeof images === "string" &&
@@ -928,40 +935,62 @@
       const price = property.price;
 
       if (typeof price === "number") return price;
+      if (typeof price !== "string") return 0;
 
-      if (typeof price === "string") {
-        const cleaned = price.replace(/[₹,\s]/g, "").toLowerCase();
-        const match = cleaned.match(/^([\d.]+)\s*(cr|crore|lakh|lac|l)?$/);
+      const cleaned = price.replace(/[₹,\s]/g, "").toLowerCase();
+      const match = cleaned.match(/^([\d.]+)\s*(cr|crore|lakh|lac|l)?$/);
 
-        if (match) {
-          let amount = Number(match[1]);
-          const unit = match[2];
+      if (match) {
+        let amount = Number(match[1]);
+        const unit = match[2];
 
-          if (unit === "cr" || unit === "crore") amount *= 10000000;
-          if (unit === "lakh" || unit === "lac" || unit === "l") amount *= 100000;
-
-          return amount;
+        if (unit === "cr" || unit === "crore") amount *= 10000000;
+        if (unit === "lakh" || unit === "lac" || unit === "l") {
+          amount *= 100000;
         }
 
-        return Number(cleaned) || 0;
+        return amount;
       }
 
-      return 0;
+      return Number(cleaned) || 0;
     }
 
-    /* NORMALISE QUERY VALUES */
-    function normaliseType(value) {
-      const type = normalise(value);
+    function updateCityNotice() {
+      const city = cityFilter.value;
+      const notice = document.getElementById("cityNotice");
+      const title = document.getElementById("pageTitle");
+      const description = document.getElementById("pageDescription");
 
-      if (type.includes("apartment") || type.includes("flat")) return "residential";
-      if (type.includes("office")) return "commercial";
-      if (type.includes("shop")) return "commercial";
-      if (type.includes("land")) return "plot";
+      if (city) {
+        notice.classList.add("visible");
+        document.getElementById("cityNoticeText").textContent =
+          "Showing properties in " + city;
 
-      return type;
+        title.textContent = city + " Properties";
+        description.textContent =
+          "Explore residential, commercial and investment properties in " +
+          city + ".";
+
+        document.querySelectorAll("[data-city-link]").forEach(link => {
+          link.classList.toggle(
+            "active",
+            normalise(link.dataset.cityLink) === normalise(city)
+          );
+        });
+      } else {
+        notice.classList.remove("visible");
+        title.textContent = "Properties";
+        description.textContent =
+          "Explore our wide range of residential and commercial properties in Mumbai & Pune.";
+
+        document.querySelectorAll("[data-city-link]").forEach(link => {
+          link.classList.remove("active");
+        });
+      }
     }
 
-    /* APPLY FILTERS */
+    /* FILTER PROPERTIES */
+
     function applyFilters() {
       const city = normalise(cityFilter.value);
       const type = normalise(typeFilter.value);
@@ -982,13 +1011,17 @@
         let matchesType = true;
 
         if (type) {
-          if (type === "residential") {
+          if (type === "residential" || type === "apartment" || type === "villa") {
             matchesType =
               propertyType.includes("residential") ||
               propertyType.includes("apartment") ||
               propertyType.includes("flat") ||
               propertyType.includes("villa");
-          } else if (type === "commercial") {
+          } else if (
+            type === "commercial" ||
+            type === "office" ||
+            type === "shop"
+          ) {
             matchesType =
               propertyType.includes("commercial") ||
               propertyType.includes("office") ||
@@ -1002,26 +1035,29 @@
           }
         }
 
-        const matchesBudget = !budget || (price > 0 && price <= budget);
+        const matchesBudget =
+          !budget || (price > 0 && price <= budget);
 
         let matchesBedrooms = true;
 
         if (bedrooms) {
-          if (bedrooms === 4) {
-            matchesBedrooms = beds >= 4;
-          } else {
-            matchesBedrooms = beds === bedrooms;
-          }
+          matchesBedrooms = bedrooms === 4
+            ? beds >= 4
+            : beds === bedrooms;
         }
 
-        return matchesCity && matchesType &&
-          matchesBudget && matchesBedrooms;
+        return matchesCity &&
+          matchesType &&
+          matchesBudget &&
+          matchesBedrooms;
       });
 
+      updateCityNotice();
       sortProperties();
     }
 
     /* SORTING */
+
     function sortProperties() {
       const sorted = [...visibleProperties];
 
@@ -1035,24 +1071,26 @@
         );
       } else if (sortFilter.value === "area-high") {
         sorted.sort((a, b) =>
-          (Number(b.area_sqft) || 0) - (Number(a.area_sqft) || 0)
+          (Number(b.area_sqft) || 0) -
+          (Number(a.area_sqft) || 0)
         );
       } else {
         sorted.sort((a, b) => {
           if (Boolean(a.is_featured) !== Boolean(b.is_featured)) {
             return Number(Boolean(b.is_featured)) -
-                   Number(Boolean(a.is_featured));
+              Number(Boolean(a.is_featured));
           }
 
           return new Date(b.created_at || 0) -
-                 new Date(a.created_at || 0);
+            new Date(a.created_at || 0);
         });
       }
 
       renderProperties(sorted);
     }
 
-    /* CARD MARKUP */
+    /* RENDER PROPERTY CARDS */
+
     function renderProperties(properties) {
       resultCount.innerHTML =
         `<span>${properties.length}</span> Properties Found`;
@@ -1062,18 +1100,23 @@
           <div class="state-card">
             <h2>No properties found</h2>
             <p>Try changing the filters or clearing your search.</p>
-            <button class="gold-button" type="button"
-              onclick="document.getElementById('clearFilters').click()">
-              Clear Filters
+            <button class="gold-button" type="button" id="emptyClearButton">
+              Show All Properties
             </button>
           </div>`;
+
+        document.getElementById("emptyClearButton")
+          .addEventListener("click", resetFilters);
+
         return;
       }
 
       propertyGrid.innerHTML = properties.map(property => {
         const id = escapeHTML(property.id || "");
         const title = escapeHTML(property.title || "Property Listing");
-        const city = escapeHTML(getPropertyCity(property) || "Location on Request");
+        const city = escapeHTML(
+          getPropertyCity(property) || "Location on Request"
+        );
         const type = escapeHTML(getPropertyType(property));
         const price = escapeHTML(formatPrice(property.price));
         const image = escapeHTML(getPropertyImage(property));
@@ -1087,7 +1130,9 @@
         const meta = [];
 
         if (area) {
-          meta.push(`<span>▧ ${area.toLocaleString("en-IN")} sq.ft.</span>`);
+          meta.push(
+            `<span>▧ ${area.toLocaleString("en-IN")} sq.ft.</span>`
+          );
         }
 
         if (bedrooms) {
@@ -1105,13 +1150,17 @@
         const detailURL = property.id
           ? `property-details.html?id=${encodeURIComponent(property.id)}`
           : `https://wa.me/917249310062?text=${encodeURIComponent(
-              "Hello Adhao Realty, I am interested in " + (property.title || "a property") + ". Please share more details."
+              "Hello Adhao Realty, I am interested in " +
+              (property.title || "a property") +
+              ". Please share more details."
             )}`;
 
         return `
           <article class="property-card">
             <div class="card-image-wrap">
-              <a class="card-details-link" href="${detailURL}"
+
+              <a class="card-details-link"
+                 href="${detailURL}"
                  aria-label="View ${title}">
                 <img class="card-image"
                      src="${image}"
@@ -1120,7 +1169,9 @@
                      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85'">
               </a>
 
-              ${featured ? '<span class="featured-badge">Featured</span>' : ""}
+              ${featured
+                ? '<span class="featured-badge">Featured</span>'
+                : ""}
 
               <button class="favorite-button ${isFavorite ? "active" : ""}"
                 type="button"
@@ -1129,6 +1180,7 @@
                 aria-pressed="${isFavorite}">
                 ${isFavorite ? "♥" : "♡"}
               </button>
+
             </div>
 
             <a class="card-details-link" href="${detailURL}">
@@ -1162,15 +1214,42 @@
       });
     }
 
-    /* FILTER EVENTS */
-    filterForm.addEventListener("submit", event => {
-      event.preventDefault();
-      applyFilters();
-    });
+    /* URL PARAMETERS
+       Example:
+       properties.html?city=Mumbai
+       properties.html?city=Pune
+    */
 
-    sortFilter.addEventListener("change", sortProperties);
+    function applyURLParameters() {
+      const params = new URLSearchParams(window.location.search);
 
-    clearFilters.addEventListener("click", () => {
+      const city = params.get("city");
+      const type = params.get("type");
+
+      if (city) {
+        const option = [...cityFilter.options].find(item =>
+          normalise(item.value) === normalise(city)
+        );
+
+        if (option) {
+          cityFilter.value = option.value;
+        }
+      }
+
+      if (type) {
+        const option = [...typeFilter.options].find(item =>
+          normalise(item.value) === normalise(type)
+        );
+
+        if (option) {
+          typeFilter.value = option.value;
+        }
+      }
+    }
+
+    /* RESET FILTERS */
+
+    function resetFilters() {
       cityFilter.value = "";
       typeFilter.value = "";
       budgetFilter.value = "";
@@ -1182,33 +1261,24 @@
       window.history.replaceState({}, "", url);
 
       applyFilters();
-    });
-
-    /* READ CITY FROM URL */
-    function applyURLParameters() {
-      const params = new URLSearchParams(window.location.search);
-
-      const city = params.get("city");
-      const type = params.get("type");
-
-      if (city) {
-        const option = [...cityFilter.options].find(
-          item => normalise(item.value) === normalise(city)
-        );
-
-        if (option) cityFilter.value = option.value;
-      }
-
-      if (type) {
-        const option = [...typeFilter.options].find(
-          item => normalise(item.value) === normalise(type)
-        );
-
-        if (option) typeFilter.value = option.value;
-      }
     }
 
+    /* EVENT LISTENERS */
+
+    filterForm.addEventListener("submit", event => {
+      event.preventDefault();
+      applyFilters();
+    });
+
+    sortFilter.addEventListener("change", sortProperties);
+
+    clearFilters.addEventListener("click", resetFilters);
+
+    document.getElementById("clearCityNotice")
+      .addEventListener("click", resetFilters);
+
     /* LOAD PUBLISHED PROPERTIES FROM SUPABASE */
+
     async function loadProperties() {
       const client = window.supabaseClient;
 
@@ -1220,6 +1290,7 @@
             <h2>Unable to connect to property listings</h2>
             <p>Please check the existing js/supabase.js configuration.</p>
           </div>`;
+
         return;
       }
 
@@ -1234,6 +1305,11 @@
         if (error) throw error;
 
         allProperties = data || [];
+
+        /*
+          Read Mumbai/Pune from the URL after the records load.
+          Then automatically filter and display the matching listings.
+        */
         applyURLParameters();
         applyFilters();
 
