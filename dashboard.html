@@ -1,0 +1,1792 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adhao Realty | Admin Dashboard</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    :root {
+      --navy: #111d2e;
+      --navy-light: #19283b;
+      --gold: #d6a746;
+      --gold-light: #f2d58d;
+      --green: #198754;
+      --red: #dc3545;
+      --bg: #f3f5f8;
+      --white: #ffffff;
+      --text: #202631;
+      --muted: #7c8594;
+      --border: #e6e9ef;
+      --shadow: 0 5px 22px rgba(20, 35, 55, .055);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      flex-shrink: 0;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .brand {
+      padding: 24px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #ffffff15;
+    }
+
+    .brand-mark {
+      color: var(--gold-light);
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+    }
+
+    .brand-sub {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #c9d0db;
+      margin-top: 4px;
+    }
+
+    .sidebar-label {
+      color: #8290a3;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      padding: 25px 22px 10px;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: grid;
+      gap: 5px;
+      padding: 0 12px;
+    }
+
+    .nav button {
+      background: transparent;
+      border: 0;
+      color: #cbd2dc;
+      padding: 13px 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      text-align: left;
+      border-radius: 6px;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    .nav button:hover {
+      background: #ffffff0d;
+      color: white;
+    }
+
+    .nav button.active {
+      background: var(--gold);
+      color: #152033;
+      font-weight: 700;
+    }
+
+    .nav-icon {
+      width: 20px;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      padding: 20px;
+      border-top: 1px solid #ffffff15;
+      color: #aab5c3;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .sidebar-bottom strong {
+      color: white;
+    }
+
+    .main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .topbar {
+      height: 76px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      gap: 16px;
+    }
+
+    .topbar h2 {
+      font-size: 19px;
+    }
+
+    .topbar p {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .admin-chip {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      color: #596273;
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #f8e9bf;
+      color: #775615;
+      font-weight: 800;
+    }
+
+    .mobile-menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 23px;
+    }
+
+    .content {
+      padding: 28px 30px 40px;
+      max-width: 1600px;
+      margin: auto;
+    }
+
+    .welcome {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .welcome h1 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .welcome p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .btn {
+      border: 0;
+      padding: 11px 16px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      text-decoration: none;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #192337;
+    }
+
+    .btn-gold:hover {
+      background: #e4bb60;
+    }
+
+    .btn-dark {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-outline {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-danger {
+      background: #fff0f0;
+      color: #bd303d;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 17px;
+      margin-bottom: 27px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 21px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .stat-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .stat-label {
+      color: #697385;
+      font-size: 12px;
+    }
+
+    .stat-icon {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #fff5dc;
+      color: #9a6a08;
+      font-size: 19px;
+    }
+
+    .stat-value {
+      font-size: 30px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .stat-note {
+      color: #8b94a2;
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-header h3 {
+      font-size: 16px;
+    }
+
+    .panel-header p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px 22px;
+    }
+
+    .field {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .filters .field {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #dfe4eb;
+      background: white;
+      border-radius: 5px;
+      padding: 11px 12px;
+      outline: none;
+      color: var(--text);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px #d6a74620;
+    }
+
+    .field textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 750px;
+    }
+
+    th {
+      background: #fafbfc;
+      color: #7b8492;
+      font-size: 11px;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      padding: 14px 18px;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 18px;
+      border-top: 1px solid #edf0f4;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+
+    .property-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 190px;
+    }
+
+    .property-thumb {
+      width: 62px;
+      height: 48px;
+      object-fit: cover;
+      background: #edf0f4;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .property-name {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .property-type {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 9px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status-available {
+      color: #16824b;
+      background: #e6f7ee;
+    }
+
+    .status-sold {
+      color: #b22c3b;
+      background: #ffebed;
+    }
+
+    .status-reserved {
+      color: #986600;
+      background: #fff3d4;
+    }
+
+    .status-draft {
+      color: #596273;
+      background: #edf0f5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .text-action {
+      border: 0;
+      background: transparent;
+      color: #b17c16;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    .text-action.delete {
+      color: #d33e4c;
+    }
+
+    .table-footer {
+      padding: 15px 20px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .empty {
+      text-align: center;
+      padding: 45px 20px;
+      color: var(--muted);
+    }
+
+    .empty strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .form-grid {
+      padding: 23px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .form-actions {
+      padding: 0 23px 23px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .notice {
+      padding: 13px 16px;
+      border-radius: 5px;
+      font-size: 12px;
+      line-height: 1.6;
+      margin: 20px 22px 0;
+      display: none;
+      overflow-wrap: anywhere;
+    }
+
+    .notice.show {
+      display: block;
+    }
+
+    .notice.error {
+      color: #a12634;
+      background: #fff0f0;
+    }
+
+    .notice.success {
+      color: #176c42;
+      background: #e8f7ee;
+    }
+
+    .upload-preview {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .preview-item {
+      width: 90px;
+      height: 76px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 22px;
+    }
+
+    .info-box {
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 18px;
+    }
+
+    .info-box h4 {
+      margin-bottom: 9px;
+    }
+
+    .info-box p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .loading {
+      padding: 30px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1050px) {
+      .sidebar {
+        width: 215px;
+      }
+
+      .content {
+        padding: 22px 18px;
+      }
+
+      .topbar {
+        padding: 0 18px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .sidebar {
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 250px;
+        transform: translateX(-100%);
+        transition: transform .25s;
+        overflow-y: auto;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .topbar {
+        height: 68px;
+        padding: 0 15px;
+      }
+
+      .topbar h2 {
+        font-size: 16px;
+      }
+
+      .topbar p,
+      .admin-email {
+        display: none;
+      }
+
+      .content {
+        padding: 20px 12px;
+      }
+
+      .welcome {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .welcome h1 {
+        font-size: 22px;
+      }
+
+      .stats {
+        gap: 10px;
+      }
+
+      .stat {
+        padding: 15px;
+      }
+
+      .stat-value {
+        font-size: 25px;
+      }
+
+      .stat-top {
+        align-items: flex-start;
+      }
+
+      .stat-icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .panel-header {
+        padding: 16px;
+        align-items: flex-start;
+      }
+
+      .filters {
+        padding: 14px;
+      }
+
+      .form-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+        padding: 16px;
+      }
+
+      .form-grid .full {
+        grid-column: auto;
+      }
+
+      .form-actions {
+        padding: 0 16px 18px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .welcome .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">A</div>
+      <div>
+        <div class="brand-name">ADHAO</div>
+        <div class="brand-sub">REALTY</div>
+      </div>
+    </div>
+
+    <div class="sidebar-label">Main Menu</div>
+
+    <nav class="nav">
+      <button class="active" data-view="overview">
+        <span class="nav-icon">⌂</span> Dashboard
+      </button>
+      <button data-view="add">
+        <span class="nav-icon">＋</span> Add Property
+      </button>
+      <button data-view="manage">
+        <span class="nav-icon">▤</span> Manage Properties
+      </button>
+      <button data-view="enquiries">
+        <span class="nav-icon">✉</span> Enquiries
+      </button>
+      <button data-view="images">
+        <span class="nav-icon">▧</span> Manage Images
+      </button>
+      <button data-view="settings">
+        <span class="nav-icon">⚙</span> Settings
+      </button>
+      <button id="logoutButton">
+        <span class="nav-icon">⇥</span> Logout
+      </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <strong>ADHAO REALTY</strong><br>
+      Property Management System<br>
+      Mumbai · Pune
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:13px">
+        <button class="mobile-menu" id="menuButton" aria-label="Open menu">☰</button>
+        <div>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p>Welcome to Adhao Realty administration</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="admin-chip">
+          <div class="avatar">A</div>
+          <div>
+            <strong>Administrator</strong>
+            <div class="admin-email" id="adminEmail">Verifying account...</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <section class="view active" id="view-overview">
+        <div class="welcome">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Monitor and manage your property listings.</p>
+          </div>
+          <button class="btn btn-gold" data-go="add">＋ Add New Property</button>
+        </div>
+
+        <div class="stats">
+          <article class="stat">
+            <div class="stat-top">
+              <span class="stat-label">Total Properties</span>
+              <span class="stat-icon">⌂</span>
+            </div>
+            <div class="stat-value" id="totalCount">—</div>
+            <div class="stat-note">All database listings</div>
+          </article>
+
+          <article class="stat">
+            <div class="stat-top">
+              <span class="stat-label">Available</span>
+              <span class="stat-icon">✓</span>
+            </div>
+            <div class="stat-value" id="availableCount">—</div>
+            <div class="stat-note">Properties available</div>
+          </article>
+
+          <article class="stat">
+            <div class="stat-top">
+              <span class="stat-label">Featured</span>
+              <span class="stat-icon">★</span>
+            </div>
+            <div class="stat-value" id="featuredCount">—</div>
+            <div class="stat-note">Published featured listings</div>
+          </article>
+
+          <article class="stat">
+            <div class="stat-top">
+              <span class="stat-label">Sold</span>
+              <span class="stat-icon">₹</span>
+            </div>
+            <div class="stat-value" id="soldCount">—</div>
+            <div class="stat-note">Marked as sold</div>
+          </article>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Recent Properties</h3>
+              <p>Your latest property listings</p>
+            </div>
+            <button class="btn btn-outline" data-go="manage">View All →</button>
+          </div>
+          <div id="recentTable" class="loading">Loading properties...</div>
+        </div>
+      </section>
+
+      <!-- MANAGE PROPERTIES -->
+      <section class="view" id="view-manage">
+        <div class="welcome">
+          <div>
+            <h1>Manage Properties</h1>
+            <p>Search, edit, publish or remove your listings.</p>
+          </div>
+          <button class="btn btn-gold" data-go="add">＋ Add Property</button>
+        </div>
+
+        <div class="panel">
+          <div class="filters">
+            <div class="field">
+              <label for="searchInput">Search properties</label>
+              <input id="searchInput" placeholder="Search title or location...">
+            </div>
+            <div class="field">
+              <label for="cityFilter">City</label>
+              <select id="cityFilter">
+                <option value="">All Cities</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Pune">Pune</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="statusFilter">Availability</label>
+              <select id="statusFilter">
+                <option value="">All Statuses</option>
+                <option value="Available">Available</option>
+                <option value="Reserved">Reserved</option>
+                <option value="Sold">Sold</option>
+              </select>
+            </div>
+          </div>
+          <div id="manageTable" class="loading">Loading properties...</div>
+        </div>
+      </section>
+
+      <!-- ADD / EDIT PROPERTY -->
+      <section class="view" id="view-add">
+        <div class="welcome">
+          <div>
+            <h1 id="formHeading">Add New Property</h1>
+            <p>Add property details to your public website.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Property Information</h3>
+              <p>Fields marked * are required.</p>
+            </div>
+          </div>
+
+          <div id="formNotice" class="notice" role="status"></div>
+
+          <form id="propertyForm">
+            <input type="hidden" id="propertyId">
+
+            <div class="form-grid">
+              <div class="field full">
+                <label for="propertyTitle">Property Title *</label>
+                <input id="propertyTitle" required maxlength="180"
+                  placeholder="e.g. 3 BHK Premium Apartment">
+              </div>
+
+              <div class="field">
+                <label for="propertyType">Property Type *</label>
+                <select id="propertyType" required>
+                  <option value="Residential">Residential</option>
+                  <option value="Commercial">Commercial</option>
+                  <option value="Plot">Plot / Land</option>
+                  <option value="Luxury">Luxury Property</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="listingType">Listing Type *</label>
+                <select id="listingType" required>
+                  <option value="Sale">For Sale</option>
+                  <option value="Rent">For Rent</option>
+                  <option value="Lease">For Lease</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="propertyCity">City *</label>
+                <select id="propertyCity" required>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Pune">Pune</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="propertyLocation">Location / Area *</label>
+                <input id="propertyLocation" required maxlength="180"
+                  placeholder="e.g. Wakad, Pune">
+              </div>
+
+              <div class="field">
+                <label for="propertyPrice">Price in INR *</label>
+                <input id="propertyPrice" type="number" min="0" step="0.01"
+                  required placeholder="e.g. 12500000">
+              </div>
+
+              <div class="field">
+                <label for="propertyStatus">Availability *</label>
+                <select id="propertyStatus" required>
+                  <option value="Available">Available</option>
+                  <option value="Reserved">Reserved</option>
+                  <option value="Sold">Sold</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="bedrooms">Bedrooms</label>
+                <input id="bedrooms" type="number" min="0" max="100">
+              </div>
+
+              <div class="field">
+                <label for="bathrooms">Bathrooms</label>
+                <input id="bathrooms" type="number" min="0" max="100">
+              </div>
+
+              <div class="field">
+                <label for="areaSqft">Area (sq. ft.)</label>
+                <input id="areaSqft" type="number" min="0" step="0.01">
+              </div>
+
+              <div class="field full">
+                <label for="description">Property Description</label>
+                <textarea id="description" maxlength="10000"
+                  placeholder="Describe the property, amenities and key features..."></textarea>
+              </div>
+
+              <div class="field full">
+                <label for="propertyImages">Property Images</label>
+                <input id="propertyImages" type="file"
+                  accept="image/jpeg,image/png,image/webp,image/avif"
+                  multiple>
+                <p style="font-size:11px;color:#7c8594;margin-top:8px">
+                  Choose JPG, PNG, WebP or AVIF images. Maximum 5 MB per image.
+                  Existing images are retained when editing unless removed below.
+                </p>
+                <div class="upload-preview" id="imagePreview"></div>
+              </div>
+
+              <div class="field full">
+                <label>
+                  <input id="isFeatured" type="checkbox"
+                    style="width:auto;margin-right:7px">
+                  Mark as Featured Property
+                </label>
+                <label style="margin-top:16px">
+                  <input id="isPublished" type="checkbox" checked
+                    style="width:auto;margin-right:7px">
+                  Publish this property on the website
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline" id="cancelForm">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-gold" id="saveButton">
+                Save Property
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ENQUIRIES -->
+      <section class="view" id="view-enquiries">
+        <div class="welcome">
+          <div>
+            <h1>Enquiries</h1>
+            <p>Manage customer requests about your properties.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="empty">
+            <strong>Enquiry management is not connected yet</strong>
+            Customer enquiry storage and management will be added
+            after the property catalogue is working.
+          </div>
+        </div>
+      </section>
+
+      <!-- IMAGES -->
+      <section class="view" id="view-images">
+        <div class="welcome">
+          <div>
+            <h1>Manage Images</h1>
+            <p>View photos attached to your property listings.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div id="imageGallery" class="info-grid">
+            <p>Loading images...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="view" id="view-settings">
+        <div class="welcome">
+          <div>
+            <h1>Settings</h1>
+            <p>Website and account information.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Administrator Account</h3>
+              <p>Account currently signed in to this dashboard.</p>
+            </div>
+          </div>
+          <div class="info-grid">
+            <div class="info-box">
+              <h4>Admin Email</h4>
+              <p id="settingsEmail">Loading...</p>
+            </div>
+            <div class="info-box">
+              <h4>Website</h4>
+              <p>Adhao Realty<br>Mumbai · Pune<br>Residential · Commercial · Investment</p>
+            </div>
+            <div class="info-box">
+              <h4>Backend</h4>
+              <p>Supabase Authentication, database and property image storage.</p>
+            </div>
+            <div class="info-box">
+              <h4>Security</h4>
+              <p>Database and storage permissions are enforced by Supabase policies.</p>
+            </div>
+          </div>
+          <div style="padding:0 22px 22px">
+            <button class="btn btn-dark" id="settingsLogout">Log Out</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+
+  let adminUser = null;
+  let properties = [];
+  let currentImages = [];
+  let pendingFiles = [];
+  let selectedImages = new Set();
+
+  const allowedImageTypes = [
+    "image/jpeg", "image/png", "image/webp", "image/avif"
+  ];
+
+  function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[char]);
+  }
+
+  function formatPrice(value, listingType = "Sale") {
+    const price = Number(value);
+
+    if (!Number.isFinite(price)) return "Price on request";
+
+    const formatted = price.toLocaleString("en-IN", {
+      maximumFractionDigits: 2
+    });
+
+    if (price >= 10000000) {
+      return "₹" + (price / 10000000).toLocaleString("en-IN", {
+        maximumFractionDigits: 2
+      }) + " Cr";
+    }
+
+    if (price >= 100000) {
+      return "₹" + (price / 100000).toLocaleString("en-IN", {
+        maximumFractionDigits: 2
+      }) + " Lakh";
+    }
+
+    return "₹" + formatted +
+      (listingType === "Rent" ? " / month" : "");
+  }
+
+  function showNotice(message, type = "error") {
+    const notice = $("formNotice");
+    notice.textContent = message;
+    notice.className = "notice show " + type;
+  }
+
+  function hideNotice() {
+    $("formNotice").className = "notice";
+    $("formNotice").textContent = "";
+  }
+
+  function navigate(viewName) {
+    const validViews = [
+      "overview", "manage", "add",
+      "enquiries", "images", "settings"
+    ];
+
+    if (!validViews.includes(viewName)) return;
+
+    document.querySelectorAll(".view").forEach(view => {
+      view.classList.toggle("active", view.id === "view-" + viewName);
+    });
+
+    document.querySelectorAll(".nav [data-view]").forEach(button => {
+      button.classList.toggle("active", button.dataset.view === viewName);
+    });
+
+    const titles = {
+      overview: "Dashboard",
+      manage: "Manage Properties",
+      add: $("propertyId").value ? "Edit Property" : "Add Property",
+      enquiries: "Enquiries",
+      images: "Manage Images",
+      settings: "Settings"
+    };
+
+    $("pageTitle").textContent = titles[viewName];
+    $("sidebar").classList.remove("open");
+
+    if (viewName === "manage") renderManageTable();
+    if (viewName === "images") renderImageGallery();
+  }
+
+  document.querySelectorAll(".nav [data-view]").forEach(button => {
+    button.addEventListener("click", () => navigate(button.dataset.view));
+  });
+
+  document.querySelectorAll("[data-go]").forEach(button => {
+    button.addEventListener("click", () => {
+      if (button.dataset.go === "add") resetForm();
+      navigate(button.dataset.go);
+    });
+  });
+
+  $("menuButton").addEventListener("click", () => {
+    $("sidebar").classList.toggle("open");
+  });
+
+  async function requireAdmin() {
+    if (!window.supabaseClient) {
+      throw new Error(
+        "Supabase client not found. Check js/supabase.js and script loading."
+      );
+    }
+
+    const { data, error } = await supabaseClient.auth.getSession();
+
+    if (error || !data.session) {
+      window.location.replace("admin.html");
+      return false;
+    }
+
+    const { data: isAdmin, error: adminError } =
+      await supabaseClient.rpc("is_adhao_admin");
+
+    if (adminError || isAdmin !== true) {
+      await supabaseClient.auth.signOut();
+      window.location.replace("admin.html");
+      return false;
+    }
+
+    adminUser = data.session.user;
+    $("adminEmail").textContent = adminUser.email || "Administrator";
+    $("settingsEmail").textContent = adminUser.email || "Not available";
+
+    return true;
+  }
+
+  async function logout() {
+    const { error } = await supabaseClient.auth.signOut();
+
+    if (error) {
+      alert("Could not log out: " + error.message);
+      return;
+    }
+
+    window.location.replace("admin.html");
+  }
+
+  $("logoutButton").addEventListener("click", logout);
+  $("settingsLogout").addEventListener("click", logout);
+
+  async function loadProperties() {
+    const { data, error } = await supabaseClient
+      .from("properties")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
+    properties = data || [];
+    renderStats();
+    renderRecentTable();
+    renderManageTable();
+    renderImageGallery();
+  }
+
+  function renderStats() {
+    $("totalCount").textContent = properties.length;
+
+    $("availableCount").textContent = properties.filter(
+      p => p.status === "Available"
+    ).length;
+
+    $("featuredCount").textContent = properties.filter(
+      p => p.is_featured === true && p.is_published === true
+    ).length;
+
+    $("soldCount").textContent = properties.filter(
+      p => p.status === "Sold"
+    ).length;
+  }
+
+  function statusBadge(status) {
+    const safeStatus = ["Available", "Reserved", "Sold"].includes(status)
+      ? status
+      : "Draft";
+
+    const className = {
+      Available: "status-available",
+      Reserved: "status-reserved",
+      Sold: "status-sold",
+      Draft: "status-draft"
+    }[safeStatus];
+
+    return '<span class="status ' + className + '">' +
+      escapeHTML(safeStatus) + '</span>';
+  }
+
+  function propertyImage(property) {
+    const url = Array.isArray(property.image_urls)
+      ? property.image_urls.find(Boolean)
+      : "";
+
+    if (url) {
+      return '<img class="property-thumb" src="' + escapeHTML(url) +
+        '" alt="" loading="lazy">';
+    }
+
+    return '<div class="property-thumb" aria-label="No image" ' +
+      'style="display:grid;place-items:center;font-size:22px">⌂</div>';
+  }
+
+  function rowHTML(property) {
+    return `
+      <tr>
+        <td>
+          <div class="property-cell">
+            ${propertyImage(property)}
+            <div>
+              <div class="property-name">${escapeHTML(property.title)}</div>
+              <div class="property-type">${escapeHTML(property.property_type)}</div>
+            </div>
+          </div>
+        </td>
+        <td>${escapeHTML(property.city)}, ${escapeHTML(property.location)}</td>
+        <td><strong>${escapeHTML(formatPrice(property.price, property.listing_type))}</strong></td>
+        <td>${statusBadge(property.status)}</td>
+        <td>
+          <div class="actions">
+            <button class="text-action" data-edit="${escapeHTML(property.id)}">Edit</button>
+            <button class="text-action delete" data-delete="${escapeHTML(property.id)}">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }
+
+  function bindRowActions(container) {
+    container.querySelectorAll("[data-edit]").forEach(button => {
+      button.addEventListener("click", () => {
+        const property = properties.find(p => p.id === button.dataset.edit);
+        if (!property) return;
+        populateForm(property);
+        navigate("add");
+      });
+    });
+
+    container.querySelectorAll("[data-delete]").forEach(button => {
+      button.addEventListener("click", async () => {
+        const property = properties.find(p => p.id === button.dataset.delete);
+        if (!property) return;
+
+        if (!confirm(
+          'Delete "' + property.title + '" from the property database?'
+        )) return;
+
+        button.disabled = true;
+
+        const { error } = await supabaseClient
+          .from("properties")
+          .delete()
+          .eq("id", property.id);
+
+        if (error) {
+          alert("Delete failed: " + error.message);
+          button.disabled = false;
+          return;
+        }
+
+        // Storage files are retained; see note below.
+        try {
+          await loadProperties();
+        } catch (loadError) {
+          alert("Deleted, but refreshing failed: " + loadError.message);
+        }
+      });
+    });
+  }
+
+  function renderRecentTable() {
+    const container = $("recentTable");
+    const recent = properties.slice(0, 5);
+
+    if (!recent.length) {
+      container.innerHTML = `
+        <div class="empty">
+          <strong>No properties yet</strong>
+          Add your first Mumbai or Pune property to get started.
+          <br><br>
+          <button class="btn btn-gold" data-go="add">＋ Add Property</button>
+        </div>
+      `;
+
+      container.querySelector("[data-go]").addEventListener("click", () => {
+        resetForm();
+        navigate("add");
+      });
+
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Property</th><th>Location</th><th>Price</th>
+            <th>Status</th><th>Action</th>
+          </tr></thead>
+          <tbody>${recent.map(rowHTML).join("")}</tbody>
+        </table>
+      </div>
+      <div class="table-footer">${properties.length} properties in total</div>
+    `;
+
+    bindRowActions(container);
+  }
+
+  function renderManageTable() {
+    const container = $("manageTable");
+    if (!container) return;
+
+    const query = $("searchInput").value.trim().toLowerCase();
+    const city = $("cityFilter").value;
+    const status = $("statusFilter").value;
+
+    const filtered = properties.filter(property => {
+      const searchable = [
+        property.title, property.location, property.city,
+        property.property_type
+      ].join(" ").toLowerCase();
+
+      return (!query || searchable.includes(query)) &&
+        (!city || property.city === city) &&
+        (!status || property.status === status);
+    });
+
+    if (!filtered.length) {
+      container.innerHTML = `
+        <div class="empty">
+          <strong>No matching properties</strong>
+          Try another search or add a new property.
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Property</th><th>Location</th><th>Price</th>
+            <th>Status</th><th>Action</th>
+          </tr></thead>
+          <tbody>${filtered.map(rowHTML).join("")}</tbody>
+        </table>
+      </div>
+      <div class="table-footer">Showing ${filtered.length} of ${properties.length} properties</div>
+    `;
+
+    bindRowActions(container);
+  }
+
+  ["searchInput", "cityFilter", "statusFilter"].forEach(id => {
+    $(id).addEventListener(id === "searchInput" ? "input" : "change",
+      renderManageTable);
+  });
+
+  function resetForm() {
+    $("propertyForm").reset();
+    $("propertyId").value = "";
+    $("formHeading").textContent = "Add New Property";
+    $("saveButton").textContent = "Save Property";
+    $("imagePreview").innerHTML = "";
+    $("propertyImages").value = "";
+    currentImages = [];
+    pendingFiles = [];
+    selectedImages.clear();
+    hideNotice();
+  }
+
+  $("cancelForm").addEventListener("click", () => {
+    resetForm();
+    navigate("manage");
+  });
+
+  function populateForm(property) {
+    resetForm();
+
+    $("propertyId").value = property.id;
+    $("propertyTitle").value = property.title || "";
+    $("propertyType").value = property.property_type || "Residential";
+    $("listingType").value = property.listing_type || "Sale";
+    $("propertyCity").value = property.city || "Mumbai";
+    $("propertyLocation").value = property.location || "";
+    $("propertyPrice").value = property.price ?? "";
+    $("propertyStatus").value = property.status || "Available";
+    $("bedrooms").value = property.bedrooms ?? "";
+    $("bathrooms").value = property.bathrooms ?? "";
+    $("areaSqft").value = property.area_sqft ?? "";
+    $("description").value = property.description || "";
+    $("isFeatured").checked = property.is_featured === true;
+    $("isPublished").checked = property.is_published === true;
+
+    currentImages = Array.isArray(property.image_urls)
+      ? [...property.image_urls]
+      : [];
+
+    $("formHeading").textContent = "Edit Property";
+    $("saveButton").textContent = "Update Property";
+    renderImagePreview();
+  }
+
+  $("propertyImages").addEventListener("change", event => {
+    const files = Array.from(event.target.files || []);
+
+    for (const file of files) {
+      if (!allowedImageTypes.includes(file.type)) {
+        showNotice("Unsupported image type: " + file.name);
+        event.target.value = "";
+        pendingFiles = [];
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        showNotice("Each image must be 5 MB or smaller: " + file.name);
+        event.target.value = "";
+        pendingFiles = [];
+        return;
+      }
+    }
+
+    if (currentImages.length + files.length > 12) {
+      showNotice("A property can have a maximum of 12 images.");
+      event.target.value = "";
+      pendingFiles = [];
+      return;
+    }
+
+    pendingFiles = files;
+    hideNotice();
+    renderImagePreview();
+  });
+
+  function renderImagePreview() {
+    const container = $("imagePreview");
+    container.innerHTML = "";
+
+    currentImages.forEach((url, index) => {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      const image = document.createElement("img");
+      image.className = "preview-item";
+      image.src = url;
+      image.alt = "Property image";
+
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.textContent = "×";
+      remove.title = "Remove this image from the listing";
+      remove.style.cssText =
+        "position:absolute;top:-6px;right:-6px;border:0;" +
+        "border-radius:50%;width:23px;height:23px;" +
+        "background:#dc3545;color:white;font-size:17px;";
+
+      remove.addEventListener("click", () => {
+        currentImages.splice(index, 1);
+        renderImagePreview();
+      });
+
+      wrapper.append(image, remove);
+      container.appendChild(wrapper);
+    });
+
+    pendingFiles.forEach(file => {
+      const image = document.createElement("img");
+      image.className = "preview-item";
+      image.alt = file.name;
+      image.src = URL.createObjectURL(file);
+      container.appendChild(image);
+    });
+  }
+
+  async function uploadImages(propertyId) {
+    const uploadedUrls = [];
+
+    for (const file of pendingFiles) {
+      const safeName = file.name
+        .replace(/[^a-zA-Z0-9._-]/g, "-")
+        .slice(-100);
+
+      const path = propertyId + "/" + crypto.randomUUID() + "-" + safeName;
+
+      const { error: uploadError } = await supabaseClient.storage
+        .from("property-images")
+        .upload(path, file, {
+          cacheControl: "3600",
+          upsert: false,
+          contentType: file.type
+        });
+
+      if (uploadError) {
+        throw new Error("Image upload failed: " + uploadError.message);
+      }
+
+      const { data } = supabaseClient.storage
+        .from("property-images")
+        .getPublicUrl(path);
+
+      uploadedUrls.push(data.publicUrl);
+    }
+
+    return uploadedUrls;
+  }
+
+  $("propertyForm").addEventListener("submit", async event => {
+    event.preventDefault();
+    hideNotice();
+
+    const saveButton = $("saveButton");
+    saveButton.disabled = true;
+    saveButton.textContent = "Saving...";
+
+    try {
+      const id = $("propertyId").value || crypto.randomUUID();
+      const title = $("propertyTitle").value.trim();
+      const location = $("propertyLocation").value.trim();
+      const price = Number($("propertyPrice").value);
+
+      if (!title || !location || !Number.isFinite(price) || price < 0) {
+        throw new Error("Enter a valid title, location and price.");
+      }
+
+      if (currentImages.length + pendingFiles.length > 12) {
+        throw new Error("A property can have a maximum of 12 images.");
+      }
+
+      const newImageUrls = await uploadImages(id);
+      const imageUrls = [...currentImages, ...newImageUrls];
+
+      const payload = {
+        title,
+        property_type: $("propertyType").value,
+        listing_type: $("listingType").value,
+        city: $("propertyCity").value,
+        location,
+        price,
+        status: $("propertyStatus").value,
+        bedrooms: $("bedrooms").value === ""
+          ? null : Number($("bedrooms").value),
+        bathrooms: $("bathrooms").value === ""
+          ? null : Number($("bathrooms").value),
+        area_sqft: $("areaSqft").value === ""
+          ? null : Number($("areaSqft").value),
+        description: $("description").value.trim() || null,
+        image_urls: imageUrls,
+        is_featured: $("isFeatured").checked,
+        is_published: $("isPublished").checked,
+        updated_at: new Date().toISOString()
+      };
+
+      const editing = Boolean($("propertyId").value);
+
+      let result;
+
+      if (editing) {
+        result = await supabaseClient
+          .from("properties")
+          .update(payload)
+          .eq("id", id)
+          .select()
+          .single();
+      } else {
+        result = await supabaseClient
+          .from("properties")
+          .insert({ id, ...payload })
+          .select()
+          .single();
+      }
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      resetForm();
+      await loadProperties();
+      navigate("manage");
+
+      alert(editing
+        ? "Property updated successfully."
+        : "Property added successfully.");
+
+    } catch (error) {
+      showNotice(error.message || "Unable to save property.");
+    } finally {
+      saveButton.disabled = false;
+      saveButton.textContent = $("propertyId").value
+        ? "Update Property" : "Save Property";
+    }
+  });
+
+  function renderImageGallery() {
+    const container = $("imageGallery");
+    if (!container) return;
+
+    const imageItems = properties.flatMap(property =>
+      (Array.isArray(property.image_urls) ? property.image_urls : [])
+        .map(url => ({ url, title: property.title, id: property.id }))
+    );
+
+    if (!imageItems.length) {
+      container.innerHTML = `
+        <div class="info-box">
+          <h4>No property images yet</h4>
+          <p>Upload images while adding or editing a property.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = imageItems.map(item => `
+      <div class="info-box">
+        <img src="${escapeHTML(item.url)}" alt=""
+          style="width:100%;height:170px;object-fit:cover;border-radius:5px">
+        <h4 style="margin-top:12px">${escapeHTML(item.title)}</h4>
+        <p>Property gallery image</p>
+        <button class="btn btn-outline" style="margin-top:10px"
+          data-image-edit="${escapeHTML(item.id)}">Edit Property</button>
+      </div>
+    `).join("");
+
+    container.querySelectorAll("[data-image-edit]").forEach(button => {
+      button.addEventListener("click", () => {
+        const property = properties.find(p => p.id === button.dataset.imageEdit);
+        if (property) {
+          populateForm(property);
+          navigate("add");
+        }
+      });
+    });
+  }
+
+  async function init() {
+    try {
+      const allowed = await requireAdmin();
+      if (!allowed) return;
+
+      await loadProperties();
+    } catch (error) {
+      document.querySelector(".content").innerHTML = `
+        <div class="panel">
+          <div class="empty">
+            <strong>Dashboard could not load</strong>
+            ${escapeHTML(error.message || "Unknown error")}
+            <br><br>
+            Check your Supabase configuration, authentication,
+            database policies and browser console.
+            <br><br>
+            <button class="btn btn-outline" onclick="location.reload()">
+              Retry
+            </button>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
