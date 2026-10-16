@@ -1,0 +1,63 @@
+
+<form id="adminLoginForm">
+  <label for="adminEmail">Admin Email</label>
+  <input
+    type="email"
+    id="adminEmail"
+    placeholder="Enter admin email"
+    required
+  >
+
+  <label for="adminPassword">Password</label>
+  <input
+    type="password"
+    id="adminPassword"
+    placeholder="Enter password"
+    required
+  >
+
+  <button type="submit" id="loginButton">Sign In</button>
+  <p id="loginMessage" role="status"></p>
+</form>
+
+<script>
+document.getElementById("adminLoginForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+  const button = document.getElementById("loginButton");
+  const message = document.getElementById("loginMessage");
+
+  button.disabled = true;
+  message.textContent = "Verifying account...";
+
+  try {
+    if (!window.supabaseClient) {
+      throw new Error("Supabase connection is not configured.");
+    }
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) throw error;
+
+    const { data: isAdmin, error: adminError } =
+      await supabaseClient.rpc("is_adhao_admin");
+
+    if (adminError || isAdmin !== true) {
+      await supabaseClient.auth.signOut();
+      throw new Error("This account is not authorized as an administrator.");
+    }
+
+    message.textContent = "Login successful. Opening dashboard...";
+    window.location.href = "dashboard.html";
+
+  } catch (error) {
+    message.textContent = error.message || "Login failed.";
+    button.disabled = false;
+  }
+});
+</script>
