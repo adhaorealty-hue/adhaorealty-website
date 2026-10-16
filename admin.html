@@ -21,47 +21,64 @@
 </form>
 
 <script>
-document.getElementById("adminLoginForm").addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const email = document.getElementById("adminEmail").value.trim();
-  const password = document.getElementById("adminPassword").value;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("adminLoginForm");
+  const emailInput = document.getElementById("adminEmail");
+  const passwordInput = document.getElementById("adminPassword");
   const button = document.getElementById("loginButton");
   const message = document.getElementById("loginMessage");
 
-  button.disabled = true;
-  message.textContent = "Verifying account...";
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  try {
-    if (!window.supabaseClient) {
-      throw new Error("Supabase connection is not configured.");
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    button.disabled = true;
+    message.textContent = "Connecting to Supabase...";
+
+    try {
+      const client = window.supabaseClient;
+
+      if (!client) {
+        throw new Error(
+          "Supabase client missing. Check js/supabase.js and script order."
+        );
+      }
+
+      message.textContent = "Verifying account...";
+
+      const { data, error } = await client.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) throw error;
+
+      const { data: isAdmin, error: adminError } =
+        await client.rpc("is_adhao_admin");
+
+      if (adminError) {
+        await client.auth.signOut();
+        throw new Error(
+          "Admin verification failed: " + adminError.message
+        );
+      }
+
+      if (isAdmin !== true) {
+        await client.auth.signOut();
+        throw new Error(
+          "This account is not authorized as an administrator."
+        );
+      }
+
+      message.textContent = "Login successful. Opening dashboard...";
+      window.location.href = "dashboard.html";
+
+    } catch (error) {
+      message.textContent = error.message || "Login failed.";
+      button.disabled = false;
     }
-
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    if (error) throw error;
-
-    const { data: isAdmin, error: adminError } =
-      await supabaseClient.rpc("is_adhao_admin");
-
-    if (adminError || isAdmin !== true) {
-      await supabaseClient.auth.signOut();
-      throw new Error("This account is not authorized as an administrator.");
-    }
-
-    message.textContent = "Login successful. Opening dashboard...";
-    window.location.href = "dashboard.html";
-
-  } catch (error) {
-    message.textContent = error.message || "Login failed.";
-    button.disabled = false;
-  }
+  });
 });
-
-if (!window.supabaseClient) {
-    message.textContent = "Supabase connection is not configured.";
-}
 </script>
