@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>About Us | Adhao Realty</title>
-  <meta name="description" content="Learn about Adhao Realty, your real estate partner for residential, commercial and investment properties across Mumbai and Pune.">
+  <meta name="description" content="Discover Adhao Realty, your real estate partner for residential, commercial and investment properties across Mumbai and Pune.">
 
   <link rel="icon" type="image/webp" href="assets/logoweb.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,9 +16,8 @@
   <style>
     :root {
       --navy: #101b32;
-      --navy-light: #1b2b49;
       --gold: #c8a45d;
-      --gold-light: #e4c783;
+      --gold-light: #f6c453;
       --white: #ffffff;
       --light: #f6f7fa;
       --text: #263247;
@@ -42,8 +42,8 @@
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     img {
@@ -58,7 +58,7 @@
     /* HEADER */
 
     header {
-      background: var(--white);
+      background: #fff;
       border-bottom: 1px solid #e9ebef;
       position: sticky;
       top: 0;
@@ -89,7 +89,7 @@
 
     .nav-links a {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       transition: color 0.2s;
     }
 
@@ -100,13 +100,13 @@
 
     .nav-cta {
       background: var(--navy);
-      color: var(--white);
+      color: #fff;
       padding: 11px 18px;
       border-radius: 5px;
       font-size: 13px;
       font-weight: 700;
       white-space: nowrap;
-      transition: background 0.2s;
+      transition: 0.2s;
     }
 
     .nav-cta:hover {
@@ -119,32 +119,17 @@
     .hero {
       position: relative;
       overflow: hidden;
+      color: white;
+      padding: 110px 0;
       background:
         linear-gradient(
           90deg,
-          rgba(10, 20, 39, 0.94) 0%,
-          rgba(10, 20, 39, 0.72) 50%,
-          rgba(10, 20, 39, 0.30) 100%
+          rgba(10, 20, 39, 0.94),
+          rgba(10, 20, 39, 0.68),
+          rgba(10, 20, 39, 0.35)
         ),
         url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=85")
         center 55% / cover no-repeat;
-      color: var(--white);
-      padding: 110px 0;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      border: 1px solid rgba(228, 199, 131, 0.22);
-      border-radius: 50%;
-      right: -90px;
-      top: -100px;
-      box-shadow:
-        0 0 0 35px rgba(228, 199, 131, 0.04),
-        0 0 0 75px rgba(228, 199, 131, 0.03);
-      pointer-events: none;
     }
 
     .hero .container {
@@ -188,7 +173,7 @@
       border-radius: 5px;
       font-weight: 800;
       font-size: 14px;
-      transition: transform 0.2s, background 0.2s;
+      transition: 0.2s;
     }
 
     .gold-button:hover {
@@ -198,14 +183,14 @@
 
     .outline-button {
       display: inline-block;
-      color: var(--white);
+      color: white;
       border: 1px solid rgba(255,255,255,0.65);
       padding: 12px 23px;
       border-radius: 5px;
       font-weight: 700;
       font-size: 14px;
       margin-left: 10px;
-      transition: all 0.2s;
+      transition: 0.2s;
     }
 
     .outline-button:hover {
@@ -273,16 +258,13 @@
       margin-bottom: 15px;
     }
 
-    /* ABOUT PROPERTY IMAGE */
-
     .about-visual {
       min-height: 400px;
       background:
         linear-gradient(
           0deg,
-          rgba(10, 20, 39, 0.94) 0%,
-          rgba(10, 20, 39, 0.40) 65%,
-          rgba(10, 20, 39, 0.08) 100%
+          rgba(10, 20, 39, 0.94),
+          rgba(10, 20, 39, 0.2)
         ),
         url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85")
         center / cover no-repeat;
@@ -292,32 +274,17 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: flex-start;
-      position: relative;
       overflow: hidden;
-    }
-
-    .about-visual::before {
-      content: "";
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      border: 1px solid rgba(228,199,131,0.35);
-      border-radius: 50%;
-      top: -75px;
-      right: -55px;
-      pointer-events: none;
     }
 
     .about-visual img {
       width: 155px;
-      max-width: 100%;
       max-height: 75px;
       object-fit: contain;
       background: white;
       padding: 8px;
       border-radius: 6px;
       margin-bottom: 22px;
-      position: relative;
     }
 
     .about-visual h3 {
@@ -325,13 +292,11 @@
       font-size: 25px;
       line-height: 1.3;
       margin-bottom: 10px;
-      position: relative;
     }
 
     .about-visual p {
       color: #f0f2f7;
       font-size: 14px;
-      position: relative;
     }
 
     /* MISSION, VISION AND VALUES */
@@ -347,11 +312,11 @@
     }
 
     .value-card {
-      background: var(--white);
+      background: white;
       border: 1px solid #e9ebef;
       border-radius: 10px;
       padding: 30px 25px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: 0.2s;
     }
 
     .value-card:hover {
@@ -397,6 +362,7 @@
       padding: 40px;
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -420,30 +386,33 @@
       z-index: -1;
       background: linear-gradient(
         to bottom,
-        rgba(5, 12, 28, 0.05) 0%,
+        rgba(5, 12, 28, 0.08) 0%,
         rgba(5, 12, 28, 0.35) 40%,
-        rgba(5, 12, 28, 0.96) 100%
+        rgba(5, 12, 28, 0.94) 100%
       );
     }
 
-    /* MUMBAI - GATEWAY OF INDIA */
+    /* MUMBAI: GATEWAY OF INDIA */
 
     .location-card.mumbai {
-      background-image: url("https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1400&q=85");
+      background-image: url(
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Gateway%20of%20India%2C%20Mumbai%2C%20India.jpg?width=1600"
+      );
       background-position: center;
     }
 
-    /* PUNE - SHANIWAR WADA */
+    /* PUNE: SHANIWAR WADA FORT */
 
     .location-card.pune {
-      background-image:
-        url("https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=1600&q=90");
+      background-image: url(
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Shaniwar%20Wada%20pune%2C%20maharashtra.jpg?width=1600"
+      );
       background-position: center;
     }
 
     .location-card .city-label {
       display: block;
-      color: #f6c453;
+      color: var(--gold-light);
       font-size: 15px;
       font-weight: 800;
       letter-spacing: 2px;
@@ -469,10 +438,10 @@
 
     .location-card a {
       display: inline-block;
-      color: #f6c453;
+      color: var(--gold-light);
       font-weight: 800;
       font-size: 17px;
-      transition: color 0.2s ease;
+      transition: color 0.2s;
     }
 
     .location-card a:hover {
@@ -566,7 +535,7 @@
       font-size: 12px;
     }
 
-    /* RESPONSIVE */
+    /* TABLET */
 
     @media (max-width: 800px) {
       .navbar {
@@ -618,6 +587,8 @@
         padding: 80px 0;
       }
     }
+
+    /* MOBILE */
 
     @media (max-width: 480px) {
       section {
@@ -867,7 +838,7 @@
       </div>
     </section>
 
-    <!-- MUMBAI AND PUNE PROPERTY CARDS -->
+    <!-- CITY PROPERTY CARDS -->
     <section>
       <div class="container">
 
@@ -884,912 +855,7 @@
 
         <div class="locations-grid">
 
-          <!-- MUMBAI CARD -->
-          <article class="location-card mumbai">
-
-            <div class="city-label">City Opportunities</div>
-
-            <h3>Mumbai</h3>
-
-            <p>
-              Explore property opportunities across Mumbai to suit different
-              space requirements, preferences and investment goals.
-            </p>
-
-            <a href="properties.html?city=Mumbai">
-              Explore Mumbai Properties →
-            </a>
-
-          </article```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>About Us | Adhao Realty</title>
-  <meta name="description" content="Learn about Adhao Realty, your real estate partner for residential, commercial and investment properties across Mumbai and Pune.">
-
-  <link rel="icon" type="image/webp" href="assets/logoweb.webp">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy: #101b32;
-      --navy-light: #1b2b49;
-      --gold: #c8a45d;
-      --gold-light: #e4c783;
-      --white: #ffffff;
-      --light: #f6f7fa;
-      --text: #263247;
-      --muted: #697386;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "DM Sans", sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.7;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(1400px, 92%);
-      margin: auto;
-    }
-
-    /* HEADER */
-
-    header {
-      background: var(--white);
-      border-bottom: 1px solid #e9ebef;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .navbar {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .logo img {
-      display: block;
-      width: 165px;
-      max-height: 65px;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--gold);
-    }
-
-    .nav-cta {
-      background: var(--navy);
-      color: var(--white);
-      padding: 11px 18px;
-      border-radius: 5px;
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-      transition: background 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(10, 20, 39, 0.94) 0%,
-          rgba(10, 20, 39, 0.72) 50%,
-          rgba(10, 20, 39, 0.30) 100%
-        ),
-        url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=85")
-        center 55% / cover no-repeat;
-      color: var(--white);
-      padding: 110px 0;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      border: 1px solid rgba(228, 199, 131, 0.22);
-      border-radius: 50%;
-      right: -90px;
-      top: -100px;
-      box-shadow:
-        0 0 0 35px rgba(228, 199, 131, 0.04),
-        0 0 0 75px rgba(228, 199, 131, 0.03);
-      pointer-events: none;
-    }
-
-    .hero .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      color: var(--gold-light);
-      text-transform: uppercase;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      max-width: 750px;
-      font-size: clamp(36px, 5vw, 58px);
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
-      color: var(--gold-light);
-    }
-
-    .hero p {
-      max-width: 650px;
-      font-size: 17px;
-      color: #f0f2f7;
-      margin-bottom: 30px;
-    }
-
-    .gold-button {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--navy);
-      padding: 13px 23px;
-      border-radius: 5px;
-      font-weight: 800;
-      font-size: 14px;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .gold-button:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-    }
-
-    .outline-button {
-      display: inline-block;
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.65);
-      padding: 12px 23px;
-      border-radius: 5px;
-      font-weight: 700;
-      font-size: 14px;
-      margin-left: 10px;
-      transition: all 0.2s;
-    }
-
-    .outline-button:hover {
-      border-color: var(--gold-light);
-      color: var(--gold-light);
-    }
-
-    /* COMMON SECTIONS */
-
-    section {
-      padding: 75px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 42px;
-    }
-
-    .section-heading .eyebrow {
-      color: #a7833e;
-      margin-bottom: 10px;
-    }
-
-    .section-heading h2 {
-      color: var(--navy);
-      font-size: clamp(27px, 4vw, 38px);
-      line-height: 1.25;
-      margin-bottom: 15px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* ABOUT US */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 55px;
-      align-items: center;
-    }
-
-    .about-label {
-      color: #a7833e;
-      font-size: 12px;
-      letter-spacing: 2px;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .about-copy h2 {
-      color: var(--navy);
-      font-size: clamp(27px, 4vw, 38px);
-      line-height: 1.25;
-      margin-bottom: 20px;
-    }
-
-    .about-copy p {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 15px;
-    }
-
-    /* ABOUT PROPERTY IMAGE */
-
-    .about-visual {
-      min-height: 400px;
-      background:
-        linear-gradient(
-          0deg,
-          rgba(10, 20, 39, 0.94) 0%,
-          rgba(10, 20, 39, 0.40) 65%,
-          rgba(10, 20, 39, 0.08) 100%
-        ),
-        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85")
-        center / cover no-repeat;
-      border-radius: 12px;
-      padding: 35px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-visual::before {
-      content: "";
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      border: 1px solid rgba(228,199,131,0.35);
-      border-radius: 50%;
-      top: -75px;
-      right: -55px;
-      pointer-events: none;
-    }
-
-    .about-visual img {
-      width: 155px;
-      max-width: 100%;
-      max-height: 75px;
-      object-fit: contain;
-      background: white;
-      padding: 8px;
-      border-radius: 6px;
-      margin-bottom: 22px;
-      position: relative;
-    }
-
-    .about-visual h3 {
-      color: white;
-      font-size: 25px;
-      line-height: 1.3;
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .about-visual p {
-      color: #f0f2f7;
-      font-size: 14px;
-      position: relative;
-    }
-
-    /* MISSION, VISION AND VALUES */
-
-    .values-section {
-      background: var(--light);
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .value-card {
-      background: var(--white);
-      border: 1px solid #e9ebef;
-      border-radius: 10px;
-      padding: 30px 25px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .value-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(16, 27, 50, 0.08);
-    }
-
-    .value-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      background: #f7efde;
-      color: #9a7736;
-      border-radius: 8px;
-      font-size: 23px;
-      margin-bottom: 20px;
-    }
-
-    .value-card h3 {
-      color: var(--navy);
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-
-    .value-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* MUMBAI AND PUNE PROPERTY CARDS */
-
-    .locations-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 30px;
-      align-items: stretch;
-    }
-
-    .location-card {
-      min-height: 450px;
-      border-radius: 15px;
-      padding: 40px;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .location-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-    }
-
-    .location-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: linear-gradient(
-        to bottom,
-        rgba(5, 12, 28, 0.05) 0%,
-        rgba(5, 12, 28, 0.35) 40%,
-        rgba(5, 12, 28, 0.96) 100%
-      );
-    }
-
-    /* Mumbai background image */
-
-    .location-card.mumbai {
-      background-image: url("https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1400&q=85");
-      background-position: center;
-    }
-
-    /* Pune fort background image */
-
-    .location-card.pune {
-      background-image: url("https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=1400&q=85");
-      background-position: center;
-    }
-
-    .location-card .city-label {
-      display: block;
-      color: var(--gold-light);
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .location-card h3 {
-      color: white;
-      font-size: 40px;
-      line-height: 1.2;
-      margin: 0 0 16px;
-      font-weight: 800;
-    }
-
-    .location-card p {
-      color: #f0f2f7;
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 28px;
-      max-width: 580px;
-    }
-
-    .location-card a {
-      display: inline-block;
-      color: #f6c453;
-      font-weight: 800;
-      font-size: 17px;
-      transition: color 0.2s ease;
-    }
-
-    .location-card a:hover {
-      color: white;
-    }
-
-    /* CONTACT CTA */
-
-    .cta-section {
-      padding: 0 0 75px;
-    }
-
-    .cta-box {
-      background: #f7f2e8;
-      border: 1px solid #eee2c7;
-      border-radius: 12px;
-      padding: 45px 35px;
-      text-align: center;
-    }
-
-    .cta-box h2 {
-      color: var(--navy);
-      font-size: clamp(25px, 4vw, 36px);
-      line-height: 1.25;
-      margin-bottom: 14px;
-    }
-
-    .cta-box p {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 25px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #0b1427;
-      color: white;
-      padding: 45px 0 20px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 35px;
-      margin-bottom: 35px;
-    }
-
-    .footer-logo {
-      width: 155px;
-      max-height: 65px;
-      object-fit: contain;
-      background: white;
-      padding: 5px;
-      border-radius: 4px;
-      margin-bottom: 15px;
-    }
-
-    .footer-about {
-      max-width: 350px;
-      color: #b8c1d1;
-      font-size: 14px;
-    }
-
-    footer h4 {
-      color: var(--gold-light);
-      margin-bottom: 14px;
-      font-size: 15px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .footer-links a {
-      color: #b8c1d1;
-      font-size: 14px;
-    }
-
-    .footer-links a:hover {
-      color: var(--gold-light);
-    }
-
-    .copyright {
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding-top: 18px;
-      text-align: center;
-      color: #98a4b8;
-      font-size: 12px;
-    }
-
-    /* RESPONSIVE DESIGN */
-
-    @media (max-width: 800px) {
-      .navbar {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 12px 0;
-      }
-
-      .logo img {
-        width: 140px;
-      }
-
-      .nav-links {
-        order: 3;
-        width: 100%;
-        gap: 22px;
-        flex-wrap: wrap;
-        padding: 8px 0 5px;
-      }
-
-      .nav-cta {
-        font-size: 12px;
-        padding: 10px 12px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .values-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .locations-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
-      .location-card {
-        min-height: 400px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero {
-        padding: 80px 0;
-      }
-    }
-
-    @media (max-width: 480px) {
-      section {
-        padding: 55px 0;
-      }
-
-      .nav-links {
-        gap: 15px;
-      }
-
-      .nav-links a {
-        font-size: 12px;
-      }
-
-      .hero h1 {
-        letter-spacing: -0.7px;
-      }
-
-      .hero p {
-        font-size: 15px;
-      }
-
-      .outline-button {
-        margin: 12px 0 0;
-      }
-
-      .about-visual {
-        min-height: 320px;
-        padding: 25px;
-      }
-
-      .location-card {
-        min-height: 350px;
-        padding: 25px;
-      }
-
-      .location-card .city-label {
-        font-size: 12px;
-        letter-spacing: 1.5px;
-      }
-
-      .location-card h3 {
-        font-size: 32px;
-      }
-
-      .location-card p {
-        font-size: 15px;
-        line-height: 1.7;
-        margin-bottom: 22px;
-      }
-
-      .location-card a {
-        font-size: 15px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-
-      .cta-box {
-        padding: 32px 20px;
-      }
-    }
-
-    /* REDUCED MOTION ACCESSIBILITY */
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- HEADER -->
-  <header>
-    <div class="container navbar">
-
-      <a class="logo" href="index.html" aria-label="Adhao Realty Home">
-        <img src="assets/logoweb.webp" alt="Adhao Realty Logo">
-      </a>
-
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
-        <a href="properties.html">Properties</a>
-        <a href="properties.html?city=Mumbai">Mumbai</a>
-        <a href="properties.html?city=Pune">Pune</a>
-      </nav>
-
-      <a
-        class="nav-cta"
-        href="https://wa.me/917249310062?text=Hello%20Adhao%20Realty%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
-        target="_blank"
-        rel="noopener noreferrer">
-        Contact Us
-      </a>
-
-    </div>
-  </header>
-
-  <main>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="container">
-
-        <div class="eyebrow">About Adhao Realty</div>
-
-        <h1>Your Trusted Partner in <span>Real Estate</span></h1>
-
-        <p>
-          Helping you explore residential, commercial and investment
-          property opportunities across Mumbai and Pune with a focus on
-          transparency, informed decisions and dependable service.
-        </p>
-
-        <a href="properties.html" class="gold-button">
-          Explore Properties →
-        </a>
-
-        <a
-          href="https://wa.me/917249310062?text=Hello%20Adhao%20Realty%2C%20I%20would%20like%20to%20discuss%20my%20property%20requirements."
-          class="outline-button"
-          target="_blank"
-          rel="noopener noreferrer">
-          Talk to Our Team
-        </a>
-
-      </div>
-    </section>
-
-    <!-- ABOUT US -->
-    <section>
-      <div class="container about-grid">
-
-        <div class="about-copy">
-
-          <div class="about-label">Who We Are</div>
-
-          <h2>Making Your Real Estate Journey Simpler</h2>
-
-          <p>
-            Adhao Realty is focused on helping people discover property
-            opportunities that match their needs, preferences and budgets.
-            Whether you are searching for a home, a commercial space or a
-            real estate investment, we aim to make your search easier.
-          </p>
-
-          <p>
-            With a focus on Mumbai and Pune, we help prospective buyers and
-            investors explore available options and make better-informed
-            property decisions.
-          </p>
-
-          <p>
-            We believe that real estate is more than a transaction. It is
-            about finding the right opportunity, building confidence and
-            creating long-term value.
-          </p>
-
-          <a href="properties.html" class="gold-button">
-            Browse Listings →
-          </a>
-
-        </div>
-
-        <!-- PROPERTY IMAGE -->
-        <div class="about-visual">
-
-          <img
-            src="assets/logoweb.webp"
-            alt="Adhao Realty Logo"
-            loading="lazy">
-
-          <h3>Property. Trust. Opportunity.</h3>
-
-          <p>
-            Your real estate journey starts with understanding what matters
-            most to you.
-          </p>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- MISSION, VISION AND VALUES -->
-    <section class="values-section">
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="eyebrow">What Drives Us</div>
-
-          <h2>Our Mission, Vision &amp; Values</h2>
-
-          <p>
-            The principles that guide how we help clients explore property
-            opportunities.
-          </p>
-        </div>
-
-        <div class="values-grid">
-
-          <article class="value-card">
-            <div class="value-icon" aria-hidden="true">⌖</div>
-
-            <h3>Our Mission</h3>
-
-            <p>
-              To make property discovery more accessible and straightforward
-              by helping clients explore suitable real estate options with
-              clarity and confidence.
-            </p>
-          </article>
-
-          <article class="value-card">
-            <div class="value-icon" aria-hidden="true">↗</div>
-
-            <h3>Our Vision</h3>
-
-            <p>
-              To build lasting relationships and become a trusted name for
-              real estate discovery and property opportunities across our
-              markets.
-            </p>
-          </article>
-
-          <article class="value-card">
-            <div class="value-icon" aria-hidden="true">◇</div>
-
-            <h3>Our Values</h3>
-
-            <p>
-              Transparency, customer focus, professionalism and responsible
-              communication are central to the experience we aim to provide.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- MUMBAI AND PUNE PROPERTY CARDS -->
-    <section>
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="eyebrow">Where We Focus</div>
-
-          <h2>Explore Property Opportunities</h2>
-
-          <p>
-            Discover residential, commercial and investment listings in
-            Mumbai and Pune.
-          </p>
-        </div>
-
-        <div class="locations-grid">
-
-          <!-- MUMBAI CARD -->
+          <!-- MUMBAI: GATEWAY OF INDIA -->
           <article class="location-card mumbai">
 
             <div class="city-label">City Opportunities</div>
@@ -1807,7 +873,7 @@
 
           </article>
 
-          <!-- PUNE CARD -->
+          <!-- PUNE: SHANIWAR WADA -->
           <article class="location-card pune">
 
             <div class="city-label">Growing Opportunities</div>
