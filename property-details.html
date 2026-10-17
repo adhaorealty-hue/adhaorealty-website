@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,8 +34,8 @@
       font-family: "DM Sans", sans-serif;
       background: var(--background);
       color: var(--text);
-      font-size: 12px;
-      line-height: 1.5;
+      font-size: 16px;
+      line-height: 1.65;
     }
 
     a {
@@ -53,7 +54,7 @@
     }
 
     .container {
-      width: min(1100px, 94%);
+      width: min(1440px, 94%);
       margin: auto;
     }
 
@@ -68,28 +69,28 @@
     }
 
     .header-inner {
-      min-height: 55px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
     }
 
     .logo img {
-      width: 90px;
-      height: 43px;
+      width: 110px;
+      height: 58px;
       object-fit: contain;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 24px;
       margin-left: auto;
     }
 
     .nav a {
-      font-size: 10px;
+      font-size: 15px;
       font-weight: 700;
     }
 
@@ -101,15 +102,17 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 9px 12px;
+      gap: 8px;
+      padding: 13px 18px;
       border: 0;
-      border-radius: 5px;
+      border-radius: 7px;
       background: var(--gold);
       color: #171b20;
-      font-size: 10px;
+      font-size: 15px;
       font-weight: 800;
+      line-height: 1.4;
       transition: background .2s;
+      text-align: center;
     }
 
     .button:hover {
@@ -118,11 +121,11 @@
 
     .menu-toggle {
       display: none;
-      padding: 5px 9px;
+      padding: 7px 11px;
       border: 1px solid var(--border);
       border-radius: 5px;
       background: white;
-      font-size: 18px;
+      font-size: 22px;
     }
 
     /* BREADCRUMB */
@@ -131,10 +134,10 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 6px;
-      padding: 10px 0;
+      gap: 9px;
+      padding: 17px 0;
       color: var(--muted);
-      font-size: 9px;
+      font-size: 14px;
     }
 
     .breadcrumb a:hover {
@@ -145,10 +148,10 @@
 
     .property-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-      gap: 17px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+      gap: 22px;
       align-items: start;
-      margin-bottom: 16px;
+      margin-bottom: 28px;
     }
 
     /* PROPERTY GALLERY */
@@ -156,8 +159,8 @@
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-template-rows: 245px 80px;
-      gap: 6px;
+      grid-template-rows: 340px 115px;
+      gap: 9px;
     }
 
     .gallery-main,
@@ -165,8 +168,8 @@
       position: relative;
       overflow: hidden;
       background: #e6e5e0;
-      border-radius: 5px;
-      border: 1px solid rgba(0,0,0,.04);
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.05);
     }
 
     .gallery-main {
@@ -190,24 +193,25 @@
 
     .gallery-count {
       position: absolute;
-      right: 8px;
-      bottom: 8px;
-      padding: 4px 8px;
-      border-radius: 4px;
+      right: 10px;
+      bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 5px;
       color: white;
-      background: rgba(0,0,0,.65);
-      font-size: 9px;
+      background: rgba(0,0,0,.72);
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .gallery-badge {
       position: absolute;
-      top: 8px;
-      left: 8px;
-      padding: 4px 8px;
-      border-radius: 4px;
+      top: 10px;
+      left: 10px;
+      padding: 7px 12px;
+      border-radius: 5px;
       background: var(--gold);
       color: #24201a;
-      font-size: 9px;
+      font-size: 13px;
       font-weight: 800;
     }
 
@@ -218,29 +222,31 @@
     }
 
     .property-heading {
-      margin-bottom: 7px;
+      margin-bottom: 12px;
     }
 
     .property-heading h1 {
-      font-size: clamp(19px, 2vw, 25px);
+      font-size: clamp(30px, 2.5vw, 38px);
       font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 3px;
+      line-height: 1.3;
+      margin-bottom: 7px;
+      overflow-wrap: anywhere;
     }
 
     .property-location {
       color: var(--muted);
-      font-size: 10px;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     .listing-type {
       display: inline-block;
-      margin-top: 6px;
-      padding: 3px 7px;
-      border-radius: 4px;
+      margin-top: 10px;
+      padding: 6px 11px;
+      border-radius: 5px;
       background: #fff1cf;
       color: #855c13;
-      font-size: 9px;
+      font-size: 13px;
       font-weight: 800;
     }
 
@@ -248,19 +254,20 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 7px;
-      margin: 7px 0 10px;
+      gap: 10px;
+      margin: 14px 0 18px;
     }
 
     .heading-price strong {
       color: #bd8623;
-      font-size: 19px;
+      font-size: 29px;
       font-weight: 800;
+      line-height: 1.3;
     }
 
     .heading-price span {
       color: var(--muted);
-      font-size: 9px;
+      font-size: 14px;
     }
 
     /* QUICK PROPERTY FEATURES */
@@ -268,36 +275,39 @@
     .quick-details {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 6px;
-      margin: 10px 0;
+      gap: 10px;
+      margin: 16px 0;
     }
 
     .quick-item {
       min-width: 0;
-      padding: 8px 3px;
+      padding: 15px 7px;
       text-align: center;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 5px;
+      border-radius: 8px;
     }
 
     .quick-item .icon {
       display: block;
       color: #a8751d;
-      font-size: 15px;
-      margin-bottom: 2px;
+      font-size: 23px;
+      line-height: 1.4;
+      margin-bottom: 7px;
     }
 
     .quick-item strong {
       display: block;
-      font-size: 11px;
-      margin-bottom: 2px;
+      font-size: 18px;
+      line-height: 1.4;
+      margin-bottom: 5px;
       overflow-wrap: anywhere;
     }
 
     .quick-item span:last-child {
       color: var(--muted);
-      font-size: 8px;
+      font-size: 12px;
+      line-height: 1.5;
     }
 
     /* CONTACT BUTTONS */
@@ -305,14 +315,14 @@
     .contact-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 7px;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 18px;
     }
 
     .contact-actions .button {
-      min-height: 35px;
-      font-size: 10px;
-      padding: 8px 5px;
+      min-height: 48px;
+      font-size: 15px;
+      padding: 12px 8px;
     }
 
     .whatsapp-button {
@@ -335,20 +345,21 @@
       min-width: 0;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 12px;
+      border-radius: 9px;
+      padding: 20px;
     }
 
     .info-card h2 {
-      font-size: 12px;
+      font-size: 21px;
+      line-height: 1.4;
       font-weight: 800;
-      margin-bottom: 8px;
+      margin-bottom: 14px;
     }
 
     .description {
       color: #5f666d;
-      font-size: 9px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.85;
       white-space: pre-line;
       overflow-wrap: anywhere;
     }
@@ -357,10 +368,10 @@
 
     .content-grid {
       display: grid;
-      grid-template-columns: 1.15fr 1fr .9fr;
-      gap: 11px;
+      grid-template-columns: 1.15fr 1fr .95fr;
+      gap: 16px;
       align-items: stretch;
-      margin-bottom: 24px;
+      margin-bottom: 30px;
     }
 
     .spec-list {
@@ -370,7 +381,7 @@
 
     .spec-item {
       min-width: 0;
-      padding: 6px 5px;
+      padding: 11px 8px;
       border-bottom: 1px solid #efeee9;
     }
 
@@ -381,14 +392,16 @@
     .spec-item span {
       display: block;
       color: var(--muted);
-      font-size: 8px;
-      margin-bottom: 2px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 4px;
     }
 
     .spec-item strong {
       display: block;
-      font-size: 9px;
+      font-size: 15px;
       font-weight: 700;
+      line-height: 1.6;
       overflow-wrap: anywhere;
     }
 
@@ -397,21 +410,23 @@
     .amenities {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px 7px;
+      gap: 15px 12px;
     }
 
     .amenity {
       display: flex;
       align-items: flex-start;
-      gap: 5px;
+      gap: 8px;
       color: #515961;
-      font-size: 9px;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
     }
 
     .amenity-icon {
-      flex: 0 0 14px;
+      flex: 0 0 20px;
       color: #8a641f;
-      font-size: 12px;
+      font-size: 17px;
       text-align: center;
     }
 
@@ -419,17 +434,17 @@
 
     .map-frame {
       width: 100%;
-      height: 155px;
+      height: 230px;
       border: 0;
-      border-radius: 4px;
+      border-radius: 7px;
       background: #eee;
     }
 
     .map-link {
       display: inline-block;
-      margin-top: 7px;
+      margin-top: 12px;
       color: #a8751d;
-      font-size: 9px;
+      font-size: 14px;
       font-weight: 800;
     }
 
@@ -440,26 +455,26 @@
     /* LOADING AND ERROR */
 
     .state-card {
-      padding: 40px 20px;
+      padding: 50px 24px;
       text-align: center;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 7px;
-      margin: 15px 0 25px;
+      border-radius: 9px;
+      margin: 18px 0 30px;
     }
 
     .state-card h2 {
-      font-size: 19px;
-      margin-bottom: 8px;
+      font-size: 25px;
+      margin-bottom: 12px;
     }
 
     .state-card p {
       color: var(--muted);
-      font-size: 11px;
+      font-size: 16px;
     }
 
     .state-card .button {
-      margin-top: 14px;
+      margin-top: 18px;
     }
 
     /* IMAGE LIGHTBOX */
@@ -493,9 +508,9 @@
       background: rgba(255,255,255,.12);
       border: 1px solid rgba(255,255,255,.25);
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 22px;
+      width: 46px;
+      height: 46px;
+      font-size: 27px;
     }
 
     .lightbox-close {
@@ -518,51 +533,51 @@
     .footer {
       background: #11181e;
       color: white;
-      padding: 18px 0;
+      padding: 24px 0;
     }
 
     .footer-inner {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
       align-items: center;
     }
 
     .footer p {
       color: #b8bec4;
-      font-size: 10px;
+      font-size: 14px;
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 20px;
     }
 
     .footer-links a {
       color: #d5d8db;
-      font-size: 10px;
+      font-size: 14px;
     }
 
     /* TABLET */
 
-    @media (max-width: 850px) {
+    @media (max-width: 1000px) {
       .nav {
-        gap: 11px;
+        gap: 13px;
       }
 
       .nav a {
-        font-size: 9px;
+        font-size: 13px;
       }
 
       .property-layout {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 12px;
+        gap: 16px;
       }
 
       .gallery {
-        grid-template-rows: 220px 70px;
+        grid-template-rows: 290px 95px;
       }
 
       .content-grid {
@@ -574,21 +589,21 @@
       }
 
       .map-frame {
-        height: 200px;
+        height: 240px;
       }
     }
 
     /* MOBILE */
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       .header-inner {
-        min-height: 55px;
+        min-height: 64px;
         gap: 8px;
       }
 
       .logo img {
-        width: 73px;
-        height: 42px;
+        width: 83px;
+        height: 48px;
       }
 
       .menu-toggle {
@@ -599,13 +614,13 @@
       .nav {
         display: none;
         position: absolute;
-        top: 54px;
+        top: 63px;
         left: 3%;
         right: 3%;
-        padding: 7px;
+        padding: 8px;
         background: white;
         border: 1px solid var(--border);
-        border-radius: 7px;
+        border-radius: 8px;
         box-shadow: 0 8px 20px rgba(0,0,0,.1);
         flex-direction: column;
         align-items: stretch;
@@ -617,33 +632,34 @@
       }
 
       .nav a {
-        padding: 10px 8px;
-        font-size: 11px;
+        padding: 12px 10px;
+        font-size: 15px;
         border-bottom: 1px solid #f0efeb;
       }
 
       .header-cta {
-        padding: 8px 9px;
-        font-size: 9px;
+        padding: 10px 11px;
+        font-size: 12px;
       }
 
       .breadcrumb {
-        padding: 10px 0;
+        padding: 13px 0;
+        font-size: 13px;
       }
 
       .property-layout {
         grid-template-columns: 1fr;
-        gap: 13px;
+        gap: 18px;
       }
 
       .property-heading h1 {
-        font-size: 22px;
+        font-size: 29px;
       }
 
       .gallery {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 220px 75px;
-        gap: 6px;
+        grid-template-rows: 260px 90px;
+        gap: 7px;
       }
 
       .gallery-main {
@@ -656,46 +672,80 @@
       }
 
       .quick-details {
-        gap: 5px;
+        gap: 7px;
       }
 
       .quick-item {
-        padding: 8px 3px;
+        padding: 12px 4px;
+      }
+
+      .quick-item strong {
+        font-size: 16px;
+      }
+
+      .quick-item span:last-child {
+        font-size: 11px;
       }
 
       .contact-actions {
         gap: 7px;
       }
 
-      .content-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
+      .contact-actions .button {
+        font-size: 13px;
+        padding: 11px 5px;
       }
 
       .info-card {
-        padding: 10px;
+        padding: 16px;
       }
 
       .info-card h2 {
-        font-size: 11px;
+        font-size: 20px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .spec-item span {
+        font-size: 13px;
+      }
+
+      .spec-item strong {
+        font-size: 14px;
       }
 
       .amenities {
-        grid-template-columns: 1fr;
-        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 8px;
+      }
+
+      .amenity {
+        font-size: 14px;
       }
 
       .map-card {
-        grid-column: 1 / -1;
+        grid-column: auto;
       }
 
       .map-frame {
-        height: 210px;
+        height: 240px;
       }
 
       .footer-inner {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .footer p,
+      .footer-links a {
+        font-size: 13px;
       }
     }
 
@@ -704,12 +754,12 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .content-grid {
+      .contact-actions {
         grid-template-columns: 1fr;
       }
 
-      .map-card {
-        grid-column: auto;
+      .amenities {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -781,9 +831,11 @@
 
           <div class="gallery-main">
             <img id="mainImage" src="" alt="Property main image">
+
             <span class="gallery-badge" id="featuredBadge" hidden>
               Featured
             </span>
+
             <span class="gallery-count" id="galleryCount">1 / 1</span>
           </div>
 
@@ -802,9 +854,11 @@
 
           <div class="property-heading">
             <h1 id="propertyTitle">Property Title</h1>
+
             <p class="property-location" id="propertyLocation">
               Property location
             </p>
+
             <span class="listing-type" id="listingType">For Sale</span>
           </div>
 
@@ -844,6 +898,7 @@
 
           <!-- ENQUIRY BUTTONS -->
           <div class="contact-actions">
+
             <a
               class="button whatsapp-button"
               id="whatsappButton"
@@ -859,11 +914,13 @@
               href="tel:+917249310062">
               <span>☎</span> Call Now
             </a>
+
           </div>
 
           <!-- ABOUT PROPERTY -->
           <section class="info-card about-card">
             <h2>About Property</h2>
+
             <p class="description" id="propertyDescription">
               Contact Adhao Realty for more information about this property.
             </p>
@@ -879,6 +936,7 @@
           <h2>Property Details</h2>
 
           <div class="spec-list">
+
             <div class="spec-item">
               <span>Property Type</span>
               <strong id="specType">—</strong>
@@ -928,6 +986,7 @@
               <span>Price</span>
               <strong id="specPrice">—</strong>
             </div>
+
           </div>
         </section>
 
@@ -998,6 +1057,7 @@
       aria-label="Next image">
       ›
     </button>
+
   </div>
 
   <!-- FOOTER -->
@@ -1326,8 +1386,8 @@
         .filter(Boolean)
         .join(", ");
 
-      const mapsURL = "https://maps.google.com/?q=" +
-        encodeURIComponent(query);
+      const mapsURL = "https://maps.google.com/?" +
+        "q=" + encodeURIComponent(query);
 
       $("mapFrame").src =
         "https://maps.google.com/maps?q=" +
@@ -1360,6 +1420,7 @@
 
       setText("propertyPrice", price);
       setText("listingType", getListingType(property));
+      setText("priceNote", getListingType(property));
 
       setText(
         "areaValue",
