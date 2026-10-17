@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Property Details | Adhao Realty</title>
-  <meta name="description" content="View property details, photos, amenities and location with Adhao Realty.">
+  <meta name="description" content="Explore property photos, pricing, amenities and locations with Adhao Realty.">
 
   <link rel="icon" type="image/webp" href="assets/logoweb.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +58,12 @@
       margin: auto;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
     /* HEADER */
+
     .header {
       background: #fff;
       border-bottom: 1px solid var(--border);
@@ -83,6 +89,7 @@
     .nav {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 24px;
       margin-left: auto;
     }
@@ -109,6 +116,7 @@
       font-size: 15px;
       font-weight: 800;
       transition: background .2s;
+      text-align: center;
     }
 
     .button:hover {
@@ -125,6 +133,7 @@
     }
 
     /* BREADCRUMB */
+
     .breadcrumb {
       display: flex;
       flex-wrap: wrap;
@@ -139,7 +148,33 @@
       color: var(--gold-dark);
     }
 
+    /* LOADING AND ERROR */
+
+    .state-card {
+      padding: 50px 20px;
+      text-align: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0 32px;
+    }
+
+    .state-card h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .state-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .state-card .button {
+      margin-top: 16px;
+    }
+
     /* PROPERTY LAYOUT */
+
     .property-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
@@ -148,26 +183,29 @@
       margin-bottom: 24px;
     }
 
-    /* PROPERTY GALLERY */
+    /* IMAGE GALLERY */
+
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-template-rows: 360px 110px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
-    }
-
-    .gallery-main,
-    .gallery-thumb {
-      position: relative;
-      overflow: hidden;
-      background: #e6e5e0;
-      border-radius: 8px;
-      border: 1px solid rgba(0,0,0,.04);
     }
 
     .gallery-main {
       grid-column: 1 / -1;
-      grid-row: 1;
+      height: 360px;
+      position: relative;
+      overflow: hidden;
+      background: #e6e5e0;
+      border-radius: 8px;
+    }
+
+    .gallery-thumb {
+      height: 110px;
+      position: relative;
+      overflow: hidden;
+      background: #e6e5e0;
+      border-radius: 8px;
     }
 
     .gallery-main img,
@@ -208,6 +246,7 @@
     }
 
     /* PROPERTY SUMMARY */
+
     .property-sidebar {
       min-width: 0;
     }
@@ -221,6 +260,7 @@
       font-weight: 800;
       line-height: 1.25;
       margin-bottom: 6px;
+      overflow-wrap: anywhere;
     }
 
     .property-location {
@@ -259,6 +299,7 @@
     }
 
     /* QUICK FEATURES */
+
     .quick-details {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -284,17 +325,18 @@
 
     .quick-item strong {
       display: block;
-      font-size: 18px;
+      font-size: 17px;
       margin-bottom: 3px;
       overflow-wrap: anywhere;
     }
 
     .quick-item span:last-child {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     /* CONTACT BUTTONS */
+
     .contact-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -304,7 +346,7 @@
 
     .contact-actions .button {
       min-height: 45px;
-      font-size: 15px;
+      font-size: 14px;
       padding: 10px 8px;
     }
 
@@ -317,12 +359,8 @@
       background: #176f3a;
     }
 
-    .call-button {
-      background: var(--gold);
-      color: #211b11;
-    }
-
     /* INFORMATION CARDS */
+
     .info-card {
       min-width: 0;
       background: white;
@@ -332,20 +370,21 @@
     }
 
     .info-card h2 {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 800;
       margin-bottom: 12px;
     }
 
     .description {
       color: #5f666d;
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.8;
       white-space: pre-line;
       overflow-wrap: anywhere;
     }
 
     /* PROPERTY DETAILS */
+
     .content-grid {
       display: grid;
       grid-template-columns: 1.15fr 1fr .9fr;
@@ -372,18 +411,19 @@
     .spec-item span {
       display: block;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
       margin-bottom: 3px;
     }
 
     .spec-item strong {
       display: block;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       overflow-wrap: anywhere;
     }
 
     /* AMENITIES */
+
     .amenities {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -395,7 +435,8 @@
       align-items: flex-start;
       gap: 7px;
       color: #515961;
-      font-size: 15px;
+      font-size: 14px;
+      overflow-wrap: anywhere;
     }
 
     .amenity-icon {
@@ -406,6 +447,7 @@
     }
 
     /* MAP */
+
     .map-frame {
       width: 100%;
       height: 220px;
@@ -426,31 +468,8 @@
       text-decoration: underline;
     }
 
-    /* LOADING AND ERROR */
-    .state-card {
-      padding: 50px 20px;
-      text-align: center;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin: 20px 0 32px;
-    }
-
-    .state-card h2 {
-      font-size: 25px;
-      margin-bottom: 10px;
-    }
-
-    .state-card p {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .state-card .button {
-      margin-top: 16px;
-    }
-
     /* IMAGE LIGHTBOX */
+
     .lightbox {
       display: none;
       position: fixed;
@@ -501,6 +520,7 @@
     }
 
     /* FOOTER */
+
     .footer {
       background: #11181e;
       color: white;
@@ -532,13 +552,19 @@
     }
 
     /* TABLET */
+
     @media (max-width: 850px) {
       .nav {
-        gap: 14px;
+        gap: 12px;
       }
 
       .nav a {
-        font-size: 14px;
+        font-size: 13px;
+      }
+
+      .header-cta {
+        padding: 10px 12px;
+        font-size: 13px;
       }
 
       .property-layout {
@@ -546,8 +572,12 @@
         gap: 16px;
       }
 
-      .gallery {
-        grid-template-rows: 280px 90px;
+      .gallery-main {
+        height: 280px;
+      }
+
+      .gallery-thumb {
+        height: 90px;
       }
 
       .content-grid {
@@ -557,13 +587,10 @@
       .map-card {
         grid-column: 1 / -1;
       }
-
-      .map-frame {
-        height: 230px;
-      }
     }
 
     /* MOBILE */
+
     @media (max-width: 600px) {
       .header-inner {
         min-height: 65px;
@@ -607,7 +634,7 @@
       }
 
       .header-cta {
-        padding: 10px 12px;
+        padding: 9px 10px;
         font-size: 12px;
       }
 
@@ -630,19 +657,12 @@
         font-size: 15px;
       }
 
-      .gallery {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 260px 85px;
-        gap: 7px;
-      }
-
       .gallery-main {
-        grid-column: 1 / -1;
-        grid-row: 1;
+        height: 260px;
       }
 
       .gallery-thumb {
-        grid-row: 2;
+        height: 85px;
       }
 
       .quick-details {
@@ -654,11 +674,7 @@
       }
 
       .quick-item strong {
-        font-size: 16px;
-      }
-
-      .quick-item span:last-child {
-        font-size: 12px;
+        font-size: 15px;
       }
 
       .contact-actions {
@@ -666,20 +682,11 @@
       }
 
       .contact-actions .button {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .info-card {
         padding: 14px;
-      }
-
-      .info-card h2 {
-        font-size: 21px;
-      }
-
-      .description {
-        font-size: 15px;
-        line-height: 1.75;
       }
 
       .content-grid {
@@ -687,39 +694,18 @@
         gap: 10px;
       }
 
-      .spec-item span {
-        font-size: 13px;
-      }
-
-      .spec-item strong {
-        font-size: 14px;
-      }
-
       .amenities {
         grid-template-columns: 1fr;
         gap: 10px;
-      }
-
-      .amenity {
-        font-size: 14px;
       }
 
       .map-card {
         grid-column: 1 / -1;
       }
 
-      .map-frame {
-        height: 220px;
-      }
-
       .footer-inner {
         align-items: flex-start;
         flex-direction: column;
-      }
-
-      .footer p,
-      .footer-links a {
-        font-size: 13px;
       }
     }
 
@@ -768,7 +754,6 @@
 
       <a
         class="button header-cta"
-        id="headerEnquiry"
         href="https://wa.me/917249310062"
         target="_blank"
         rel="noopener noreferrer">
@@ -800,11 +785,11 @@
 
       <div class="property-layout">
 
-        <!-- PROPERTY GALLERY -->
+        <!-- IMAGE GALLERY -->
         <div class="gallery" id="gallery">
 
           <div class="gallery-main">
-            <img id="mainImage" src="" alt="Property main image">
+            <img id="mainImage" alt="Property main image">
 
             <span class="gallery-badge" id="featuredBadge" hidden>
               Featured
@@ -813,12 +798,12 @@
             <span class="gallery-count" id="galleryCount">1 / 1</span>
           </div>
 
-          <div class="gallery-thumb">
-            <img id="thumbImageOne" src="" alt="Property photo 2">
+          <div class="gallery-thumb" id="thumbContainerOne" hidden>
+            <img id="thumbImageOne" alt="Property photo 2">
           </div>
 
-          <div class="gallery-thumb">
-            <img id="thumbImageTwo" src="" alt="Property photo 3">
+          <div class="gallery-thumb" id="thumbContainerTwo" hidden>
+            <img id="thumbImageTwo" alt="Property photo 3">
           </div>
 
         </div>
@@ -828,11 +813,9 @@
 
           <div class="property-heading">
             <h1 id="propertyTitle">Property Title</h1>
-
             <p class="property-location" id="propertyLocation">
               Property location
             </p>
-
             <span class="listing-type" id="listingType">For Sale</span>
           </div>
 
@@ -847,7 +830,7 @@
             <div class="quick-item">
               <span class="icon">▧</span>
               <strong id="areaValue">—</strong>
-              <span>Carpet Area</span>
+              <span>Area</span>
             </div>
 
             <div class="quick-item">
@@ -870,44 +853,46 @@
 
           </div>
 
-          <!-- ENQUIRY BUTTONS -->
+          <!-- CONTACT BUTTONS -->
           <div class="contact-actions">
+
             <a
               class="button whatsapp-button"
               id="whatsappButton"
-              href="#"
+              href="https://wa.me/917249310062"
               target="_blank"
               rel="noopener noreferrer">
-              <span>◉</span> WhatsApp Enquiry
+              ◉ WhatsApp Enquiry
             </a>
 
             <a
               class="button call-button"
               id="callButton"
               href="tel:+917249310062">
-              <span>☎</span> Call Now
+              ☎ Call Now
             </a>
+
           </div>
 
-          <!-- ABOUT PROPERTY -->
-          <section class="info-card about-card">
+          <!-- DESCRIPTION -->
+          <section class="info-card">
             <h2>About Property</h2>
-
             <p class="description" id="propertyDescription">
-              Contact Adhao Realty for more information about this property.
+              Contact Adhao Realty for more information.
             </p>
           </section>
 
         </div>
       </div>
 
-      <!-- PROPERTY DETAILS / AMENITIES / LOCATION -->
+      <!-- DETAILS, AMENITIES AND MAP -->
       <div class="content-grid">
 
         <section class="info-card">
           <h2>Property Details</h2>
 
           <div class="spec-list">
+
             <div class="spec-item">
               <span>Property Type</span>
               <strong id="specType">—</strong>
@@ -957,6 +942,7 @@
               <span>Price</span>
               <strong id="specPrice">—</strong>
             </div>
+
           </div>
         </section>
 
@@ -966,7 +952,7 @@
           <div class="amenities" id="amenitiesList">
             <div class="amenity">
               <span class="amenity-icon">✓</span>
-              <span>Ask for available amenities</span>
+              <span>Contact us for available amenities.</span>
             </div>
           </div>
         </section>
@@ -996,3 +982,412 @@
       </div>
     </section>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="currentYear"></span> Adhao Realty. All rights reserved.</p>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Property photo viewer">
+
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close image">
+      ×
+    </button>
+
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+      ‹
+    </button>
+
+    <img id="lightboxImage" alt="Property photo enlarged">
+
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next image">
+      ›
+    </button>
+
+  </div>
+
+  <!-- SUPABASE LIBRARY -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- YOUR EXISTING SUPABASE CONFIGURATION -->
+  <script src="js/supabase.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async function () {
+
+      const loadingState = document.getElementById("loadingState");
+      const propertyPage = document.getElementById("propertyPage");
+
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      function showError(title, message) {
+        loadingState.hidden = false;
+
+        loadingState.replaceChildren();
+
+        const heading = document.createElement("h2");
+        heading.textContent = title;
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = message;
+
+        const link = document.createElement("a");
+        link.className = "button";
+        link.href = "properties.html";
+        link.textContent = "View All Properties";
+
+        loadingState.append(heading, paragraph, link);
+        propertyPage.hidden = true;
+      }
+
+      function setText(id, value, fallback = "—") {
+        const element = document.getElementById(id);
+
+        if (!element) return;
+
+        element.textContent =
+          value !== null &&
+          value !== undefined &&
+          value !== ""
+            ? String(value)
+            : fallback;
+      }
+
+      function formatPrice(value) {
+        if (value === null || value === undefined || value === "") {
+          return "Price on Request";
+        }
+
+        if (typeof value === "number") {
+          return "₹" + value.toLocaleString("en-IN");
+        }
+
+        const numericValue = Number(value);
+
+        if (!Number.isNaN(numericValue) && String(value).trim() !== "") {
+          return "₹" + numericValue.toLocaleString("en-IN");
+        }
+
+        return String(value);
+      }
+
+      function parseArray(value) {
+        if (Array.isArray(value)) return value;
+
+        if (typeof value !== "string" || !value.trim()) return [];
+
+        try {
+          const parsed = JSON.parse(value);
+          if (Array.isArray(parsed)) return parsed;
+        } catch (_) {
+          // Accept comma-separated values below.
+        }
+
+        return value.split(/[,;\n]/).map(item => item.trim()).filter(Boolean);
+      }
+
+      function setImage(id, src, alt) {
+        const img = document.getElementById(id);
+        if (!img) return;
+
+        if (!src) {
+          img.removeAttribute("src");
+          return;
+        }
+
+        img.src = src;
+        img.alt = alt;
+
+        img.onerror = function () {
+          img.style.visibility = "hidden";
+        };
+
+        img.onload = function () {
+          img.style.visibility = "visible";
+        };
+      }
+
+      function renderAmenities(value) {
+        const container = document.getElementById("amenitiesList");
+        container.replaceChildren();
+
+        const amenities = parseArray(value)
+          .map(item => String(item).trim())
+          .filter(Boolean);
+
+        if (!amenities.length) {
+          const item = document.createElement("div");
+          item.className = "amenity";
+          item.textContent = "Contact us for available amenities.";
+          container.appendChild(item);
+          return;
+        }
+
+        amenities.forEach(name => {
+          const item = document.createElement("div");
+          item.className = "amenity";
+
+          const icon = document.createElement("span");
+          icon.className = "amenity-icon";
+          icon.textContent = "✓";
+
+          const label = document.createElement("span");
+          label.textContent = name;
+
+          item.append(icon, label);
+          container.appendChild(item);
+        });
+      }
+
+      // Mobile menu
+      const menuToggle = document.getElementById("menuToggle");
+      const mainNav = document.getElementById("mainNav");
+
+      menuToggle.addEventListener("click", function () {
+        const opened = mainNav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(opened));
+      });
+
+      // Lightbox controls
+      let galleryImages = [];
+      let currentImageIndex = 0;
+
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+
+      function openLightbox(index) {
+        if (!galleryImages.length) return;
+
+        currentImageIndex =
+          (index + galleryImages.length) % galleryImages.length;
+
+        lightboxImage.src = galleryImages[currentImageIndex];
+        lightbox.classList.add("open");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+      }
+
+      function moveLightbox(direction) {
+        openLightbox(currentImageIndex + direction);
+      }
+
+      document.getElementById("lightboxClose")
+        .addEventListener("click", closeLightbox);
+
+      document.getElementById("lightboxPrev")
+        .addEventListener("click", () => moveLightbox(-1));
+
+      document.getElementById("lightboxNext")
+        .addEventListener("click", () => moveLightbox(1));
+
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (!lightbox.classList.contains("open")) return;
+
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") moveLightbox(-1);
+        if (event.key === "ArrowRight") moveLightbox(1);
+      });
+
+      // Read property ID from the URL
+      const params = new URLSearchParams(window.location.search);
+      const propertyId = params.get("id");
+
+      if (!propertyId) {
+        showError(
+          "Property Not Found",
+          "No property ID was provided. Please select a property from our listings."
+        );
+        return;
+      }
+
+      if (!window.supabaseClient) {
+        console.error(
+          "Supabase client is unavailable. Check js/supabase.js and its script paths."
+        );
+
+        showError(
+          "Database Connection Error",
+          "The property database could not be initialized. Please refresh the page later."
+        );
+        return;
+      }
+
+      try {
+        console.log("Fetching property:", propertyId);
+
+        const { data: property, error } = await window.supabaseClient
+          .from("properties")
+          .select("*")
+          .eq("id", propertyId)
+          .eq("is_published", true)
+          .maybeSingle();
+
+        if (error) {
+          console.error("Supabase query error:", error);
+
+          showError(
+            "Unable to Load Property",
+            "The property could not be retrieved. Please check database access policies and try again."
+          );
+          return;
+        }
+
+        if (!property) {
+          showError(
+            "Property Not Available",
+            "This property was not found or is not published. Please browse our other listings."
+          );
+          return;
+        }
+
+        // Basic information
+        const title = property.title || "Property Details";
+
+        const location = [
+          property.location,
+          property.city
+        ].filter(Boolean).join(", ") || "Location on request";
+
+        const price = formatPrice(property.price);
+        const listingType = property.listing_type || "For Sale";
+
+        const area = property.area_sqft !== null &&
+                     property.area_sqft !== undefined &&
+                     property.area_sqft !== ""
+          ? Number(property.area_sqft).toLocaleString("en-IN") + " sq. ft."
+          : "—";
+
+        setText("propertyTitle", title);
+        setText("breadcrumbTitle", title);
+        setText("propertyLocation", location);
+        setText("listingType", listingType);
+        setText("propertyPrice", price);
+        setText("priceNote", listingType);
+        setText("areaValue", area);
+        setText("bedroomValue", property.bedrooms);
+        setText("bathroomValue", property.bathrooms);
+        setText("parkingValue", property.parking);
+
+        setText(
+          "propertyDescription",
+          property.description,
+          "Contact Adhao Realty for more information about this property."
+        );
+
+        // Detailed specifications
+        setText("specType", property.property_type);
+        setText("specListingType", listingType);
+        setText("specCity", property.city);
+        setText("specLocation", property.location);
+        setText("specArea", area);
+        setText("specBedrooms", property.bedrooms);
+        setText("specBathrooms", property.bathrooms);
+        setText("specParking", property.parking);
+        setText("specStatus", property.status, "Contact Us");
+        setText("specPrice", price);
+
+        // Property gallery
+        galleryImages = parseArray(property.image_urls)
+          .map(item => typeof item === "string" ? item : "")
+          .filter(Boolean);
+
+        setImage("mainImage", galleryImages[0], title);
+        setImage("thumbImageOne", galleryImages[1], title + " photo 2");
+        setImage("thumbImageTwo", galleryImages[2], title + " photo 3");
+
+        document.getElementById("thumbContainerOne").hidden =
+          !galleryImages[1];
+
+        document.getElementById("thumbContainerTwo").hidden =
+          !galleryImages[2];
+
+        setText(
+          "galleryCount",
+          galleryImages.length ? "1 / " + galleryImages.length : "No photos"
+        );
+
+        document.getElementById("featuredBadge").hidden =
+          !property.is_featured;
+
+        document.getElementById("mainImage").onclick =
+          () => openLightbox(0);
+
+        document.getElementById("thumbImageOne").onclick =
+          () => openLightbox(1);
+
+        document.getElementById("thumbImageTwo").onclick =
+          () => openLightbox(2);
+
+        // Amenities
+        renderAmenities(property.amenities);
+
+        // WhatsApp enquiry
+        const message =
+          "Hello Adhao Realty, I am interested in this property: " +
+          title +
+          ". Location: " +
+          location +
+          ". Price: " +
+          price +
+          ". Property ID: " +
+          property.id;
+
+        document.getElementById("whatsappButton").href =
+          "https://wa.me/917249310062?text=" +
+          encodeURIComponent(message);
+
+        // Google Maps
+        const mapQuery = encodeURIComponent(location);
+
+        document.getElementById("mapFrame").src =
+          "https://maps.google.com/maps?q=" +
+          mapQuery +
+          "&output=embed";
+
+        document.getElementById("mapLink").href =
+          "https://maps.google.com/?q=" + mapQuery;
+
+        // Browser title
+        document.title = title + " | Adhao Realty";
+
+        // Show property after data has loaded
+        loadingState.hidden = true;
+        propertyPage.hidden = false;
+
+        console.log("Property loaded successfully:", property);
+
+      } catch (error) {
+        console.error("Unexpected property page error:", error);
+
+        showError(
+          "Something Went Wrong",
+          "We could not load this property. Please refresh the page and try again."
+        );
+      }
+    });
+  </script>
+
+</body>
+</html>
