@@ -5,374 +5,775 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sell Your Property | Adhao Realty</title>
-  <meta name="description" content="Sell your property in Mumbai or Pune with Adhao Realty. Submit your property details and contact our team directly on WhatsApp.">
-  <meta name="theme-color" content="#101a25">
+  <title>Property Details | Adhao Realty</title>
+  <meta name="description" content="View property details, photos, amenities and location with Adhao Realty.">
 
-  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="icon" type="image/webp" href="assets/logoweb.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --navy: #101a25;
-      --navy-light: #202d3b;
-      --gold: #f2bd4f;
-      --gold-dark: #c48a24;
-      --white: #ffffff;
-      --background: #f8f7f4;
-      --text: #132238;
-      --muted: #68778a;
-      --border: #dfe4eb;
+      --gold: #e9b94e;
+      --gold-dark: #b88425;
+      --text: #20252b;
+      --muted: #737a82;
+      --background: #f7f6f2;
+      --border: #e9e7e1;
+      --green: #218b4b;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
 
     body {
       font-family: "DM Sans", sans-serif;
       background: var(--background);
       color: var(--text);
+      font-size: 14px;
       line-height: 1.6;
     }
 
     a {
+      color: inherit;
       text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .container {
+      width: min(1200px, 94%);
+      margin: auto;
     }
 
     /* HEADER */
 
     .header {
-      background: var(--white);
-      min-height: 80px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 12px max(5%, calc((100% - 1200px) / 2));
+      gap: 22px;
     }
 
-    .brand img {
-      display: block;
-      width: 125px;
-      max-height: 60px;
+    .logo img {
+      width: 100px;
+      height: 58px;
       object-fit: contain;
     }
 
-    .back-button {
-      background: var(--navy);
-      color: white;
-      padding: 12px 22px;
-      border-radius: 7px;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background 0.2s;
-    }
-
-    .back-button:hover {
-      background: #273b50;
-    }
-
-    /* HERO - EXISTING ASSETS IMAGE */
-
-    .hero {
-      position: relative;
-      isolation: isolate;
-      min-height: 340px;
+    .nav {
       display: flex;
       align-items: center;
-      padding: 65px 7%;
-      color: white;
-      background-color: var(--navy);
-      background-image:
-        linear-gradient(
-          90deg,
-          rgba(11, 22, 35, 0.88) 0%,
-          rgba(11, 22, 35, 0.68) 48%,
-          rgba(11, 22, 35, 0.35) 100%
-        ),
-        url("assets/sellback.webp");
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      gap: 25px;
+      margin-left: auto;
     }
 
-    .hero-content {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
+    .nav a {
+      font-size: 14px;
+      font-weight: 700;
+      transition: color .2s;
     }
 
-    .eyebrow {
-      color: var(--gold);
+    .nav a:hover {
+      color: var(--gold-dark);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 12px 17px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--gold);
+      color: #171b20;
       font-size: 13px;
       font-weight: 800;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
+      transition: background .2s, transform .2s;
     }
 
-    .hero h1 {
-      font-size: clamp(32px, 4.2vw, 52px);
-      line-height: 1.18;
-      font-weight: 800;
-      max-width: 850px;
-      margin-bottom: 18px;
+    .button:hover {
+      background: #f7cd70;
+      transform: translateY(-1px);
     }
 
-    .hero p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #f0f3f7;
-      max-width: 800px;
+    .header-cta {
+      white-space: nowrap;
     }
 
-    /* FORM SECTION */
-
-    .form-section {
-      padding: 55px 20px 75px;
+    .menu-toggle {
+      display: none;
+      padding: 7px 11px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      font-size: 20px;
     }
 
-    .form-card {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      background: var(--white);
-      border: 1px solid #e9e7e2;
-      border-radius: 18px;
-      padding: 35px 38px;
-      box-shadow: 0 12px 40px rgba(20, 34, 50, 0.06);
-    }
+    /* BREADCRUMB */
 
-    .form-heading {
-      font-size: 30px;
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
-
-    .form-intro {
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 0;
       color: var(--muted);
-      margin-bottom: 30px;
-      font-size: 14px;
+      font-size: 12px;
     }
 
-    .form-section-title {
-      font-size: 18px;
-      margin: 28px 0 18px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #e8e6e0;
+    .breadcrumb a:hover {
+      color: var(--gold-dark);
     }
 
-    .form-grid {
+    /* PROPERTY GALLERY + SUMMARY */
+
+    .property-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 22px;
+      align-items: start;
+      margin-bottom: 22px;
+    }
+
+    .gallery {
+      min-width: 0;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-rows: 360px 145px;
+      gap: 10px;
     }
 
-    .field {
+    .gallery-main,
+    .gallery-thumb {
+      position: relative;
+      overflow: hidden;
+      background: #e6e5e0;
+      border-radius: 9px;
+      border: 1px solid rgba(0,0,0,.04);
+    }
+
+    .gallery-main {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+
+    .gallery-main img,
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform .3s;
+    }
+
+    .gallery-main img:hover,
+    .gallery-thumb img:hover {
+      transform: scale(1.025);
+    }
+
+    .gallery-count {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 5px;
+      color: white;
+      background: rgba(0,0,0,.7);
+      font-size: 12px;
+    }
+
+    .gallery-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 10px;
+      border-radius: 5px;
+      background: var(--gold);
+      color: #24201a;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* PROPERTY SUMMARY */
+
+    .property-sidebar {
       min-width: 0;
     }
 
-    .field.full-width {
-      grid-column: 1 / -1;
+    .property-heading {
+      margin-bottom: 15px;
     }
 
-    label {
+    .property-heading h1 {
+      font-size: clamp(27px, 3vw, 38px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .property-location {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .listing-type {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: #fff1cf;
+      color: #855c13;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .heading-price {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .heading-price strong {
+      color: #bd8623;
+      font-size: clamp(25px, 2.4vw, 32px);
+      font-weight: 800;
+    }
+
+    .heading-price span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* QUICK PROPERTY FEATURES */
+
+    .quick-details {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+      margin: 16px 0;
+    }
+
+    .quick-item {
+      min-width: 0;
+      padding: 14px 7px;
+      text-align: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .quick-item .icon {
+      display: block;
+      color: #a8751d;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .quick-item strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .quick-item span:last-child {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* ENQUIRY BUTTONS */
+
+    .contact-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .contact-actions .button {
+      min-height: 45px;
+      font-size: 13px;
+      padding: 11px 8px;
+    }
+
+    .whatsapp-button {
+      background: var(--green);
+      color: white;
+    }
+
+    .whatsapp-button:hover {
+      background: #176f3a;
+    }
+
+    .call-button {
+      background: var(--gold);
+      color: #211b11;
+    }
+
+    /* INFORMATION CARDS */
+
+    .info-card {
+      min-width: 0;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      box-shadow: 0 4px 18px rgba(20, 30, 40, .025);
+    }
+
+    .info-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: #172333;
+    }
+
+    /* FULL-WIDTH ABOUT PROPERTY */
+
+    .about-card {
+      width: 100%;
+      max-width: none;
+      margin: 0 0 22px;
+      padding: 30px 34px;
+    }
+
+    .about-card h2 {
+      font-size: 25px;
+      margin-bottom: 16px;
+    }
+
+    .description {
+      color: #5f666d;
+      font-size: 15px;
+      line-height: 1.9;
+      white-space: pre-line;
+      overflow-wrap: anywhere;
+    }
+
+    /* LOWER DETAILS SECTION */
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 35px;
+    }
+
+    .spec-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .spec-item {
+      min-width: 0;
+      padding: 11px 8px;
+      border-bottom: 1px solid #efeee9;
+    }
+
+    .spec-item:nth-child(odd) {
+      border-right: 1px solid #efeee9;
+    }
+
+    .spec-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .spec-item strong {
       display: block;
       font-size: 13px;
       font-weight: 700;
-      margin-bottom: 7px;
-      color: #182b43;
+      overflow-wrap: anywhere;
     }
 
-    input,
-    select,
-    textarea {
-      display: block;
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: white;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+    /* AMENITIES */
+
+    .amenities {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 10px;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--gold-dark);
-      box-shadow: 0 0 0 3px rgba(242, 189, 79, 0.16);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 125px;
-    }
-
-    .help-text {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 7px;
-    }
-
-    /* IMAGE UPLOAD */
-
-    .upload-box {
-      background: #fffcf5;
-      border: 1px dashed #d8ae59;
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    .upload-box input {
-      background: white;
-    }
-
-    .file-list {
-      margin-top: 12px;
-      color: var(--muted);
+    .amenity {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: #515961;
       font-size: 13px;
       overflow-wrap: anywhere;
     }
 
-    .file-list ul {
-      padding-left: 20px;
-      margin-top: 8px;
+    .amenity-icon {
+      flex: 0 0 18px;
+      color: #8a641f;
+      font-size: 15px;
+      text-align: center;
     }
 
-    .file-list li {
-      margin: 4px 0;
+    /* MAP */
+
+    .map-frame {
+      width: 100%;
+      height: 230px;
+      border: 0;
+      border-radius: 7px;
+      background: #eee;
     }
 
-    /* SUBMIT */
+    .map-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: #a8751d;
+      font-size: 13px;
+      font-weight: 800;
+    }
 
-    .submit-button {
-      display: inline-flex;
+    .map-link:hover {
+      text-decoration: underline;
+    }
+
+    /* LOADING / ERROR */
+
+    .state-card {
+      padding: 55px 22px;
+      text-align: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin: 20px 0 35px;
+    }
+
+    .state-card h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .state-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .state-card .button {
+      margin-top: 18px;
+    }
+
+    /* IMAGE LIGHTBOX */
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      padding: 25px;
+      background: rgba(0,0,0,.92);
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      width: 100%;
-      margin-top: 25px;
-      padding: 16px 22px;
-      background: var(--gold);
-      color: #101a25;
-      border: none;
-      border-radius: 9px;
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
     }
 
-    .submit-button:hover {
-      background: #ffcf6b;
-      transform: translateY(-1px);
+    .lightbox.open {
+      display: flex;
     }
 
-    .submit-button:disabled {
-      opacity: 0.65;
-      cursor: wait;
-      transform: none;
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 85vh;
+      object-fit: contain;
     }
 
-    .privacy-note {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 18px;
-      line-height: 1.8;
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      color: white;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
     }
 
-    .whatsapp-note {
-      margin-top: 16px;
-      padding: 13px 15px;
-      border-radius: 8px;
-      background: #f1f8f1;
-      color: #285a36;
-      font-size: 13px;
+    .lightbox-close {
+      top: 18px;
+      right: 18px;
+    }
+
+    .lightbox-prev {
+      left: 18px;
+      top: 50%;
+    }
+
+    .lightbox-next {
+      right: 18px;
+      top: 50%;
     }
 
     /* FOOTER */
 
     .footer {
-      background: #0e151b;
+      background: #11181e;
       color: white;
-      padding: 25px 20px;
-      text-align: center;
-      font-size: 13px;
+      padding: 25px 0;
     }
 
-    .footer a {
-      color: var(--gold);
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
     }
 
-    /* RESPONSIVE */
+    .footer p {
+      color: #b8bec4;
+      font-size: 12px;
+    }
 
-    @media (max-width: 650px) {
-      .header {
-        min-height: 70px;
-        padding: 10px 18px;
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #d5d8db;
+      font-size: 12px;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 1000px) {
+      .nav {
+        gap: 13px;
       }
 
-      .brand img {
-        width: 105px;
-      }
-
-      .back-button {
-        padding: 10px 13px;
+      .nav a {
         font-size: 12px;
       }
 
-      .hero {
-        min-height: 350px;
-        padding: 45px 22px;
-        background-position: center;
+      .property-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 15px;
       }
 
-      .hero h1 {
-        font-size: 34px;
+      .gallery {
+        grid-template-rows: 280px 110px;
       }
 
-      .hero p {
+      .content-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .map-card {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 650px) {
+      .header-inner {
+        min-height: 64px;
+        gap: 8px;
+      }
+
+      .logo img {
+        width: 78px;
+        height: 48px;
+      }
+
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 3%;
+        right: 3%;
+        padding: 8px;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0,0,0,.1);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 12px 10px;
         font-size: 14px;
+        border-bottom: 1px solid #f0efeb;
       }
 
-      .form-section {
-        padding: 30px 12px 45px;
+      .nav a:last-child {
+        border-bottom: 0;
       }
 
-      .form-card {
-        padding: 24px 18px;
-        border-radius: 12px;
+      .header-cta {
+        padding: 9px 10px;
+        font-size: 11px;
       }
 
-      .form-heading {
-        font-size: 25px;
+      .breadcrumb {
+        padding: 12px 0;
+        font-size: 11px;
       }
 
-      .form-grid {
+      .property-layout {
         grid-template-columns: 1fr;
-        gap: 17px;
+        gap: 16px;
       }
 
-      .field.full-width {
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 100px;
+        gap: 7px;
+      }
+
+      .gallery-main {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .property-heading h1 {
+        font-size: 28px;
+      }
+
+      .heading-price strong {
+        font-size: 27px;
+      }
+
+      .quick-details {
+        gap: 6px;
+      }
+
+      .quick-item {
+        padding: 10px 4px;
+      }
+
+      .quick-item strong {
+        font-size: 12px;
+      }
+
+      .quick-item span:last-child {
+        font-size: 10px;
+      }
+
+      .contact-actions {
+        gap: 8px;
+      }
+
+      .contact-actions .button {
+        font-size: 11px;
+        padding: 10px 5px;
+      }
+
+      .about-card {
+        padding: 21px 18px;
+        margin-bottom: 16px;
+      }
+
+      .about-card h2 {
+        font-size: 22px;
+      }
+
+      .description {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .map-card {
         grid-column: auto;
       }
 
-      .form-section-title {
-        font-size: 17px;
+      .info-card {
+        padding: 19px;
+      }
+
+      .info-card h2 {
+        font-size: 20px;
+      }
+
+      .amenities {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .map-frame {
+        height: 220px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .header-cta {
+        padding: 8px;
+        font-size: 10px;
+      }
+
+      .quick-details {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .amenities {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-rows: 220px 85px;
       }
     }
   </style>
@@ -382,488 +783,779 @@
 
   <!-- HEADER -->
   <header class="header">
-    <a class="brand" href="index.html" aria-label="Adhao Realty home">
-      <img src="assets/logoweb.webp" alt="Adhao Realty">
-    </a>
+    <div class="container header-inner">
 
-    <a class="back-button" href="index.html">
-      ← Back to Home
-    </a>
+      <a class="logo" href="index.html" aria-label="Adhao Realty Home">
+        <img src="assets/logoweb.webp" alt="Adhao Realty">
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false">
+        ☰
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="properties.html?city=Mumbai">Mumbai</a>
+        <a href="properties.html?city=Pune">Pune</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <a
+        class="button header-cta"
+        id="headerEnquiry"
+        href="https://wa.me/917249310062"
+        target="_blank"
+        rel="noopener noreferrer">
+        Enquire Now
+      </a>
+
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="eyebrow">Sell With Adhao Realty</div>
+  <main class="container">
 
-      <h1>Let's Find the Right Buyer for Your Property</h1>
-
-      <p>
-        Thinking about selling your property in Mumbai or Pune?
-        Share your property details and photos with our team through
-        WhatsApp to discuss the next steps.
-      </p>
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="properties.html">Properties</a>
+      <span>›</span>
+      <span id="breadcrumbTitle">Property Details</span>
     </div>
-  </section>
 
-  <!-- PROPERTY SUBMISSION FORM -->
-  <main class="form-section">
-    <div class="form-card">
+    <!-- LOADING / ERROR -->
+    <section id="loadingState" class="state-card">
+      <h2>Loading property details...</h2>
+      <p>Please wait while we retrieve the property information.</p>
+    </section>
 
-      <h2 class="form-heading">Property Owner Submission Form</h2>
+    <!-- PROPERTY PAGE -->
+    <section id="propertyPage" hidden>
 
-      <p class="form-intro">
-        Complete the details below. Fields marked * are required.
-      </p>
+      <!-- TOP SECTION: GALLERY + SUMMARY -->
+      <div class="property-layout">
 
-      <form id="sellPropertyForm">
+        <!-- PROPERTY GALLERY -->
+        <div class="gallery" id="gallery">
 
-        <!-- OWNER DETAILS -->
-        <h3 class="form-section-title">1. Owner Details</h3>
-
-        <div class="form-grid">
-
-          <div class="field">
-            <label for="ownerName">Full Name *</label>
-            <input
-              type="text"
-              id="ownerName"
-              name="ownerName"
-              placeholder="Enter your full name"
-              autocomplete="name"
-              required
-            >
+          <div class="gallery-main">
+            <img id="mainImage" src="" alt="Property main image">
+            <span class="gallery-badge" id="featuredBadge" hidden>
+              Featured
+            </span>
+            <span class="gallery-count" id="galleryCount">1 / 1</span>
           </div>
 
-          <div class="field">
-            <label for="phone">Mobile Number *</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="+91 98765 43210"
-              autocomplete="tel"
-              pattern="[+]?[0-9 ()-]{10,18}"
-              title="Enter a valid contact number."
-              required
-            >
+          <div class="gallery-thumb">
+            <img id="thumbImageOne" src="" alt="Property photo 2">
           </div>
 
-          <div class="field">
-            <label for="email">Email Address (Optional)</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@example.com"
-              autocomplete="email"
-            >
-          </div>
-
-          <div class="field">
-            <label for="ownership">Ownership Status *</label>
-            <select id="ownership" name="ownership" required>
-              <option value="">Select status</option>
-              <option>Owner</option>
-              <option>Joint Owner</option>
-              <option>Authorized Representative</option>
-              <option>Other</option>
-            </select>
+          <div class="gallery-thumb">
+            <img id="thumbImageTwo" src="" alt="Property photo 3">
           </div>
 
         </div>
+
+        <!-- PROPERTY SUMMARY -->
+        <div class="property-sidebar">
+
+          <div class="property-heading">
+            <h1 id="propertyTitle">Property Title</h1>
+            <p class="property-location" id="propertyLocation">
+              Property location
+            </p>
+            <span class="listing-type" id="listingType">For Sale</span>
+          </div>
+
+          <div class="heading-price">
+            <strong id="propertyPrice">Price on Request</strong>
+            <span id="priceNote">For Sale</span>
+          </div>
+
+          <!-- QUICK DETAILS -->
+          <div class="quick-details">
+
+            <div class="quick-item">
+              <span class="icon">▧</span>
+              <strong id="areaValue">—</strong>
+              <span>Area</span>
+            </div>
+
+            <div class="quick-item">
+              <span class="icon">▤</span>
+              <strong id="bedroomValue">—</strong>
+              <span>Bedrooms</span>
+            </div>
+
+            <div class="quick-item">
+              <span class="icon">♨</span>
+              <strong id="bathroomValue">—</strong>
+              <span>Bathrooms</span>
+            </div>
+
+            <div class="quick-item">
+              <span class="icon">▣</span>
+              <strong id="parkingValue">—</strong>
+              <span>Parking</span>
+            </div>
+
+          </div>
+
+          <!-- ENQUIRY BUTTONS -->
+          <div class="contact-actions">
+            <a
+              class="button whatsapp-button"
+              id="whatsappButton"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer">
+              <span>◉</span> WhatsApp Enquiry
+            </a>
+
+            <a
+              class="button call-button"
+              id="callButton"
+              href="tel:+917249310062">
+              <span>☎</span> Call Now
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FULL-WIDTH ABOUT PROPERTY -->
+      <!-- IMPORTANT: This section is OUTSIDE property-layout -->
+      <section class="info-card about-card">
+        <h2>About Property</h2>
+        <p class="description" id="propertyDescription">
+          Contact Adhao Realty for more information about this property.
+        </p>
+      </section>
+
+      <!-- PROPERTY DETAILS / AMENITIES / LOCATION -->
+      <div class="content-grid">
 
         <!-- PROPERTY DETAILS -->
-        <h3 class="form-section-title">2. Property Details</h3>
+        <section class="info-card">
+          <h2>Property Details</h2>
 
-        <div class="form-grid">
+          <div class="spec-list">
 
-          <div class="field">
-            <label for="propertyType">Property Type *</label>
-            <select id="propertyType" name="propertyType" required>
-              <option value="">Select property type</option>
-              <option>Apartment / Flat</option>
-              <option>Independent House / Villa</option>
-              <option>Residential Plot</option>
-              <option>Commercial Office</option>
-              <option>Shop / Showroom</option>
-              <option>Commercial Plot</option>
-              <option>Industrial Property</option>
-              <option>Agricultural Land</option>
-              <option>Other</option>
-            </select>
+            <div class="spec-item">
+              <span>Property Type</span>
+              <strong id="specType">—</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>Transaction</span>
+              <strong id="specListingType">—</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>City</span>
+              <strong id="specCity">—</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>Location</span>
+              <strong id="specLocation">—</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>Area</span>
+              <strong id="specArea">—</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>Bedrooms</span>
+              <strong id="specBedrooms">—</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>Bathrooms</span>
+              <strong id="specBathrooms">—</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>Parking</span>
+              <strong id="specParking">—</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>Availability</span>
+              <strong id="specStatus">Contact Us</strong>
+            </div>
+
+            <div class="spec-item">
+              <span>Price</span>
+              <strong id="specPrice">—</strong>
+            </div>
+
           </div>
+        </section>
 
-          <div class="field">
-            <label for="city">City *</label>
-            <select id="city" name="city" required>
-              <option value="">Select city</option>
-              <option>Mumbai</option>
-              <option>Pune</option>
-              <option>Thane</option>
-              <option>Navi Mumbai</option>
-              <option>Other</option>
-            </select>
+        <!-- AMENITIES -->
+        <section class="info-card">
+          <h2>Amenities</h2>
+
+          <div class="amenities" id="amenitiesList">
+            <div class="amenity">
+              <span class="amenity-icon">✓</span>
+              <span>Ask for available amenities</span>
+            </div>
           </div>
+        </section>
 
-          <div class="field">
-            <label for="locality">Locality / Area *</label>
-            <input
-              type="text"
-              id="locality"
-              name="locality"
-              placeholder="e.g. Hinjewadi, Baner, Andheri"
-              required
-            >
-          </div>
+        <!-- LOCATION -->
+        <section class="info-card map-card">
+          <h2>Location</h2>
 
-          <div class="field">
-            <label for="area">Property Area *</label>
-            <input
-              type="number"
-              id="area"
-              name="area"
-              min="1"
-              step="any"
-              placeholder="Enter area"
-              required
-            >
-          </div>
+          <iframe
+            class="map-frame"
+            id="mapFrame"
+            title="Property location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Pune%2C%20India&output=embed">
+          </iframe>
 
-          <div class="field">
-            <label for="areaUnit">Area Unit *</label>
-            <select id="areaUnit" name="areaUnit" required>
-              <option value="sq ft">Square Feet (sq ft)</option>
-              <option value="sq m">Square Metres (sq m)</option>
-              <option value="acre">Acres</option>
-              <option value="guntha">Guntha</option>
-            </select>
-          </div>
+          <a
+            class="map-link"
+            id="mapLink"
+            href="https://maps.google.com/?q=Pune%2C%20India"
+            target="_blank"
+            rel="noopener noreferrer">
+            View on Google Maps ↗
+          </a>
+        </section>
 
-          <div class="field">
-            <label for="condition">Property Condition *</label>
-            <select id="condition" name="condition" required>
-              <option value="">Select condition</option>
-              <option>Ready to Move</option>
-              <option>Under Construction</option>
-              <option>New Property</option>
-              <option>Resale Property</option>
-              <option>Needs Renovation</option>
-              <option>NA Plot</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="bedrooms">Bedrooms / BHK</label>
-            <select id="bedrooms" name="bedrooms">
-              <option value="">Not applicable</option>
-              <option>1 BHK</option>
-              <option>1.5 BHK</option>
-              <option>2 BHK</option>
-              <option>2.5 BHK</option>
-              <option>3 BHK</option>
-              <option>4 BHK</option>
-              <option>5+ BHK</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="bathrooms">Bathrooms</label>
-            <select id="bathrooms" name="bathrooms">
-              <option value="">Not applicable</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5+</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="expectedPrice">Expected Selling Price (₹) *</label>
-            <input
-              type="number"
-              id="expectedPrice"
-              name="expectedPrice"
-              min="1"
-              step="1"
-              placeholder="e.g. 5000000"
-              required
-            >
-            <p class="help-text">
-              Enter the full amount in rupees, without commas.
-            </p>
-          </div>
-
-          <div class="field full-width">
-            <label for="address">Property Address / Landmark *</label>
-            <textarea
-              id="address"
-              name="address"
-              placeholder="Enter the property address or nearest landmark"
-              required
-            ></textarea>
-          </div>
-
-          <div class="field full-width">
-            <label for="description">Property Description *</label>
-            <textarea
-              id="description"
-              name="description"
-              placeholder="Mention the property's features, floor, amenities, parking, nearby facilities, etc."
-              required
-            ></textarea>
-          </div>
-
-        </div>
-
-        <!-- PHOTO SELECTION -->
-        <h3 class="form-section-title">3. Upload Property Photos</h3>
-
-        <div class="upload-box">
-          <label for="propertyImages">Property Images *</label>
-
-          <input
-            type="file"
-            id="propertyImages"
-            name="propertyImages"
-            accept="image/jpeg,image/png,image/webp"
-            multiple
-            required
-          >
-
-          <p class="help-text">
-            Select up to 5 photos. JPG, PNG or WebP only.
-            Maximum 5 MB per image.
-          </p>
-
-          <div
-            id="fileList"
-            class="file-list"
-            aria-live="polite"
-          >
-            No images selected.
-          </div>
-        </div>
-
-        <!-- SUBMIT -->
-        <button type="submit" class="submit-button" id="submitButton">
-          Submit Property &amp; Continue to WhatsApp →
-        </button>
-
-        <div class="whatsapp-note">
-          <strong>Next step:</strong> WhatsApp will open with your property
-          details prepared. Please attach your selected property photos
-          in the WhatsApp chat before sending your enquiry.
-        </div>
-
-        <p class="privacy-note">
-          By submitting, you confirm that the information is accurate and
-          that you are authorized to share the property details and images.
-          Do not upload identity documents or other sensitive personal records.
-          Your form is not saved to a website database.
-        </p>
-
-      </form>
-    </div>
+      </div>
+    </section>
   </main>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-label="Property image viewer"
+    aria-modal="true">
+
+    <button
+      class="lightbox-close"
+      id="lightboxClose"
+      aria-label="Close image viewer">
+      ×
+    </button>
+
+    <button
+      class="lightbox-prev"
+      id="lightboxPrev"
+      aria-label="Previous image">
+      ‹
+    </button>
+
+    <img id="lightboxImage" src="" alt="Property enlarged image">
+
+    <button
+      class="lightbox-next"
+      id="lightboxNext"
+      aria-label="Next image">
+      ›
+    </button>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>
-      © <span id="currentYear"></span> Adhao Realty. All rights reserved.
-      <br>
-      <a href="index.html">Home</a> |
-      <a href="properties.html">Properties</a> |
-      <a href="https://wa.me/917249310062" target="_blank" rel="noopener noreferrer">
-        Contact Us on WhatsApp
-      </a>
-    </p>
+    <div class="container footer-inner">
+
+      <p>
+        © <span id="currentYear"></span> Adhao Realty. All rights reserved.
+      </p>
+
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+    </div>
   </footer>
 
+  <!-- SUPABASE CONNECTION -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+
   <script>
-    /*
-      Adhao Realty Sell Property Form
-      No database or Supabase is used.
-      Form details are prepared in a WhatsApp message.
-    */
+    const $ = id => document.getElementById(id);
 
-    const WHATSAPP_NUMBER = "917249310062";
+    const PHONE_NUMBER = "917249310062";
 
-    const form = document.getElementById("sellPropertyForm");
-    const imageInput = document.getElementById("propertyImages");
-    const fileList = document.getElementById("fileList");
-    const submitButton = document.getElementById("submitButton");
+    let currentProperty = null;
+    let galleryImages = [];
+    let activeImageIndex = 0;
 
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
+    $("currentYear").textContent = new Date().getFullYear();
 
-    const MAX_FILES = 5;
-    const MAX_FILE_SIZE = 5 * 1024 * 1024;
+    /* MOBILE NAVIGATION */
 
-    const allowedTypes = [
-      "image/jpeg",
-      "image/png",
-      "image/webp"
-    ];
+    $("menuToggle").addEventListener("click", () => {
+      const nav = $("mainNav");
+      const opened = nav.classList.toggle("open");
 
-    imageInput.addEventListener("change", function () {
-      const files = Array.from(imageInput.files);
-
-      fileList.replaceChildren();
-
-      if (files.length === 0) {
-        fileList.textContent = "No images selected.";
-        return;
-      }
-
-      if (files.length > MAX_FILES) {
-        imageInput.value = "";
-        fileList.textContent =
-          "Please select no more than 5 images.";
-        return;
-      }
-
-      const invalidFile = files.find(function (file) {
-        return !allowedTypes.includes(file.type) ||
-               file.size > MAX_FILE_SIZE;
-      });
-
-      if (invalidFile) {
-        imageInput.value = "";
-        fileList.textContent =
-          "Invalid file. Use JPG, PNG or WebP images up to 5 MB each.";
-        return;
-      }
-
-      const heading = document.createElement("p");
-      heading.textContent = files.length + " image(s) selected:";
-      fileList.appendChild(heading);
-
-      const list = document.createElement("ul");
-
-      files.forEach(function (file) {
-        const item = document.createElement("li");
-        item.textContent =
-          file.name + " (" + (file.size / (1024 * 1024)).toFixed(2) + " MB)";
-        list.appendChild(item);
-      });
-
-      fileList.appendChild(list);
+      $("menuToggle").setAttribute("aria-expanded", String(opened));
+      $("menuToggle").textContent = opened ? "✕" : "☰";
     });
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      if (!form.reportValidity()) {
-        return;
-      }
-
-      const files = Array.from(imageInput.files);
-
-      if (files.length < 1 || files.length > MAX_FILES) {
-        alert("Please select between 1 and 5 property photos.");
-        return;
-      }
-
-      const invalidFile = files.find(function (file) {
-        return !allowedTypes.includes(file.type) ||
-               file.size > MAX_FILE_SIZE;
+    $("mainNav").querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        $("mainNav").classList.remove("open");
+        $("menuToggle").setAttribute("aria-expanded", "false");
+        $("menuToggle").textContent = "☰";
       });
+    });
 
-      if (invalidFile) {
-        alert("Please check the image formats and file sizes.");
-        return;
+    /* SAFE TEXT HANDLING */
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    /* PRICE FORMATTING */
+
+    function formatPrice(value) {
+      if (value === null || value === undefined || value === "") {
+        return "Price on Request";
       }
 
-      const data = new FormData(form);
+      if (typeof value === "string" && /[₹a-z]/i.test(value)) {
+        return value;
+      }
 
-      const value = function (name) {
-        return String(data.get(name) || "").trim();
+      const amount = Number(value);
+
+      if (!Number.isFinite(amount)) {
+        return String(value);
+      }
+
+      if (amount >= 10000000) {
+        return "₹" + (amount / 10000000).toLocaleString("en-IN", {
+          maximumFractionDigits: 2
+        }) + " Cr";
+      }
+
+      if (amount >= 100000) {
+        return "₹" + (amount / 100000).toLocaleString("en-IN", {
+          maximumFractionDigits: 2
+        }) + " Lakh";
+      }
+
+      return "₹" + amount.toLocaleString("en-IN");
+    }
+
+    /* PROPERTY IMAGES */
+
+    function getImages(property) {
+      let value = property.image_urls;
+
+      if (typeof value === "string") {
+        try {
+          value = JSON.parse(value);
+        } catch {
+          value = [value];
+        }
+      }
+
+      if (!Array.isArray(value)) {
+        value = [];
+      }
+
+      return value.filter(item =>
+        typeof item === "string" &&
+        /^(https?:\/\/|assets\/)/i.test(item)
+      );
+    }
+
+    function imageFallback() {
+      return "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85";
+    }
+
+    function setImage(imageElement, url, alt) {
+      imageElement.src = url || imageFallback();
+      imageElement.alt = alt || "Property photo";
+
+      imageElement.onerror = () => {
+        imageElement.onerror = null;
+        imageElement.src = imageFallback();
       };
+    }
 
-      const price = Number(value("expectedPrice"));
+    /* PROPERTY FIELDS */
 
-      if (!Number.isFinite(price) || price <= 0) {
-        alert("Please enter a valid expected selling price.");
+    function getCity(property) {
+      return String(property.city || property.location || "").trim();
+    }
+
+    function getLocation(property) {
+      return String(property.location || property.city || "").trim();
+    }
+
+    function getListingType(property) {
+      const value = String(property.listing_type || "For Sale").trim();
+
+      if (!value) {
+        return "For Sale";
+      }
+
+      return value.replace(/_/g, " ").replace(/\b\w/g, letter =>
+        letter.toUpperCase()
+      );
+    }
+
+    function setText(id, value, fallback = "—") {
+      $(id).textContent =
+        value !== null &&
+        value !== undefined &&
+        String(value).trim() !== ""
+          ? String(value)
+          : fallback;
+    }
+
+    /* WHATSAPP ENQUIRY */
+
+    function createWhatsAppURL(message) {
+      return "https://wa.me/" + PHONE_NUMBER +
+        "?text=" + encodeURIComponent(message);
+    }
+
+    /* AMENITIES */
+
+    function renderAmenities(property) {
+      const commonAmenities = [
+        "Gated Community",
+        "Green Spaces",
+        "Parking",
+        "Good Connectivity",
+        "Ready to Visit"
+      ];
+
+      let amenities = property.amenities;
+
+      if (typeof amenities === "string") {
+        try {
+          amenities = JSON.parse(amenities);
+        } catch {
+          amenities = amenities.split(",").map(item => item.trim());
+        }
+      }
+
+      if (!Array.isArray(amenities) || !amenities.length) {
+        amenities = commonAmenities;
+      }
+
+      const icons = ["⌂", "♧", "▣", "⌁", "✓", "✦"];
+
+      $("amenitiesList").innerHTML = amenities.map((item, index) => {
+        const label = typeof item === "string"
+          ? item
+          : item.name || item.title || "Amenity";
+
+        return `
+          <div class="amenity">
+            <span class="amenity-icon">${icons[index % icons.length]}</span>
+            <span>${escapeHTML(label)}</span>
+          </div>`;
+      }).join("");
+    }
+
+    /* PROPERTY GALLERY */
+
+    function renderGallery(property) {
+      galleryImages = getImages(property);
+
+      if (!galleryImages.length) {
+        galleryImages = [imageFallback()];
+      }
+
+      activeImageIndex = 0;
+
+      setImage($("mainImage"), galleryImages[0], property.title);
+
+      const second = galleryImages[1] || galleryImages[0];
+      const third = galleryImages[2] || galleryImages[1] || galleryImages[0];
+
+      setImage($("thumbImageOne"), second, property.title + " photo 2");
+      setImage($("thumbImageTwo"), third, property.title + " photo 3");
+
+      $("galleryCount").textContent = "1 / " + galleryImages.length;
+      $("featuredBadge").hidden = !property.is_featured;
+
+      $("thumbImageOne").parentElement.style.display =
+        galleryImages.length > 1 ? "" : "none";
+
+      $("thumbImageTwo").parentElement.style.display =
+        galleryImages.length > 2 ? "" : "none";
+
+      $("mainImage").onclick = () => openLightbox(0);
+      $("thumbImageOne").onclick = () => openLightbox(1);
+      $("thumbImageTwo").onclick = () => openLightbox(2);
+    }
+
+    /* IMAGE LIGHTBOX */
+
+    function openLightbox(index) {
+      if (!galleryImages.length) {
         return;
       }
 
-      const formatPrice = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        maximumFractionDigits: 0
-      }).format(price);
+      activeImageIndex = index % galleryImages.length;
+      updateLightbox();
 
-      const message = [
-        "Hello Adhao Realty,",
-        "",
-        "I want to sell my property. Please find the details below:",
-        "",
-        "OWNER DETAILS",
-        "Full Name: " + value("ownerName"),
-        "Mobile Number: " + value("phone"),
-        "Email: " + (value("email") || "Not provided"),
-        "Ownership Status: " + value("ownership"),
-        "",
-        "PROPERTY DETAILS",
-        "Property Type: " + value("propertyType"),
-        "City: " + value("city"),
-        "Locality: " + value("locality"),
-        "Property Area: " + value("area") + " " + value("areaUnit"),
-        "Condition: " + value("condition"),
-        "Bedrooms / BHK: " + (value("bedrooms") || "Not applicable"),
-        "Bathrooms: " + (value("bathrooms") || "Not applicable"),
-        "Expected Selling Price: " + formatPrice,
-        "Address / Landmark: " + value("address"),
-        "",
-        "PROPERTY DESCRIPTION",
-        value("description"),
-        "",
-        "PROPERTY PHOTOS",
-        ...files.map(function (file, index) {
-          return (index + 1) + ". " + file.name;
-        }),
-        "",
-        "I will attach the selected property photos in this WhatsApp chat.",
-        "Please contact me to discuss the next steps.",
-        "",
-        "Thank you."
-      ].join("\n");
+      $("lightbox").classList.add("open");
+    }
 
-      const whatsappURL =
-        "https://wa.me/" + WHATSAPP_NUMBER +
-        "?text=" + encodeURIComponent(message);
+    function updateLightbox() {
+      $("lightboxImage").src = galleryImages[activeImageIndex];
 
-      submitButton.disabled = true;
-      submitButton.textContent = "Opening WhatsApp...";
+      $("lightboxImage").alt =
+        (currentProperty?.title || "Property") +
+        " image " + (activeImageIndex + 1);
 
-      /*
-        Open WhatsApp directly. No form data is sent to a database.
-        If the browser blocks the new tab, restore the button.
-      */
-      const whatsappWindow = window.open(
-        whatsappURL,
-        "_blank",
-        "noopener,noreferrer"
+      $("galleryCount").textContent =
+        (activeImageIndex + 1) + " / " + galleryImages.length;
+    }
+
+    function closeLightbox() {
+      $("lightbox").classList.remove("open");
+    }
+
+    $("lightboxClose").addEventListener("click", closeLightbox);
+
+    $("lightbox").addEventListener("click", event => {
+      if (event.target === $("lightbox")) {
+        closeLightbox();
+      }
+    });
+
+    $("lightboxPrev").addEventListener("click", () => {
+      activeImageIndex =
+        (activeImageIndex - 1 + galleryImages.length) %
+        galleryImages.length;
+
+      updateLightbox();
+    });
+
+    $("lightboxNext").addEventListener("click", () => {
+      activeImageIndex =
+        (activeImageIndex + 1) % galleryImages.length;
+
+      updateLightbox();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!$("lightbox").classList.contains("open")) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        activeImageIndex =
+          (activeImageIndex - 1 + galleryImages.length) %
+          galleryImages.length;
+
+        updateLightbox();
+      }
+
+      if (event.key === "ArrowRight") {
+        activeImageIndex =
+          (activeImageIndex + 1) % galleryImages.length;
+
+        updateLightbox();
+      }
+    });
+
+    /* GOOGLE MAP */
+
+    function renderMap(property) {
+      const query = [
+        getLocation(property),
+        getCity(property),
+        "India"
+      ].filter(Boolean).join(", ");
+
+      const mapsURL = "https://maps.google.com/?q=" +
+        encodeURIComponent(query);
+
+      $("mapFrame").src =
+        "https://maps.google.com/maps?q=" +
+        encodeURIComponent(query) + "&output=embed";
+
+      $("mapLink").href = mapsURL;
+    }
+
+    /* RENDER PROPERTY DATA */
+
+    function renderProperty(property) {
+      currentProperty = property;
+
+      const title = property.title || "Property Details";
+      const city = getCity(property);
+      const location = getLocation(property);
+      const price = formatPrice(property.price);
+      const area = Number(property.area_sqft) || 0;
+      const bedrooms = Number(property.bedrooms) || 0;
+      const bathrooms = Number(property.bathrooms) || 0;
+
+      setText("propertyTitle", title, "Property Details");
+      setText("breadcrumbTitle", title, "Property Details");
+
+      setText(
+        "propertyLocation",
+        [location, city].filter(Boolean).join(", "),
+        "Location available on request"
       );
 
-      if (!whatsappWindow) {
-        submitButton.disabled = false;
-        submitButton.textContent =
-          "Submit Property & Continue to WhatsApp →";
+      setText("propertyPrice", price);
+      setText("listingType", getListingType(property));
 
-        alert(
-          "Your browser blocked the WhatsApp window. " +
-          "Please allow pop-ups for this website and submit again."
+      setText(
+        "areaValue",
+        area ? area.toLocaleString("en-IN") + " sq. ft." : "—"
+      );
+
+      setText("bedroomValue", bedrooms || "—");
+      setText("bathroomValue", bathrooms || "—");
+      setText("parkingValue", property.parking || "—");
+
+      setText("specType", property.property_type);
+      setText("specListingType", getListingType(property));
+      setText("specCity", city);
+      setText("specLocation", location);
+
+      setText(
+        "specArea",
+        area ? area.toLocaleString("en-IN") + " sq. ft." : "—"
+      );
+
+      setText("specBedrooms", bedrooms || "—");
+      setText("specBathrooms", bathrooms || "—");
+      setText("specParking", property.parking || "—");
+      setText("specStatus", property.status || "Contact Us");
+      setText("specPrice", price);
+
+      setText(
+        "propertyDescription",
+        property.description,
+        "Contact Adhao Realty for more information about this property, its availability, and viewing arrangements."
+      );
+
+      document.title = title + " | Adhao Realty";
+
+      const enquiryMessage =
+        "Hello Adhao Realty, I am interested in " + title +
+        ". Location: " + (location || city || "Please confirm") +
+        ". Listed price: " + price +
+        ". Please share more details.";
+
+      $("whatsappButton").href = createWhatsAppURL(enquiryMessage);
+      $("headerEnquiry").href = createWhatsAppURL(enquiryMessage);
+      $("callButton").href = "tel:+917249310062";
+
+      renderGallery(property);
+      renderAmenities(property);
+      renderMap(property);
+
+      $("loadingState").hidden = true;
+      $("propertyPage").hidden = false;
+    }
+
+    /* ERROR MESSAGE */
+
+    function showError(title, message) {
+      $("loadingState").innerHTML = `
+        <h2>${escapeHTML(title)}</h2>
+        <p>${escapeHTML(message)}</p>
+        <a class="button" href="properties.html">
+          Back to Properties
+        </a>
+      `;
+
+      $("loadingState").hidden = false;
+    }
+
+    /* LOAD PROPERTY FROM SUPABASE */
+
+    async function loadProperty() {
+      const params = new URLSearchParams(window.location.search);
+      const propertyId = params.get("id");
+
+      if (!propertyId) {
+        showError(
+          "Property ID missing",
+          "Please open this page by selecting a property from the Properties page."
         );
         return;
       }
 
-      submitButton.disabled = false;
-      submitButton.textContent =
-        "Submit Property & Continue to WhatsApp →";
-    });
+      const client = window.supabaseClient;
+
+      if (!client || typeof client.from !== "function") {
+        showError(
+          "Unable to connect",
+          "Please check your existing Supabase configuration in js/supabase.js."
+        );
+        return;
+      }
+
+      try {
+        const { data, error } = await client
+          .from("properties")
+          .select("*")
+          .eq("id", propertyId)
+          .eq("is_published", true)
+          .maybeSingle();
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data) {
+          showError(
+            "Property not found",
+            "This property may be unavailable or is no longer published."
+          );
+          return;
+        }
+
+        renderProperty(data);
+
+      } catch (error) {
+        console.error("Unable to load property:", error);
+
+        showError(
+          "Unable to load property",
+          "Please try again later or contact Adhao Realty for assistance."
+        );
+      }
+    }
+
+    loadProperty();
   </script>
 
 </body>
