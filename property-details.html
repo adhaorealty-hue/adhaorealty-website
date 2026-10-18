@@ -7,26 +7,29 @@
 
   <title>Property Details | Adhao Realty</title>
   <meta name="description" content="Explore property details, photos, amenities, location and enquiry options with Adhao Realty in Mumbai and Pune.">
-  <meta name="theme-color" content="#101820">
+  <meta name="theme-color" content="#101b32">
 
-  <link rel="icon" href="assets/logoweb.webp" type="image/webp">
+  <link rel="icon" type="image/webp" href="assets/logoweb.webp">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --navy: #101820;
-      --navy-light: #1b2834;
-      --gold: #c9a45c;
-      --gold-dark: #a98138;
-      --text: #202833;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --background: #f6f7f9;
+      --navy: #101b32;
+      --navy-light: #1b2940;
+      --gold: #c8a45d;
+      --gold-light: #f6c453;
       --white: #ffffff;
-      --radius: 14px;
-      --shadow: 0 8px 28px rgba(16, 24, 32, 0.07);
+      --page: #f6f7fa;
+      --text: #253147;
+      --muted: #6b7485;
+      --border: #e4e7ed;
+      --success: #15803d;
+      --danger: #b42318;
+      --radius: 12px;
+      --shadow: 0 8px 28px rgba(16, 27, 50, .07);
     }
 
     * {
@@ -37,24 +40,35 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 95px;
+      scroll-padding-top: 100px;
     }
 
     body {
       font-family: "DM Sans", sans-serif;
-      background: var(--background);
+      background: var(--page);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body.viewer-open {
+      overflow: hidden;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     button,
     input,
-    textarea {
+    textarea,
+    select {
       font: inherit;
     }
 
@@ -63,14 +77,17 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    button {
+      cursor: pointer;
     }
 
     .container {
-      width: min(1200px, 92%);
-      margin: 0 auto;
+      width: min(1400px, 92%);
+      margin-inline: auto;
+    }
+
+    .hidden {
+      display: none !important;
     }
 
     /* HEADER */
@@ -79,38 +96,28 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(16, 24, 32, 0.97);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 3px 16px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, .98);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 3px 18px rgba(16, 27, 50, .04);
     }
 
     .navbar {
       min-height: 78px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 25px;
     }
 
-    .brand {
-      display: flex;
+    .logo {
+      flex-shrink: 0;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      color: var(--white);
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
     }
 
-    .brand img {
-      width: 48px;
-      height: 48px;
+    .logo img {
+      width: 145px;
+      height: 62px;
       object-fit: contain;
-    }
-
-    .brand span {
-      color: var(--gold);
     }
 
     .nav-links {
@@ -118,568 +125,273 @@
       align-items: center;
       justify-content: center;
       gap: 25px;
-      list-style: none;
+      margin-left: auto;
     }
 
     .nav-links a {
-      color: #f0f2f4;
       font-size: 13px;
-      font-weight: 600;
-      transition: color 0.2s;
+      font-weight: 700;
+      transition: color .2s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--gold);
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #a77f32;
     }
 
     .nav-cta {
+      flex-shrink: 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 11px 17px;
-      border-radius: 7px;
-      background: var(--gold);
-      color: var(--navy);
-      font-weight: 800;
+      padding: 11px 18px;
+      border-radius: 6px;
+      background: var(--navy);
+      color: white;
       font-size: 13px;
-      white-space: nowrap;
-      transition: background 0.2s;
+      font-weight: 800;
+      transition: .2s ease;
     }
 
     .nav-cta:hover {
-      background: #dfbd79;
-    }
-
-    /* BREADCRUMB */
-
-    .breadcrumb {
-      padding: 23px 0 15px;
-      color: var(--muted);
-      font-size: 13px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .breadcrumb a:hover {
-      color: var(--gold-dark);
-    }
-
-    .breadcrumb .current {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    /* PAGE */
-
-    .page-title {
-      margin-bottom: 22px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      color: var(--gold-dark);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 800;
-      margin-bottom: 5px;
-    }
-
-    .page-title h1 {
-      font-size: clamp(25px, 3vw, 36px);
-      line-height: 1.25;
+      background: var(--gold);
       color: var(--navy);
-      overflow-wrap: anywhere;
     }
 
-    .property-location {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 14px;
-      display: flex;
-      align-items: flex-start;
-      gap: 7px;
-    }
-
-    .property-location svg {
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-
-    .price-status-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin: 20px 0 24px;
-    }
-
-    .price-label {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .property-price {
-      color: var(--navy);
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 800;
-      line-height: 1.3;
-    }
-
-    .property-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border: 1px solid #d7e9dc;
-      background: #eef8f0;
-      color: #24663b;
-      border-radius: 30px;
-      padding: 7px 13px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .property-status::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: #2e9b53;
-      border-radius: 50%;
-    }
-
-    /* GALLERY */
-
-    .gallery {
-      display: grid;
-      grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
-      gap: 12px;
-      height: 420px;
-      margin-bottom: 30px;
-    }
-
-    .gallery-main,
-    .gallery-small {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: #e4e7eb;
-    }
-
-    .gallery-main img,
-    .gallery-small img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      cursor: zoom-in;
-      transition: transform 0.4s;
-    }
-
-    .gallery-main:hover img,
-    .gallery-small:hover img {
-      transform: scale(1.025);
-    }
-
-    .gallery-side {
-      min-height: 0;
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .gallery-count {
-      position: absolute;
-      right: 13px;
-      bottom: 13px;
-      z-index: 2;
-      padding: 7px 11px;
-      border-radius: 7px;
-      color: white;
-      background: rgba(16, 24, 32, 0.82);
-      font-size: 12px;
-      font-weight: 700;
-      pointer-events: none;
-    }
-
-    .gallery-placeholder {
-      display: grid;
-      place-items: center;
-      width: 100%;
-      height: 100%;
-      min-height: 150px;
-      color: #78818b;
-      background: linear-gradient(135deg, #e8ebef, #d7dde4);
-      font-size: 14px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* MAIN CONTENT LAYOUT */
-
-    .property-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 340px;
-      align-items: start;
-      gap: 26px;
-      padding-bottom: 55px;
-    }
-
-    .main-column {
-      display: grid;
-      gap: 22px;
-      min-width: 0;
-    }
-
-    .card {
-      min-width: 0;
-      background: var(--white);
-      border: 1px solid #edf0f2;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 25px;
-    }
-
-    .card-heading {
-      color: var(--navy);
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .card-heading::after {
-      content: "";
-      display: block;
+    .menu-toggle {
+      display: none;
       width: 42px;
-      height: 3px;
-      margin-top: 9px;
-      border-radius: 3px;
-      background: var(--gold);
-    }
-
-    /* PROPERTY FACTS */
-
-    .facts-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .fact {
-      padding: 17px 12px;
+      height: 42px;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      min-width: 0;
-    }
-
-    .fact-icon {
-      color: var(--gold-dark);
-      font-size: 21px;
-      margin-bottom: 8px;
-    }
-
-    .fact-value {
+      border-radius: 7px;
+      background: white;
       color: var(--navy);
-      font-size: 17px;
-      font-weight: 800;
-      overflow-wrap: anywhere;
+      font-size: 23px;
     }
 
-    .fact-label {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 3px;
+    /* PAGE INTRO */
+
+    .page-intro {
+      padding: 25px 0 8px;
     }
 
-    /* DESCRIPTION */
-
-    .description-text {
-      color: #555f6b;
-      font-size: 14px;
-      line-height: 1.9;
-      white-space: pre-line;
-      overflow-wrap: anywhere;
-    }
-
-    .description-text.empty {
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .detail-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
-    }
-
-    .detail-list li {
+    .breadcrumbs {
       display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      color: #4c5662;
-      font-size: 14px;
-      overflow-wrap: anywhere;
-    }
-
-    .detail-list li::before {
-      content: "✓";
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      width: 21px;
-      height: 21px;
-      margin-top: 1px;
-      border-radius: 50%;
-      color: #256e42;
-      background: #eaf7ee;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .empty-message {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* MAP */
-
-    .map-frame {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #eef1f4;
-    }
-
-    .map-frame iframe {
-      display: block;
-      width: 100%;
-      height: 300px;
-      border: 0;
-    }
-
-    .map-fallback {
-      padding: 22px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .map-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: 13px;
-      color: var(--gold-dark);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .map-link:hover {
-      text-decoration: underline;
-    }
-
-    /* ENQUIRY SIDEBAR */
-
-    .sidebar {
-      position: sticky;
-      top: 100px;
-      display: grid;
-      gap: 20px;
-      min-width: 0;
-    }
-
-    .enquiry-card {
-      background: var(--white);
-      border: 1px solid #edf0f2;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 24px;
-    }
-
-    .enquiry-card h2 {
-      font-size: 20px;
-      line-height: 1.35;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-
-    .enquiry-card > p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .form-group label {
-      display: block;
-      color: #424c57;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      border: 1px solid #dce1e6;
-      border-radius: 8px;
-      background: #fff;
-      color: var(--text);
-      padding: 12px;
-      outline: none;
-      font-size: 13px;
-      transition: border-color 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 85px;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
+      flex-wrap: wrap;
       align-items: center;
       gap: 8px;
-      width: 100%;
-      border: 0;
-      border-radius: 8px;
-      padding: 13px 15px;
-      cursor: pointer;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 800;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .btn-gold:hover {
-      background: #dfbd79;
-    }
-
-    .btn-whatsapp {
-      background: #168b50;
-      color: #fff;
-    }
-
-    .btn-whatsapp:hover {
-      background: #117541;
-    }
-
-    .btn-outline {
-      background: white;
-      color: var(--navy);
-      border: 1px solid #dce1e6;
-    }
-
-    .btn-outline:hover {
-      background: #f6f7f9;
-    }
-
-    .sidebar-actions {
-      display: grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .agent-card {
-      background: var(--navy);
-      color: white;
-      border-radius: var(--radius);
-      padding: 23px;
-    }
-
-    .agent-card h3 {
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-
-    .agent-card p {
-      color: #d1d7dc;
-      font-size: 13px;
-      margin-bottom: 16px;
-    }
-
-    .agent-card .btn-outline {
-      color: white;
-      background: transparent;
-      border-color: rgba(255,255,255,0.28);
-    }
-
-    .agent-card .btn-outline:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .trust-note {
       color: var(--muted);
-      font-size: 11px;
-      text-align: center;
-      margin-top: 13px;
+      font-size: 12px;
     }
 
-    /* STATES */
+    .breadcrumbs a:hover {
+      color: #9b7837;
+    }
 
-    .state-box {
-      padding: 55px 20px;
-      text-align: center;
-      background: white;
+    .breadcrumbs span:last-child {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    /* STATUS MESSAGES */
+
+    .status-panel {
+      width: min(900px, 92%);
+      margin: 45px auto;
+      padding: 45px 25px;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      margin-bottom: 40px;
+      background: white;
+      box-shadow: var(--shadow);
+      text-align: center;
     }
 
-    .state-box h2 {
+    .status-panel h2 {
+      margin-bottom: 12px;
       color: var(--navy);
-      margin-bottom: 10px;
+      font-size: 25px;
     }
 
-    .state-box p {
+    .status-panel p {
+      margin-bottom: 20px;
       color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    .state-box .btn {
-      width: auto;
-      min-width: 160px;
     }
 
     .spinner {
-      width: 38px;
-      height: 38px;
-      margin: 0 auto 18px;
-      border: 4px solid #e7e9ec;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 20px;
+      border: 4px solid #e9edf3;
       border-top-color: var(--gold);
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      animation: spin .8s linear infinite;
     }
 
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
 
-    .hidden {
-      display: none !important;
+    /* PROPERTY HEADER */
+
+    .property-page {
+      padding: 22px 0 80px;
     }
 
-    /* LIGHTBOX */
+    .property-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .property-heading-main {
+      min-width: 0;
+    }
+
+    .property-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 11px;
+      border-radius: 5px;
+      background: #f4ead5;
+      color: #795a22;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    .badge.dark {
+      background: var(--navy);
+      color: white;
+    }
+
+    .property-heading h1 {
+      margin-bottom: 7px;
+      color: var(--navy);
+      font-size: clamp(28px, 4vw, 43px);
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -.8px;
+      overflow-wrap: anywhere;
+    }
+
+    .property-location {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .property-location .pin {
+      color: #9b7837;
+    }
+
+    .heading-price {
+      flex-shrink: 0;
+      padding-top: 14px;
+      text-align: right;
+    }
+
+    .heading-price small {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .heading-price strong {
+      color: var(--navy);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.3;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+      grid-template-rows: repeat(2, minmax(180px, 230px));
+      gap: 12px;
+      margin-bottom: 25px;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .gallery-main,
+    .gallery-side,
+    .gallery-placeholder {
+      position: relative;
+      overflow: hidden;
+      border: 0;
+      padding: 0;
+      background: #e7eaf0;
+    }
+
+    .gallery-main {
+      grid-row: 1 / 3;
+      min-height: 380px;
+    }
+
+    .gallery-side {
+      min-height: 180px;
+    }
+
+    .gallery-main img,
+    .gallery-side img,
+    .gallery-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .gallery-main:hover img,
+    .gallery-side:hover img {
+      transform: scale(1.035);
+    }
+
+    .gallery-main:focus-visible,
+    .gallery-side:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: -3px;
+    }
+
+    .gallery-count {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 6px;
+      background: rgba(12, 20, 35, .8);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .gallery-placeholder {
+      display: grid;
+      place-items: center;
+      min-height: 150px;
+      color: #788399;
+      text-align: center;
+    }
+
+    .gallery-placeholder span {
+      padding: 15px;
+    }
+
+    /* IMAGE VIEWER */
 
     .lightbox {
       position: fixed;
@@ -688,19 +400,27 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 25px;
-      background: rgba(0, 0, 0, 0.92);
+      padding: 35px;
+      background: rgba(5, 10, 20, .94);
     }
 
     .lightbox.open {
       display: flex;
     }
 
+    .lightbox-image-wrap {
+      width: min(1200px, 100%);
+      height: min(82vh, 850px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .lightbox img {
-      max-width: min(1100px, 92vw);
-      max-height: 85vh;
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
-      border-radius: 6px;
+      border-radius: 4px;
     }
 
     .lightbox-close,
@@ -711,12 +431,11 @@
       place-items: center;
       width: 45px;
       height: 45px;
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(255, 255, 255, .25);
       border-radius: 50%;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, .1);
       color: white;
-      font-size: 24px;
-      cursor: pointer;
+      font-size: 25px;
     }
 
     .lightbox-close {
@@ -736,199 +455,762 @@
       transform: translateY(-50%);
     }
 
+    .lightbox-counter {
+      position: absolute;
+      bottom: 17px;
+      color: white;
+      font-size: 13px;
+    }
+
+    /* QUICK FACTS */
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .fact-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 17px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+    }
+
+    .fact-icon {
+      width: 45px;
+      height: 45px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: #f6efdf;
+      color: #94702e;
+      font-size: 21px;
+    }
+
+    .fact-card small {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .fact-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 15px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    /* MAIN LAYOUT */
+
+    .property-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 350px;
+      align-items: start;
+      gap: 25px;
+    }
+
+    .main-column,
+    .side-column {
+      min-width: 0;
+    }
+
+    .content-card {
+      margin-bottom: 22px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: 0 3px 15px rgba(16, 27, 50, .025);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      color: var(--navy);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 27px;
+      flex-shrink: 0;
+      border-radius: 3px;
+      background: var(--gold);
+    }
+
+    .description {
+      color: #596477;
+      font-size: 14px;
+      line-height: 2;
+      overflow-wrap: anywhere;
+      white-space: pre-line;
+    }
+
+    .property-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .meta-item {
+      padding: 14px;
+      border: 1px solid #edf0f4;
+      border-radius: 8px;
+      background: #fbfcfd;
+    }
+
+    .meta-item small {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .meta-item strong {
+      color: var(--navy);
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    /* AMENITIES */
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .amenity {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 10px;
+      border: 1px solid #edf0f4;
+      border-radius: 7px;
+      background: #fbfcfd;
+      color: #465269;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .amenity span:first-child {
+      color: #9b7837;
+      font-size: 16px;
+    }
+
+    .empty-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* MAP */
+
+    .map-frame {
+      width: 100%;
+      height: 330px;
+      border: 0;
+      border-radius: 8px;
+      background: #edf0f4;
+    }
+
+    .map-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ABOUT PROPERTY - FULL WIDTH */
+
+    .about-property-section {
+      width: 100%;
+      margin-top: 25px;
+      padding: 35px;
+      border: 1px solid #e7dfcd;
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .about-property-section .section-title {
+      font-size: 25px;
+      margin-bottom: 22px;
+    }
+
+    .about-property-section .description {
+      max-width: 100%;
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .about-property-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 23px;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-property-point {
+      padding: 17px;
+      border-radius: 8px;
+      background: #f8f5ee;
+    }
+
+    .about-property-point strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 13px;
+    }
+
+    .about-property-point span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* ENQUIRY CARD */
+
+    .enquiry-card {
+      position: sticky;
+      top: 100px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .enquiry-card h2 {
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    .enquiry-card .subheading {
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .enquiry-price {
+      padding: 16px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background: #f8f4eb;
+    }
+
+    .enquiry-price small {
+      display: block;
+      color: #796a4e;
+      font-size: 11px;
+    }
+
+    .enquiry-price strong {
+      display: block;
+      color: var(--navy);
+      font-size: 27px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #344056;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      min-height: 45px;
+      padding: 11px 12px;
+      border: 1px solid #dce1e9;
+      border-radius: 6px;
+      outline: none;
+      background: white;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .form-group textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200, 164, 93, .14);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 46px;
+      padding: 12px 17px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-dark {
+      margin-top: 10px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-dark:hover {
+      background: var(--navy-light);
+    }
+
+    .btn-whatsapp {
+      margin-top: 10px;
+      background: #178b4d;
+      color: white;
+    }
+
+    .btn-whatsapp:hover {
+      background: #116f3c;
+    }
+
+    .btn-outline {
+      margin-top: 10px;
+      border-color: var(--border);
+      background: white;
+      color: var(--navy);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: #fbf8f1;
+    }
+
+    .enquiry-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .enquiry-status {
+      margin-top: 12px;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .enquiry-status.error {
+      color: var(--danger);
+    }
+
+    .enquiry-status.success {
+      color: var(--success);
+    }
+
+    .direct-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .direct-contact a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #4d596e;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .direct-contact a:hover {
+      color: #9b7837;
+    }
+
+    /* TRUST NOTE */
+
+    .trust-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 15px;
+      padding: 17px;
+      border: 1px solid #eee4d0;
+      border-radius: 9px;
+      background: #faf6ed;
+    }
+
+    .trust-note .trust-icon {
+      color: #96712e;
+      font-size: 22px;
+    }
+
+    .trust-note strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--navy);
+      font-size: 12px;
+    }
+
+    .trust-note p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
     /* FOOTER */
 
     .site-footer {
-      background: #0b1218;
-      color: #d7dce1;
-      padding: 36px 0 20px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
+      padding: 48px 0 20px;
+      background: #0b1427;
       color: white;
-      font-weight: 800;
-      font-size: 18px;
     }
 
-    .footer-brand span {
-      color: var(--gold);
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 35px;
+      margin-bottom: 35px;
     }
 
-    .footer-inner p,
-    .footer-bottom {
-      color: #aeb7c0;
+    .footer-logo {
+      width: 145px;
+      height: 62px;
+      object-fit: contain;
+      padding: 5px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      background: white;
+    }
+
+    .footer-about {
+      max-width: 400px;
+      color: #b8c1d1;
       font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .site-footer h3 {
+      margin-bottom: 14px;
+      color: var(--gold-light);
+      font-size: 14px;
     }
 
     .footer-links {
       display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .footer-links a {
+      color: #b8c1d1;
       font-size: 12px;
+      overflow-wrap: anywhere;
     }
 
     .footer-links a:hover {
-      color: var(--gold);
+      color: var(--gold-light);
     }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 25px;
-      padding-top: 17px;
+    .copyright {
+      padding-top: 19px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      color: #98a4b8;
+      font-size: 11px;
       text-align: center;
     }
 
     /* RESPONSIVE */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1050px) {
       .nav-links {
         gap: 15px;
-      }
-
-      .property-layout {
-        grid-template-columns: minmax(0, 1fr) 300px;
-        gap: 18px;
-      }
-
-      .gallery {
-        height: 360px;
-      }
-
-      .facts-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 760px) {
-      .navbar {
-        min-height: 70px;
-        flex-wrap: wrap;
-        gap: 12px;
-        padding: 10px 0;
-      }
-
-      .brand {
-        font-size: 18px;
-      }
-
-      .brand img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .nav-links {
-        order: 3;
-        width: 100%;
-        justify-content: flex-start;
-        gap: 20px;
-        overflow-x: auto;
-        padding: 6px 0;
-      }
-
-      .nav-links a {
-        white-space: nowrap;
-      }
-
-      .nav-cta {
-        margin-left: auto;
-        padding: 10px 12px;
-      }
-
-      .breadcrumb {
-        padding-top: 18px;
-      }
-
-      .gallery {
-        height: auto;
-        grid-template-columns: 1fr;
-        grid-template-rows: 270px 130px;
-      }
-
-      .gallery-side {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-      }
-
-      .property-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-        grid-row: auto;
-      }
-
-      .card {
-        padding: 21px;
-      }
-
-      .enquiry-card {
-        padding: 21px;
-      }
-
-      .map-frame iframe {
-        height: 240px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        width: 92%;
-      }
-
-      .nav-links {
-        gap: 16px;
       }
 
       .nav-links a {
         font-size: 12px;
       }
 
-      .page-title h1 {
-        font-size: 26px;
+      .property-layout {
+        grid-template-columns: minmax(0, 1fr) 315px;
+        gap: 18px;
       }
 
-      .price-status-row {
-        align-items: flex-start;
+      .quick-facts {
+        gap: 10px;
+      }
+
+      .fact-card {
+        padding: 15px 12px;
+        gap: 10px;
+      }
+
+      .fact-icon {
+        width: 39px;
+        height: 39px;
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 800px) {
+      .navbar {
+        min-height: 72px;
+        gap: 12px;
+      }
+
+      .logo img {
+        width: 120px;
+        height: 55px;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+        margin-left: auto;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 4%;
+        right: 4%;
+        z-index: 1001;
         flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: white;
+        box-shadow: var(--shadow);
       }
 
-      .gallery {
-        grid-template-rows: 230px 105px;
-        gap: 8px;
-        margin-bottom: 22px;
+      .nav-links.open {
+        display: flex;
       }
 
-      .gallery-side {
-        gap: 8px;
+      .nav-links a {
+        padding: 12px 14px;
+        border-bottom: 1px solid #edf0f4;
+        font-size: 14px;
       }
 
-      .facts-grid {
-        gap: 9px;
+      .nav-links a:last-child {
+        border-bottom: 0;
       }
 
-      .fact {
-        padding: 13px 10px;
+      .nav-cta {
+        padding: 10px 12px;
+        font-size: 11px;
       }
 
-      .fact-value {
-        font-size: 15px;
-      }
-
-      .detail-list {
+      .property-layout {
         grid-template-columns: 1fr;
       }
 
-      .card-heading {
-        font-size: 18px;
+      .side-column {
+        order: 2;
+      }
+
+      .enquiry-card {
+        position: static;
+      }
+
+      .quick-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-property-section {
+        padding: 25px;
+      }
+
+      .about-property-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .footer-brand-column {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: 92%;
+      }
+
+      .page-intro {
+        padding-top: 17px;
+      }
+
+      .property-page {
+        padding-top: 15px;
+      }
+
+      .property-heading {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .heading-price {
+        padding-top: 0;
+        text-align: left;
+      }
+
+      .property-heading h1 {
+        font-size: 29px;
+      }
+
+      .property-location {
+        font-size: 12px;
+      }
+
+      .gallery {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: 240px 120px;
+        gap: 7px;
+        border-radius: 8px;
+      }
+
+      .gallery-main {
+        grid-column: 1 / 3;
+        grid-row: 1;
+        min-height: 0;
+      }
+
+      .gallery-side {
+        min-height: 0;
+      }
+
+      .gallery-count {
+        right: 8px;
+        bottom: 8px;
+        padding: 6px 9px;
+        font-size: 10px;
+      }
+
+      .quick-facts {
+        gap: 8px;
+      }
+
+      .fact-card {
+        align-items: flex-start;
+        padding: 12px 10px;
+        gap: 9px;
+      }
+
+      .fact-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 17px;
+      }
+
+      .fact-card small {
+        font-size: 10px;
+      }
+
+      .fact-card strong {
+        font-size: 12px;
+      }
+
+      .content-card {
+        padding: 21px 17px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .property-meta-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .meta-item {
+        padding: 11px;
+      }
+
+      .amenities-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .amenity {
+        padding: 10px 8px;
+        font-size: 11px;
+      }
+
+      .map-frame {
+        height: 260px;
+      }
+
+      .about-property-section {
+        padding: 22px 17px;
+      }
+
+      .about-property-section .section-title {
+        font-size: 22px;
+      }
+
+      .about-property-section .description {
+        font-size: 13px;
+      }
+
+      .enquiry-card {
+        padding: 21px 17px;
+      }
+
+      .lightbox {
+        padding: 15px;
       }
 
       .lightbox-prev {
@@ -939,9 +1221,27 @@
         right: 8px;
       }
 
-      .footer-inner {
-        align-items: flex-start;
-        flex-direction: column;
+      .lightbox-close {
+        top: 10px;
+        right: 10px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand-column {
+        grid-column: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -949,288 +1249,586 @@
 
 <body>
 
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container navbar">
-      <a class="brand" href="index.html" aria-label="Adhao Realty homepage">
-        <img src="assets/logoweb.webp" alt="Adhao Realty logo"
-             onerror="this.style.display='none'">
-        <div>ADHAO <span>REALTY</span></div>
+
+      <a class="logo" href="index.html" aria-label="Adhao Realty home">
+        <img src="assets/logoweb.webp" alt="Adhao Realty logo">
       </a>
 
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="properties.html">Properties</a></li>
-        <li><a href="mumbai.html">Mumbai</a></li>
-        <li><a href="pune.html">Pune</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false">
+        ☰
+      </button>
 
-      <a class="nav-cta" href="contact.html">Enquire Now</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="properties.html" class="active">Properties</a>
+        <a href="properties.html?city=Mumbai">Mumbai</a>
+        <a href="properties.html?city=Pune">Pune</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a
+        class="nav-cta"
+        href="https://wa.me/917249310062?text=Hello%20Adhao%20Realty%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
+        target="_blank"
+        rel="noopener noreferrer">
+        Enquire Now
+      </a>
+
     </div>
   </header>
 
-  <main class="container">
-
-    <nav class="breadcrumb" aria-label="Breadcrumb">
+  <!-- BREADCRUMBS -->
+  <div class="container page-intro">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="index.html">Home</a>
-      <span>/</span>
+      <span>›</span>
       <a href="properties.html">Properties</a>
-      <span>/</span>
-      <span class="current">Property Details</span>
+      <span>›</span>
+      <span id="breadcrumbProperty">Property Details</span>
     </nav>
+  </div>
 
-    <div id="loadingState" class="state-box">
-      <div class="spinner"></div>
-      <h2>Loading Property Details</h2>
-      <p>Please wait while we retrieve the property information.</p>
-    </div>
+  <!-- LOADING -->
+  <section class="status-panel" id="loadingPanel" aria-live="polite">
+    <div class="spinner"></div>
+    <h2>Loading Property Details</h2>
+    <p>Please wait while we retrieve the property information.</p>
+  </section>
 
-    <div id="errorState" class="state-box hidden">
-      <h2 id="errorTitle">Property Not Available</h2>
-      <p id="errorMessage">
-        We couldn't find this property. It may have been removed or is not published.
-      </p>
-      <a href="properties.html" class="btn btn-gold">Browse Properties</a>
-    </div>
+  <!-- ERROR -->
+  <section class="status-panel hidden" id="errorPanel" aria-live="polite">
+    <h2 id="errorTitle">Property Not Available</h2>
+    <p id="errorMessage">
+      We could not find the requested property.
+    </p>
+    <a class="btn btn-gold" href="properties.html">
+      Browse All Properties
+    </a>
+  </section>
 
-    <div id="propertyContent" class="hidden">
+  <!-- PROPERTY PAGE -->
+  <main class="container property-page hidden" id="propertyPage">
 
-      <section class="page-title">
-        <span class="eyebrow">Adhao Realty Property</span>
+    <!-- PROPERTY TITLE AND PRICE -->
+    <section class="property-heading">
+
+      <div class="property-heading-main">
+
+        <div class="property-badges">
+          <span class="badge" id="propertyTypeBadge">Property</span>
+          <span class="badge dark" id="propertyStatusBadge">Available</span>
+        </div>
+
         <h1 id="propertyTitle">Property Title</h1>
+
         <p class="property-location">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-            <circle cx="12" cy="10" r="2.5"></circle>
-          </svg>
-          <span id="propertyLocation">Property location</span>
+          <span class="pin" aria-hidden="true">●</span>
+          <span id="propertyLocation">Property Location</span>
         </p>
 
-        <div class="price-status-row">
-          <div>
-            <div class="price-label">Asking Price</div>
-            <div class="property-price" id="propertyPrice">Contact for Price</div>
-          </div>
-          <span class="property-status" id="propertyStatus">Available</span>
-        </div>
-      </section>
-
-      <!-- PROPERTY IMAGE GALLERY -->
-
-      <section class="gallery" id="gallery" aria-label="Property photos">
-        <div class="gallery-main" id="galleryMain">
-          <div class="gallery-placeholder">Property image unavailable</div>
-        </div>
-
-        <div class="gallery-side">
-          <div class="gallery-small" id="gallerySecond">
-            <div class="gallery-placeholder">Property image</div>
-          </div>
-          <div class="gallery-small" id="galleryThird">
-            <div class="gallery-placeholder">Property image</div>
-          </div>
-        </div>
-      </section>
-
-      <div class="property-layout">
-
-        <!-- MAIN PROPERTY INFORMATION -->
-
-        <div class="main-column">
-
-          <section class="card">
-            <h2 class="card-heading">Property Overview</h2>
-
-            <div class="facts-grid">
-              <div class="fact">
-                <div class="fact-icon" aria-hidden="true">⌂</div>
-                <div class="fact-value" id="factType">—</div>
-                <div class="fact-label">Property Type</div>
-              </div>
-
-              <div class="fact">
-                <div class="fact-icon" aria-hidden="true">▱</div>
-                <div class="fact-value" id="factArea">—</div>
-                <div class="fact-label">Area</div>
-              </div>
-
-              <div class="fact">
-                <div class="fact-icon" aria-hidden="true">▦</div>
-                <div class="fact-value" id="factBedrooms">—</div>
-                <div class="fact-label">Bedrooms / BHK</div>
-              </div>
-
-              <div class="fact">
-                <div class="fact-icon" aria-hidden="true">♨</div>
-                <div class="fact-value" id="factBathrooms">—</div>
-                <div class="fact-label">Bathrooms</div>
-              </div>
-            </div>
-          </section>
-
-          <section class="card">
-            <h2 class="card-heading">Property Description</h2>
-            <p class="description-text" id="propertyDescription">
-              Property description will appear here.
-            </p>
-          </section>
-
-          <section class="card">
-            <h2 class="card-heading">Property Details</h2>
-            <ul class="detail-list" id="propertyDetailsList">
-              <li>Property information</li>
-            </ul>
-          </section>
-
-          <section class="card">
-            <h2 class="card-heading">Amenities &amp; Features</h2>
-            <ul class="detail-list" id="amenitiesList">
-              <li class="empty-message">Amenities will appear here when available.</li>
-            </ul>
-          </section>
-
-          <section class="card">
-            <h2 class="card-heading">Location &amp; Map</h2>
-            <p class="description-text" id="mapLocationText">
-              Property location information.
-            </p>
-
-            <div class="map-frame" id="mapContainer" style="margin-top: 16px;">
-              <div class="map-fallback">
-                Map is unavailable because a location has not been provided.
-              </div>
-            </div>
-
-            <a class="map-link hidden" id="openMapLink"
-               href="#" target="_blank" rel="noopener noreferrer">
-              Open location in Google Maps ↗
-            </a>
-          </section>
-
-        </div>
-
-        <!-- ENQUIRY SIDEBAR -->
-
-        <aside class="sidebar">
-
-          <section class="enquiry-card">
-            <h2>Interested in This Property?</h2>
-            <p>Share your details and contact our team on WhatsApp to discuss this property.</p>
-
-            <form id="enquiryForm">
-              <div class="form-group">
-                <label for="customerName">Full Name *</label>
-                <input type="text" id="customerName" name="name"
-                       placeholder="Enter your full name" required maxlength="100">
-              </div>
-
-              <div class="form-group">
-                <label for="customerPhone">Mobile Number *</label>
-                <input type="tel" id="customerPhone" name="phone"
-                       placeholder="Enter your mobile number"
-                       inputmode="tel" autocomplete="tel"
-                       pattern="[0-9+() -]{10,18}" required>
-              </div>
-
-              <div class="form-group">
-                <label for="customerMessage">Your Message</label>
-                <textarea id="customerMessage" name="message"
-                          placeholder="I'm interested in this property..."></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-whatsapp">
-                Enquire on WhatsApp
-              </button>
-            </form>
-
-            <div class="sidebar-actions">
-              <a class="btn btn-gold" id="callButton" href="tel:+917249310062">
-                Call Adhao Realty
-              </a>
-              <button class="btn btn-outline" id="shareButton" type="button">
-                Share Property
-              </button>
-            </div>
-
-            <p class="trust-note">
-              Your enquiry opens WhatsApp. Your information is not submitted to a database by this form.
-            </p>
-          </section>
-
-          <section class="agent-card">
-            <h3>Need Expert Guidance?</h3>
-            <p>Talk to our team about property availability, pricing, site visits and your requirements.</p>
-            <a class="btn btn-outline" href="contact.html">Contact Our Team</a>
-          </section>
-
-        </aside>
       </div>
+
+      <div class="heading-price">
+        <small>Asking Price</small>
+        <strong id="propertyPrice">Contact for Price</strong>
+      </div>
+
+    </section>
+
+    <!-- PROPERTY IMAGE GALLERY -->
+    <section class="gallery" id="propertyGallery" aria-label="Property photos">
+
+      <button
+        type="button"
+        class="gallery-main"
+        id="galleryMainButton"
+        aria-label="View main property image">
+
+        <img
+          id="galleryMainImage"
+          src=""
+          alt="Property main image"
+          fetchpriority="high">
+
+        <span class="gallery-count" id="galleryCount">
+          View Photos
+        </span>
+      </button>
+
+      <button
+        type="button"
+        class="gallery-side"
+        id="gallerySideButton1"
+        aria-label="View property photo 2">
+
+        <img id="gallerySideImage1" src="" alt="Property photo 2" loading="lazy">
+      </button>
+
+      <button
+        type="button"
+        class="gallery-side"
+        id="gallerySideButton2"
+        aria-label="View property photo 3">
+
+        <img id="gallerySideImage2" src="" alt="Property photo 3" loading="lazy">
+      </button>
+
+    </section>
+
+    <!-- QUICK PROPERTY FACTS -->
+    <section class="quick-facts" aria-label="Property highlights">
+
+      <div class="fact-card">
+        <div class="fact-icon" aria-hidden="true">⌂</div>
+        <div>
+          <small>Property Type</small>
+          <strong id="factType">—</strong>
+        </div>
+      </div>
+
+      <div class="fact-card">
+        <div class="fact-icon" aria-hidden="true">▱</div>
+        <div>
+          <small>Area</small>
+          <strong id="factArea">—</strong>
+        </div>
+      </div>
+
+      <div class="fact-card">
+        <div class="fact-icon" aria-hidden="true">▦</div>
+        <div>
+          <small>Bedrooms</small>
+          <strong id="factBedrooms">—</strong>
+        </div>
+      </div>
+
+      <div class="fact-card">
+        <div class="fact-icon" aria-hidden="true">♨</div>
+        <div>
+          <small>Bathrooms</small>
+          <strong id="factBathrooms">—</strong>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- MAIN PROPERTY CONTENT AND ENQUIRY SIDEBAR -->
+    <div class="property-layout">
+
+      <div class="main-column">
+
+        <!-- OVERVIEW -->
+        <section class="content-card">
+
+          <h2 class="section-title">Property Overview</h2>
+
+          <div class="property-meta-grid">
+
+            <div class="meta-item">
+              <small>Property ID</small>
+              <strong id="metaId">—</strong>
+            </div>
+
+            <div class="meta-item">
+              <small>Property Category</small>
+              <strong id="metaCategory">—</strong>
+            </div>
+
+            <div class="meta-item">
+              <small>City</small>
+              <strong id="metaCity">—</strong>
+            </div>
+
+            <div class="meta-item">
+              <small>Locality</small>
+              <strong id="metaLocality">—</strong>
+            </div>
+
+            <div class="meta-item">
+              <small>Area</small>
+              <strong id="metaArea">—</strong>
+            </div>
+
+            <div class="meta-item">
+              <small>Price</small>
+              <strong id="metaPrice">—</strong>
+            </div>
+
+            <div class="meta-item">
+              <small>Furnishing</small>
+              <strong id="metaFurnishing">Not specified</strong>
+            </div>
+
+            <div class="meta-item">
+              <small>Listing Status</small>
+              <strong id="metaStatus">Not specified</strong>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- DESCRIPTION -->
+        <section class="content-card">
+
+          <h2 class="section-title">Property Description</h2>
+
+          <p class="description" id="propertyDescription">
+            Property description will appear here.
+          </p>
+
+        </section>
+
+        <!-- AMENITIES -->
+        <section class="content-card">
+
+          <h2 class="section-title">Amenities &amp; Features</h2>
+
+          <div class="amenities-grid" id="amenitiesGrid">
+            <p class="empty-note">No amenities have been provided for this listing.</p>
+          </div>
+
+        </section>
+
+        <!-- LOCATION AND MAP -->
+        <section class="content-card">
+
+          <h2 class="section-title">Location &amp; Neighbourhood</h2>
+
+          <p class="description" id="locationDescription" style="margin-bottom:18px;">
+            Explore the property's location.
+          </p>
+
+          <iframe
+            class="map-frame"
+            id="propertyMap"
+            title="Property location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="about:blank"
+            allowfullscreen>
+          </iframe>
+
+          <p class="map-note">
+            Map results are for general location guidance. Confirm the exact
+            property address and access details with the property representative.
+          </p>
+
+        </section>
+
+      </div>
+
+      <!-- ENQUIRY SIDEBAR -->
+      <aside class="side-column">
+
+        <section class="enquiry-card">
+
+          <h2>Interested in This Property?</h2>
+
+          <p class="subheading">
+            Send us your details and our team can discuss the listing with you.
+          </p>
+
+          <div class="enquiry-price">
+            <small>Property Asking Price</small>
+            <strong id="sidebarPrice">Contact for Price</strong>
+          </div>
+
+          <form id="enquiryForm">
+
+            <div class="form-group">
+              <label for="customerName">Full Name *</label>
+              <input
+                id="customerName"
+                name="name"
+                type="text"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                maxlength="100"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="customerPhone">Mobile Number *</label>
+              <input
+                id="customerPhone"
+                name="phone"
+                type="tel"
+                placeholder="Enter your mobile number"
+                autocomplete="tel"
+                maxlength="20"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="customerEmail">Email Address</label>
+              <input
+                id="customerEmail"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+                maxlength="150">
+            </div>
+
+            <div class="form-group">
+              <label for="customerRequirement">Your Requirement</label>
+              <select id="customerRequirement" name="requirement">
+                <option value="Property enquiry">Property enquiry</option>
+                <option value="Schedule a site visit">Schedule a site visit</option>
+                <option value="Price negotiation">Price negotiation</option>
+                <option value="More property information">More information</option>
+                <option value="Investment enquiry">Investment enquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="customerMessage">Message</label>
+              <textarea
+                id="customerMessage"
+                name="message"
+                maxlength="1000"
+                placeholder="Tell us what you would like to know"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold">
+              Send Enquiry on WhatsApp →
+            </button>
+
+            <button type="button" class="btn btn-dark" id="callButton">
+              Call Adhao Realty
+            </button>
+
+            <button type="button" class="btn btn-outline" id="copyPropertyButton">
+              Copy Property Information
+            </button>
+
+            <p class="enquiry-status" id="enquiryStatus" role="status" aria-live="polite"></p>
+
+          </form>
+
+          <p class="enquiry-note">
+            Your enquiry opens WhatsApp with your message prepared.
+            You can review it before sending.
+          </p>
+
+          <div class="direct-contact">
+
+            <a href="tel:+917249310062">
+              <span aria-hidden="true">☎</span>
+              <span>+91 72493 10062</span>
+            </a>
+
+            <a href="mailto:adhaorealty@gmail.com">
+              <span aria-hidden="true">✉</span>
+              <span>adhaorealty@gmail.com</span>
+            </a>
+
+          </div>
+
+        </section>
+
+        <div class="trust-note">
+          <span class="trust-icon" aria-hidden="true">◇</span>
+          <div>
+            <strong>Before You Decide</strong>
+            <p>
+              Independently verify the property documents, ownership,
+              applicable approvals, charges, and availability before
+              making a payment or commitment.
+            </p>
+          </div>
+        </div>
+
+      </aside>
 
     </div>
+
+    <!-- FULL-WIDTH ABOUT PROPERTY SECTION -->
+    <section class="about-property-section" id="aboutPropertySection">
+
+      <h2 class="section-title">About Property</h2>
+
+      <p class="description" id="aboutPropertyDescription">
+        Additional information about this property will appear here.
+      </p>
+
+      <div class="about-property-bottom">
+
+        <div class="about-property-point">
+          <strong>Property Information</strong>
+          <span>
+            Review the listing details and confirm any missing specifications
+            with the property representative.
+          </span>
+        </div>
+
+        <div class="about-property-point">
+          <strong>Location &amp; Connectivity</strong>
+          <span>
+            Ask about nearby roads, public transport, schools, workplaces
+            and other relevant facilities.
+          </span>
+        </div>
+
+        <div class="about-property-point">
+          <strong>Arrange a Visit</strong>
+          <span>
+            Contact Adhao Realty to discuss the property and request
+            a visit, subject to availability.
+          </span>
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
+  <!-- IMAGE LIGHTBOX -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Property image viewer">
+
+    <button
+      type="button"
+      class="lightbox-close"
+      id="lightboxClose"
+      aria-label="Close image viewer">×</button>
+
+    <button
+      type="button"
+      class="lightbox-prev"
+      id="lightboxPrev"
+      aria-label="Previous image">‹</button>
+
+    <div class="lightbox-image-wrap">
+      <img id="lightboxImage" src="" alt="Property photo">
+    </div>
+
+    <button
+      type="button"
+      class="lightbox-next"
+      id="lightboxNext"
+      aria-label="Next image">›</button>
+
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+
+  </div>
+
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="container">
-      <div class="footer-inner">
-        <div>
-          <div class="footer-brand">ADHAO <span>REALTY</span></div>
-          <p>Your trusted partner in real estate.</p>
+
+      <div class="footer-grid">
+
+        <div class="footer-brand-column">
+
+          <a href="index.html" aria-label="Adhao Realty home">
+            <img
+              class="footer-logo"
+              src="assets/logoweb.webp"
+              alt="Adhao Realty logo"
+              loading="lazy">
+          </a>
+
+          <p class="footer-about">
+            Adhao Realty helps customers explore residential, commercial
+            and investment property opportunities across Mumbai and Pune.
+            Contact us to discuss your requirements.
+          </p>
+
         </div>
 
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="properties.html">Properties</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="https://wa.me/917249310062" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <div>
+
+          <h3>Quick Links</h3>
+
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="properties.html">All Properties</a>
+            <a href="properties.html?city=Mumbai">Mumbai Properties</a>
+            <a href="properties.html?city=Pune">Pune Properties</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+
         </div>
+
+        <div>
+
+          <h3>Contact Us</h3>
+
+          <div class="footer-links">
+            <a href="tel:+917249310062">+91 72493 10062</a>
+            <a href="mailto:adhaorealty@gmail.com">adhaorealty@gmail.com</a>
+            <a
+              href="https://wa.me/917249310062"
+              target="_blank"
+              rel="noopener noreferrer">
+              WhatsApp
+            </a>
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="footer-bottom">
+      <div class="copyright">
         © <span id="currentYear"></span> Adhao Realty. All rights reserved.
       </div>
+
     </div>
   </footer>
 
-  <!-- IMAGE LIGHTBOX -->
-
-  <div class="lightbox" id="lightbox" role="dialog"
-       aria-label="Property image viewer" aria-modal="true">
-    <button class="lightbox-close" id="lightboxClose"
-            type="button" aria-label="Close image viewer">×</button>
-    <button class="lightbox-prev" id="lightboxPrev"
-            type="button" aria-label="Previous image">‹</button>
-    <img id="lightboxImage" src="" alt="Property photo">
-    <button class="lightbox-next" id="lightboxNext"
-            type="button" aria-label="Next image">›</button>
-  </div>
-
-  <!-- Load the project's Supabase client before this script.
-       js/supabase.js must define window.supabaseClient. -->
-
+  <!-- SUPABASE CLIENT -->
+  <!-- Keep this script path consistent with your existing project. -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js"></script>
 
   <script>
     "use strict";
 
+    /* ==========================================
+       CONFIGURATION
+    ========================================== */
+
     const WHATSAPP_NUMBER = "917249310062";
+    const PHONE_NUMBER = "+917249310062";
 
     const $ = (id) => document.getElementById(id);
 
+    const params = new URLSearchParams(window.location.search);
+    const requestedId = params.get("id");
+
     let currentProperty = null;
-    let propertyImages = [];
-    let lightboxIndex = 0;
+    let galleryImages = [];
+    let currentImageIndex = 0;
 
     $("currentYear").textContent = new Date().getFullYear();
+
+    /* ==========================================
+       SAFE DISPLAY HELPERS
+    ========================================== */
 
     function firstValue(object, keys, fallback = "") {
       for (const key of keys) {
         const value = object?.[key];
 
-        if (value !== null && value !== undefined && value !== "") {
+        if (value !== undefined && value !== null && value !== "") {
           return value;
         }
       }
@@ -1238,273 +1836,351 @@
       return fallback;
     }
 
-    function formatPrice(value) {
-      if (value === null || value === undefined || value === "") {
-        return "Contact for Price";
+    function displayText(value, fallback = "Not specified") {
+      if (value === undefined || value === null || value === "") {
+        return fallback;
       }
 
-      if (typeof value === "number" ||
-          (typeof value === "string" && /^[\d,.]+$/.test(value.trim()))) {
-        const number = Number(String(value).replace(/,/g, ""));
+      if (typeof value === "boolean") {
+        return value ? "Yes" : "No";
+      }
 
-        if (!Number.isFinite(number)) {
-          return String(value);
-        }
-
-        if (number >= 10000000) {
-          const crore = number / 10000000;
-          return "₹" + crore.toLocaleString("en-IN", {
-            maximumFractionDigits: 2
-          }) + " Cr";
-        }
-
-        if (number >= 100000) {
-          const lakh = number / 100000;
-          return "₹" + lakh.toLocaleString("en-IN", {
-            maximumFractionDigits: 2
-          }) + " Lac";
-        }
-
-        return "₹" + number.toLocaleString("en-IN");
+      if (Array.isArray(value)) {
+        return value.length ? value.join(", ") : fallback;
       }
 
       return String(value);
     }
 
-    function cleanString(value) {
-      if (value === null || value === undefined) return "";
-      return String(value).trim();
+    function setText(id, value, fallback = "Not specified") {
+      $(id).textContent = displayText(value, fallback);
     }
 
-    function normalizeArray(value) {
-      if (Array.isArray(value)) return value;
+    function cleanText(value) {
+      return String(value ?? "").trim();
+    }
 
-      if (typeof value === "string" && value.trim()) {
-        try {
-          const parsed = JSON.parse(value);
-          if (Array.isArray(parsed)) return parsed;
-        } catch (_) {
-          // A regular string is handled as a single value below.
+    function formatPrice(value) {
+      if (value === null || value === undefined || value === "") {
+        return "Contact for Price";
+      }
+
+      if (typeof value === "string") {
+        const trimmed = value.trim();
+        return trimmed || "Contact for Price";
+      }
+
+      if (typeof value === "number" && Number.isFinite(value)) {
+        return "₹" + value.toLocaleString("en-IN");
+      }
+
+      return "Contact for Price";
+    }
+
+    function formatArea(value, unit) {
+      if (value === undefined || value === null || value === "") {
+        return "Not specified";
+      }
+
+      const areaText = String(value);
+      if (unit && !areaText.toLowerCase().includes(String(unit).toLowerCase())) {
+        return areaText + " " + unit;
+      }
+
+      return areaText;
+    }
+
+    function safeImageUrl(value) {
+      if (typeof value !== "string" || !value.trim()) {
+        return "";
+      }
+
+      try {
+        const url = new URL(value, window.location.href);
+
+        if (!["http:", "https:"].includes(url.protocol)) {
+          return "";
         }
 
-        return value.split(/\r?\n|[,;]\s*/).filter(Boolean);
+        return url.href;
+      } catch {
+        return "";
+      }
+    }
+
+    function getPropertyImages(property) {
+      const possibleArrays = [
+        property.images,
+        property.gallery,
+        property.photos,
+        property.image_urls,
+        property.property_images
+      ];
+
+      let values = [];
+
+      for (const candidate of possibleArrays) {
+        if (Array.isArray(candidate)) {
+          values = candidate;
+          break;
+        }
+      }
+
+      const imageUrls = values.map((item) => {
+        if (typeof item === "string") return item;
+
+        if (item && typeof item === "object") {
+          return firstValue(item, ["url", "image_url", "src", "publicUrl"], "");
+        }
+
+        return "";
+      });
+
+      const mainImage = firstValue(property, [
+        "image_url",
+        "image",
+        "cover_image",
+        "thumbnail",
+        "photo_url"
+      ], "");
+
+      if (mainImage) {
+        imageUrls.unshift(mainImage);
+      }
+
+      const valid = imageUrls
+        .map(safeImageUrl)
+        .filter(Boolean);
+
+      return [...new Set(valid)];
+    }
+
+    function normalizeList(value) {
+      if (Array.isArray(value)) {
+        return value
+          .map((item) => {
+            if (typeof item === "string") return item;
+
+            if (item && typeof item === "object") {
+              return firstValue(item, ["name", "title", "label", "amenity"], "");
+            }
+
+            return "";
+          })
+          .map(cleanText)
+          .filter(Boolean);
+      }
+
+      if (typeof value === "string" && value.trim()) {
+        return value
+          .split(/[,;\n]/)
+          .map((item) => item.trim())
+          .filter(Boolean);
       }
 
       return [];
     }
 
-    function getImageUrl(item) {
-      if (typeof item === "string") return item;
+    function getAmenities(property) {
+      return normalizeList(firstValue(property, [
+        "amenities",
+        "features",
+        "facilities",
+        "property_amenities"
+      ], []));
+    }
 
-      if (item && typeof item === "object") {
-        return firstValue(item, [
-          "url",
-          "src",
-          "image_url",
-          "publicUrl",
-          "public_url"
-        ], "");
+    function formatBeds(value) {
+      if (value === undefined || value === null || value === "") {
+        return "Not specified";
       }
 
-      return "";
+      const textValue = String(value);
+      if (/studio/i.test(textValue)) return textValue;
+
+      return /^\d+$/.test(textValue) ? textValue + " BHK" : textValue;
     }
 
-    function normalizeImages(property) {
-      const raw = firstValue(property, [
-        "images",
-        "gallery",
-        "photos",
-        "image_urls",
-        "property_images"
-      ], []);
+    /* ==========================================
+       RENDER GALLERY
+    ========================================== */
 
-      const images = normalizeArray(raw)
-        .map(getImageUrl)
-        .filter(url => typeof url === "string" && /^https?:\/\//i.test(url));
+    function renderGallery(property) {
+      galleryImages = getPropertyImages(property);
 
-      const singleImage = firstValue(property, [
-        "image_url",
-        "image",
-        "cover_image",
-        "thumbnail"
-      ], "");
+      const buttons = [
+        $("galleryMainButton"),
+        $("gallerySideButton1"),
+        $("gallerySideButton2")
+      ];
 
-      if (typeof singleImage === "string" &&
-          /^https?:\/\//i.test(singleImage) &&
-          !images.includes(singleImage)) {
-        images.unshift(singleImage);
+      const imageElements = [
+        $("galleryMainImage"),
+        $("gallerySideImage1"),
+        $("gallerySideImage2")
+      ];
+
+      if (!galleryImages.length) {
+        $("propertyGallery").classList.add("hidden");
+        return;
       }
 
-      return [...new Set(images)];
-    }
+      $("propertyGallery").classList.remove("hidden");
 
-    function setText(id, value, fallback = "—") {
-      $(id).textContent = cleanString(value) || fallback;
-    }
+      buttons.forEach((button, index) => {
+        const image = imageElements[index];
+        const src = galleryImages[index];
 
-    function safeExternalUrl(url) {
-      try {
-        const parsed = new URL(url);
-        if (parsed.protocol === "https:" || parsed.protocol === "http:") {
-          return parsed.href;
+        if (src) {
+          button.classList.remove("gallery-placeholder");
+          button.classList.remove("hidden");
+          image.src = src;
+          image.alt = cleanText(firstValue(property, ["title", "name"], "Property")) +
+            " photo " + (index + 1);
+
+          image.onerror = function () {
+            button.classList.add("hidden");
+          };
+        } else {
+          button.classList.add("hidden");
         }
-      } catch (_) {
-        // Ignore invalid URLs.
-      }
+      });
 
-      return "";
-    }
+      $("galleryCount").textContent =
+        galleryImages.length + (galleryImages.length === 1 ? " Photo" : " Photos") +
+        " · View All";
 
-    function createGalleryImage(url, alt, index, className) {
-      const wrapper = document.createElement("div");
-      wrapper.className = className;
-
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = alt || "Property photo";
-      img.loading = index === 0 ? "eager" : "lazy";
-      img.addEventListener("click", () => openLightbox(index));
-
-      img.addEventListener("error", () => {
-        wrapper.innerHTML = "";
-        const placeholder = document.createElement("div");
-        placeholder.className = "gallery-placeholder";
-        placeholder.textContent = "Image could not be loaded";
-        wrapper.appendChild(placeholder);
-      }, { once: true });
-
-      wrapper.appendChild(img);
-      return wrapper;
-    }
-
-    function renderGallery() {
-      const main = $("galleryMain");
-      const second = $("gallerySecond");
-      const third = $("galleryThird");
-
-      main.innerHTML = "";
-      second.innerHTML = "";
-      third.innerHTML = "";
-
-      if (propertyImages.length === 0) {
-        [main, second, third].forEach((wrapper, index) => {
-          const placeholder = document.createElement("div");
-          placeholder.className = "gallery-placeholder";
-          placeholder.textContent = index === 0
-            ? "No property images available"
-            : "Image unavailable";
-          wrapper.appendChild(placeholder);
-        });
-        return;
-      }
-
-      main.appendChild(createGalleryImage(
-        propertyImages[0],
-        currentProperty.title,
-        0,
-        "gallery-main"
-      ).firstElementChild);
-
-      if (propertyImages[1]) {
-        second.appendChild(createGalleryImage(
-          propertyImages[1],
-          currentProperty.title + " - Photo 2",
-          1,
-          "gallery-small"
-        ).firstElementChild);
-      } else {
-        second.innerHTML = '<div class="gallery-placeholder">No additional photo</div>';
-      }
-
-      if (propertyImages[2]) {
-        third.appendChild(createGalleryImage(
-          propertyImages[2],
-          currentProperty.title + " - Photo 3",
-          2,
-          "gallery-small"
-        ).firstElementChild);
-      } else {
-        third.innerHTML = '<div class="gallery-placeholder">No additional photo</div>';
-      }
-
-      if (propertyImages.length > 3) {
-        const count = document.createElement("span");
-        count.className = "gallery-count";
-        count.textContent = "+" + (propertyImages.length - 3) + " more photos";
-        third.appendChild(count);
-      }
-
-      main.querySelector("img")?.addEventListener("click", () => openLightbox(0));
-      second.querySelector("img")?.addEventListener("click", () => openLightbox(1));
-      third.querySelector("img")?.addEventListener("click", () => openLightbox(2));
-    }
-
-    function renderList(id, items, emptyText) {
-      const list = $(id);
-      list.innerHTML = "";
-
-      const cleaned = items
-        .map(item => cleanString(
-          typeof item === "object"
-            ? firstValue(item, ["name", "title", "label", "value"], "")
-            : item
-        ))
-        .filter(Boolean);
-
-      if (cleaned.length === 0) {
-        const li = document.createElement("li");
-        li.className = "empty-message";
-        li.textContent = emptyText;
-        list.appendChild(li);
-        return;
-      }
-
-      cleaned.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        list.appendChild(li);
+      buttons.forEach((button, index) => {
+        button.onclick = () => openLightbox(index);
       });
     }
 
-    function renderDetails(property) {
-      const title = firstValue(property, [
-        "title",
-        "name",
-        "property_name"
-      ], "Property Details");
+    /* ==========================================
+       LIGHTBOX
+    ========================================== */
 
+    function openLightbox(index) {
+      if (!galleryImages.length) return;
+
+      currentImageIndex =
+        (index + galleryImages.length) % galleryImages.length;
+
+      updateLightbox();
+
+      $("lightbox").classList.add("open");
+      document.body.classList.add("viewer-open");
+      $("lightboxClose").focus();
+    }
+
+    function updateLightbox() {
+      $("lightboxImage").src = galleryImages[currentImageIndex];
+      $("lightboxImage").alt =
+        "Property photo " + (currentImageIndex + 1);
+
+      $("lightboxCounter").textContent =
+        (currentImageIndex + 1) + " / " + galleryImages.length;
+
+      const multiple = galleryImages.length > 1;
+
+      $("lightboxPrev").classList.toggle("hidden", !multiple);
+      $("lightboxNext").classList.toggle("hidden", !multiple);
+    }
+
+    function closeLightbox() {
+      $("lightbox").classList.remove("open");
+      document.body.classList.remove("viewer-open");
+    }
+
+    function moveLightbox(direction) {
+      if (!galleryImages.length) return;
+
+      currentImageIndex =
+        (currentImageIndex + direction + galleryImages.length) %
+        galleryImages.length;
+
+      updateLightbox();
+    }
+
+    $("lightboxClose").addEventListener("click", closeLightbox);
+    $("lightboxPrev").addEventListener("click", () => moveLightbox(-1));
+    $("lightboxNext").addEventListener("click", () => moveLightbox(1));
+
+    $("lightbox").addEventListener("click", (event) => {
+      if (event.target === $("lightbox")) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!$("lightbox").classList.contains("open")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") moveLightbox(-1);
+      if (event.key === "ArrowRight") moveLightbox(1);
+    });
+
+    /* ==========================================
+       RENDER AMENITIES
+    ========================================== */
+
+    function renderAmenities(property) {
+      const grid = $("amenitiesGrid");
+      grid.replaceChildren();
+
+      const amenities = getAmenities(property);
+
+      if (!amenities.length) {
+        const note = document.createElement("p");
+        note.className = "empty-note";
+        note.textContent = "No amenities have been provided for this listing.";
+        grid.appendChild(note);
+        return;
+      }
+
+      amenities.forEach((amenity) => {
+        const item = document.createElement("div");
+        item.className = "amenity";
+
+        const icon = document.createElement("span");
+        icon.textContent = "✓";
+        icon.setAttribute("aria-hidden", "true");
+
+        const text = document.createElement("span");
+        text.textContent = amenity;
+
+        item.append(icon, text);
+        grid.appendChild(item);
+      });
+    }
+
+    /* ==========================================
+       RENDER PROPERTY DETAILS
+    ========================================== */
+
+    function renderProperty(property) {
+      currentProperty = property;
+
+      const title = firstValue(property, ["title", "name", "property_name"], "Property Details");
       const city = firstValue(property, ["city"], "");
-      const locality = firstValue(property, [
-        "locality",
-        "area_name",
-        "neighborhood"
-      ], "");
+      const locality = firstValue(property, ["locality", "area_name", "neighbourhood"], "");
+      const address = firstValue(property, ["address", "full_address", "location"], "");
+      const locationParts = [locality, city].filter(Boolean);
+      const locationText = address || locationParts.join(", ") || "Location available on enquiry";
 
-      const address = firstValue(property, [
-        "address",
-        "full_address",
-        "location"
-      ], "");
-
-      const locationText = [address, locality, city]
-        .filter(Boolean)
-        .filter((value, index, arr) => arr.indexOf(value) === index)
-        .join(", ");
-
-      const price = firstValue(property, [
+      const price = formatPrice(firstValue(property, [
         "price",
         "asking_price",
         "price_text",
         "display_price"
-      ], "");
+      ], ""));
 
-      const type = firstValue(property, [
+      const propertyType = firstValue(property, [
         "property_type",
         "type",
         "category"
-      ], "Not specified");
+      ], "Property");
 
-      const area = firstValue(property, [
+      const areaValue = firstValue(property, [
         "area",
         "area_sqft",
         "size",
@@ -1515,16 +2191,21 @@
       const areaUnit = firstValue(property, [
         "area_unit",
         "unit"
-      ], "sq. ft.");
+      ], "sq ft");
+
+      const area = formatArea(areaValue, areaUnit);
 
       const bedrooms = firstValue(property, [
         "bedrooms",
-        "bhk"
+        "bhk",
+        "bedroom",
+        "beds"
       ], "");
 
       const bathrooms = firstValue(property, [
         "bathrooms",
-        "bathroom_count"
+        "bathroom",
+        "baths"
       ], "");
 
       const description = firstValue(property, [
@@ -1532,166 +2213,133 @@
         "details",
         "property_description",
         "overview"
-      ], "");
+      ], "Please contact Adhao Realty for further details about this property.");
 
       const status = firstValue(property, [
         "status",
         "listing_status"
-      ], "Available");
-
-      document.title = title + " | Adhao Realty";
-
-      setText("propertyTitle", title);
-      setText("propertyLocation", locationText, "Location available on request");
-      setText("propertyPrice", formatPrice(price));
-      setText("propertyStatus", status);
-      setText("factType", type);
-      setText("factArea", area ? Number.isNaN(Number(area))
-        ? area
-        : Number(area).toLocaleString("en-IN") + " " + areaUnit
-        : "", "Not specified");
-      setText("factBedrooms", bedrooms ? bedrooms + (String(bedrooms).toLowerCase().includes("bhk") ? "" : " BHK") : "", "Not specified");
-      setText("factBathrooms", bathrooms ? bathrooms : "", "Not specified");
-
-      $("propertyDescription").textContent =
-        cleanString(description) || "A detailed description has not been provided for this property.";
-
-      if (!cleanString(description)) {
-        $("propertyDescription").classList.add("empty");
-      } else {
-        $("propertyDescription").classList.remove("empty");
-      }
-
-      const details = [];
+      ], "Contact for Availability");
 
       const furnishing = firstValue(property, [
         "furnishing",
         "furnishing_status"
+      ], "Not specified");
+
+      const id = firstValue(property, ["id", "property_id"], requestedId || "—");
+
+      document.title = title + " | Adhao Realty";
+
+      $("breadcrumbProperty").textContent = title;
+      $("propertyTitle").textContent = title;
+      $("propertyLocation").textContent = locationText;
+      $("propertyPrice").textContent = price;
+      $("sidebarPrice").textContent = price;
+      $("propertyTypeBadge").textContent = displayText(propertyType, "Property");
+      $("propertyStatusBadge").textContent = displayText(status, "Status");
+
+      setText("factType", propertyType);
+      setText("factArea", area);
+      setText("factBedrooms", bedrooms ? formatBeds(bedrooms) : "Not specified");
+      setText("factBathrooms", bathrooms ? String(bathrooms) : "Not specified");
+
+      setText("metaId", id);
+      setText("metaCategory", propertyType);
+      setText("metaCity", city);
+      setText("metaLocality", locality);
+      setText("metaArea", area);
+      setText("metaPrice", price);
+      setText("metaFurnishing", furnishing);
+      setText("metaStatus", status);
+
+      $("propertyDescription").textContent = description;
+      $("aboutPropertyDescription").textContent = description;
+
+      $("locationDescription").textContent =
+        locationText === "Location available on enquiry"
+          ? "Please contact Adhao Realty to confirm the property's location."
+          : "Property location: " + locationText +
+            ". Please confirm the exact address before arranging a visit.";
+
+      renderGallery(property);
+      renderAmenities(property);
+      renderMap(property, locationText);
+
+      $("loadingPanel").classList.add("hidden");
+      $("errorPanel").classList.add("hidden");
+      $("propertyPage").classList.remove("hidden");
+    }
+
+    /* ==========================================
+       MAP
+    ========================================== */
+
+    function renderMap(property, locationText) {
+      const explicitMap = firstValue(property, [
+        "map_embed_url",
+        "map_url",
+        "google_maps_url"
       ], "");
 
-      const possession = firstValue(property, [
-        "possession",
-        "possession_status",
-        "availability_date"
-      ], "");
+      if (explicitMap) {
+        try {
+          const url = new URL(explicitMap);
 
-      const facing = firstValue(property, ["facing"], "");
-      const floor = firstValue(property, ["floor", "floor_number"], "");
-      const parking = firstValue(property, ["parking", "parking_spaces"], "");
-      const transaction = firstValue(property, [
-        "transaction_type",
-        "listing_for"
-      ], "");
-      const project = firstValue(property, [
-        "project_name",
-        "society_name",
-        "building_name"
-      ], "");
-
-      [
-        ["Property Type", type],
-        ["Furnishing", furnishing],
-        ["Possession", possession],
-        ["Facing", facing],
-        ["Floor", floor],
-        ["Parking", parking],
-        ["Transaction", transaction],
-        ["Project / Society", project]
-      ].forEach(([label, value]) => {
-        if (cleanString(value)) {
-          details.push(label + ": " + value);
+          if (url.protocol === "https:") {
+            $("propertyMap").src = url.href;
+            return;
+          }
+        } catch {
+          // Use the location query below if the supplied URL is invalid.
         }
-      });
-
-      renderList(
-        "propertyDetailsList",
-        details,
-        "Additional property details have not been provided."
-      );
-
-      const amenities = normalizeArray(firstValue(property, [
-        "amenities",
-        "features",
-        "facilities",
-        "property_amenities"
-      ], []));
-
-      renderList(
-        "amenitiesList",
-        amenities,
-        "Amenities have not been specified for this property."
-      );
-
-      propertyImages = normalizeImages(property);
-      renderGallery();
-
-      const mapQuery = locationText || title;
-      $("mapLocationText").textContent =
-        locationText || "Contact Adhao Realty for the exact property location.";
-
-      if (mapQuery) {
-        const mapUrl = "https://www.google.com/maps?q=" +
-          encodeURIComponent(mapQuery) + "&output=embed";
-
-        const iframe = document.createElement("iframe");
-        iframe.src = mapUrl;
-        iframe.title = "Map showing " + mapQuery;
-        iframe.loading = "lazy";
-        iframe.referrerPolicy = "no-referrer-when-downgrade";
-        iframe.allowFullscreen = true;
-
-        $("mapContainer").innerHTML = "";
-        $("mapContainer").appendChild(iframe);
-
-        const link = $("openMapLink");
-        link.href = "https://www.google.com/maps/search/?api=1&query=" +
-          encodeURIComponent(mapQuery);
-        link.classList.remove("hidden");
       }
 
-      currentProperty = {
-        ...property,
-        title,
-        city,
-        locationText,
-        price: formatPrice(price)
-      };
+      const query = cleanText(locationText);
 
-      $("propertyContent").classList.remove("hidden");
-      $("loadingState").classList.add("hidden");
-      $("errorState").classList.add("hidden");
-    }
-
-    function showError(title, message) {
-      $("loadingState").classList.add("hidden");
-      $("propertyContent").classList.add("hidden");
-      $("errorState").classList.remove("hidden");
-      setText("errorTitle", title);
-      setText("errorMessage", message);
-    }
-
-    async function loadProperty() {
-      const params = new URLSearchParams(window.location.search);
-      const requestedId = params.get("id");
-
-      if (!requestedId) {
-        showError(
-          "Property ID Missing",
-          "Please open this page from a property listing so the correct property can be displayed."
-        );
+      if (!query || query === "Location available on enquiry") {
+        $("propertyMap").src = "about:blank";
+        $("propertyMap").classList.add("hidden");
         return;
       }
 
-      if (!window.supabaseClient) {
+      $("propertyMap").classList.remove("hidden");
+
+      $("propertyMap").src =
+        "https://maps.google.com/maps?q=" +
+        encodeURIComponent(query + ", India") +
+        "&output=embed";
+    }
+
+    /* ==========================================
+       LOAD PROPERTY FROM SUPABASE
+    ========================================== */
+
+    async function loadProperty() {
+      if (!requestedId) {
         showError(
-          "Connection Error",
-          "The Supabase client was not initialized. Check that js/supabase.js loads correctly and defines window.supabaseClient."
+          "Property ID Missing",
+          "Open this page from a property card, or use a URL containing ?id=PROPERTY_ID."
         );
         return;
       }
 
       try {
-        const { data, error } = await window.supabaseClient
+        const client = window.supabaseClient;
+
+        if (!client) {
+          throw new Error(
+            "Supabase client is not available. Check js/supabase.js and ensure it loads correctly."
+          );
+        }
+
+        /*
+          This query expects a public table named "properties"
+          and an "is_published" boolean column.
+
+          If your database uses a different publication column,
+          update this query to match your actual schema.
+        */
+
+        const { data, error } = await client
           .from("properties")
           .select("*")
           .eq("id", requestedId)
@@ -1699,138 +2347,216 @@
           .maybeSingle();
 
         if (error) {
-          console.error("Supabase property query failed:", error);
-          showError(
-            "Unable to Load Property",
-            "We couldn't retrieve the property. Please check the properties table, database permissions, and published-property settings."
-          );
-          return;
+          throw error;
         }
 
         if (!data) {
           showError(
             "Property Not Available",
-            "This property could not be found or is not currently published."
+            "This property may have been removed, unpublished or the ID may be incorrect."
           );
           return;
         }
 
-        renderDetails(data);
+        renderProperty(data);
+
       } catch (error) {
-        console.error("Unexpected property loading error:", error);
+        console.error("Property loading error:", error);
+
         showError(
-          "Something Went Wrong",
-          "Please refresh the page or return to the properties page."
+          "Unable to Load Property",
+          error?.message ||
+            "Please check your internet connection and Supabase settings, then try again."
         );
       }
     }
 
-    /* WHATSAPP ENQUIRY */
+    function showError(title, message) {
+      $("loadingPanel").classList.add("hidden");
+      $("propertyPage").classList.add("hidden");
+      $("errorPanel").classList.remove("hidden");
+
+      $("errorTitle").textContent = title;
+      $("errorMessage").textContent = message;
+    }
+
+    /* ==========================================
+       WHATSAPP ENQUIRY
+    ========================================== */
+
+    function buildEnquiryMessage() {
+      const form = $("enquiryForm");
+      const formData = new FormData(form);
+
+      const name = cleanText(formData.get("name"));
+      const phone = cleanText(formData.get("phone"));
+      const email = cleanText(formData.get("email"));
+      const requirement = cleanText(formData.get("requirement"));
+      const message = cleanText(formData.get("message"));
+
+      const title = currentProperty
+        ? firstValue(currentProperty, ["title", "name", "property_name"], "Property")
+        : "Property";
+
+      const id = currentProperty
+        ? firstValue(currentProperty, ["id", "property_id"], requestedId || "—")
+        : requestedId || "—";
+
+      const location = currentProperty
+        ? firstValue(currentProperty, ["address", "full_address", "location"], [
+            firstValue(currentProperty, ["locality", "area_name"], ""),
+            firstValue(currentProperty, ["city"], "")
+          ].filter(Boolean).join(", "))
+        : "";
+
+      const price = currentProperty
+        ? formatPrice(firstValue(currentProperty, [
+            "price",
+            "asking_price",
+            "price_text",
+            "display_price"
+          ], ""))
+        : "Contact for Price";
+
+      const lines = [
+        "Hello Adhao Realty,",
+        "",
+        "I would like to enquire about this property.",
+        "",
+        "Property: " + title,
+        "Property ID: " + id,
+        "Location: " + (location || "Please confirm"),
+        "Price: " + price,
+        "",
+        "Name: " + name,
+        "Mobile: " + phone,
+        "Email: " + (email || "Not provided"),
+        "Requirement: " + requirement,
+        "Message: " + (message || "Please share more information."),
+        "",
+        "Please contact me regarding this property."
+      ];
+
+      return lines.join("\n");
+    }
 
     $("enquiryForm").addEventListener("submit", function (event) {
       event.preventDefault();
 
-      if (!currentProperty) return;
+      const form = $("enquiryForm");
 
-      const name = $("customerName").value.trim();
-      const phone = $("customerPhone").value.trim();
-      const message = $("customerMessage").value.trim();
+      if (!form.reportValidity()) return;
 
-      if (!name || !phone) {
-        alert("Please enter your name and mobile number.");
+      const phone = cleanText($("customerPhone").value);
+
+      if (phone.replace(/\D/g, "").length < 7) {
+        $("enquiryStatus").className = "enquiry-status error";
+        $("enquiryStatus").textContent =
+          "Please enter a valid contact number.";
         return;
       }
 
-      const text = [
-        "Hello Adhao Realty,",
-        "",
-        "I am interested in this property:",
-        "Property: " + currentProperty.title,
-        "Location: " + (currentProperty.locationText || "Not specified"),
-        "Price: " + currentProperty.price,
-        "Property page: " + window.location.href,
-        "",
-        "My Name: " + name,
-        "My Mobile: " + phone,
-        "Message: " + (message || "Please share more details."),
-        "",
-        "Please contact me regarding availability and a site visit."
-      ].join("\n");
+      const message = buildEnquiryMessage();
+      const url =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
 
-      const whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER +
-        "?text=" + encodeURIComponent(text);
+      $("enquiryStatus").className = "enquiry-status success";
+      $("enquiryStatus").textContent =
+        "Opening WhatsApp. Review your message and press Send there.";
 
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      window.open(url, "_blank", "noopener,noreferrer");
     });
 
-    /* SHARE PROPERTY */
+    /* ==========================================
+       CALL BUTTON
+    ========================================== */
 
-    $("shareButton").addEventListener("click", async function () {
-      const shareData = {
-        title: currentProperty?.title || "Adhao Realty Property",
-        text: "Explore this property with Adhao Realty.",
-        url: window.location.href
-      };
+    $("callButton").addEventListener("click", function () {
+      window.location.href = "tel:" + PHONE_NUMBER;
+    });
+
+    /* ==========================================
+       COPY PROPERTY INFORMATION
+    ========================================== */
+
+    $("copyPropertyButton").addEventListener("click", async function () {
+      if (!currentProperty) return;
+
+      const title = firstValue(currentProperty, ["title", "name"], "Property");
+      const id = firstValue(currentProperty, ["id", "property_id"], requestedId || "—");
+      const location = firstValue(currentProperty, [
+        "address",
+        "full_address",
+        "location"
+      ], [
+        firstValue(currentProperty, ["locality", "area_name"], ""),
+        firstValue(currentProperty, ["city"], "")
+      ].filter(Boolean).join(", "));
+
+      const price = formatPrice(firstValue(currentProperty, [
+        "price",
+        "asking_price",
+        "price_text",
+        "display_price"
+      ], ""));
+
+      const shareText = [
+        title,
+        "Property ID: " + id,
+        "Location: " + (location || "Contact for details"),
+        "Price: " + price,
+        "Property page: " + window.location.href,
+        "Adhao Realty: +91 72493 10062"
+      ].join("\n");
 
       try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-        } else if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(window.location.href);
-          alert("Property link copied to clipboard.");
-        } else {
-          window.prompt("Copy this property link:", window.location.href);
-        }
+        await navigator.clipboard.writeText(shareText);
+
+        $("enquiryStatus").className = "enquiry-status success";
+        $("enquiryStatus").textContent = "Property information copied.";
       } catch (error) {
-        if (error.name !== "AbortError") {
-          window.prompt("Copy this property link:", window.location.href);
-        }
+        console.error("Clipboard error:", error);
+
+        $("enquiryStatus").className = "enquiry-status error";
+        $("enquiryStatus").textContent =
+          "Unable to copy automatically. You can copy the property page URL from your browser.";
       }
     });
 
-    /* LIGHTBOX */
+    /* ==========================================
+       MOBILE NAVIGATION
+    ========================================== */
 
-    function openLightbox(index) {
-      if (!propertyImages.length) return;
+    const menuToggle = $("menuToggle");
+    const navLinks = $("navLinks");
 
-      lightboxIndex = (index + propertyImages.length) % propertyImages.length;
-      $("lightboxImage").src = propertyImages[lightboxIndex];
-      $("lightboxImage").alt =
-        (currentProperty?.title || "Property") + " photo " +
-        (lightboxIndex + 1);
+    menuToggle.addEventListener("click", function () {
+      const open = navLinks.classList.toggle("open");
 
-      $("lightbox").classList.add("open");
-      document.body.style.overflow = "hidden";
-      $("lightboxClose").focus();
-    }
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute(
+        "aria-label",
+        open ? "Close navigation" : "Open navigation"
+      );
 
-    function closeLightbox() {
-      $("lightbox").classList.remove("open");
-      document.body.style.overflow = "";
-    }
-
-    function changeLightboxImage(direction) {
-      if (!propertyImages.length) return;
-      openLightbox(lightboxIndex + direction);
-    }
-
-    $("lightboxClose").addEventListener("click", closeLightbox);
-    $("lightboxPrev").addEventListener("click", () => changeLightboxImage(-1));
-    $("lightboxNext").addEventListener("click", () => changeLightboxImage(1));
-
-    $("lightbox").addEventListener("click", function (event) {
-      if (event.target === this) closeLightbox();
+      menuToggle.textContent = open ? "×" : "☰";
     });
 
-    document.addEventListener("keydown", function (event) {
-      if (!$("lightbox").classList.contains("open")) return;
-
-      if (event.key === "Escape") closeLightbox();
-      if (event.key === "ArrowLeft") changeLightboxImage(-1);
-      if (event.key === "ArrowRight") changeLightboxImage(1);
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
+      });
     });
 
-    /* START */
+    /* ==========================================
+       START
+    ========================================== */
 
     loadProperty();
   </script>
