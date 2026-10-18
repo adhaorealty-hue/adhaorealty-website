@@ -1,13 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Adhao Realty | Find Your Dream Property</title>
-  <meta name="description" content="Discover residential, commercial and investment properties in Mumbai and Pune with Adhao Realty.">
-
+  <meta name="description" content="Find residential, commercial and investment properties in Mumbai and Pune with Adhao Realty.">
   <link rel="icon" type="image/webp" href="assets/logoweb.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +14,7 @@
     :root {
       --gold: #edbd55;
       --gold-dark: #b98224;
+      --navy: #111c2a;
       --green: #12221d;
       --text: #17202b;
       --muted: #727983;
@@ -24,14 +22,11 @@
       --border: #e8e7e2;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 30px;
     }
 
     body {
@@ -41,182 +36,141 @@
       line-height: 1.5;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, select {
-      font: inherit;
-    }
-
-    img {
-      max-width: 100%;
-    }
+    a { color: inherit; text-decoration: none; }
+    button, select { font: inherit; }
+    img { max-width: 100%; }
 
     .container {
       width: min(1180px, 92%);
-      margin: auto;
+      margin: 0 auto;
     }
 
-    /* ==============================
-       HERO SECTION
-       Full image without cropping
-    ============================== */
+    /* HERO WITH TRANSPARENT HEADER */
 
-    .hero {
-      position: relative;
-      isolation: isolate;
-      width: 100%;
-      overflow: hidden;
-      background: #15212c;
-      color: white;
-    }
+    
+.hero {
+  min-height: 420px;
+  position: relative;
+  color: #fff;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12,22,33,.82),
+      rgba(12,22,33,.35) 65%,
+      rgba(12,22,33,.12)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(9,20,27,.6),
+      transparent 50%
+    ),
+    url("assets/background.webp")
+    center 48% / cover no-repeat;
+}
 
-    .hero-background {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-width: none;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(10, 20, 32, .84) 0%,
-          rgba(10, 20, 32, .56) 38%,
-          rgba(10, 20, 32, .12) 100%
-        ),
-        linear-gradient(
-          0deg,
-          rgba(5, 16, 17, .62) 0%,
-          transparent 45%
-        );
-      pointer-events: none;
-    }
-
-    /* ==============================
-       TRANSPARENT NAVBAR
-    ============================== */
 
     .site-header {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 10;
-      background: transparent;
+      z-index: 20;
+      background: transparent !important;
+      border: 0;
+      box-shadow: none;
     }
 
     .header-inner {
-      width: min(1180px, 92%);
-      margin: auto;
-      min-height: clamp(42px, 6.2vw, 82px);
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 22px;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
+      display: inline-flex;
       flex-shrink: 0;
+      align-items: center;
     }
 
     .brand img {
-      display: block;
-      width: clamp(45px, 6vw, 82px);
-      height: auto;
+      width: 78px;
+      height: 66px;
       object-fit: contain;
+      display: block;
     }
 
     .main-nav {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(10px, 1.7vw, 25px);
+      gap: 24px;
       margin-left: auto;
     }
 
     .main-nav a {
-      color: white;
-      font-size: clamp(8px, .8vw, 12px);
-      font-weight: 700;
-      white-space: nowrap;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
       transition: color .2s;
     }
 
-    .main-nav a:hover {
-      color: var(--gold);
-    }
+    .main-nav a:hover { color: var(--gold); }
 
     .gold-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 16px;
-      border: none;
-      border-radius: 5px;
+      border: 0;
+      border-radius: 6px;
       background: var(--gold);
       color: #17202b;
-      font-size: 12px;
+      padding: 10px 16px;
       font-weight: 800;
-      white-space: nowrap;
+      font-size: 12px;
       cursor: pointer;
-      transition: background .2s;
+      transition: background .2s, transform .2s;
     }
 
     .gold-button:hover {
-      background: #ffd577;
+      background: #ffd574;
+      color: #111820;
+      transform: translateY(-1px);
     }
 
     .header-cta {
-      padding: clamp(6px, .8vw, 11px)
-               clamp(8px, 1.3vw, 17px);
-      font-size: clamp(8px, .8vw, 12px);
+      flex-shrink: 0;
+      color: #17202b !important;
     }
 
     .menu-toggle {
       display: none;
-      border: 1px solid rgba(255,255,255,.5);
-      background: rgba(0,0,0,.15);
       color: white;
-      padding: 5px 9px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.5);
       border-radius: 5px;
+      padding: 5px 10px;
       cursor: pointer;
+      font-size: 21px;
     }
-
-    /* ==============================
-       HERO CONTENT
-    ============================== */
 
     .hero-content {
-      position: absolute;
-      z-index: 3;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1180px, 92%);
-      height: 100%;
-      padding-top: clamp(55px, 13.2%, 175px);
-      padding-bottom: clamp(38px, 7%, 90px);
+      padding-top: 120px;
+      padding-bottom: 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+      width: 92%;
     }
 
-    .hero-copy {
-      max-width: 480px;
-    }
+    .hero-copy { max-width: 470px; }
 
     .hero h1 {
-      font-size: clamp(24px, 4.2vw, 55px);
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -.9px;
       font-weight: 800;
-      letter-spacing: -.8px;
-      line-height: 1.04;
-      margin-bottom: clamp(5px, 1.1vw, 14px);
+      margin-bottom: 13px;
     }
 
     .hero h1 span {
@@ -225,135 +179,110 @@
     }
 
     .hero-subtitle {
-      font-size: clamp(9px, 1.1vw, 15px);
-      font-weight: 700;
-      margin-bottom: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
     }
 
     .hero-description {
-      font-size: clamp(8px, .95vw, 13px);
+      font-size: 13px;
       line-height: 1.65;
-      color: rgba(255,255,255,.95);
+      color: rgba(255,255,255,.92);
     }
 
-    /* ==============================
-       PROPERTY SEARCH BAR
-    ============================== */
+    /* PROPERTY SEARCH */
 
     .property-search {
       width: min(900px, 100%);
-      margin-top: clamp(8px, 2vw, 25px);
+      margin-top: 22px;
       display: grid;
-      grid-template-columns: 1fr 1.1fr .95fr 145px;
-      gap: 5px;
-      padding: 7px;
+      grid-template-columns: 1.05fr 1.15fr 1fr 150px;
+      gap: 7px;
+      padding: 8px;
+      background: rgba(255,255,255,.97);
       border-radius: 9px;
-      background: #fff;
-      color: #18212a;
-      box-shadow: 0 6px 22px rgba(0,0,0,.2);
+      box-shadow: 0 8px 28px rgba(0,0,0,.2);
     }
 
     .search-field {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 4px 12px;
+      border-right: 1px solid #e7e5df;
       min-width: 0;
-      padding: 3px 12px;
-      border-right: 1px solid #e8e7e2;
     }
 
     .search-field label {
-      color: #777e85;
+      color: #777d83;
       font-size: 10px;
       margin-bottom: 2px;
     }
 
     .search-field select {
       width: 100%;
-      min-width: 0;
-      border: none;
-      outline: none;
-      background: white;
-      color: #17202b;
+      border: 0;
+      outline: 0;
+      color: #20262c;
+      background: transparent;
       font-size: 12px;
       font-weight: 700;
+      min-width: 0;
       cursor: pointer;
     }
 
     .search-submit {
-      min-height: 43px;
-      border: none;
+      min-height: 46px;
+      border: 0;
       border-radius: 6px;
       background: var(--gold-dark);
       color: white;
-      font-size: 12px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 700;
       cursor: pointer;
     }
 
-    .search-submit:hover {
-      background: #9d6d1a;
-    }
+    .search-submit:hover { background: #9d6d1a; }
 
-    /* ==============================
-       TRUST STRIP INSIDE HERO
-    ============================== */
-
-    .trust-strip {
-      position: absolute;
-      z-index: 4;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(12, 31, 25, .94);
-      color: white;
-    }
+    .trust-strip { background: #12221d; color: white; }
 
     .trust-inner {
-      width: min(1180px, 92%);
-      margin: auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      padding: clamp(7px, 1.1vw, 15px) 0;
+      gap: 18px;
+      padding: 14px 0;
     }
 
     .trust-item {
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 7px;
-      font-size: clamp(8px, .85vw, 12px);
-      font-weight: 700;
-      white-space: nowrap;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      font-weight: 600;
     }
 
-    .trust-icon {
-      color: var(--gold);
-      font-size: clamp(11px, 1.2vw, 18px);
-    }
+    .trust-icon { color: var(--gold); font-size: 19px; }
 
-    /* ==============================
-       FEATURED PROPERTIES
-    ============================== */
+    /* SECTION STYLES */
 
-    .section {
-      padding: 34px 0;
-    }
+    .section { padding: 32px 0 0; }
 
     .section-heading {
       display: flex;
-      align-items: flex-end;
       justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 17px;
+      align-items: flex-end;
+      gap: 18px;
+      margin-bottom: 16px;
     }
 
     .section-heading h2,
     .simple-heading {
       font-size: 25px;
+      line-height: 1.2;
+      letter-spacing: -.45px;
+      color: #111820;
       font-weight: 800;
-      line-height: 1.25;
     }
 
     .section-heading p,
@@ -365,35 +294,37 @@
 
     .view-all {
       color: #a97819;
+      font-weight: 700;
       font-size: 12px;
-      font-weight: 800;
       white-space: nowrap;
     }
 
     .filter-list {
       display: flex;
-      flex-wrap: wrap;
       gap: 8px;
+      flex-wrap: wrap;
       margin-bottom: 16px;
     }
 
     .filter-chip {
-      padding: 7px 14px;
       border: 1px solid #e6e4df;
-      border-radius: 22px;
       background: white;
-      color: #303943;
+      color: #41474d;
+      padding: 7px 14px;
+      border-radius: 20px;
+      cursor: pointer;
       font-size: 11px;
       font-weight: 600;
-      cursor: pointer;
     }
 
     .filter-chip.active,
     .filter-chip:hover {
-      background: #18251f;
+      background: #19231f;
       color: white;
-      border-color: #18251f;
+      border-color: #19231f;
     }
+
+    /* PROPERTY CARDS */
 
     .property-grid {
       display: grid;
@@ -402,75 +333,77 @@
     }
 
     .property-card {
-      min-width: 0;
-      overflow: hidden;
+      background: white;
       border: 1px solid var(--border);
       border-radius: 9px;
-      background: white;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,.025);
       transition: transform .2s, box-shadow .2s;
+      min-width: 0;
     }
 
     .property-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 7px 20px rgba(0,0,0,.08);
-    }
-
-    .property-link {
-      display: block;
+      box-shadow: 0 5px 18px rgba(20,30,40,.09);
     }
 
     .property-image-wrap {
-      height: 185px;
+      height: 180px;
       position: relative;
       overflow: hidden;
-      background: #e5e7e7;
+      background: #e4e5e1;
     }
 
     .property-image {
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
+      display: block;
+      transition: transform .35s;
     }
+
+    .property-card:hover .property-image { transform: scale(1.04); }
 
     .featured-label {
       position: absolute;
       top: 10px;
       left: 10px;
-      background: var(--gold);
-      color: #242424;
       padding: 4px 8px;
       border-radius: 4px;
+      background: var(--gold);
+      color: #29251d;
       font-size: 10px;
       font-weight: 800;
     }
 
-    .property-info {
-      padding: 13px;
-    }
+    .property-info { padding: 13px; }
 
     .property-type {
-      color: #a97819;
+      color: #b08023;
       font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: 4px;
     }
 
     .property-info h3 {
-      margin: 4px 0;
       font-size: 15px;
       font-weight: 800;
+      margin-bottom: 3px;
     }
 
     .property-location {
-      color: var(--muted);
+      color: #737983;
       font-size: 12px;
+      margin-bottom: 8px;
     }
 
     .property-price {
-      margin: 8px 0;
+      color: #151a20;
       font-size: 17px;
       font-weight: 800;
+      margin-bottom: 10px;
     }
 
     .property-meta {
@@ -483,18 +416,27 @@
       font-size: 11px;
     }
 
-    .empty-state {
-      grid-column: 1 / -1;
-      padding: 30px;
-      text-align: center;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 9px;
+    .property-meta span {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
     }
 
-    /* ==============================
-       LOCATION CARDS
-    ============================== */
+    .property-link { display: block; }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: white;
+      padding: 32px 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+    }
+
+    .empty-state h3 { color: var(--text); margin-bottom: 7px; }
+
+    /* MUMBAI AND PUNE */
 
     .location-grid {
       display: grid;
@@ -505,15 +447,15 @@
 
     .location-card {
       position: relative;
-      min-height: 220px;
+      min-height: 205px;
+      overflow: hidden;
+      border-radius: 9px;
+      background: #1d3546;
+      color: white;
       display: flex;
       align-items: flex-end;
       padding: 22px;
-      overflow: hidden;
-      border-radius: 9px;
       isolation: isolate;
-      color: white;
-      background: #243748;
     }
 
     .location-card::before {
@@ -523,23 +465,18 @@
       z-index: -2;
       background-size: cover;
       background-position: center;
-      transition: transform .3s;
+      transition: transform .4s;
     }
 
-    .location-card:hover::before {
-      transform: scale(1.04);
-    }
+    .location-card:hover::before { transform: scale(1.05); }
 
     .location-card::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: linear-gradient(
-        90deg,
-        rgba(10,27,42,.82),
-        rgba(10,27,42,.12)
-      );
+      background: linear-gradient(90deg, rgba(10,27,42,.85), rgba(10,27,42,.12)),
+                  linear-gradient(0deg, rgba(10,27,42,.4), transparent);
     }
 
     .location-mumbai::before {
@@ -550,20 +487,22 @@
       background-image: url("assets/pune.webp");
     }
 
-    .location-card h3 {
+    .location-copy h3 {
       font-size: 24px;
       font-weight: 800;
       margin-bottom: 5px;
     }
 
-    .location-card p {
+    .location-copy p {
       font-size: 12px;
+      max-width: 260px;
       margin-bottom: 13px;
+      color: rgba(255,255,255,.9);
     }
 
-    /* ==============================
-       WHY CHOOSE US
-    ============================== */
+    .location-copy .gold-button { padding: 9px 13px; font-size: 11px; }
+
+    /* WHY ADHAO REALTY */
 
     .why-grid {
       display: grid;
@@ -572,513 +511,298 @@
       margin-top: 20px;
     }
 
-    .why-item {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
+    .why-item { display: flex; align-items: center; gap: 11px; }
 
     .why-icon {
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      border-radius: 50%;
+      flex-shrink: 0;
+      color: #2b281e;
       background: var(--gold);
-      font-size: 19px;
+      font-size: 20px;
     }
 
-    .why-item h3 {
-      font-size: 12px;
-      margin-bottom: 3px;
-    }
+    .why-item h3 { font-size: 12px; margin-bottom: 3px; font-weight: 800; }
+    .why-item p { color: var(--muted); font-size: 10px; line-height: 1.5; }
 
-    .why-item p {
-      color: var(--muted);
-      font-size: 10px;
-    }
+    /* TESTIMONIALS */
 
-    /* ==============================
-       ABOUT SECTION
-    ============================== */
-
-    .about-section {
-      background: #f0eee8;
-    }
-
-    .about-grid {
+    .testimonial-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 17px;
     }
 
-    .about-grid h2 {
-      font-size: 28px;
-      line-height: 1.25;
-      margin-bottom: 12px;
+    .testimonial {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 16px;
     }
 
-    .about-grid p {
-      color: #5d6570;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 15px;
-    }
-
-    .feature-row {
+    .testimonial-top {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .feature-number {
-      color: #a97819;
-      font-weight: 800;
-    }
-
-    .feature-row strong {
-      display: block;
-      font-size: 13px;
-    }
-
-    .feature-row small {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    /* ==============================
-       CONTACT
-    ============================== */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px;
-    }
-
-    .contact-grid h2 {
-      font-size: 28px;
+      align-items: center;
+      gap: 10px;
       margin-bottom: 10px;
     }
 
-    .contact-grid p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .contact-form {
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #ece6d8;
       display: grid;
-      gap: 12px;
+      place-items: center;
+      font-size: 19px;
+      flex-shrink: 0;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #deded9;
-      border-radius: 5px;
-      background: white;
-      font: inherit;
-      font-size: 12px;
+    .testimonial-top h3 { font-size: 12px; font-weight: 800; }
+    .testimonial-top p { font-size: 10px; color: var(--muted); }
+
+    .testimonial blockquote {
+      font-size: 11px;
+      color: #555d65;
+      line-height: 1.7;
     }
 
-    .contact-form textarea {
-      min-height: 95px;
-      resize: vertical;
-    }
+    .stars { color: #dba536; letter-spacing: 2px; margin-top: 10px; font-size: 13px; }
 
-    .form-msg {
-      font-size: 12px;
-    }
+    /* FOOTER */
 
-    /* ==============================
-       FOOTER
-    ============================== */
-
-    .site-footer {
-      background: #10171c;
-      color: white;
-      margin-top: 20px;
-    }
+    .site-footer { margin-top: 38px; background: #10171c; color: white; }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
-      gap: 28px;
-      padding: 35px 0;
+      grid-template-columns: 1.3fr 1fr 1.15fr 1.3fr;
+      gap: 30px;
+      padding: 38px 0 28px;
     }
 
-    .footer-grid h3 {
-      margin-bottom: 12px;
-      font-size: 13px;
-    }
-
-    .footer-grid p,
-    .footer-grid a,
-    .footer-grid span {
-      display: block;
-      margin: 8px 0;
-      color: #b8bec2;
-      font-size: 11px;
-      overflow-wrap: anywhere;
-    }
-
-    .footer-grid a:hover {
-      color: var(--gold);
-    }
-
-    .footer-logo {
-      width: 90px;
-      max-height: 75px;
+    .footer-brand img {
+      width: 100px;
+      height: 78px;
       object-fit: contain;
-      object-position: left;
+      object-position: left center;
       margin-bottom: 10px;
     }
 
-    .footer-bottom {
-      padding: 14px 0;
-      border-top: 1px solid rgba(255,255,255,.12);
+    .footer-brand p {
+      max-width: 230px;
+      color: #aeb5ba;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .footer-column h3 { font-size: 13px; margin-bottom: 13px; color: white; }
+
+    .footer-column a {
+      display: block;
       color: #b8bec2;
       font-size: 11px;
+      margin: 9px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .footer-column a:hover { color: var(--gold); }
+
+    .contact-line { display: flex; align-items: flex-start; gap: 8px; }
+
+    .social-links { display: flex; gap: 11px; margin-top: 15px; }
+
+    .social-links a {
+      display: grid;
+      place-items: center;
+      border: 1px solid #465057;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      color: white;
+      font-size: 14px;
+    }
+
+    .social-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      color: #aeb5ba;
+      font-size: 11px;
+      padding: 15px 0;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    /* ==============================
-       TABLET
-    ============================== */
+    /* RESPONSIVE */
 
-    @media (max-width: 850px) {
-      .property-search {
-        grid-template-columns: 1fr 1fr 1fr 110px;
-      }
-
-      .property-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .why-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .hero-content {
-        padding-top: 13%;
-      }
+    @media (max-width: 900px) {
+      .main-nav { gap: 13px; }
+      .main-nav a { font-size: 11px; }
+      .property-grid { gap: 12px; }
+      .property-image-wrap { height: 150px; }
+      .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-grid { gap: 20px; }
     }
 
-    /* ==============================
-       MOBILE
-    ============================== */
+    @media (max-width: 640px) {
+      .header-inner { min-height: 70px; gap: 10px; }
+      .brand img { width: 68px; height: 60px; }
 
-    @media (max-width: 600px) {
-      .header-inner {
-        min-height: 54px;
-        gap: 8px;
-      }
-
-      .brand img {
-        width: 45px;
-      }
-
-      .menu-toggle {
-        display: block;
-        margin-left: auto;
-      }
+      .menu-toggle { display: block; margin-left: auto; }
 
       .main-nav {
         display: none;
         position: absolute;
-        top: 50px;
+        top: 65px;
         left: 4%;
         right: 4%;
-        padding: 10px;
-        border-radius: 7px;
-        background: #12221d;
-        flex-direction: column;
+        padding: 12px;
+        border-radius: 9px;
+        background: #14211f;
+        box-shadow: 0 12px 25px rgba(0,0,0,.2);
         align-items: stretch;
+        flex-direction: column;
         gap: 0;
       }
 
-      .main-nav.open {
-        display: flex;
-      }
+      .main-nav.open { display: flex; }
 
       .main-nav a {
-        padding: 10px;
-        font-size: 12px;
-        border-bottom: 1px solid rgba(255,255,255,.1);
+        font-size: 13px;
+        padding: 11px 8px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
       }
 
-      .header-cta {
-        padding: 7px 9px;
-        font-size: 9px;
-      }
+      .header-cta { font-size: 10px; padding: 9px 10px; }
 
-      /*
-        No background-position override on mobile.
-        The image is a real img element and remains uncropped.
-      */
+      .hero { min-height: auto; background-position: 57% center; }
 
-      .hero-content {
-        width: 92%;
-        padding-top: 13%;
-        padding-bottom: 42px;
-      }
+      .hero-content { padding-top: 108px; padding-bottom: 24px; }
 
-      .hero-copy {
-        max-width: 65%;
-      }
-
-      .hero h1 {
-        font-size: clamp(20px, 5.8vw, 34px);
-        letter-spacing: -.4px;
-        margin-bottom: 5px;
-      }
-
-      .hero-subtitle {
-        font-size: clamp(7px, 1.8vw, 11px);
-        margin-bottom: 3px;
-      }
-
-      .hero-description {
-        font-size: clamp(7px, 1.65vw, 10px);
-      }
-
-      .property-search {
-        width: 100%;
-        margin-top: 8px;
-        padding: 5px;
-        gap: 4px;
-        grid-template-columns: 1fr 1fr 1fr 70px;
-        border-radius: 6px;
-      }
-
-      .search-field {
-        padding: 2px 5px;
-      }
-
-      .search-field label {
-        font-size: 7px;
-      }
-
-      .search-field select {
-        font-size: 8px;
-      }
-
-      .search-submit {
-        min-height: 32px;
-        font-size: 8px;
-      }
-
-      .trust-inner {
-        width: 94%;
-        gap: 3px;
-        padding: 6px 0;
-      }
-
-      .trust-item {
-        gap: 3px;
-        font-size: clamp(6px, 1.6vw, 9px);
-      }
-
-      .trust-icon {
-        font-size: 10px;
-      }
-
-      .section {
-        padding: 25px 0;
-      }
-
-      .section-heading h2,
-      .simple-heading {
-        font-size: 21px;
-      }
-
-      .section-heading p,
-      .section-subtitle {
-        font-size: 11px;
-      }
-
-      .property-grid {
-        gap: 10px;
-      }
-
-      .property-image-wrap {
-        height: 125px;
-      }
-
-      .property-info {
-        padding: 9px;
-      }
-
-      .property-info h3 {
-        font-size: 12px;
-      }
-
-      .property-location {
-        font-size: 10px;
-      }
-
-      .property-price {
-        font-size: 14px;
-      }
-
-      .property-meta {
-        font-size: 9px;
-      }
-
-      .location-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .location-card {
-        min-height: 170px;
-      }
-
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
-      .about-grid h2,
-      .contact-grid h2 {
-        font-size: 23px;
-      }
-
-      .footer-grid {
-        gap: 18px 12px;
-      }
-
-      .footer-grid h3 {
-        font-size: 12px;
-      }
-
-      .footer-grid p,
-      .footer-grid a,
-      .footer-grid span {
-        font-size: 10px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .hero-content {
-        padding-top: 12%;
-      }
-
-      .hero-copy {
-        max-width: 72%;
-      }
+      .hero h1 { font-size: 37px; }
+      .hero-subtitle { font-size: 13px; }
+      .hero-description { font-size: 12px; }
 
       .property-search {
         grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        margin-top: 17px;
+        padding: 7px;
       }
 
-      .search-submit {
-        grid-column: 1 / -1;
+      .search-field {
+        min-height: 47px;
+        border: 1px solid #eceae5;
+        border-radius: 5px;
+        padding: 6px 8px;
       }
 
-      .trust-item {
-        white-space: normal;
-        text-align: center;
-      }
+      .search-field select { font-size: 11px; }
 
-      .property-grid {
-        grid-template-columns: 1fr;
-      }
+      .search-submit { grid-column: 1 / -1; min-height: 42px; }
 
-      .property-image-wrap {
-        height: 180px;
-      }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); gap: 13px 8px; padding: 15px 0; }
+      .trust-item { justify-content: flex-start; font-size: 10px; }
+      .trust-icon { font-size: 17px; }
+
+      .section { padding-top: 26px; }
+      .section-heading h2, .simple-heading { font-size: 21px; }
+      .section-heading p, .section-subtitle { font-size: 11px; }
+      .section-heading { align-items: flex-start; }
+      .view-all { font-size: 11px; padding-top: 4px; }
+
+      .filter-list { gap: 6px; margin-bottom: 13px; }
+      .filter-chip { padding: 7px 10px; font-size: 10px; }
+
+      .property-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .property-image-wrap { height: 125px; }
+      .property-info { padding: 9px; }
+      .property-type { font-size: 8px; }
+      .property-info h3 { font-size: 12px; }
+      .property-location { font-size: 10px; margin-bottom: 6px; }
+      .property-price { font-size: 14px; margin-bottom: 8px; }
+      .property-meta { font-size: 9px; gap: 6px; padding-top: 7px; }
+
+      .location-grid { grid-template-columns: 1fr; gap: 12px; }
+      .location-card { min-height: 175px; padding: 18px; }
+      .location-copy h3 { font-size: 22px; }
+
+      .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px 10px; }
+      .why-item { gap: 8px; align-items: flex-start; }
+      .why-icon { width: 38px; height: 38px; font-size: 17px; }
+      .why-item h3 { font-size: 11px; }
+      .why-item p { font-size: 9px; }
+
+      .testimonial-grid { grid-template-columns: 1fr; gap: 11px; }
+      .testimonial { padding: 14px; }
+
+      .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; padding: 30px 0 22px; }
+      .footer-brand img { width: 82px; height: 65px; }
+      .footer-brand p, .footer-column a { font-size: 10px; }
+      .footer-column h3 { font-size: 12px; margin-bottom: 9px; }
+      .footer-bottom { font-size: 10px; }
+    }
+
+    @media (max-width: 360px) {
+      .header-cta { padding: 8px; font-size: 9px; }
+      .hero h1 { font-size: 32px; }
+      .property-grid { grid-template-columns: 1fr; }
+      .property-image-wrap { height: 185px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
   <section class="hero" id="home">
-
-    <!-- Complete image displayed at its natural aspect ratio -->
-    <img
-      class="hero-background"
-      src="assets/background.webp"
-      alt=""
-      fetchpriority="high"
-    >
-
-    <div class="hero-overlay"></div>
-
-    <!-- NAVIGATION -->
     <header class="site-header">
-      <div class="header-inner">
-
-        <a class="brand" href="index.html" aria-label="Adhao Realty Home">
-          <img src="assets/logoweb.webp" alt="Adhao Realty">
+      <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="Adhao Realty home">
+          <img src="assets/logoweb.webp" alt="Adhao Realty logo">
         </a>
 
-        <button
-          class="menu-toggle"
-          id="menuToggle"
-          type="button"
-          aria-label="Open navigation"
-          aria-expanded="false"
-        >☰</button>
+        <button class="menu-toggle" id="menuToggle"
+          aria-label="Toggle navigation" aria-expanded="false">☰</button>
 
         <nav class="main-nav" id="mainNav">
-          <a href="index.html">Home</a>
+          <a href="#home">Home</a>
           <a href="properties.html">Properties</a>
           <a href="properties.html?city=Mumbai">Mumbai</a>
           <a href="properties.html?city=Pune">Pune</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </nav>
 
-        <a class="gold-button header-cta" href="#contact">
+        <!-- Enquire Now opens WhatsApp with a pre-filled message -->
+        <a class="gold-button header-cta"
+           href="https://wa.me/917249310062?text=Hello%20Adhao%20Realty%2C%20I%20am%20interested%20in%20your%20property%20listings.%20Please%20share%20more%20details."
+           target="_blank"
+           rel="noopener noreferrer">
           Enquire Now
         </a>
-
       </div>
     </header>
 
-    <!-- HERO TEXT AND SEARCH -->
     <div class="hero-content">
-
       <div class="hero-copy">
-        <h1>
-          Find Your
-          <span>Dream Property</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          Residential | Commercial | Investment
-        </p>
-
+        <h1>Find Your <span>Dream Property</span></h1>
+        <p class="hero-subtitle">Residential | Commercial | Investment</p>
         <p class="hero-description">
           Your trusted real estate partner in<br>
           Mumbai &amp; Pune
         </p>
       </div>
 
-      <form class="property-search" id="homeSearch">
-
+      <form class="property-search" id="propertySearch">
         <div class="search-field">
-          <label for="city">City</label>
-          <select id="city" name="city">
+          <label for="searchCity">City</label>
+          <select id="searchCity">
             <option value="">All Cities</option>
             <option value="Mumbai">Mumbai</option>
             <option value="Pune">Pune</option>
@@ -1086,72 +810,48 @@
         </div>
 
         <div class="search-field">
-          <label for="type">Property Type</label>
-          <select id="type" name="type">
+          <label for="searchType">Property Type</label>
+          <select id="searchType">
             <option value="">All Types</option>
             <option value="Residential">Residential</option>
             <option value="Commercial">Commercial</option>
-            <option value="Plot">Plots</option>
+            <option value="Plot">Plot / Land</option>
           </select>
         </div>
 
         <div class="search-field">
-          <label for="budget">Budget</label>
-          <select id="budget" name="budget">
+          <label for="searchBudget">Budget</label>
+          <select id="searchBudget">
             <option value="">Any Budget</option>
-            <option value="0-5000000">Under ₹50 Lakh</option>
-            <option value="5000000-10000000">₹50 Lakh–₹1 Cr</option>
-            <option value="10000000-20000000">₹1–2 Cr</option>
-            <option value="20000000-999999999">Above ₹2 Cr</option>
+            <option value="5000000">Under ₹50 Lakh</option>
+            <option value="10000000">Under ₹1 Crore</option>
+            <option value="20000000">Under ₹2 Crore</option>
+            <option value="50000000">Under ₹5 Crore</option>
           </select>
         </div>
 
-        <button class="search-submit" type="submit">
-          ⌕ Search
-        </button>
-
+        <button class="search-submit" type="submit">⌕ &nbsp; Search</button>
       </form>
     </div>
-
-    <!-- TRUST STRIP -->
-    <div class="trust-strip">
-      <div class="trust-inner">
-        <div class="trust-item">
-          <span class="trust-icon">♢</span>
-          <span>Verified Properties</span>
-        </div>
-
-        <div class="trust-item">
-          <span class="trust-icon">⌖</span>
-          <span>Prime Locations</span>
-        </div>
-
-        <div class="trust-item">
-          <span class="trust-icon">◎</span>
-          <span>Best Deals</span>
-        </div>
-
-        <div class="trust-item">
-          <span class="trust-icon">♙</span>
-          <span>Expert Guidance</span>
-        </div>
-      </div>
-    </div>
-
   </section>
 
-  <main>
+  <div class="trust-strip">
+    <div class="container trust-inner">
+      <div class="trust-item"><span class="trust-icon">♢</span> Verified Properties</div>
+      <div class="trust-item"><span class="trust-icon">⌖</span> Prime Locations</div>
+      <div class="trust-item"><span class="trust-icon">◎</span> Best Deals</div>
+      <div class="trust-item"><span class="trust-icon">♙</span> Expert Guidance</div>
+    </div>
+  </div>
 
-    <!-- FEATURED PROPERTIES -->
+  <main>
     <section class="section" id="properties">
       <div class="container">
-
         <div class="section-heading">
           <div>
             <h2>Featured Properties</h2>
             <p>Handpicked properties in Mumbai &amp; Pune</p>
           </div>
-
           <a class="view-all" href="properties.html">View All →</a>
         </div>
 
@@ -1163,526 +863,435 @@
           <button class="filter-chip" data-filter="Luxury" type="button">Luxury</button>
         </div>
 
-        <div class="property-grid" id="featuredGrid">
-          <div class="empty-state">Loading properties...</div>
+        <div class="property-grid" id="propertyGrid">
+          <div class="empty-state">
+            <h3>Discover your next property</h3>
+            <p>Loading available properties...</p>
+          </div>
         </div>
-
       </div>
     </section>
 
-    <!-- LOCATIONS -->
-    <section class="section">
+    <section class="section" id="locations">
       <div class="container">
-
         <h2 class="simple-heading">Explore by Location</h2>
-        <p class="section-subtitle">
-          Top real estate opportunities in Mumbai and Pune
-        </p>
+        <p class="section-subtitle">Top real estate opportunities in major cities</p>
 
         <div class="location-grid">
-
-          <a class="location-card location-mumbai"
-             href="properties.html?city=Mumbai">
-            <div>
+          <article class="location-card location-mumbai" id="mumbai">
+            <div class="location-copy">
               <h3>Mumbai</h3>
               <p>Explore premium properties in the financial capital.</p>
-              <span class="gold-button">View Mumbai Properties →</span>
+              <a class="gold-button" href="properties.html?city=Mumbai">View Mumbai Properties →</a>
             </div>
-          </a>
+          </article>
 
-          <a class="location-card location-pune"
-             href="properties.html?city=Pune">
-            <div>
+          <article class="location-card location-pune" id="pune">
+            <div class="location-copy">
               <h3>Pune</h3>
               <p>A perfect blend of growth and lifestyle.</p>
-              <span class="gold-button">View Pune Properties →</span>
+              <a class="gold-button" href="properties.html?city=Pune">View Pune Properties →</a>
             </div>
-          </a>
-
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- WHY ADHAO REALTY -->
-    <section class="section about-section" id="about">
-      <div class="container about-grid">
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="simple-heading">Why Choose Adhao Realty</h2>
 
-        <div>
-          <h2>Property decisions made simpler.</h2>
-          <p>
-            We help buyers, sellers and investors discover residential,
-            commercial and investment properties with transparent guidance
-            and responsive support across Mumbai and Pune.
-          </p>
+        <div class="why-grid">
+          <article class="why-item">
+            <div class="why-icon">♢</div>
+            <div><h3>Transparent Deals</h3><p>No hidden charges</p></div>
+          </article>
+          <article class="why-item">
+            <div class="why-icon">♙</div>
+            <div><h3>Expert Guidance</h3><p>From property experts</p></div>
+          </article>
+          <article class="why-item">
+            <div class="why-icon">♜</div>
+            <div><h3>Prime Locations</h3><p>Best areas in Mumbai &amp; Pune</p></div>
+          </article>
+          <article class="why-item">
+            <div class="why-icon">✓</div>
+            <div><h3>End-to-End Support</h3><p>From search to possession</p></div>
+          </article>
         </div>
-
-        <div class="feature-list">
-          <div class="feature-row">
-            <span class="feature-number">01</span>
-            <div>
-              <strong>Transparent Deals</strong>
-              <small>Clear information and straightforward communication.</small>
-            </div>
-          </div>
-
-          <div class="feature-row">
-            <span class="feature-number">02</span>
-            <div>
-              <strong>Prime Locations</strong>
-              <small>Opportunities across Mumbai and Pune.</small>
-            </div>
-          </div>
-
-          <div class="feature-row">
-            <span class="feature-number">03</span>
-            <div>
-              <strong>Expert Guidance</strong>
-              <small>Support for property selection and investment.</small>
-            </div>
-          </div>
-
-          <div class="feature-row">
-            <span class="feature-number">04</span>
-            <div>
-              <strong>End-to-End Support</strong>
-              <small>Assistance from enquiry through documentation.</small>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="container contact-grid">
+    <section class="section" id="testimonials">
+      <div class="container">
+        <h2 class="simple-heading">What Our Clients Say</h2>
 
-        <div>
-          <h2>Find your next property.</h2>
-          <p>
-            Tell us what you're looking for and our team will get back to you.
-          </p>
-          <p style="margin-top:16px">
-            <strong>Phone:</strong>
-            <a href="tel:+917249310062">+91 72493 10062</a>
-          </p>
-          <p>
-            <strong>WhatsApp:</strong>
-            <a href="https://wa.me/917249310062"
-               target="_blank"
-               rel="noopener noreferrer">Chat with Adhao Realty</a>
-          </p>
+        <div class="testimonial-grid">
+          <article class="testimonial">
+            <div class="testimonial-top">
+              <div class="testimonial-avatar">👤</div>
+              <div><h3>Vikrant Patil</h3><p>Property Buyer · Pune</p></div>
+            </div>
+            <blockquote>“Adhao Realty helped me through the property search process with professional guidance and support.”</blockquote>
+            <div class="stars">★★★★★</div>
+          </article>
+
+          <article class="testimonial">
+            <div class="testimonial-top">
+              <div class="testimonial-avatar">👤</div>
+              <div><h3>Shubham Patil</h3><p>Property Investor · Mumbai</p></div>
+            </div>
+            <blockquote>“The team explained the available options clearly and made the property search easier.”</blockquote>
+            <div class="stars">★★★★★</div>
+          </article>
+
+          <article class="testimonial">
+            <div class="testimonial-top">
+              <div class="testimonial-avatar">👤</div>
+              <div><h3>Vedant Patil</h3><p>Residential Client</p></div>
+            </div>
+            <blockquote>“Helpful communication and guidance while exploring residential property options.”</blockquote>
+            <div class="stars">★★★★★</div>
+          </article>
         </div>
-
-        <form class="contact-form" id="contactForm">
-          <input required name="name" placeholder="Your Name">
-          <input required name="phone" type="tel" placeholder="Phone Number">
-          <input name="email" type="email" placeholder="Email Address">
-          <textarea name="message" placeholder="What property are you looking for?"></textarea>
-          <button class="gold-button" type="submit">Send Enquiry</button>
-          <p class="form-msg" id="contactMsg"></p>
-        </form>
-
       </div>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
     <div class="container">
-
       <div class="footer-grid">
-
-        <div>
-          <img class="footer-logo"
-               src="assets/logoweb.webp"
-               alt="Adhao Realty">
-
+        <div class="footer-brand">
+          <a href="#home">
+            <img src="assets/logoweb.webp" alt="Adhao Realty logo">
+          </a>
           <p>Your trusted partner for residential, commercial and investment properties across Mumbai and Pune.</p>
+
+          <div class="social-links">
+            <a href="https://www.instagram.com/adhao_realty/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram">◎</a>
+
+            <!-- WhatsApp icon with pre-filled message -->
+            <a href="https://wa.me/917249310062?text=Hello%20Adhao%20Realty%2C%20I%20am%20interested%20in%20your%20property%20listings.%20Please%20share%20more%20details."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp">◉</a>
+          </div>
         </div>
 
-        <div>
-          <h3>Quick Links</h3>
-          <a href="index.html">Home</a>
-          <a href="properties.html">Properties</a>
-          <a href="#about">About Us</a>
-          <a href="#contact">Contact</a>
+        <div class="footer-column">
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="properties.html">Properties</a>
+        <a href="contact.html">Contact</a>
+        </div>
         </div>
 
-        <div>
+        <div class="footer-column">
           <h3>Our Services</h3>
-          <span>Buy Property</span>
-          <span>Sell Property</span>
-          <span>Rent Property</span>
-          <span>Investment Consultation</span>
+          <a href="properties.html?type=Buy">Buy Property</a>
+          <a href="properties.html?type=Sell">Sell Property</a>
+          <a href="properties.html?type=Rent">Rent Property</a>
+          <a href="properties.html?type=Commercial">Commercial Property</a>
+          <a href="properties.html?type=Investment">Property Investment</a>
         </div>
 
-        <div>
+        <div class="footer-column">
           <h3>Contact Us</h3>
-          <a href="tel:+917249310062">+91 72493 10062</a>
-          <a href="https://wa.me/917249310062"
-             target="_blank"
-             rel="noopener noreferrer">WhatsApp Us</a>
-          <span>Mumbai &amp; Pune, Maharashtra</span>
-        </div>
 
+          <a class="contact-line" href="tel:+917249310062">
+            <span>☎</span>
+            <span>+91 7249310062</span>
+          </a>
+
+          <a class="contact-line" href="mailto:adhaorealty@gmail.com">
+            <span>✉</span>
+            <span>adhaorealty@gmail.com</span>
+          </a>
+
+          <a class="contact-line"
+             href="https://www.google.com/maps/search/?api=1&query=Pune%2C+Maharashtra%2C+India"
+             target="_blank"
+             rel="noopener noreferrer">
+            <span>⌖</span>
+            <span>Pune, Maharashtra, India</span>
+          </a>
+
+          <!-- Footer Chat on WhatsApp button removed -->
+        </div>
       </div>
 
       <div class="footer-bottom">
         <span>© <span id="currentYear"></span> Adhao Realty. All rights reserved.</span>
-        <span>Find Your Dream Property</span>
+        <span>Your Trusted Real Estate Partner</span>
       </div>
-
     </div>
   </footer>
 
-  <!-- SUPABASE LIBRARY -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js"></script>
 
   <script>
-    (() => {
-      "use strict";
+    const propertyGrid = document.getElementById("propertyGrid");
+    const searchForm = document.getElementById("propertySearch");
+    const searchCity = document.getElementById("searchCity");
+    const searchType = document.getElementById("searchType");
+    const searchBudget = document.getElementById("searchBudget");
 
-      const $ = id => document.getElementById(id);
+    let allProperties = [];
+    let activeFilter = "All";
 
-      $("currentYear").textContent = new Date().getFullYear();
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
 
-      /* MOBILE NAVIGATION */
+    // Mobile menu
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
 
-      const menuToggle = $("menuToggle");
-      const mainNav = $("mainNav");
+    menuToggle.addEventListener("click", () => {
+      const open = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.textContent = open ? "✕" : "☰";
+    });
 
-      menuToggle.addEventListener("click", () => {
-        const opened = mainNav.classList.toggle("open");
-
-        menuToggle.setAttribute("aria-expanded", String(opened));
-        menuToggle.textContent = opened ? "✕" : "☰";
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
       });
+    });
 
-      mainNav.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-          mainNav.classList.remove("open");
-          menuToggle.setAttribute("aria-expanded", "false");
-          menuToggle.textContent = "☰";
-        });
-      });
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
 
-      /* SAFE TEXT */
+    function normalise(value) {
+      return String(value ?? "").trim().toLowerCase();
+    }
 
-      function escapeHTML(value) {
-        return String(value ?? "").replace(/[&<>"']/g, char => ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;"
-        })[char]);
+    function formatPrice(value) {
+      if (value === null || value === undefined || value === "") {
+        return "Price on Request";
       }
 
-      /* PRICE */
-
-      function formatPrice(value) {
-        if (value === null || value === undefined || value === "") {
-          return "Price on Request";
-        }
-
-        if (typeof value === "string" && /[₹a-z]/i.test(value)) {
-          return value;
-        }
-
-        const amount = Number(value);
-
-        if (!Number.isFinite(amount)) return String(value);
-
-        if (amount >= 10000000) {
-          return "₹" + (amount / 10000000).toLocaleString("en-IN", {
-            maximumFractionDigits: 2
-          }) + " Cr";
-        }
-
-        if (amount >= 100000) {
-          return "₹" + (amount / 100000).toLocaleString("en-IN", {
-            maximumFractionDigits: 2
-          }) + " Lakh";
-        }
-
-        return "₹" + amount.toLocaleString("en-IN");
+      if (typeof value === "string" && /[₹a-z]/i.test(value)) {
+        return value;
       }
 
-      function getImage(property) {
-        let images = property.image_urls || property.images;
+      const amount = Number(value);
+      if (!Number.isFinite(amount)) return String(value);
 
-        if (typeof images === "string") {
-          try {
-            images = JSON.parse(images);
-          } catch {
-            images = [images];
-          }
-        }
-
-        if (Array.isArray(images) && images.length) {
-          return images[0];
-        }
-
-        return "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80";
+      if (amount >= 10000000) {
+        return "₹" + (amount / 10000000).toLocaleString("en-IN", {
+          maximumFractionDigits: 2
+        }) + " Cr";
       }
 
-      function getCity(property) {
-        return String(property.city || property.location || "");
+      if (amount >= 100000) {
+        return "₹" + (amount / 100000).toLocaleString("en-IN", {
+          maximumFractionDigits: 2
+        }) + " Lakh";
       }
 
-      function getType(property) {
-        return String(property.property_type || property.type || "");
-      }
+      return "₹" + amount.toLocaleString("en-IN");
+    }
 
-      function isFeatured(property) {
-        return property.is_featured === true ||
-               property.featured === true;
-      }
+    function getImage(property) {
+      let images = property.image_urls;
 
-      let allProperties = [];
-      let activeFilter = "All";
-
-      /* RENDER PROPERTY CARDS */
-
-      function renderProperties(properties) {
-        const grid = $("featuredGrid");
-
-        if (!properties.length) {
-          grid.innerHTML = `
-            <div class="empty-state">
-              <h3>No properties found</h3>
-              <p>Please try another search or contact us for assistance.</p>
-            </div>`;
-          return;
-        }
-
-        grid.innerHTML = properties.map(property => {
-          const title = escapeHTML(
-            property.title || property.name || "Premium Property"
-          );
-
-          const city = escapeHTML(getCity(property) || "Mumbai & Pune");
-          const type = escapeHTML(getType(property) || "Property");
-          const price = escapeHTML(formatPrice(property.price));
-          const image = escapeHTML(getImage(property));
-
-          const area = Number(property.area_sqft || property.area) || 0;
-          const bedrooms = Number(property.bedrooms) || 0;
-          const bathrooms = Number(property.bathrooms) || 0;
-
-          const meta = [
-            area ? `<span>${area.toLocaleString("en-IN")} sq.ft.</span>` : "",
-            bedrooms ? `<span>${bedrooms} BHK</span>` : "",
-            bathrooms ? `<span>${bathrooms} Bath</span>` : ""
-          ].filter(Boolean).join("");
-
-          const detailURL = property.id
-            ? "property-details.html?id=" + encodeURIComponent(property.id)
-            : "properties.html";
-
-          return `
-            <article class="property-card">
-              <a class="property-link" href="${detailURL}">
-                <div class="property-image-wrap">
-                  <img
-                    class="property-image"
-                    src="${image}"
-                    alt="${title}"
-                    loading="lazy"
-                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80'"
-                  >
-                  ${isFeatured(property)
-                    ? '<span class="featured-label">Featured</span>'
-                    : ""}
-                </div>
-
-                <div class="property-info">
-                  <div class="property-type">${type}</div>
-                  <h3>${title}</h3>
-                  <p class="property-location">${city}</p>
-                  <div class="property-price">${price}</div>
-                  <div class="property-meta">
-                    ${meta || "<span>Contact us for details</span>"}
-                  </div>
-                </div>
-              </a>
-            </article>`;
-        }).join("");
-      }
-
-      /* PROPERTY FILTERS */
-
-      function applyFilters() {
-        const city = $("city").value.toLowerCase();
-        const type = $("type").value.toLowerCase();
-        const budget = $("budget").value;
-
-        let minBudget = 0;
-        let maxBudget = Infinity;
-
-        if (budget) {
-          [minBudget, maxBudget] = budget.split("-").map(Number);
-        }
-
-        const filtered = allProperties.filter(property => {
-          const propertyCity = getCity(property).toLowerCase();
-          const propertyType = getType(property).toLowerCase();
-          const price = Number(property.price) || 0;
-
-          const cityMatch = !city || propertyCity.includes(city);
-          const typeMatch = !type || propertyType.includes(type);
-          const budgetMatch = !budget ||
-            (price >= minBudget && price <= maxBudget);
-
-          let categoryMatch = true;
-
-          if (activeFilter === "Residential") {
-            categoryMatch = propertyType.includes("residential");
-          } else if (activeFilter === "Commercial") {
-            categoryMatch = propertyType.includes("commercial");
-          } else if (activeFilter === "Plot") {
-            categoryMatch = propertyType.includes("plot") ||
-                            propertyType.includes("land");
-          } else if (activeFilter === "Luxury") {
-            categoryMatch = property.is_luxury === true ||
-              propertyType.toLowerCase().includes("luxury") ||
-              String(property.title || "").toLowerCase().includes("luxury");
-          }
-
-          return cityMatch && typeMatch && budgetMatch && categoryMatch;
-        });
-
-        renderProperties(filtered);
-      }
-
-      document.querySelectorAll(".filter-chip").forEach(button => {
-        button.addEventListener("click", () => {
-          document.querySelectorAll(".filter-chip").forEach(chip => {
-            chip.classList.remove("active");
-          });
-
-          button.classList.add("active");
-          activeFilter = button.dataset.filter;
-          applyFilters();
-        });
-      });
-
-      $("homeSearch").addEventListener("submit", event => {
-        event.preventDefault();
-
-        activeFilter = "All";
-
-        document.querySelectorAll(".filter-chip").forEach(button => {
-          button.classList.toggle(
-            "active",
-            button.dataset.filter === "All"
-          );
-        });
-
-        applyFilters();
-
-        $("properties").scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      });
-
-      /* LOAD PROPERTIES FROM SUPABASE */
-
-      async function loadProperties() {
-        const client = window.supabaseClient;
-
-        if (!client || typeof client.from !== "function") {
-          $("featuredGrid").innerHTML = `
-            <div class="empty-state">
-              <h3>Properties are temporarily unavailable</h3>
-              <p>Check your Supabase client configuration.</p>
-            </div>`;
-          return;
-        }
-
+      if (typeof images === "string") {
         try {
-          let query = client
-            .from("properties")
-            .select("*");
-
-          const result = await query
-            .order("created_at", { ascending: false });
-
-          if (result.error) throw result.error;
-
-          allProperties = (result.data || []).filter(property => {
-            if (property.is_published !== undefined) {
-              return property.is_published === true;
-            }
-
-            if (property.status !== undefined) {
-              return ["published", "available", "active"].includes(
-                String(property.status).toLowerCase()
-              );
-            }
-
-            return true;
-          });
-
-          allProperties.sort((a, b) =>
-            Number(isFeatured(b)) - Number(isFeatured(a))
-          );
-
-          applyFilters();
-
-        } catch (error) {
-          console.error("Unable to load properties:", error);
-
-          $("featuredGrid").innerHTML = `
-            <div class="empty-state">
-              <h3>Unable to load properties</h3>
-              <p>Please try again later or contact Adhao Realty.</p>
-            </div>`;
+          images = JSON.parse(images);
+        } catch {
+          images = [images];
         }
       }
 
-      /* CONTACT FORM */
+      if (Array.isArray(images) && images.length && images[0]) {
+        return images[0];
+      }
 
-      $("contactForm").addEventListener("submit", event => {
-        event.preventDefault();
+      return "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80";
+    }
 
-        const form = event.currentTarget;
-        const data = new FormData(form);
+    function getPropertyType(property) {
+      return String(property.property_type || "Property");
+    }
 
-        const name = String(data.get("name") || "").trim();
-        const phone = String(data.get("phone") || "").trim();
-        const email = String(data.get("email") || "").trim();
-        const message = String(data.get("message") || "").trim();
+    function getPropertyCity(property) {
+      return String(property.city || property.location || "Mumbai & Pune");
+    }
 
-        const text = [
-          "Hello Adhao Realty,",
-          "",
-          "I would like to enquire about a property.",
-          "Name: " + name,
-          "Phone: " + phone,
-          "Email: " + (email || "Not provided"),
-          "Requirement: " + (message || "Please contact me.")
-        ].join("\n");
+    function matchesType(property, filter) {
+      if (filter === "All") return true;
 
-        const whatsappURL =
-          "https://wa.me/917249310062?text=" +
-          encodeURIComponent(text);
+      const type = normalise(getPropertyType(property));
+      const title = normalise(property.title);
 
-        window.open(whatsappURL, "_blank", "noopener,noreferrer");
+      if (filter === "Luxury") {
+        return Boolean(property.is_featured) ||
+          title.includes("luxury") || title.includes("premium");
+      }
 
-        $("contactMsg").textContent =
-          "Your enquiry is ready to send via WhatsApp.";
+      if (filter === "Plot") {
+        return type.includes("plot") || type.includes("land");
+      }
 
-        form.reset();
+      return type.includes(normalise(filter));
+    }
+
+    function renderProperties(properties) {
+      if (!properties.length) {
+        propertyGrid.innerHTML = `
+          <div class="empty-state">
+            <h3>No properties found</h3>
+            <p>Try a different city, property type or budget.</p>
+          </div>`;
+        return;
+      }
+
+      propertyGrid.innerHTML = properties.map(property => {
+        const title = escapeHTML(property.title || "Premium Property");
+        const city = escapeHTML(getPropertyCity(property));
+        const type = escapeHTML(getPropertyType(property));
+        const price = escapeHTML(formatPrice(property.price));
+        const image = escapeHTML(getImage(property));
+        const area = Number(property.area_sqft) || 0;
+        const beds = Number(property.bedrooms) || 0;
+        const baths = Number(property.bathrooms) || 0;
+        const featured = Boolean(property.is_featured);
+
+        const details = [
+          area ? `<span>▧ ${area.toLocaleString("en-IN")} sq.ft.</span>` : "",
+          beds ? `<span>▣ ${beds} BHK</span>` : "",
+          baths ? `<span>♨ ${baths} Bath</span>` : ""
+        ].filter(Boolean).join("");
+
+        const detailURL = property.id
+          ? `property-details.html?id=${encodeURIComponent(property.id)}`
+          : "properties.html";
+
+        return `
+          <article class="property-card">
+            <a class="property-link" href="${detailURL}">
+              <div class="property-image-wrap">
+                <img class="property-image"
+                     src="${image}"
+                     alt="${title}"
+                     loading="lazy"
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80'">
+                ${featured ? '<span class="featured-label">Featured</span>' : ""}
+              </div>
+              <div class="property-info">
+                <div class="property-type">${type}</div>
+                <h3>${title}</h3>
+                <p class="property-location">${city}</p>
+                <div class="property-price">${price}</div>
+                <div class="property-meta">
+                  ${details || "<span>Contact us for details</span>"}
+                </div>
+              </div>
+            </a>
+          </article>`;
+      }).join("");
+    }
+
+    function applyFilters() {
+      const city = normalise(searchCity.value);
+      const type = normalise(searchType.value);
+      const budget = Number(searchBudget.value) || 0;
+
+      const filtered = allProperties.filter(property => {
+        const propertyCity = normalise(property.city || property.location);
+        const propertyType = normalise(property.property_type);
+        const price = Number(property.price) || 0;
+
+        const matchesCity = !city || propertyCity.includes(city);
+        const matchesSearchType = !type || propertyType.includes(type);
+        const matchesBudget = !budget || (price > 0 && price <= budget);
+        const matchesCategory = matchesType(property, activeFilter);
+
+        return matchesCity && matchesSearchType &&
+          matchesBudget && matchesCategory;
       });
 
-      loadProperties();
+      renderProperties(filtered);
+    }
 
-    })();
+    document.querySelectorAll(".filter-chip").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter-chip").forEach(chip => {
+          chip.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        activeFilter = button.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    searchForm.addEventListener("submit", event => {
+      event.preventDefault();
+      activeFilter = "All";
+
+      document.querySelectorAll(".filter-chip").forEach(chip => {
+        chip.classList.toggle("active", chip.dataset.filter === "All");
+      });
+
+      applyFilters();
+
+      document.getElementById("properties").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+
+    async function loadProperties() {
+      const client = window.supabaseClient;
+
+      if (!client || typeof client.from !== "function") {
+        propertyGrid.innerHTML = `
+          <div class="empty-state">
+            <h3>Property listings are temporarily unavailable</h3>
+            <p>Check that js/supabase.js defines window.supabaseClient.</p>
+          </div>`;
+        return;
+      }
+
+      try {
+        const { data, error } = await client
+          .from("properties")
+          .select("*")
+          .eq("is_published", true)
+          .order("is_featured", { ascending: false })
+          .order("created_at", { ascending: false });
+
+        if (error) throw error;
+
+        allProperties = data || [];
+        applyFilters();
+      } catch (error) {
+        console.error("Unable to load properties:", error);
+
+        propertyGrid.innerHTML = `
+          <div class="empty-state">
+            <h3>Unable to load properties right now</h3>
+            <p>Please try again later or contact our team.</p>
+          </div>`;
+      }
+    }
+
+    loadProperties();
   </script>
 
 </body>
