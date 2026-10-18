@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,7 +128,7 @@
           rgba(10, 20, 39, 0.68),
           rgba(10, 20, 39, 0.35)
         ),
-        url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=85")
+        url("assets/about-hero.png")
         center 55% / cover no-repeat;
     }
 
@@ -257,6 +258,8 @@
       margin-bottom: 15px;
     }
 
+    /* INTERIOR IMAGE - LOGO REMOVED */
+
     .about-visual {
       min-height: 400px;
       background:
@@ -265,7 +268,7 @@
           rgba(10, 20, 39, 0.94),
           rgba(10, 20, 39, 0.2)
         ),
-        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85")
+        url("assets/about-interior.png")
         center / cover no-repeat;
       border-radius: 12px;
       padding: 35px;
@@ -274,16 +277,6 @@
       justify-content: flex-end;
       align-items: flex-start;
       overflow: hidden;
-    }
-
-    .about-visual img {
-      width: 155px;
-      max-height: 75px;
-      object-fit: contain;
-      background: white;
-      padding: 8px;
-      border-radius: 6px;
-      margin-bottom: 22px;
     }
 
     .about-visual h3 {
@@ -391,59 +384,62 @@
       );
     }
 
-   /* MUMBAI: GATEWAY OF INDIA */
-.location-card.mumbai {
-  background-image: url("assets/mumbai.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+    /* MUMBAI: GATEWAY OF INDIA */
 
-/* PUNE: SHANIWAR WADA FORT */
-.location-card.pune {
-  background-image: url("assets/pune.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+    .location-card.mumbai {
+      background-image: url("assets/mumbai.webp");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
 
-.location-card .city-label {
-  display: block;
-  color: var(--gold-light);
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
+    /* PUNE: SHANIWAR WADA FORT */
 
-.location-card h3 {
-  color: white;
-  font-size: 40px;
-  line-height: 1.2;
-  margin: 0 0 16px;
-  font-weight: 800;
-}
+    .location-card.pune {
+      background-image: url("assets/pune.webp");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
 
-.location-card p {
-  color: #f0f2f7;
-  font-size: 17px;
-  line-height: 1.8;
-  margin-bottom: 28px;
-  max-width: 580px;
-}
+    .location-card .city-label {
+      display: block;
+      color: var(--gold-light);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
 
-.location-card a {
-  display: inline-block;
-  color: var(--gold-light);
-  font-weight: 800;
-  font-size: 17px;
-  transition: color 0.2s;
-}
+    .location-card h3 {
+      color: white;
+      font-size: 40px;
+      line-height: 1.2;
+      margin: 0 0 16px;
+      font-weight: 800;
+    }
 
-.location-card a:hover {
-  color: white;
-}
+    .location-card p {
+      color: #f0f2f7;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+      max-width: 580px;
+    }
+
+    .location-card a {
+      display: inline-block;
+      color: var(--gold-light);
+      font-weight: 800;
+      font-size: 17px;
+      transition: color 0.2s;
+    }
+
+    .location-card a:hover {
+      color: white;
+    }
+
     /* CONTACT CTA */
 
     .cta-section {
@@ -759,12 +755,8 @@
 
         </div>
 
+        <!-- INTERIOR IMAGE WITHOUT LOGO -->
         <div class="about-visual">
-
-          <img
-            src="assets/logoweb.webp"
-            alt="Adhao Realty Logo"
-            loading="lazy">
 
           <h3>Property. Trust. Opportunity.</h3>
 
@@ -987,4 +979,3 @@
 
 </body>
 </html>
-```
