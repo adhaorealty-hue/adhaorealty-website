@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sell Your Property | Adhao Realty</title>
+  <meta name="description" content="Submit your property details and photos to Adhao Realty to discuss selling your property in Mumbai or Pune.">
+
+  <link rel="icon" type="image/webp" href="assets/logoweb.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #111c2a;
+      --gold: #edbd55;
+      --gold-dark: #b98224;
+      --page: #faf9f6;
+      --text: #17202b;
+      --muted: #727983;
+      --border: #e8e7e2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--page);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button, input, select, textarea { font: inherit; }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo img {
+      display: block;
+      width: 110px;
+      height: 65px;
+      object-fit: contain;
+    }
+
+    .back-link {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--navy);
+    }
+
+    .back-link:hover { color: var(--gold-dark); }
+
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(12,22,33,.94), rgba(12,22,33,.67)),
+        url("assets/about-hero.png") center / cover no-repeat;
+      color: white;
+      padding: 48px 0;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #e7ebf1;
+      max-width: 680px;
+      font-size: 15px;
+    }
+
+    main { padding: 38px 0 65px; }
+
+    .form-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: clamp(20px, 4vw, 36px);
+      box-shadow: 0 8px 28px rgba(16, 27, 50, .05);
+    }
+
+    .form-heading { margin-bottom: 25px; }
+
+    .form-heading h2 {
+      font-size: 25px;
+      margin-bottom: 6px;
+      color: var(--navy);
+    }
+
+    .form-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .group-title {
+      color: var(--navy);
+      font-size: 17px;
+      padding-bottom: 10px;
+      margin: 25px 0 17px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #293447;
+    }
+
+    label .optional {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 12px;
+      border: 1px solid #dcdfe5;
+      border-radius: 7px;
+      background: white;
+      color: var(--text);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold-dark);
+      box-shadow: 0 0 0 3px rgba(237,189,85,.18);
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .upload-box {
+      padding: 20px;
+      border: 1px dashed #c8b27f;
+      background: #fffcf5;
+      border-radius: 9px;
+    }
+
+    input[type="file"] {
+      padding: 9px;
+      background: white;
+    }
+
+    .submit-row {
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .submit-button {
+      border: 0;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 24px;
+      border-radius: 7px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .submit-button:hover { background: #ffd574; }
+
+    .submit-button:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    .status {
+      margin-top: 16px;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .status.error { color: #b42318; }
+    .status.success { color: #167344; }
+
+    .privacy-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 18px;
+    }
+
+    footer {
+      background: #10171c;
+      color: #d6dbe0;
+      padding: 22px 0;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .hero { padding: 36px 0; }
+      .logo img { width: 90px; }
+      .submit-button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html" aria-label="Adhao Realty home">
+      <img src="assets/logoweb.webp" alt="Adhao Realty">
+    </a>
+    <a class="back-link" href="index.html">← Back to Home</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Sell With Adhao Realty</div>
+    <h1>Let's Find the Right Buyer for Your Property</h1>
+    <p>
+      Share your property details and upload photos. Our team will review
+      your submission and contact you to discuss the next steps.
+    </p>
+  </div>
+</section>
+
+<main class="container">
+  <div class="form-card">
+
+    <div class="form-heading">
+      <h2>Property Owner Submission Form</h2>
+      <p>Fields marked * are required.</p>
+    </div>
+
+    <form id="sellForm">
+
+      <h3 class="group-title">1. Owner Details</h3>
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="ownerName">Full Name *</label>
+          <input id="ownerName" name="ownerName" required maxlength="100"
+                 autocomplete="name" placeholder="Enter your full name">
+        </div>
+
+        <div class="field">
+          <label for="phone">Mobile Number *</label>
+          <input id="phone" name="phone" required type="tel"
+                 autocomplete="tel" inputmode="tel"
+                 pattern="[0-9+\s()-]{10,18}"
+                 placeholder="+91 98765 43210">
+        </div>
+
+        <div class="field">
+          <label for="email">Email <span class="optional">(optional)</span></label>
+          <input id="email" name="email" type="email" maxlength="150"
+                 autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="field">
+          <label for="ownership">Ownership Status *</label>
+          <select id="ownership" name="ownership" required>
+            <option value="">Select status</option>
+            <option>Owner</option>
+            <option>Joint Owner</option>
+            <option>Authorized Representative</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+      </div>
+
+      <h3 class="group-title">2. Property Details</h3>
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="propertyType">Property Type *</label>
+          <select id="propertyType" name="propertyType" required>
+            <option value="">Select property type</option>
+            <option>Flat / Apartment</option>
+            <option>Independent House / Villa</option>
+            <option>Plot / Land</option>
+            <option>Commercial Office</option>
+            <option>Shop / Showroom</option>
+            <option>Warehouse / Industrial</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="city">City *</label>
+          <select id="city" name="city" required>
+            <option value="">Select city</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="locality">Locality / Area *</label>
+          <input id="locality" name="locality" required maxlength="150"
+                 placeholder="e.g. Hinjawadi, Andheri">
+        </div>
+
+        <div class="field">
+          <label for="area">Property Area (sq. ft.) *</label>
+          <input id="area" name="area" type="number" min="1" max="10000000"
+                 required placeholder="e.g. 1200">
+        </div>
+
+        <div class="field full">
+          <label for="address">Full Property Address *</label>
+          <textarea id="address" name="address" required maxlength="1000"
+                    placeholder="Building / society, street, landmark and PIN code"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="bedrooms">Bedrooms <span class="optional">(if applicable)</span></label>
+          <select id="bedrooms" name="bedrooms">
+            <option value="">Not applicable</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="bathrooms">Bathrooms <span class="optional">(if applicable)</span></label>
+          <select id="bathrooms" name="bathrooms">
+            <option value="">Not applicable</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="condition">Property Condition</label>
+          <select id="condition" name="condition">
+            <option value="">Select condition</option>
+            <option>Under Construction</option>
+            <option>Ready to Move</option>
+            <option>Resale</option>
+            <option>New Construction</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="expectedPrice">Expected Selling Price (₹) *</label>
+          <input id="expectedPrice" name="expectedPrice" type="number"
+                 min="1" max="100000000000" required
+                 placeholder="e.g. 8500000">
+          <span class="help">Enter the full amount in rupees, without commas.</span>
+        </div>
+
+        <div class="field full">
+          <label for="description">Property Description *</label>
+          <textarea id="description" name="description" required maxlength="3000"
+                    placeholder="Mention amenities, parking, floor, furnishing, title/approval information and other important details. Do not include sensitive document numbers."></textarea>
+        </div>
+
+      </div>
+
+      <h3 class="group-title">3. Upload Property Photos</h3>
+
+      <div class="upload-box">
+        <div class="field">
+          <label for="images">Property Images *</label>
+          <input id="images" name="images" type="file"
+                 accept="image/jpeg,image/png,image/webp"
+                 multiple required>
+          <span class="help">
+            Select up to 5 photos. JPG, PNG or WebP only; maximum 5 MB per image.
+          </span>
+          <p id="fileInfo" class="help" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button class="submit-button" id="submitButton" type="submit">
+          Submit Property &amp; Continue to WhatsApp →
+        </button>
+      </div>
+
+      <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+
+      <p class="privacy-note">
+        By submitting, you confirm that the information is accurate and
+        that you are authorized to share the property details and images.
+        Do not upload identity documents or other sensitive personal records.
+      </p>
+
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> Adhao Realty. All rights reserved.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  const form = document.getElementById("sellForm");
+  const fileInput = document.getElementById("images");
+  const fileInfo = document.getElementById("fileInfo");
+  const statusBox = document.getElementById("formStatus");
+  const submitButton = document.getElementById("submitButton");
+
+  const MAX_FILES = 5;
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
+  const BUCKET = "property-images";
+
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp"
+  ];
+
+  fileInput.addEventListener("change", () => {
+    const files = Array.from(fileInput.files || []);
+
+    if (files.length > MAX_FILES) {
+      fileInfo.textContent = "Please select no more than 5 images.";
+      fileInput.value = "";
+      return;
+    }
+
+    const invalid = files.some(file =>
+      !allowedTypes.includes(file.type) ||
+      file.size > MAX_FILE_SIZE
+    );
+
+    if (invalid) {
+      fileInfo.textContent =
+        "Each file must be JPG, PNG or WebP and no larger than 5 MB.";
+      fileInput.value = "";
+      return;
+    }
+
+    fileInfo.textContent = files.length
+      ? files.length + " image(s) selected."
+      : "";
+  });
+
+  function showStatus(message, type) {
+    statusBox.textContent = message;
+    statusBox.className = "status " + type;
+  }
+
+  function getValue(id) {
+    return document.getElementById(id).value.trim();
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const client = window.supabaseClient;
+
+    if (!client || !client.storage || !client.from) {
+      showStatus(
+        "Connection unavailable. Please check js/supabase.js and try again.",
+        "error"
+      );
+      return;
+    }
+
+    const files = Array.from(fileInput.files || []);
+
+    if (!files.length || files.length > MAX_FILES) {
+      showStatus("Please select between 1 and 5 property photos.", "error");
+      return;
+    }
+
+    if (files.some(file =>
+      !allowedTypes.includes(file.type) ||
+      file.size > MAX_FILE_SIZE
+    )) {
+      showStatus(
+        "Each photo must be JPG, PNG or WebP and no larger than 5 MB.",
+        "error"
+      );
+      return;
+    }
+
+    const phone = getValue("phone");
+
+    if (!/^[0-9+\s()-]{10,18}$/.test(phone)) {
+      showStatus("Please enter a valid contact phone number.", "error");
+      return;
+    }
+
+    const submission = {
+      owner_name: getValue("ownerName"),
+      phone: phone,
+      email: getValue("email") || null,
+      ownership_status: getValue("ownership"),
+      property_type: getValue("propertyType"),
+      city: getValue("city"),
+      locality: getValue("locality"),
+      address: getValue("address"),
+      area_sqft: Number(getValue("area")),
+      bedrooms: getValue("bedrooms") || null,
+      bathrooms: getValue("bathrooms") || null,
+      property_condition: getValue("condition") || null,
+      expected_price: Number(getValue("expectedPrice")),
+      description: getValue("description")
+    };
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Uploading photos and submitting...";
+    showStatus("Please wait while your submission is saved.", "");
+
+    const uploadedPaths = [];
+
+    try {
+      const imageUrls = [];
+
+      for (const file of files) {
+        const safeName = file.name
+          .toLowerCase()
+          .replace(/[^a-z0-9._-]/g, "-")
+          .slice(-100);
+
+        const path =
+          "sell-submissions/" +
+          Date.now() + "-" +
+          crypto.randomUUID() + "-" +
+          safeName;
+
+        const { error: uploadError } = await client.storage
+          .from(BUCKET)
+          .upload(path, file, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: file.type
+          });
+
+        if (uploadError) throw uploadError;
+
+        uploadedPaths.push(path);
+
+        const { data: publicData } = client.storage
+          .from(BUCKET)
+          .getPublicUrl(path);
+
+        if (!publicData || !publicData.publicUrl) {
+          throw new Error("Could not create an image URL.");
+        }
+
+        imageUrls.push(publicData.publicUrl);
+      }
+
+      const { data, error: insertError } = await client
+        .from("property_submissions")
+        .insert([{
+          ...submission,
+          image_urls: imageUrls,
+          submission_status: "new"
+        }])
+        .select("id")
+        .single();
+
+      if (insertError) throw insertError;
+
+      const message = [
+        "Hello Adhao Realty, I would like to sell my property.",
+        "",
+        "Submission ID: " + data.id,
+        "Owner: " + submission.owner_name,
+        "Phone: " + submission.phone,
+        "Email: " + (submission.email || "Not provided"),
+        "Ownership: " + submission.ownership_status,
+        "Property Type: " + submission.property_type,
+        "City: " + submission.city,
+        "Locality: " + submission.locality,
+        "Address: " + submission.address,
+        "Area: " + submission.area_sqft + " sq. ft.",
+        "Bedrooms: " + (submission.bedrooms || "N/A"),
+        "Bathrooms: " + (submission.bathrooms || "N/A"),
+        "Condition: " + (submission.property_condition || "Not specified"),
+        "Expected Price: Rs. " +
+          submission.expected_price.toLocaleString("en-IN"),
+        "Description: " + submission.description,
+        "",
+        "Property photo links:",
+        ...imageUrls
+      ].join("\n");
+
+      showStatus(
+        "Your property details and photos have been saved. Opening WhatsApp...",
+        "success"
+      );
+
+      const whatsappUrl =
+        "https://wa.me/917249310062?text=" +
+        encodeURIComponent(message);
+
+      window.location.assign(whatsappUrl);
+
+    } catch (error) {
+      console.error("Property submission failed:", error);
+
+      showStatus(
+        "We could not complete the submission. " +
+        (error.message || "Please try again or contact us on WhatsApp."),
+        "error"
+      );
+
+      submitButton.disabled = false;
+      submitButton.textContent =
+        "Submit Property & Continue to WhatsApp →";
+    }
+  });
+</script>
+
+</body>
+</html>
