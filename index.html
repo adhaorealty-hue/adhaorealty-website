@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +9,8 @@
   <meta name="description" content="Find residential flats and new projects in Pune &amp; PCMC with Adhao Realty. Get property guidance and connect with developers.">
   <meta name="theme-color" content="#111c2a">
 
-  <!-- Preferred homepage URL -->
   <link rel="canonical" href="https://adhaorealty.in/">
 
-  <!-- Social sharing preview: Facebook, WhatsApp and other platforms -->
   <meta property="og:site_name" content="Adhao Realty">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://adhaorealty.in/">
@@ -20,13 +19,11 @@
   <meta property="og:image" content="https://adhaorealty.in/assets/background-opti.webp">
   <meta property="og:image:alt" content="Adhao Realty – residential property consultancy">
 
-  <!-- X (Twitter) sharing preview -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Real Estate Consultant in Pune &amp; PCMC | Adhao Realty">
   <meta name="twitter:description" content="Find residential flats and new projects in Pune &amp; PCMC with Adhao Realty. Get property guidance and connect with developers.">
   <meta name="twitter:image" content="https://adhaorealty.in/assets/background-opti.webp">
 
-  <!-- Basic organization structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,8 +46,10 @@
   </script>
 
   <link rel="icon" type="image/webp" href="assets/logoweb.webp">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -102,9 +101,7 @@
       margin: 0 auto;
     }
 
-    /* =========================================
-       HERO SECTION
-       ========================================= */
+    /* HERO */
 
     .hero {
       min-height: 475px;
@@ -112,13 +109,8 @@
       isolation: isolate;
       overflow: hidden;
       color: #fff;
-
-      /*
-        Keep the existing background image.
-        100% 100% displays the complete image
-        without cropping its top or bottom.
-      */
       background-color: #111c2a;
+
       background-image:
         linear-gradient(
           90deg,
@@ -138,7 +130,7 @@
       background-size: 100% 100%;
     }
 
-    /* TRANSPARENT NAVBAR */
+    /* HEADER */
 
     .site-header {
       position: absolute;
@@ -229,7 +221,7 @@
       font-size: 21px;
     }
 
-    /* HERO TEXT */
+    /* HERO CONTENT */
 
     .hero-content {
       position: relative;
@@ -270,7 +262,7 @@
       color: rgba(255,255,255,0.96);
     }
 
-    /* PROPERTY SEARCH BAR */
+    /* SEARCH */
 
     .property-search {
       width: min(1125px, 100%);
@@ -355,9 +347,7 @@
       font-size: 20px;
     }
 
-    /* =========================================
-       GENERAL SECTIONS
-       ========================================= */
+    /* SECTIONS */
 
     .section {
       padding: 34px 0 0;
@@ -420,9 +410,7 @@
       border-color: #19231f;
     }
 
-    /* =========================================
-       PROPERTY CARDS
-       ========================================= */
+    /* PROPERTY CARDS */
 
     .property-grid {
       display: grid;
@@ -506,6 +494,7 @@
       font-size: 18px;
       font-weight: 800;
       margin-bottom: 10px;
+      overflow-wrap: anywhere;
     }
 
     .property-meta {
@@ -543,9 +532,7 @@
       margin-bottom: 7px;
     }
 
-    /* =========================================
-       EXPLORE BY LOCATION
-       ========================================= */
+    /* LOCATION */
 
     .location-grid {
       display: grid;
@@ -625,9 +612,7 @@
       font-size: 11px;
     }
 
-    /* =========================================
-       WHY CHOOSE ADHAO REALTY
-       ========================================= */
+    /* WHY CHOOSE */
 
     .why-grid {
       display: grid;
@@ -666,9 +651,7 @@
       line-height: 1.5;
     }
 
-    /* =========================================
-       TESTIMONIALS
-       ========================================= */
+    /* TESTIMONIALS */
 
     .testimonial-grid {
       display: grid;
@@ -725,9 +708,7 @@
       font-size: 13px;
     }
 
-    /* =========================================
-       FOOTER
-       ========================================= */
+    /* FOOTER */
 
     .site-footer {
       margin-top: 38px;
@@ -814,9 +795,7 @@
       gap: 10px;
     }
 
-    /* =========================================
-       TABLET RESPONSIVE
-       ========================================= */
+    /* TABLET */
 
     @media (max-width: 1000px) {
       .container {
@@ -866,9 +845,7 @@
       }
     }
 
-    /* =========================================
-       MOBILE RESPONSIVE
-       ========================================= */
+    /* MOBILE */
 
     @media (max-width: 640px) {
       .container {
@@ -877,12 +854,6 @@
 
       .hero {
         min-height: auto;
-
-        /*
-          No forced mobile background-position override.
-          Keep the image centered and show its full area
-          inside the hero background.
-        */
         background-position: center center;
         background-size: 100% 100%;
       }
@@ -1166,7 +1137,7 @@
 
 <body>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero" id="home">
 
     <header class="site-header">
@@ -1579,7 +1550,7 @@
       });
     });
 
-    /* SAFE HTML OUTPUT */
+    /* SAFE HTML */
 
     function escapeHTML(value) {
       return String(value ?? "").replace(/[&<>"']/g, char => ({
@@ -1595,14 +1566,10 @@
       return String(value ?? "").trim().toLowerCase();
     }
 
-    /* PRICE FORMATTING */
+    /* PRICE FORMAT */
 
     function formatPrice(value) {
-      if (
-        value === null ||
-        value === undefined ||
-        value === ""
-      ) {
+      if (value === null || value === undefined || value === "") {
         return "Price on Request";
       }
 
@@ -1634,6 +1601,54 @@
       }
 
       return "₹" + amount.toLocaleString("en-IN");
+    }
+
+    /*
+      UPDATED PRICE RANGE SUPPORT
+
+      New database fields:
+      min_price
+      max_price
+
+      Legacy support:
+      price
+    */
+
+    function getMinPrice(property) {
+      const value = property.min_price ?? property.price;
+      const amount = Number(value);
+
+      return Number.isFinite(amount) && amount > 0
+        ? amount
+        : 0;
+    }
+
+    function getMaxPrice(property) {
+      const value = property.max_price ?? property.price;
+      const amount = Number(value);
+
+      return Number.isFinite(amount) && amount > 0
+        ? amount
+        : 0;
+    }
+
+    function formatPropertyPrice(property) {
+      const min = getMinPrice(property);
+      const max = getMaxPrice(property);
+
+      if (!min && !max) {
+        return "Price on Request";
+      }
+
+      if (!min) {
+        return formatPrice(max);
+      }
+
+      if (!max || min === max) {
+        return formatPrice(min);
+      }
+
+      return `${formatPrice(min)} – ${formatPrice(max)}`;
     }
 
     /* PROPERTY IMAGES */
@@ -1710,7 +1725,7 @@
 
         const city = escapeHTML(getPropertyCity(property));
         const type = escapeHTML(getPropertyType(property));
-        const price = escapeHTML(formatPrice(property.price));
+        const price = escapeHTML(formatPropertyPrice(property));
         const image = escapeHTML(getImage(property));
 
         const area = Number(property.area_sqft) || 0;
@@ -1740,11 +1755,11 @@
               <div class="property-image-wrap">
                 <img
                   class="property-image"
-  src="${image}"
-  alt="${title}"
-  width="900"
-  height="600"
-  loading="lazy"
+                  src="${image}"
+                  alt="${title}"
+                  width="900"
+                  height="600"
+                  loading="lazy"
                   onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80'"
                 >
 
@@ -1782,7 +1797,15 @@
         );
 
         const propertyType = normalise(property.property_type);
-        const price = Number(property.price) || 0;
+
+        /*
+          Budget compares the project's starting price.
+          Example:
+          Project ₹50 Lakh – ₹1 Crore
+          Under ₹1 Crore = included
+        */
+
+        const startingPrice = getMinPrice(property);
 
         const matchesCity =
           !city || propertyCity.includes(city);
@@ -1791,7 +1814,8 @@
           !type || propertyType.includes(type);
 
         const matchesBudget =
-          !budget || (price > 0 && price <= budget);
+          !budget ||
+          (startingPrice > 0 && startingPrice <= budget);
 
         const matchesCategory =
           matchesType(property, activeFilter);
