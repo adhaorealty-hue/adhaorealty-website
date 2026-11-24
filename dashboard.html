@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +78,18 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
 .status{font-weight:bold;color:var(--green)}
 .empty{padding:30px;text-align:center;color:var(--muted)}
 
-.config-editor{display:grid;gap:12px}.config-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:10px;align-items:end;border:1px solid var(--border);padding:12px;border-radius:7px;background:#fafbfd}.config-row .field label{font-size:11px}.config-row input{min-width:0}.remove-config{height:40px;border:0;border-radius:5px;background:#fff0f0;color:#dc3545;font-weight:bold;padding:0 12px}.config-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}.config-toolbar .help{margin:0}@media(max-width:680px){.config-row{grid-template-columns:1fr 1fr}.config-row .config-name{grid-column:1/-1}.remove-config{grid-column:1/-1}}
+.config-editor{display:grid;gap:12px}
+.config-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:10px;align-items:end;border:1px solid var(--border);padding:12px;border-radius:7px;background:#fafbfd}
+.config-row .field label{font-size:11px}
+.config-row input{min-width:0}
+.remove-config{height:40px;border:0;border-radius:5px;background:#fff0f0;color:#dc3545;font-weight:bold;padding:0 12px}
+.config-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}
+.config-toolbar .help{margin:0}
+@media(max-width:680px){
+  .config-row{grid-template-columns:1fr 1fr}
+  .config-row .config-name{grid-column:1/-1}
+  .remove-config{grid-column:1/-1}
+}
 .image-card{padding:12px;border:1px solid var(--border);border-radius:7px}
 .image-card img{width:100%;height:150px;object-fit:cover;border-radius:5px}
 .image-card h4{margin:10px 0}
@@ -116,7 +128,10 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     <header class="topbar">
       <div style="display:flex;align-items:center;gap:12px">
         <button class="mobile-menu" id="menuButton" aria-label="Menu">☰</button>
-        <div><h2 id="pageTitle">Dashboard</h2><p>Adhao Realty apartment project administration</p></div>
+        <div>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p>Adhao Realty apartment project administration</p>
+        </div>
       </div>
       <div id="adminEmail">Checking administrator…</div>
     </header>
@@ -124,7 +139,10 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     <div class="content">
       <section class="view active" id="view-overview">
         <div class="heading">
-          <div><h1>Dashboard</h1><p>Manage complete apartment buildings and residential projects.</p></div>
+          <div>
+            <h1>Dashboard</h1>
+            <p>Manage complete apartment buildings and residential projects.</p>
+          </div>
           <button class="btn gold" data-new>＋ Add Apartment Project</button>
         </div>
         <div class="stats">
@@ -134,21 +152,35 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
           <div class="stat"><small>Projects Sold</small><strong id="soldCount">—</strong></div>
         </div>
         <div class="panel">
-          <div class="panel-head"><h3>Recent Properties</h3><p>Recently added or updated apartment projects</p></div>
+          <div class="panel-head">
+            <h3>Recent Properties</h3>
+            <p>Recently added or updated apartment projects</p>
+          </div>
           <div id="recentTable" class="empty">Loading…</div>
         </div>
       </section>
 
       <section class="view" id="view-manage">
         <div class="heading">
-          <div><h1>Manage Apartment Projects</h1><p>Edit, delete and review complete apartment project listings.</p></div>
+          <div>
+            <h1>Manage Apartment Projects</h1>
+            <p>Edit, delete and review complete apartment project listings.</p>
+          </div>
           <button class="btn gold" data-new>＋ Add Apartment Project</button>
         </div>
         <div class="panel">
           <div class="form-grid">
-            <div class="field"><label for="searchInput">Search</label><input id="searchInput" placeholder="Project name, area, address, configuration…" ></div>
-            <div class="field"><label for="cityFilter">City</label>
-              <select id="cityFilter"><option value="">All Cities</option><option>Mumbai</option><option>Pune</option></select>
+            <div class="field">
+              <label for="searchInput">Search</label>
+              <input id="searchInput" placeholder="Project name, area, address, configuration…">
+            </div>
+            <div class="field">
+              <label for="cityFilter">City</label>
+              <select id="cityFilter">
+                <option value="">All Cities</option>
+                <option>Mumbai</option>
+                <option>Pune</option>
+              </select>
             </div>
           </div>
           <div id="manageTable" class="empty">Loading…</div>
@@ -157,11 +189,18 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
 
       <section class="view" id="view-form">
         <div class="heading">
-          <div><h1 id="formHeading">Add Apartment Project</h1><p>Add or update a complete apartment building or residential project for sale.</p></div>
+          <div>
+            <h1 id="formHeading">Add Apartment Project</h1>
+            <p>Add or update a complete apartment building or residential project for sale.</p>
+          </div>
         </div>
         <div class="panel">
-          <div class="panel-head"><h3>Apartment Project Information</h3><p>Enter details for the complete building or residential project, not an individual flat. Fields marked * are required.</p></div>
+          <div class="panel-head">
+            <h3>Apartment Project Information</h3>
+            <p>Enter details for the complete building or residential project, not an individual flat. Fields marked * are required.</p>
+          </div>
           <div id="formNotice" class="notice" role="status"></div>
+
           <form id="propertyForm">
             <input type="hidden" id="propertyId">
 
@@ -174,65 +213,104 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
               <div class="field">
                 <label for="propertyType">Project Type *</label>
                 <select id="propertyType" required>
-                  <option value="Apartment Project">Apartment Project</option><option value="Residential Building">Residential Building</option><option value="Commercial Building">Commercial Building</option><option value="Mixed-use Project">Mixed-use Project</option><option value="Development Plot">Development Plot</option>
+                  <option value="Apartment Project">Apartment Project</option>
+                  <option value="Residential Building">Residential Building</option>
+                  <option value="Commercial Building">Commercial Building</option>
+                  <option value="Mixed-use Project">Mixed-use Project</option>
+                  <option value="Development Plot">Development Plot</option>
                 </select>
               </div>
+
               <div class="field">
                 <label for="listingType">Project Transaction *</label>
-                <select id="listingType" required><option value="Sale">Complete Project / Building Sale</option><option value="Lease">Complete Project Lease</option></select>
+                <select id="listingType" required>
+                  <option value="Sale">Complete Project / Building Sale</option>
+                  <option value="Lease">Complete Project Lease</option>
+                </select>
               </div>
+
               <div class="field">
                 <label for="propertyCity">City *</label>
-                <select id="propertyCity" required><option>Mumbai</option><option>Pune</option></select>
+                <select id="propertyCity" required>
+                  <option>Mumbai</option>
+                  <option>Pune</option>
+                </select>
               </div>
+
               <div class="field">
                 <label for="propertyLocation">Project Area / Locality *</label>
                 <input id="propertyLocation" required placeholder="e.g. Alandi, Wakad, Bandra">
               </div>
+
               <div class="field full">
                 <label for="fullAddress">Complete Project Address</label>
                 <textarea id="fullAddress" placeholder="Building, street, locality, city, state, PIN code"></textarea>
               </div>
+
+              <!-- NEW: PROJECT PRICE RANGE -->
               <div class="field">
-                <label for="propertyPrice">Total Project Price in INR *</label>
-                <input id="propertyPrice" type="number" min="0" step="1" required placeholder="e.g. 150000000">
+                <label for="propertyMinPrice">Minimum Project Price (INR) *</label>
+                <input id="propertyMinPrice" type="number" min="1" step="1" required placeholder="e.g. 5000000">
+                <p class="help">Example: 5000000 = ₹50 Lakhs</p>
               </div>
+
+              <div class="field">
+                <label for="propertyMaxPrice">Maximum Project Price (INR) *</label>
+                <input id="propertyMaxPrice" type="number" min="1" step="1" required placeholder="e.g. 10000000">
+                <p class="help">Example: 10000000 = ₹1 Crore</p>
+              </div>
+
               <div class="field">
                 <label for="propertyStatus">Project Availability *</label>
-                <select id="propertyStatus" required><option>Available</option><option>Reserved</option><option>Sold</option></select>
+                <select id="propertyStatus" required>
+                  <option>Available</option>
+                  <option>Reserved</option>
+                  <option>Sold</option>
+                </select>
               </div>
+
               <div class="field">
                 <label for="areaSqft">Total Built-up Area (sq. ft.)</label>
                 <input id="areaSqft" type="number" min="0" step="0.01">
               </div>
+
               <div class="field">
                 <label for="totalUnits">Total Apartments / Units</label>
                 <input id="totalUnits" type="number" min="0" step="1" placeholder="e.g. 240">
                 <p class="help">Total number of apartments/units in the complete project.</p>
               </div>
+
               <div class="field">
                 <label for="totalTowers">Total Towers / Buildings</label>
                 <input id="totalTowers" type="number" min="0" step="1" placeholder="e.g. 4">
               </div>
+
               <div class="field">
                 <label for="projectConfiguration">Project Configuration</label>
                 <input id="projectConfiguration" maxlength="250" placeholder="e.g. 1, 2 and 3 BHK apartments">
                 <p class="help">Describe the unit mix in the project; this does not mean an individual flat is being listed.</p>
               </div>
+
               <div class="field full">
                 <label>Available BHK Configurations</label>
                 <p class="help">Add each apartment configuration separately. These details appear on the public project detail page.</p>
                 <div id="configurationEditor" class="config-editor"></div>
-                <div class="config-toolbar"><span class="help">BHK / Carpet Area / Price / Availability</span><button type="button" class="btn outline" id="addConfiguration">＋ Add Configuration</button></div>
+                <div class="config-toolbar">
+                  <span class="help">BHK / Carpet Area / Price / Availability</span>
+                  <button type="button" class="btn outline" id="addConfiguration">＋ Add Configuration</button>
+                </div>
               </div>
+
               <div class="field">
                 <label for="totalFloors">Total Floors</label>
                 <input id="totalFloors" type="number" min="0" step="1" placeholder="e.g. 22">
               </div>
+
               <div class="field">
                 <label for="plotArea">Total Plot / Land Area (sq. ft.)</label>
                 <input id="plotArea" type="number" min="0" step="0.01" placeholder="e.g. 85000">
               </div>
+
               <div class="field">
                 <label for="parking">Total Parking Details</label>
                 <input id="parking" placeholder="e.g. 80 covered parking spaces">
@@ -243,37 +321,45 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
                 <input id="googleMapsUrl" type="url" placeholder="Paste the Google Maps share link">
                 <p class="help">Google Maps mein property pin open karo → Share → Copy link → yahan paste karo.</p>
               </div>
+
               <div class="field">
                 <label for="latitude">Latitude</label>
                 <input id="latitude" type="number" step="any" min="-90" max="90" placeholder="e.g. 18.5204">
               </div>
+
               <div class="field">
                 <label for="longitude">Longitude</label>
                 <input id="longitude" type="number" step="any" min="-180" max="180" placeholder="e.g. 73.8567">
               </div>
+
               <div class="field full">
                 <a id="previewMap" class="btn outline" href="https://maps.google.com" target="_blank" rel="noopener">Preview Google Maps location ↗</a>
                 <p class="help">Coordinates can be copied from the dropped pin in Google Maps. Verify that the pin is the property's actual location.</p>
               </div>
+
               <div class="field full">
                 <label for="amenities">Project Amenities (one per line)</label>
                 <textarea id="amenities" placeholder="Gated Community&#10;Parking&#10;Lift&#10;Security&#10;Green Spaces&#10;Gym"></textarea>
               </div>
+
               <div class="field full">
                 <label for="description">Complete Project Description</label>
                 <textarea id="description" maxlength="10000" placeholder="Describe the complete apartment project, buildings, total units, location, connectivity, facilities and sale terms."></textarea>
               </div>
+
               <div class="field full">
                 <label for="propertyImages">Upload Apartment Project Photos</label>
                 <input id="propertyImages" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
                 <p class="help">Maximum 12 photos per project, 5 MB per image. Existing photos are shown below. Removing a photo from the gallery removes it from the listing but does not delete its storage file.</p>
                 <div id="imagePreview" class="gallery" style="margin-top:14px"></div>
               </div>
+
               <div class="field full checks">
                 <label><input id="isFeatured" type="checkbox"> Featured property</label>
                 <label><input id="isPublished" type="checkbox" checked> Publish on website</label>
               </div>
             </div>
+
             <div class="form-actions">
               <button type="button" class="btn outline" id="cancelForm">Cancel</button>
               <button type="submit" class="btn gold" id="saveButton">Save Project</button>
@@ -283,19 +369,44 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
       </section>
 
       <section class="view" id="view-images">
-        <div class="heading"><div><h1>Project Images</h1><p>Review images attached to apartment project listings.</p></div></div>
-        <div class="panel"><div id="imageGallery" class="form-grid"><div class="empty">Loading images…</div></div></div>
+        <div class="heading">
+          <div>
+            <h1>Project Images</h1>
+            <p>Review images attached to apartment project listings.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div id="imageGallery" class="form-grid">
+            <div class="empty">Loading images…</div>
+          </div>
+        </div>
       </section>
 
       <section class="view" id="view-settings">
-        <div class="heading"><div><h1>Settings</h1><p>Administrator account and system information.</p></div></div>
-        <div class="panel">
-          <div class="panel-head"><h3>Administrator</h3><p>Signed-in account</p></div>
-          <div class="form-grid">
-            <div class="field full"><label>Admin Email</label><input id="settingsEmail" readonly></div>
-            <div class="field full"><label>Website</label><input value="Adhao Realty · Mumbai and Pune" readonly></div>
+        <div class="heading">
+          <div>
+            <h1>Settings</h1>
+            <p>Administrator account and system information.</p>
           </div>
-          <div class="form-actions"><button class="btn dark" id="settingsLogout">Log Out</button></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Administrator</h3>
+            <p>Signed-in account</p>
+          </div>
+          <div class="form-grid">
+            <div class="field full">
+              <label>Admin Email</label>
+              <input id="settingsEmail" readonly>
+            </div>
+            <div class="field full">
+              <label>Website</label>
+              <input value="Adhao Realty · Mumbai and Pune" readonly>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn dark" id="settingsLogout">Log Out</button>
+          </div>
         </div>
       </section>
     </div>
@@ -304,92 +415,221 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
+
 <script>
 (() => {
   "use strict";
 
   const $ = id => document.getElementById(id);
+
   let properties = [];
   let currentImages = [];
   let pendingFiles = [];
   let bhkConfigurations = [];
 
-  const allowedTypes = ["image/jpeg","image/png","image/webp","image/avif"];
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/avif"
+  ];
 
   function escapeHTML(value) {
     return String(value ?? "").replace(/[&<>"']/g, c => ({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
     })[c]);
   }
 
+  // Format a single INR price
   function priceText(value, listingType) {
     const n = Number(value);
+
     if (!Number.isFinite(n)) return "Price on request";
+
     let out;
-    if (n >= 10000000) out = "₹" + (n / 10000000).toLocaleString("en-IN",{maximumFractionDigits:2}) + " Cr";
-    else if (n >= 100000) out = "₹" + (n / 100000).toLocaleString("en-IN",{maximumFractionDigits:2}) + " Lakh";
-    else out = "₹" + n.toLocaleString("en-IN");
-    return out + (listingType === "Rent" ? " / month" : "");
+
+    if (n >= 10000000) {
+      out = "₹" + (n / 10000000).toLocaleString("en-IN", {
+        maximumFractionDigits:2
+      }) + " Cr";
+    }
+    else if (n >= 100000) {
+      out = "₹" + (n / 100000).toLocaleString("en-IN", {
+        maximumFractionDigits:2
+      }) + " Lakh";
+    }
+    else {
+      out = "₹" + n.toLocaleString("en-IN");
+    }
+
+    return out + (listingType === "Lease" ? " / month" : "");
+  }
+
+  // NEW: Format project minimum and maximum price
+  function priceRangeText(property) {
+    const min = property.min_price;
+    const max = property.max_price;
+
+    // If range is available, use the range
+    if (
+      min !== null &&
+      min !== undefined &&
+      max !== null &&
+      max !== undefined &&
+      min !== "" &&
+      max !== ""
+    ) {
+      const minNumber = Number(min);
+      const maxNumber = Number(max);
+
+      if (Number.isFinite(minNumber) && Number.isFinite(maxNumber)) {
+        if (minNumber === maxNumber) {
+          return priceText(minNumber, property.listing_type);
+        }
+
+        return priceText(minNumber, property.listing_type)
+          + " – "
+          + priceText(maxNumber, property.listing_type);
+      }
+    }
+
+    // Fallback for older records using only price
+    if (property.price !== null && property.price !== undefined && property.price !== "") {
+      return priceText(property.price, property.listing_type);
+    }
+
+    return "Price on request";
   }
 
   function notice(message, type="error") {
     $("formNotice").textContent = message;
     $("formNotice").className = "notice show " + type;
   }
+
   function clearNotice() {
     $("formNotice").textContent = "";
     $("formNotice").className = "notice";
   }
 
   function navigate(name) {
-    document.querySelectorAll(".view").forEach(v => v.classList.toggle("active",v.id === "view-" + name));
-    document.querySelectorAll("[data-view]").forEach(b => b.classList.toggle("active",b.dataset.view === name));
-    const titles = {overview:"Dashboard",manage:"Manage Properties",form:$("propertyId").value ? "Edit Apartment Project" : "Add Apartment Project",images:"Project Images",settings:"Settings"};
+    document.querySelectorAll(".view").forEach(v =>
+      v.classList.toggle("active",v.id === "view-" + name)
+    );
+
+    document.querySelectorAll("[data-view]").forEach(b =>
+      b.classList.toggle("active",b.dataset.view === name)
+    );
+
+    const titles = {
+      overview:"Dashboard",
+      manage:"Manage Properties",
+      form:$("propertyId").value ? "Edit Apartment Project" : "Add Apartment Project",
+      images:"Project Images",
+      settings:"Settings"
+    };
+
     $("pageTitle").textContent = titles[name] || "Dashboard";
     $("sidebar").classList.remove("open");
+
     if (name === "manage") renderTable("manageTable", properties);
     if (name === "images") renderImageGallery();
   }
 
-  document.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click",()=>navigate(b.dataset.view)));
-  document.querySelectorAll("[data-new]").forEach(b => b.addEventListener("click",()=>{resetForm();navigate("form");}));
-  $("addNav").addEventListener("click",()=>{resetForm();navigate("form");});
-  $("menuButton").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
-  $("cancelForm").addEventListener("click",()=>{resetForm();navigate("manage");});
-  $("addConfiguration").addEventListener("click",()=>{bhkConfigurations.push({configuration:"",carpet_area:"",price:"",availability:""});renderConfigurationEditor();});
+  document.querySelectorAll("[data-view]").forEach(b =>
+    b.addEventListener("click",()=>navigate(b.dataset.view))
+  );
+
+  document.querySelectorAll("[data-new]").forEach(b =>
+    b.addEventListener("click",()=>{
+      resetForm();
+      navigate("form");
+    })
+  );
+
+  $("addNav").addEventListener("click",()=>{
+    resetForm();
+    navigate("form");
+  });
+
+  $("menuButton").addEventListener("click",()=>
+    $("sidebar").classList.toggle("open")
+  );
+
+  $("cancelForm").addEventListener("click",()=>{
+    resetForm();
+    navigate("manage");
+  });
+
+  $("addConfiguration").addEventListener("click",()=>{
+    bhkConfigurations.push({
+      configuration:"",
+      carpet_area:"",
+      price:"",
+      availability:""
+    });
+    renderConfigurationEditor();
+  });
 
   async function requireAdmin() {
-    if (!window.supabaseClient) throw new Error("Supabase client not found. Check js/supabase.js.");
-    const {data,error} = await supabaseClient.auth.getSession();
-    if (error || !data.session) { location.replace("admin.html"); return false; }
+    if (!window.supabaseClient) {
+      throw new Error("Supabase client not found. Check js/supabase.js.");
+    }
 
-    const {data:isAdmin,error:adminError} = await supabaseClient.rpc("is_adhao_admin");
+    const {data,error} = await supabaseClient.auth.getSession();
+
+    if (error || !data.session) {
+      location.replace("admin.html");
+      return false;
+    }
+
+    const {data:isAdmin,error:adminError} =
+      await supabaseClient.rpc("is_adh ao_admin".replace(" ",""));
+
     if (adminError || isAdmin !== true) {
       await supabaseClient.auth.signOut();
       location.replace("admin.html");
       return false;
     }
+
     $("adminEmail").textContent = data.session.user.email || "Administrator";
     $("settingsEmail").value = data.session.user.email || "";
+
     return true;
   }
 
   async function logout() {
     const {error} = await supabaseClient.auth.signOut();
-    if (error) { alert("Logout failed: " + error.message); return; }
+
+    if (error) {
+      alert("Logout failed: " + error.message);
+      return;
+    }
+
     location.replace("admin.html");
   }
+
   $("logoutButton").addEventListener("click",logout);
   $("settingsLogout").addEventListener("click",logout);
 
   async function loadProperties() {
-    const {data,error} = await supabaseClient.from("properties").select("*").order("created_at",{ascending:false});
+    const {data,error} = await supabaseClient
+      .from("properties")
+      .select("*")
+      .order("created_at",{ascending:false});
+
     if (error) throw error;
+
     properties = data || [];
+
     $("totalCount").textContent = properties.length;
     $("availableCount").textContent = properties.filter(p=>p.status==="Available").length;
     $("featuredCount").textContent = properties.filter(p=>p.is_featured && p.is_published).length;
     $("soldCount").textContent = properties.filter(p=>p.status==="Sold").length;
+
     renderTable("recentTable",properties.slice(0,5));
     renderTable("manageTable",properties);
     renderImageGallery();
@@ -405,89 +645,202 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     }
 
     container.innerHTML = `
-      <div class="table-wrap"><table>
-        <thead><tr><th>Apartment Project</th><th>Location</th><th>Units / Towers</th><th>Total Area</th><th>Total Project Price</th><th>Status</th><th>Actions</th></tr></thead>
-        <tbody>${rows.map(p=>{
-          const image = Array.isArray(p.image_urls) ? p.image_urls.find(Boolean) : "";
-          return `<tr>
-            <td>${image ? `<img class="thumb" src="${escapeHTML(image)}" alt="">` : ""}
-              <strong>${escapeHTML(p.title)}</strong><br>${escapeHTML(p.property_type)}</td>
-            <td>${escapeHTML(p.city)}, ${escapeHTML(p.location)}</td>
-            <td>${escapeHTML(p.total_units ?? "—")} units<br>${escapeHTML(p.total_towers ?? "—")} towers</td>
-            <td>${escapeHTML(p.area_sqft ? Number(p.area_sqft).toLocaleString("en-IN") + " sq. ft." : "—")}</td>
-            <td>${escapeHTML(priceText(p.price,p.listing_type))}</td>
-            <td><span class="status">${escapeHTML(p.status || "Draft")}</span></td>
-            <td><button class="action" data-edit="${escapeHTML(p.id)}">Edit</button>
-                <button class="action delete" data-delete="${escapeHTML(p.id)}">Delete</button></td>
-          </tr>`;
-        }).join("")}</tbody>
-      </table></div>
-      <div style="padding:13px;color:#738094">${rows.length} projects shown</div>`;
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Apartment Project</th>
+              <th>Location</th>
+              <th>Units / Towers</th>
+              <th>Total Area</th>
+              <th>Total Project Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(p=>{
+              const image = Array.isArray(p.image_urls)
+                ? p.image_urls.find(Boolean)
+                : "";
 
-    container.querySelectorAll("[data-edit]").forEach(b=>b.addEventListener("click",()=>{
-      const p = properties.find(item=>String(item.id)===b.dataset.edit);
-      if (p) {populateForm(p);navigate("form");}
-    }));
-    container.querySelectorAll("[data-delete]").forEach(b=>b.addEventListener("click",async()=>{
-      const p = properties.find(item=>String(item.id)===b.dataset.delete);
-      if (!p || !confirm("Permanently delete the project listing '" + p.title + "'?")) return;
-      b.disabled = true;
-      const {error} = await supabaseClient.from("properties").delete().eq("id",p.id);
-      if (error) {alert("Delete failed: " + error.message);b.disabled=false;return;}
-      try {await loadProperties();} catch(e) {alert(e.message);}
-    }));
+              return `<tr>
+                <td>
+                  ${image ? `<img class="thumb" src="${escapeHTML(image)}" alt="">` : ""}
+                  <strong>${escapeHTML(p.title)}</strong><br>
+                  ${escapeHTML(p.property_type)}
+                </td>
+                <td>${escapeHTML(p.city)}, ${escapeHTML(p.location)}</td>
+                <td>
+                  ${escapeHTML(p.total_units ?? "—")} units<br>
+                  ${escapeHTML(p.total_towers ?? "—")} towers
+                </td>
+                <td>
+                  ${escapeHTML(
+                    p.area_sqft
+                    ? Number(p.area_sqft).toLocaleString("en-IN") + " sq. ft."
+                    : "—"
+                  )}
+                </td>
+                <td>${escapeHTML(priceRangeText(p))}</td>
+                <td><span class="status">${escapeHTML(p.status || "Draft")}</span></td>
+                <td>
+                  <button class="action" data-edit="${escapeHTML(p.id)}">Edit</button>
+                  <button class="action delete" data-delete="${escapeHTML(p.id)}">Delete</button>
+                </td>
+              </tr>`;
+            }).join("")}
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:13px;color:#738094">${rows.length} projects shown</div>
+    `;
+
+    container.querySelectorAll("[data-edit]").forEach(b=>
+      b.addEventListener("click",()=>{
+        const p = properties.find(item=>String(item.id)===b.dataset.edit);
+
+        if (p) {
+          populateForm(p);
+          navigate("form");
+        }
+      })
+    );
+
+    container.querySelectorAll("[data-delete]").forEach(b=>
+      b.addEventListener("click",async()=>{
+        const p = properties.find(item=>String(item.id)===b.dataset.delete);
+
+        if (!p || !confirm("Permanently delete the project listing '" + p.title + "'?")) {
+          return;
+        }
+
+        b.disabled = true;
+
+        const {error} = await supabaseClient
+          .from("properties")
+          .delete()
+          .eq("id",p.id);
+
+        if (error) {
+          alert("Delete failed: " + error.message);
+          b.disabled = false;
+          return;
+        }
+
+        try {
+          await loadProperties();
+        } catch(e) {
+          alert(e.message);
+        }
+      })
+    );
   }
 
   function filterProperties() {
     const q = $("searchInput").value.trim().toLowerCase();
     const city = $("cityFilter").value;
+
     const filtered = properties.filter(p=>{
-      const text = [p.title,p.location,p.city,p.full_address,p.property_type,p.project_configuration,p.total_units,p.total_towers].join(" ").toLowerCase();
+      const text = [
+        p.title,
+        p.location,
+        p.city,
+        p.full_address,
+        p.property_type,
+        p.project_configuration,
+        p.total_units,
+        p.total_towers
+      ].join(" ").toLowerCase();
+
       return (!q || text.includes(q)) && (!city || p.city===city);
     });
+
     renderTable("manageTable",filtered);
   }
+
   $("searchInput").addEventListener("input",filterProperties);
   $("cityFilter").addEventListener("change",filterProperties);
 
   function renderConfigurationEditor() {
     const container = $("configurationEditor");
     if (!container) return;
-    container.replaceChildren();
-    bhkConfigurations.forEach((config,index) => {
-      const row=document.createElement("div"); row.className="config-row";
-      const fields=[["configuration","Configuration","e.g. 2 BHK"],["carpet_area","Carpet Area","e.g. 720 sq. ft."],["price","Price / Range","e.g. ₹75 lakh - ₹82 lakh"],["availability","Availability","e.g. 8 units available"]];
-      fields.forEach(([key,label,placeholder])=>{
-        const wrap=document.createElement("div"); wrap.className="field"+(key==="configuration"?" config-name":"");
-        const l=document.createElement("label"); l.textContent=label;
-        const input=document.createElement("input"); input.type="text"; input.placeholder=placeholder; input.value=config[key]||"";
-        input.addEventListener("input",()=>{bhkConfigurations[index][key]=input.value;});
-        wrap.append(l,input); row.append(wrap);
-      });
-      const remove=document.createElement("button"); remove.type="button"; remove.className="remove-config"; remove.textContent="Remove";
-      remove.addEventListener("click",()=>{bhkConfigurations.splice(index,1);renderConfigurationEditor();});
-      row.append(remove); container.append(row);
-    });
-    if(!bhkConfigurations.length){const empty=document.createElement("p");empty.className="help";empty.textContent="No configurations added yet.";container.append(empty);}
-  }
 
+    container.replaceChildren();
+
+    bhkConfigurations.forEach((config,index)=>{
+      const row = document.createElement("div");
+      row.className = "config-row";
+
+      const fields = [
+        ["configuration","Configuration","e.g. 2 BHK"],
+        ["carpet_area","Carpet Area","e.g. 720 sq. ft."],
+        ["price","Price / Range","e.g. ₹75 lakh - ₹82 lakh"],
+        ["availability","Availability","e.g. 8 units available"]
+      ];
+
+      fields.forEach(([key,label,placeholder])=>{
+        const wrap = document.createElement("div");
+        wrap.className = "field" + (key==="configuration" ? " config-name" : "");
+
+        const l = document.createElement("label");
+        l.textContent = label;
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = placeholder;
+        input.value = config[key] || "";
+
+        input.addEventListener("input",()=>{
+          bhkConfigurations[index][key] = input.value;
+        });
+
+        wrap.append(l,input);
+        row.append(wrap);
+      });
+
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "remove-config";
+      remove.textContent = "Remove";
+
+      remove.addEventListener("click",()=>{
+        bhkConfigurations.splice(index,1);
+        renderConfigurationEditor();
+      });
+
+      row.append(remove);
+      container.append(row);
+    });
+
+    if (!bhkConfigurations.length) {
+      const empty = document.createElement("p");
+      empty.className = "help";
+      empty.textContent = "No configurations added yet.";
+      container.append(empty);
+    }
+  }
 
   function resetForm() {
     $("propertyForm").reset();
+
     $("propertyId").value = "";
     $("formHeading").textContent = "Add Apartment Project";
     $("saveButton").textContent = "Save Project";
     $("imagePreview").innerHTML = "";
     $("propertyImages").value = "";
+
     currentImages = [];
     pendingFiles = [];
     bhkConfigurations = [];
+
     renderConfigurationEditor();
     clearNotice();
   }
 
   function populateForm(p) {
     resetForm();
+
     $("propertyId").value = p.id;
     $("propertyTitle").value = p.title || "";
     $("propertyType").value = p.property_type || "Residential";
@@ -495,28 +848,61 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     $("propertyCity").value = p.city || "Mumbai";
     $("propertyLocation").value = p.location || "";
     $("fullAddress").value = p.full_address || "";
-    $("propertyPrice").value = p.price ?? "";
+
+    // NEW: Fill price range.
+    // Older records without range will use their original price.
+    $("propertyMinPrice").value = p.min_price ?? p.price ?? "";
+    $("propertyMaxPrice").value = p.max_price ?? p.price ?? "";
+
     $("propertyStatus").value = p.status || "Available";
     $("areaSqft").value = p.area_sqft ?? "";
-    $("totalUnits").value = p.total_units ?? p.total_flats ?? p.number_of_units ?? "";
-    $("totalTowers").value = p.total_towers ?? p.tower_count ?? p.total_buildings ?? "";
-    $("projectConfiguration").value = p.project_configuration || p.configuration || "";
-    const storedConfigs=p.bhk_configurations||p.configurations||p.unit_configurations||[];
-    bhkConfigurations=Array.isArray(storedConfigs)?storedConfigs.map(c=>({configuration:c.configuration||c.bhk||c.name||c.type||"",carpet_area:c.carpet_area||c.carpet_area_range||c.area||"",price:c.price||c.price_range||c.starting_price||"",availability:c.availability||c.available_units||c.status||""})):[];
+
+    $("totalUnits").value =
+      p.total_units ?? p.total_flats ?? p.number_of_units ?? "";
+
+    $("totalTowers").value =
+      p.total_towers ?? p.tower_count ?? p.total_buildings ?? "";
+
+    $("projectConfiguration").value =
+      p.project_configuration || p.configuration || "";
+
+    const storedConfigs =
+      p.bhk_configurations || p.configurations || p.unit_configurations || [];
+
+    bhkConfigurations = Array.isArray(storedConfigs)
+      ? storedConfigs.map(c=>({
+          configuration:c.configuration || c.bhk || c.name || c.type || "",
+          carpet_area:c.carpet_area || c.carpet_area_range || c.area || "",
+          price:c.price || c.price_range || c.starting_price || "",
+          availability:c.availability || c.available_units || c.status || ""
+        }))
+      : [];
+
     renderConfigurationEditor();
-    $("totalFloors").value = p.total_floors ?? p.number_of_floors ?? "";
-    $("plotArea").value = p.plot_area ?? p.land_area ?? p.site_area ?? "";
+
+    $("totalFloors").value =
+      p.total_floors ?? p.number_of_floors ?? "";
+
+    $("plotArea").value =
+      p.plot_area ?? p.land_area ?? p.site_area ?? "";
+
     $("parking").value = p.parking || "";
     $("googleMapsUrl").value = p.google_maps_url || "";
     $("latitude").value = p.latitude ?? "";
     $("longitude").value = p.longitude ?? "";
-    $("amenities").value = Array.isArray(p.amenities) ? p.amenities.join("\n") : "";
+
+    $("amenities").value =
+      Array.isArray(p.amenities) ? p.amenities.join("\n") : "";
+
     $("description").value = p.description || "";
     $("isFeatured").checked = p.is_featured === true;
     $("isPublished").checked = p.is_published === true;
+
     currentImages = Array.isArray(p.image_urls) ? [...p.image_urls] : [];
+
     $("formHeading").textContent = "Edit Apartment Project";
     $("saveButton").textContent = "Update Project";
+
     renderImagePreview();
     updateMapPreview();
   }
@@ -524,40 +910,52 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
   function renderImagePreview() {
     const container = $("imagePreview");
     container.innerHTML = "";
+
     currentImages.forEach((url,index)=>{
       const card = document.createElement("div");
       card.className = "photo";
+
       const img = document.createElement("img");
       img.src = url;
       img.alt = "Project image " + (index+1);
+
       const caption = document.createElement("small");
-      caption.textContent = index===0 ? "Project cover photo" : "Project photo " + (index+1);
+      caption.textContent =
+        index===0 ? "Project cover photo" : "Project photo " + (index+1);
+
       const remove = document.createElement("button");
       remove.type = "button";
       remove.textContent = "×";
       remove.title = "Remove image from this listing";
+
       remove.addEventListener("click",()=>{
         currentImages.splice(index,1);
         renderImagePreview();
       });
+
       card.append(img,caption,remove);
-      container.appendChild(card);
+      container.append(card);
     });
+
     pendingFiles.forEach((file,index)=>{
       const card = document.createElement("div");
       card.className = "photo";
+
       const img = document.createElement("img");
       img.src = URL.createObjectURL(file);
       img.alt = file.name;
+
       const caption = document.createElement("small");
       caption.textContent = "New photo " + (index+1);
+
       card.append(img,caption);
-      container.appendChild(card);
+      container.append(card);
     });
   }
 
   $("propertyImages").addEventListener("change",event=>{
     const files = Array.from(event.target.files || []);
+
     if (currentImages.length + files.length > 12) {
       notice("Maximum 12 photos per project.");
       event.target.value = "";
@@ -565,16 +963,25 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
       renderImagePreview();
       return;
     }
+
     for (const file of files) {
       if (!allowedTypes.includes(file.type)) {
         notice("Unsupported image format: " + file.name);
-        event.target.value = "";pendingFiles=[];renderImagePreview();return;
+        event.target.value = "";
+        pendingFiles = [];
+        renderImagePreview();
+        return;
       }
+
       if (file.size > 5*1024*1024) {
         notice("Each project image must be 5 MB or smaller: " + file.name);
-        event.target.value = "";pendingFiles=[];renderImagePreview();return;
+        event.target.value = "";
+        pendingFiles = [];
+        renderImagePreview();
+        return;
       }
     }
+
     pendingFiles = files;
     clearNotice();
     renderImagePreview();
@@ -582,16 +989,36 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
 
   async function uploadImages(propertyId) {
     const urls = [];
+
     for (const file of pendingFiles) {
-      const name = file.name.replace(/[^a-zA-Z0-9._-]/g,"-").slice(-90);
-      const path = propertyId + "/" + crypto.randomUUID() + "-" + name;
-      const {error} = await supabaseClient.storage.from("property-images").upload(path,file,{
-        cacheControl:"3600",upsert:false,contentType:file.type
-      });
-      if (error) throw new Error("Image upload failed: " + error.message);
-      const {data} = supabaseClient.storage.from("property-images").getPublicUrl(path);
+      const name = file.name
+        .replace(/[^a-zA-Z0-9._-]/g,"-")
+        .slice(-90);
+
+      const path =
+        propertyId + "/" + crypto.randomUUID() + "-" + name;
+
+      const {error} = await supabaseClient
+        .storage
+        .from("property-images")
+        .upload(path,file,{
+          cacheControl:"3600",
+          upsert:false,
+          contentType:file.type
+        });
+
+      if (error) {
+        throw new Error("Image upload failed: " + error.message);
+      }
+
+      const {data} = supabaseClient
+        .storage
+        .from("property-images")
+        .getPublicUrl(path);
+
       urls.push(data.publicUrl);
     }
+
     return urls;
   }
 
@@ -599,16 +1026,29 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     const url = $("googleMapsUrl").value.trim();
     const lat = $("latitude").value;
     const lng = $("longitude").value;
+
     let target = url;
-    if (lat !== "" && lng !== "") target = "https://www.google.com/maps?q=" + encodeURIComponent(lat + "," + lng);
-    if (!target) target = "https://www.google.com/maps";
+
+    if (lat !== "" && lng !== "") {
+      target = "https://www.google.com/maps?q=" +
+        encodeURIComponent(lat + "," + lng);
+    }
+
+    if (!target) {
+      target = "https://www.google.com/maps";
+    }
+
     $("previewMap").href = target;
   }
-  ["googleMapsUrl","latitude","longitude"].forEach(id=>$(id).addEventListener("input",updateMapPreview));
+
+  ["googleMapsUrl","latitude","longitude"].forEach(id=>
+    $(id).addEventListener("input",updateMapPreview)
+  );
 
   $("propertyForm").addEventListener("submit",async event=>{
     event.preventDefault();
     clearNotice();
+
     const button = $("saveButton");
     button.disabled = true;
     button.textContent = "Saving…";
@@ -616,12 +1056,29 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     try {
       const editing = Boolean($("propertyId").value);
       const id = $("propertyId").value || crypto.randomUUID();
-      const price = Number($("propertyPrice").value);
-      if (!Number.isFinite(price) || price < 0) throw new Error("Enter a valid price.");
 
-      if (currentImages.length + pendingFiles.length > 12) throw new Error("Maximum 12 photos per project.");
+      // NEW: Validate minimum and maximum project prices
+      const minPrice = Number($("propertyMinPrice").value);
+      const maxPrice = Number($("propertyMaxPrice").value);
+
+      if (!Number.isFinite(minPrice) || minPrice <= 0) {
+        throw new Error("Enter a valid minimum project price.");
+      }
+
+      if (!Number.isFinite(maxPrice) || maxPrice <= 0) {
+        throw new Error("Enter a valid maximum project price.");
+      }
+
+      if (maxPrice < minPrice) {
+        throw new Error("Maximum price must be greater than or equal to minimum price.");
+      }
+
+      if (currentImages.length + pendingFiles.length > 12) {
+        throw new Error("Maximum 12 photos per project.");
+      }
 
       const uploaded = await uploadImages(id);
+
       const mapUrl = $("googleMapsUrl").value.trim() || null;
       const lat = $("latitude").value.trim();
       const lng = $("longitude").value.trim();
@@ -633,30 +1090,85 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
         city:$("propertyCity").value,
         location:$("propertyLocation").value.trim(),
         full_address:$("fullAddress").value.trim() || null,
-        price,
+
+        // NEW PRICE RANGE COLUMNS
+        min_price:minPrice,
+        max_price:maxPrice,
+
+        // Legacy price column retained for existing website compatibility
+        price:minPrice,
+
         status:$("propertyStatus").value,
-        total_units:$("totalUnits").value==="" ? null : Number($("totalUnits").value),
-        total_towers:$("totalTowers").value==="" ? null : Number($("totalTowers").value),
+
+        total_units:$("totalUnits").value==="" 
+          ? null 
+          : Number($("totalUnits").value),
+
+        total_towers:$("totalTowers").value==="" 
+          ? null 
+          : Number($("totalTowers").value),
+
         project_configuration:$("projectConfiguration").value.trim() || null,
-        bhk_configurations:bhkConfigurations.filter(c=>c.configuration.trim()).map(c=>({configuration:c.configuration.trim(),carpet_area:c.carpet_area.trim()||null,price:c.price.trim()||null,availability:c.availability.trim()||null})),
-        total_floors:$("totalFloors").value==="" ? null : Number($("totalFloors").value),
-        plot_area:$("plotArea").value==="" ? null : Number($("plotArea").value),
-        area_sqft:$("areaSqft").value==="" ? null : Number($("areaSqft").value),
+
+        bhk_configurations:bhkConfigurations
+          .filter(c=>c.configuration.trim())
+          .map(c=>({
+            configuration:c.configuration.trim(),
+            carpet_area:c.carpet_area.trim() || null,
+            price:c.price.trim() || null,
+            availability:c.availability.trim() || null
+          })),
+
+        total_floors:$("totalFloors").value===""
+          ? null
+          : Number($("totalFloors").value),
+
+        plot_area:$("plotArea").value===""
+          ? null
+          : Number($("plotArea").value),
+
+        area_sqft:$("areaSqft").value===""
+          ? null
+          : Number($("areaSqft").value),
+
         parking:$("parking").value.trim() || null,
+
         google_maps_url:mapUrl,
-        latitude:lat==="" ? null : Number(lat),
-        longitude:lng==="" ? null : Number(lng),
-        amenities:$("amenities").value.split("\n").map(s=>s.trim()).filter(Boolean),
+
+        latitude:lat===""
+          ? null
+          : Number(lat),
+
+        longitude:lng===""
+          ? null
+          : Number(lng),
+
+        amenities:$("amenities").value
+          .split("\n")
+          .map(s=>s.trim())
+          .filter(Boolean),
+
         description:$("description").value.trim() || null,
+
         image_urls:[...currentImages,...uploaded],
+
         is_featured:$("isFeatured").checked,
         is_published:$("isPublished").checked,
         updated_at:new Date().toISOString()
       };
 
       const result = editing
-        ? await supabaseClient.from("properties").update(payload).eq("id",id).select().single()
-        : await supabaseClient.from("properties").insert({id,...payload}).select().single();
+        ? await supabaseClient
+            .from("properties")
+            .update(payload)
+            .eq("id",id)
+            .select()
+            .single()
+        : await supabaseClient
+            .from("properties")
+            .insert({id,...payload})
+            .select()
+            .single();
 
       if (result.error) throw result.error;
 
@@ -664,52 +1176,84 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
       renderConfigurationEditor();
       await loadProperties();
       navigate("manage");
-      alert(editing ? "Apartment project updated successfully." : "Apartment project added successfully.");
+
+      alert(
+        editing
+          ? "Apartment project updated successfully."
+          : "Apartment project added successfully."
+      );
 
     } catch(error) {
       console.error(error);
       notice(error.message || "Unable to save property.");
     } finally {
       button.disabled = false;
-      button.textContent = $("propertyId").value ? "Update Project" : "Save Project";
+      button.textContent = $("propertyId").value
+        ? "Update Project"
+        : "Save Project";
     }
   });
 
   function renderImageGallery() {
     const container = $("imageGallery");
     if (!container) return;
-    const items = properties.flatMap(p=>(Array.isArray(p.image_urls)?p.image_urls:[]).map(url=>({url,title:p.title,id:p.id})));
+
+    const items = properties.flatMap(p=>
+      (Array.isArray(p.image_urls) ? p.image_urls : [])
+        .map(url=>({
+          url,
+          title:p.title,
+          id:p.id
+        }))
+    );
+
     if (!items.length) {
-      container.innerHTML = '<div class="empty">No apartment project images uploaded yet.</div>';
+      container.innerHTML =
+        '<div class="empty">No apartment project images uploaded yet.</div>';
       return;
     }
+
     container.innerHTML = items.map(item=>`
       <div class="image-card">
         <img src="${escapeHTML(item.url)}" alt="">
         <h4>${escapeHTML(item.title)}</h4>
-        <button class="btn outline" data-image-edit="${escapeHTML(item.id)}">Edit Apartment Project</button>
-      </div>`).join("");
-    container.querySelectorAll("[data-image-edit]").forEach(button=>button.addEventListener("click",()=>{
-      const p=properties.find(item=>String(item.id)===button.dataset.imageEdit);
-      if(p){populateForm(p);navigate("form");}
-    }));
+        <button class="btn outline" data-image-edit="${escapeHTML(item.id)}">
+          Edit Apartment Project
+        </button>
+      </div>
+    `).join("");
+
+    container.querySelectorAll("[data-image-edit]").forEach(button=>
+      button.addEventListener("click",()=>{
+        const p = properties.find(item=>String(item.id)===button.dataset.imageEdit);
+
+        if (p) {
+          populateForm(p);
+          navigate("form");
+        }
+      })
+    );
   }
 
   async function init() {
     try {
       const allowed = await requireAdmin();
       if (!allowed) return;
+
       await loadProperties();
     } catch(error) {
       console.error(error);
+
       document.querySelector(".content").innerHTML =
         '<div class="panel"><div class="empty"><strong>Dashboard could not load</strong>' +
         escapeHTML(error.message || "Check Supabase configuration and database policies.") +
         '<br><br><button class="btn outline" onclick="location.reload()">Retry</button></div></div>';
     }
   }
+
   init();
 })();
 </script>
+
 </body>
 </html>
