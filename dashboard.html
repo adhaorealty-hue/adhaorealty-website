@@ -76,6 +76,8 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
 .action.delete{color:var(--red)}
 .status{font-weight:bold;color:var(--green)}
 .empty{padding:30px;text-align:center;color:var(--muted)}
+
+.config-editor{display:grid;gap:12px}.config-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:10px;align-items:end;border:1px solid var(--border);padding:12px;border-radius:7px;background:#fafbfd}.config-row .field label{font-size:11px}.config-row input{min-width:0}.remove-config{height:40px;border:0;border-radius:5px;background:#fff0f0;color:#dc3545;font-weight:bold;padding:0 12px}.config-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}.config-toolbar .help{margin:0}@media(max-width:680px){.config-row{grid-template-columns:1fr 1fr}.config-row .config-name{grid-column:1/-1}.remove-config{grid-column:1/-1}}
 .image-card{padding:12px;border:1px solid var(--border);border-radius:7px}
 .image-card img{width:100%;height:150px;object-fit:cover;border-radius:5px}
 .image-card h4{margin:10px 0}
@@ -217,6 +219,12 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
                 <input id="projectConfiguration" maxlength="250" placeholder="e.g. 1, 2 and 3 BHK apartments">
                 <p class="help">Describe the unit mix in the project; this does not mean an individual flat is being listed.</p>
               </div>
+              <div class="field full">
+                <label>Available BHK Configurations</label>
+                <p class="help">Add each apartment configuration separately. These details appear on the public project detail page.</p>
+                <div id="configurationEditor" class="config-editor"></div>
+                <div class="config-toolbar"><span class="help">BHK / Carpet Area / Price / Availability</span><button type="button" class="btn outline" id="addConfiguration">＋ Add Configuration</button></div>
+              </div>
               <div class="field">
                 <label for="totalFloors">Total Floors</label>
                 <input id="totalFloors" type="number" min="0" step="1" placeholder="e.g. 22">
@@ -304,6 +312,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
   let properties = [];
   let currentImages = [];
   let pendingFiles = [];
+  let bhkConfigurations = [];
 
   const allowedTypes = ["image/jpeg","image/png","image/webp","image/avif"];
 
@@ -347,6 +356,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
   $("addNav").addEventListener("click",()=>{resetForm();navigate("form");});
   $("menuButton").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
   $("cancelForm").addEventListener("click",()=>{resetForm();navigate("manage");});
+  $("addConfiguration").addEventListener("click",()=>{bhkConfigurations.push({configuration:"",carpet_area:"",price:"",availability:""});renderConfigurationEditor();});
 
   async function requireAdmin() {
     if (!window.supabaseClient) throw new Error("Supabase client not found. Check js/supabase.js.");
@@ -440,6 +450,28 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
   $("searchInput").addEventListener("input",filterProperties);
   $("cityFilter").addEventListener("change",filterProperties);
 
+  function renderConfigurationEditor() {
+    const container = $("configurationEditor");
+    if (!container) return;
+    container.replaceChildren();
+    bhkConfigurations.forEach((config,index) => {
+      const row=document.createElement("div"); row.className="config-row";
+      const fields=[["configuration","Configuration","e.g. 2 BHK"],["carpet_area","Carpet Area","e.g. 720 sq. ft."],["price","Price / Range","e.g. ₹75 lakh - ₹82 lakh"],["availability","Availability","e.g. 8 units available"]];
+      fields.forEach(([key,label,placeholder])=>{
+        const wrap=document.createElement("div"); wrap.className="field"+(key==="configuration"?" config-name":"");
+        const l=document.createElement("label"); l.textContent=label;
+        const input=document.createElement("input"); input.type="text"; input.placeholder=placeholder; input.value=config[key]||"";
+        input.addEventListener("input",()=>{bhkConfigurations[index][key]=input.value;});
+        wrap.append(l,input); row.append(wrap);
+      });
+      const remove=document.createElement("button"); remove.type="button"; remove.className="remove-config"; remove.textContent="Remove";
+      remove.addEventListener("click",()=>{bhkConfigurations.splice(index,1);renderConfigurationEditor();});
+      row.append(remove); container.append(row);
+    });
+    if(!bhkConfigurations.length){const empty=document.createElement("p");empty.className="help";empty.textContent="No configurations added yet.";container.append(empty);}
+  }
+
+
   function resetForm() {
     $("propertyForm").reset();
     $("propertyId").value = "";
@@ -449,6 +481,8 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     $("propertyImages").value = "";
     currentImages = [];
     pendingFiles = [];
+    bhkConfigurations = [];
+    renderConfigurationEditor();
     clearNotice();
   }
 
@@ -467,6 +501,9 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     $("totalUnits").value = p.total_units ?? p.total_flats ?? p.number_of_units ?? "";
     $("totalTowers").value = p.total_towers ?? p.tower_count ?? p.total_buildings ?? "";
     $("projectConfiguration").value = p.project_configuration || p.configuration || "";
+    const storedConfigs=p.bhk_configurations||p.configurations||p.unit_configurations||[];
+    bhkConfigurations=Array.isArray(storedConfigs)?storedConfigs.map(c=>({configuration:c.configuration||c.bhk||c.name||c.type||"",carpet_area:c.carpet_area||c.carpet_area_range||c.area||"",price:c.price||c.price_range||c.starting_price||"",availability:c.availability||c.available_units||c.status||""})):[];
+    renderConfigurationEditor();
     $("totalFloors").value = p.total_floors ?? p.number_of_floors ?? "";
     $("plotArea").value = p.plot_area ?? p.land_area ?? p.site_area ?? "";
     $("parking").value = p.parking || "";
@@ -601,6 +638,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
         total_units:$("totalUnits").value==="" ? null : Number($("totalUnits").value),
         total_towers:$("totalTowers").value==="" ? null : Number($("totalTowers").value),
         project_configuration:$("projectConfiguration").value.trim() || null,
+        bhk_configurations:bhkConfigurations.filter(c=>c.configuration.trim()).map(c=>({configuration:c.configuration.trim(),carpet_area:c.carpet_area.trim()||null,price:c.price.trim()||null,availability:c.availability.trim()||null})),
         total_floors:$("totalFloors").value==="" ? null : Number($("totalFloors").value),
         plot_area:$("plotArea").value==="" ? null : Number($("plotArea").value),
         area_sqft:$("areaSqft").value==="" ? null : Number($("areaSqft").value),
@@ -623,6 +661,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
       if (result.error) throw result.error;
 
       resetForm();
+      renderConfigurationEditor();
       await loadProperties();
       navigate("manage");
       alert(editing ? "Apartment project updated successfully." : "Apartment project added successfully.");
