@@ -10,84 +10,928 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{--navy:#101b32;--gold:#c8a45d;--page:#f6f7fa;--text:#253147;--muted:#6b7485;--border:#e4e7ed;--white:#fff;--success:#15803d;--danger:#b42318;--radius:14px;--shadow:0 8px 28px rgba(16,27,50,.06)}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:90px}body{font-family:"DM Sans",sans-serif;background:var(--page);color:var(--text);line-height:1.65}body.viewer-open{overflow:hidden}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button,input,select{font:inherit}button{cursor:pointer}.container{width:min(1200px,92%);margin-inline:auto}.hidden{display:none!important}
-.site-header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid var(--border)}.navbar{min-height:74px;display:flex;align-items:center;gap:22px}.logo{flex-shrink:0}.logo img{width:145px;height:60px;object-fit:contain}.nav-links{display:flex;gap:24px;align-items:center;margin-left:auto}.nav-links a{font-size:13px;font-weight:700}.nav-links a:hover{color:#987332}.nav-cta{flex-shrink:0;padding:10px 16px;border-radius:7px;background:var(--navy);color:#fff;font-weight:700;font-size:13px}.menu-toggle{display:none;border:1px solid var(--border);background:#fff;color:var(--navy);border-radius:7px;width:42px;height:42px;font-size:22px}
-.breadcrumbs{display:flex;flex-wrap:wrap;gap:8px;padding:22px 0;color:var(--muted);font-size:12px}.breadcrumbs span:last-child{color:var(--navy);font-weight:700}.status-panel{width:min(850px,92%);margin:42px auto;padding:40px 22px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;text-align:center}.status-panel h2{color:var(--navy);margin-bottom:10px}.status-panel p{color:var(--muted);margin-bottom:16px}.spinner{width:38px;height:38px;border:4px solid #e8edf3;border-top-color:var(--gold);border-radius:50%;margin:0 auto 18px;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-.project-page{padding:18px 0 70px}.project-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:22px}.heading-main{min-width:0;flex:1}.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.badge{padding:5px 10px;border-radius:5px;background:#f4ead5;color:#795a22;font-size:11px;font-weight:800}.badge.dark{background:var(--navy);color:#fff}.project-heading h1{font-size:clamp(27px,4vw,42px);line-height:1.2;color:var(--navy);margin-bottom:8px;overflow-wrap:anywhere}.location{font-size:14px;color:var(--muted)}.heading-price{text-align:right;flex-shrink:0;padding-top:10px}.heading-price small{display:block;color:var(--muted);font-size:12px}.heading-price strong{color:var(--navy);font-size:clamp(22px,3vw,32px);overflow-wrap:anywhere}
-.gallery{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(170px,220px));gap:10px;border-radius:var(--radius);overflow:hidden;margin-bottom:24px}.gallery button{min-width:0;border:0;background:#e9edf3;overflow:hidden;position:relative}.gallery-main{grid-row:1/3;min-height:360px}.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s}.gallery button:hover img{transform:scale(1.025)}.gallery-count{position:absolute;right:12px;bottom:12px;background:rgba(16,27,50,.8);color:#fff;padding:6px 10px;border-radius:5px;font-size:12px}.gallery-empty{display:grid;place-items:center;min-height:210px;background:#e9edf3;color:var(--muted);border-radius:var(--radius);margin-bottom:24px}
-.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:25px}.fact{min-width:0;padding:16px;border:1px solid var(--border);border-radius:10px;background:#fff}.fact small{display:block;color:var(--muted);font-size:11px}.fact strong{display:block;color:var(--navy);font-size:15px;overflow-wrap:anywhere}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px;align-items:start}.main-column,.side-column{min-width:0}.card{padding:25px;margin-bottom:18px;background:#fff;border:1px solid var(--border);border-radius:var(--radius)}.section-title{font-size:21px;color:var(--navy);margin-bottom:17px;display:flex;align-items:center;gap:10px}.section-title:before{content:"";flex:0 0 4px;width:4px;height:24px;background:var(--gold);border-radius:3px}.description{color:#596477;font-size:14px;line-height:1.85;white-space:pre-line;overflow-wrap:anywhere}.meta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.meta-item{min-width:0;padding:13px;border:1px solid #edf0f4;background:#fafbfd;border-radius:8px}.meta-item small{display:block;color:var(--muted);font-size:11px}.meta-item strong{display:block;color:var(--navy);font-size:13px;overflow-wrap:anywhere}
-.configuration-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.configuration{min-width:0;border:1px solid var(--border);border-radius:10px;padding:16px;background:#fff}.configuration h3{font-size:17px;color:var(--navy);margin-bottom:9px;overflow-wrap:anywhere}.configuration dl{display:grid;gap:7px}.configuration dl div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;font-size:12px}.configuration dt{color:var(--muted)}.configuration dd{text-align:right;font-weight:700;color:var(--text);overflow-wrap:anywhere}.empty-note{color:var(--muted);font-size:13px}.amenities-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.amenity{display:flex;gap:8px;align-items:center;padding:11px;border:1px solid #edf0f4;background:#fafbfd;border-radius:7px;font-size:12px;overflow-wrap:anywhere}.amenity span:first-child{flex-shrink:0;color:#987532}.map-frame{width:100%;height:300px;border:0;border-radius:8px;background:#edf0f4}.map-note{font-size:11px;color:var(--muted);margin-top:10px}
-.enquiry-card{position:sticky;top:92px;padding:23px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}.enquiry-card h2{color:var(--navy);line-height:1.35;margin-bottom:5px}.subheading{font-size:12px;color:var(--muted);margin-bottom:18px}.form-group{margin-bottom:13px}.form-group label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}.form-group input,.form-group select{width:100%;min-height:44px;padding:10px;border:1px solid #dce1e9;border-radius:6px;background:#fff;color:var(--text);outline:none;font-size:13px}.form-group input:focus,.form-group select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,164,93,.14)}.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:45px;padding:11px 14px;border:0;border-radius:6px;font-size:13px;font-weight:800}.btn-gold{background:var(--gold);color:var(--navy)}.btn-dark{margin-top:9px;background:var(--navy);color:#fff}.enquiry-status{font-size:12px;margin-top:10px;overflow-wrap:anywhere}.enquiry-status.success{color:var(--success)}.enquiry-status.error{color:var(--danger)}.enquiry-note{text-align:center;color:var(--muted);font-size:11px;margin-top:12px}.direct-contact{display:flex;flex-direction:column;gap:8px;margin-top:17px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:#4d596e}.trust-note{margin-top:13px;padding:15px;background:#faf6ed;border:1px solid #eee4d0;border-radius:8px;font-size:11px;color:var(--muted)}.trust-note strong{display:block;color:var(--navy);margin-bottom:3px}
-.footer{padding:40px 0 18px;background:#0b1427;color:#fff}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;margin-bottom:25px}.footer-logo{width:145px;height:60px;object-fit:contain;background:#fff;border-radius:5px;padding:4px;margin-bottom:12px}.footer-about{max-width:380px;color:#b8c1d1;font-size:12px}.footer h3{font-size:14px;color:#f6c453;margin-bottom:10px}.footer-links{display:flex;flex-direction:column;gap:8px;font-size:12px;color:#b8c1d1}.footer-links a:hover{color:#f6c453}.copyright{text-align:center;border-top:1px solid rgba(255,255,255,.12);padding-top:15px;font-size:11px;color:#98a4b8}
-.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(5,10,20,.94);display:none;align-items:center;justify-content:center;padding:25px}.lightbox.open{display:flex}.lightbox img{max-width:100%;max-height:82vh;object-fit:contain}.lightbox button{position:absolute;width:44px;height:44px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(255,255,255,.1);color:white;font-size:25px}.lightbox-close{top:18px;right:18px}.lightbox-prev{left:18px;top:50%;transform:translateY(-50%)}.lightbox-next{right:18px;top:50%;transform:translateY(-50%)}.lightbox-counter{position:absolute;bottom:14px;color:white;font-size:13px}
-@media(max-width:1000px){.layout{grid-template-columns:minmax(0,1fr) 300px}.facts{gap:9px}.amenities-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:780px){.navbar{min-height:70px;gap:10px}.logo img{width:120px;height:55px}.menu-toggle{display:grid;place-items:center;margin-left:auto}.nav-links{display:none;position:absolute;top:70px;left:4%;right:4%;z-index:1001;flex-direction:column;gap:0;padding:8px;border:1px solid var(--border);border-radius:8px;background:white;box-shadow:var(--shadow)}.nav-links.open{display:flex}.nav-links a{width:100%;padding:12px;border-bottom:1px solid #edf0f4}.nav-links a:last-child{border:0}.nav-cta{font-size:11px;padding:9px 11px}.layout{grid-template-columns:1fr}.side-column{order:2}.enquiry-card{position:static}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.project-heading{flex-direction:column;gap:8px}.heading-price{text-align:left;padding-top:0}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
-@media(max-width:560px){.container{width:min(1200px,94%)}.gallery{grid-template-columns:1fr 1fr;grid-template-rows:230px 115px;gap:7px}.gallery-main{grid-column:1/3;grid-row:1;min-height:0}.configuration-grid{grid-template-columns:1fr}.card{padding:19px 16px}.section-title{font-size:19px}.meta-grid{gap:8px}.meta-item{padding:10px}.amenities-grid{grid-template-columns:1fr 1fr;gap:7px}.amenity{padding:9px 7px;font-size:11px}.map-frame{height:250px}.footer-grid{grid-template-columns:1fr}.footer-brand{grid-column:auto}.lightbox{padding:12px}.lightbox-prev{left:7px}.lightbox-next{right:7px}.heading-price strong{font-size:26px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+:root{
+--navy:#101b32;
+--gold:#c8a45d;
+--page:#f6f7fa;
+--text:#253147;
+--muted:#6b7485;
+--border:#e4e7ed;
+--white:#fff;
+--success:#15803d;
+--danger:#b42318;
+--radius:14px;
+--shadow:0 8px 28px rgba(16,27,50,.06)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:"DM Sans",sans-serif;background:var(--page);color:var(--text);line-height:1.65}
+body.viewer-open{overflow:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.container{width:min(1200px,92%);margin-inline:auto}
+.hidden{display:none!important}
+
+.site-header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid var(--border)}
+.navbar{min-height:74px;display:flex;align-items:center;gap:22px}
+.logo{flex-shrink:0}
+.logo img{width:145px;height:60px;object-fit:contain}
+.nav-links{display:flex;gap:24px;align-items:center;margin-left:auto}
+.nav-links a{font-size:13px;font-weight:700}
+.nav-links a:hover{color:#987332}
+.nav-cta{flex-shrink:0;padding:10px 16px;border-radius:7px;background:var(--navy);color:#fff;font-weight:700;font-size:13px}
+.menu-toggle{display:none;border:1px solid var(--border);background:#fff;color:var(--navy);border-radius:7px;width:42px;height:42px;font-size:22px}
+
+.breadcrumbs{display:flex;flex-wrap:wrap;gap:8px;padding:22px 0;color:var(--muted);font-size:12px}
+.breadcrumbs span:last-child{color:var(--navy);font-weight:700}
+.status-panel{width:min(850px,92%);margin:42px auto;padding:40px 22px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;text-align:center}
+.status-panel h2{color:var(--navy);margin-bottom:10px}
+.status-panel p{color:var(--muted);margin-bottom:16px}
+.spinner{width:38px;height:38px;border:4px solid #e8edf3;border-top-color:var(--gold);border-radius:50%;margin:0 auto 18px;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.project-page{padding:18px 0 70px}
+.project-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:22px}
+.heading-main{min-width:0;flex:1}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.badge{padding:5px 10px;border-radius:5px;background:#f4ead5;color:#795a22;font-size:11px;font-weight:800}
+.badge.dark{background:var(--navy);color:#fff}
+.project-heading h1{font-size:clamp(27px,4vw,42px);line-height:1.2;color:var(--navy);margin-bottom:8px;overflow-wrap:anywhere}
+.location{font-size:14px;color:var(--muted)}
+.heading-price{text-align:right;flex-shrink:0;padding-top:10px}
+.heading-price small{display:block;color:var(--muted);font-size:12px}
+.heading-price strong{color:var(--navy);font-size:clamp(22px,3vw,32px);overflow-wrap:anywhere}
+
+.gallery{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(170px,220px));gap:10px;border-radius:var(--radius);overflow:hidden;margin-bottom:24px}
+.gallery button{min-width:0;border:0;background:#e9edf3;overflow:hidden;position:relative}
+.gallery-main{grid-row:1/3;min-height:360px}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gallery button:hover img{transform:scale(1.025)}
+.gallery-count{position:absolute;right:12px;bottom:12px;background:rgba(16,27,50,.8);color:#fff;padding:6px 10px;border-radius:5px;font-size:12px}
+.gallery-empty{display:grid;place-items:center;min-height:210px;background:#e9edf3;color:var(--muted);border-radius:var(--radius);margin-bottom:24px}
+
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:25px}
+.fact{min-width:0;padding:16px;border:1px solid var(--border);border-radius:10px;background:#fff}
+.fact small{display:block;color:var(--muted);font-size:11px}
+.fact strong{display:block;color:var(--navy);font-size:15px;overflow-wrap:anywhere}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px;align-items:start}
+.main-column,.side-column{min-width:0}
+.card{padding:25px;margin-bottom:18px;background:#fff;border:1px solid var(--border);border-radius:var(--radius)}
+.section-title{font-size:21px;color:var(--navy);margin-bottom:17px;display:flex;align-items:center;gap:10px}
+.section-title:before{content:"";flex:0 0 4px;width:4px;height:24px;background:var(--gold);border-radius:3px}
+.description{color:#596477;font-size:14px;line-height:1.85;white-space:pre-line;overflow-wrap:anywhere}
+.meta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.meta-item{min-width:0;padding:13px;border:1px solid #edf0f4;background:#fafbfd;border-radius:8px}
+.meta-item small{display:block;color:var(--muted);font-size:11px}
+.meta-item strong{display:block;color:var(--navy);font-size:13px;overflow-wrap:anywhere}
+
+.configuration-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.configuration{min-width:0;border:1px solid var(--border);border-radius:10px;padding:16px;background:#fff}
+.configuration h3{font-size:17px;color:var(--navy);margin-bottom:9px;overflow-wrap:anywhere}
+.configuration dl{display:grid;gap:7px}
+.configuration dl div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;font-size:12px}
+.configuration dt{color:var(--muted)}
+.configuration dd{text-align:right;font-weight:700;color:var(--text);overflow-wrap:anywhere}
+.empty-note{color:var(--muted);font-size:13px}
+.amenities-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.amenity{display:flex;gap:8px;align-items:center;padding:11px;border:1px solid #edf0f4;background:#fafbfd;border-radius:7px;font-size:12px;overflow-wrap:anywhere}
+.amenity span:first-child{flex-shrink:0;color:#987532}
+.map-frame{width:100%;height:300px;border:0;border-radius:8px;background:#edf0f4}
+.map-note{font-size:11px;color:var(--muted);margin-top:10px}
+
+.enquiry-card{position:sticky;top:92px;padding:23px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.enquiry-card h2{color:var(--navy);line-height:1.35;margin-bottom:5px}
+.subheading{font-size:12px;color:var(--muted);margin-bottom:18px}
+.form-group{margin-bottom:13px}
+.form-group label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}
+.form-group input,.form-group select{width:100%;min-height:44px;padding:10px;border:1px solid #dce1e9;border-radius:6px;background:#fff;color:var(--text);outline:none;font-size:13px}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,164,93,.14)}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:45px;padding:11px 14px;border:0;border-radius:6px;font-size:13px;font-weight:800}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-dark{margin-top:9px;background:var(--navy);color:#fff}
+.enquiry-status{font-size:12px;margin-top:10px;overflow-wrap:anywhere}
+.enquiry-status.success{color:var(--success)}
+.enquiry-status.error{color:var(--danger)}
+.enquiry-note{text-align:center;color:var(--muted);font-size:11px;margin-top:12px}
+.direct-contact{display:flex;flex-direction:column;gap:8px;margin-top:17px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:#4d596e}
+.trust-note{margin-top:13px;padding:15px;background:#faf6ed;border:1px solid #eee4d0;border-radius:8px;font-size:11px;color:var(--muted)}
+.trust-note strong{display:block;color:var(--navy);margin-bottom:3px}
+
+.footer{padding:40px 0 18px;background:#0b1427;color:#fff}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;margin-bottom:25px}
+.footer-logo{width:145px;height:60px;object-fit:contain;background:#fff;border-radius:5px;padding:4px;margin-bottom:12px}
+.footer-about{max-width:380px;color:#b8c1d1;font-size:12px}
+.footer h3{font-size:14px;color:#f6c453;margin-bottom:10px}
+.footer-links{display:flex;flex-direction:column;gap:8px;font-size:12px;color:#b8c1d1}
+.footer-links a:hover{color:#f6c453}
+.copyright{text-align:center;border-top:1px solid rgba(255,255,255,.12);padding-top:15px;font-size:11px;color:#98a4b8}
+
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(5,10,20,.94);display:none;align-items:center;justify-content:center;padding:25px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:82vh;object-fit:contain}
+.lightbox button{position:absolute;width:44px;height:44px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(255,255,255,.1);color:white;font-size:25px}
+.lightbox-close{top:18px;right:18px}
+.lightbox-prev{left:18px;top:50%;transform:translateY(-50%)}
+.lightbox-next{right:18px;top:50%;transform:translateY(-50%)}
+.lightbox-counter{position:absolute;bottom:14px;color:white;font-size:13px}
+
+@media(max-width:1000px){
+.layout{grid-template-columns:minmax(0,1fr) 300px}
+.facts{gap:9px}
+.amenities-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:780px){
+.navbar{min-height:70px;gap:10px}
+.logo img{width:120px;height:55px}
+.menu-toggle{display:grid;place-items:center;margin-left:auto}
+.nav-links{display:none;position:absolute;top:70px;left:4%;right:4%;z-index:1001;flex-direction:column;gap:0;padding:8px;border:1px solid var(--border);border-radius:8px;background:white;box-shadow:var(--shadow)}
+.nav-links.open{display:flex}
+.nav-links a{width:100%;padding:12px;border-bottom:1px solid #edf0f4}
+.nav-links a:last-child{border:0}
+.nav-cta{font-size:11px;padding:9px 11px}
+.layout{grid-template-columns:1fr}
+.side-column{order:2}
+.enquiry-card{position:static}
+.facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.project-heading{flex-direction:column;gap:8px}
+.heading-price{text-align:left;padding-top:0}
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-brand{grid-column:1/-1}
+}
+@media(max-width:560px){
+.container{width:min(1200px,94%)}
+.gallery{grid-template-columns:1fr 1fr;grid-template-rows:230px 115px;gap:7px}
+.gallery-main{grid-column:1/3;grid-row:1;min-height:0}
+.configuration-grid{grid-template-columns:1fr}
+.card{padding:19px 16px}
+.section-title{font-size:19px}
+.meta-grid{gap:8px}
+.meta-item{padding:10px}
+.amenities-grid{grid-template-columns:1fr 1fr;gap:7px}
+.amenity{padding:9px 7px;font-size:11px}
+.map-frame{height:250px}
+.footer-grid{grid-template-columns:1fr}
+.footer-brand{grid-column:auto}
+.lightbox{padding:12px}
+.lightbox-prev{left:7px}
+.lightbox-next{right:7px}
+.heading-price strong{font-size:26px}
+}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
-<header class="site-header"><div class="container navbar">
-<a class="logo" href="index.html" aria-label="Adhao Realty home"><img src="assets/logoweb.webp" alt="Adhao Realty"></a>
+
+<header class="site-header">
+<div class="container navbar">
+<a class="logo" href="index.html" aria-label="Adhao Realty home">
+<img src="assets/logoweb.webp" alt="Adhao Realty">
+</a>
 <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
-<nav class="nav-links" id="navLinks" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="properties.html">Projects</a><a href="properties.html?city=Mumbai">Mumbai</a><a href="properties.html?city=Pune">Pune</a><a href="contact.html">Contact</a></nav>
+<nav class="nav-links" id="navLinks" aria-label="Main navigation">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="properties.html">Projects</a>
+<a href="properties.html?city=Mumbai">Mumbai</a>
+<a href="properties.html?city=Pune">Pune</a>
+<a href="contact.html">Contact</a>
+</nav>
 <a class="nav-cta" href="https://wa.me/917249310062?text=Hello%20Adhao%20Realty%2C%20I%20would%20like%20to%20enquire%20about%20a%20project." target="_blank" rel="noopener noreferrer">Enquire Now</a>
-</div></header>
-<div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>›</span><a href="properties.html">Projects</a><span>›</span><span id="breadcrumbProject">Project Details</span></nav></div>
-<section class="status-panel" id="loadingPanel" aria-live="polite"><div class="spinner"></div><h2>Loading Project Details</h2><p>Please wait while we retrieve project information.</p></section>
-<section class="status-panel hidden" id="errorPanel" aria-live="polite"><h2 id="errorTitle">Project unavailable</h2><p id="errorMessage">We couldn't load this project.</p><a class="btn btn-gold" href="properties.html">Browse Projects</a></section>
+</div>
+</header>
+
+<div class="container">
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+<a href="index.html">Home</a><span>›</span>
+<a href="properties.html">Projects</a><span>›</span>
+<span id="breadcrumbProject">Project Details</span>
+</nav>
+</div>
+
+<section class="status-panel" id="loadingPanel" aria-live="polite">
+<div class="spinner"></div>
+<h2>Loading Project Details</h2>
+<p>Please wait while we retrieve project information.</p>
+</section>
+
+<section class="status-panel hidden" id="errorPanel" aria-live="polite">
+<h2 id="errorTitle">Project unavailable</h2>
+<p id="errorMessage">We couldn't load this project.</p>
+<a class="btn btn-gold" href="properties.html">Browse Projects</a>
+</section>
+
 <main class="container project-page hidden" id="projectPage">
-<section class="project-heading"><div class="heading-main"><div class="badges"><span class="badge" id="projectTypeBadge">Apartment Project</span><span class="badge dark" id="projectStatusBadge">Status</span></div><h1 id="projectTitle">Project</h1><p class="location" id="projectLocation"></p></div><div class="heading-price"><small>Project Price</small><strong id="projectPrice">Price on enquiry</strong></div></section>
-<section class="gallery hidden" id="projectGallery" aria-label="Project photos"><button class="gallery-main" id="galleryMainButton" type="button" aria-label="View main photo"><img id="galleryMainImage" alt="Project main photo"><span class="gallery-count" id="galleryCount">View photos</span></button><button id="gallerySideButton1" type="button" aria-label="View project photo 2"><img id="gallerySideImage1" alt="Project photo"></button><button id="gallerySideButton2" type="button" aria-label="View project photo 3"><img id="gallerySideImage2" alt="Project photo"></button></section><div class="gallery-empty hidden" id="galleryEmpty">Project images are not available.</div>
-<section class="facts" aria-label="Project highlights"><div class="fact"><small>Project Type</small><strong id="factType">—</strong></div><div class="fact"><small>Total Units</small><strong id="factUnits">—</strong></div><div class="fact"><small>Towers</small><strong id="factTowers">—</strong></div><div class="fact"><small>Total Floors</small><strong id="factFloors">—</strong></div></section>
-<div class="layout"><div class="main-column">
-<section class="card"><h2 class="section-title">Project Overview</h2><div class="meta-grid" id="overviewGrid"></div></section>
-<section class="card" id="configSection"><h2 class="section-title">Available BHK Configurations</h2><div class="configuration-grid" id="configurationGrid"></div></section>
-<section class="card" id="amenitiesSection"><h2 class="section-title">Amenities</h2><div class="amenities-grid" id="amenitiesGrid"></div></section>
-<section class="card" id="descriptionSection"><h2 class="section-title">About the Project</h2><p class="description" id="projectDescription"></p></section>
-<section class="card" id="locationSection"><h2 class="section-title">Project Location</h2><p class="description" id="locationDescription"></p><iframe class="map-frame hidden" id="projectMap" title="Project location map" loading="lazy" referrerpolicy="no-referrer" allowfullscreen></iframe><p class="map-note" id="mapNote">Map is provided for general guidance. Confirm the exact location before visiting.</p></section>
-</div><aside class="side-column"><section class="enquiry-card"><h2>Enquire About This Project</h2><p class="subheading">Share your details and preferred configuration.</p><form id="enquiryForm"><div class="form-group"><label for="customerName">Your Name *</label><input id="customerName" name="name" type="text" autocomplete="name" maxlength="100" required placeholder="Enter your name"></div><div class="form-group"><label for="customerPhone">Mobile Number *</label><input id="customerPhone" name="phone" type="tel" autocomplete="tel" maxlength="20" required placeholder="Enter mobile number"></div><div class="form-group"><label for="preferredBhk">Preferred BHK *</label><select id="preferredBhk" name="bhk" required><option value="">Select configuration</option></select></div><button class="btn btn-gold" type="submit">Send Enquiry on WhatsApp</button><p class="enquiry-status" id="enquiryStatus" role="status" aria-live="polite"></p></form><p class="enquiry-note">WhatsApp will open with your enquiry ready to review and send.</p><div class="direct-contact"><a href="tel:+917249310062">☎ +91 72493 10062</a><a href="mailto:adhaorealty@gmail.com">✉ adhaorealty@gmail.com</a></div></section><div class="trust-note"><strong>Before You Decide</strong>Verify the project approvals, ownership documents, charges and availability independently before making a payment or commitment.</div></aside></div>
+<section class="project-heading">
+<div class="heading-main">
+<div class="badges">
+<span class="badge" id="projectTypeBadge">Apartment Project</span>
+<span class="badge dark" id="projectStatusBadge">Status</span>
+</div>
+<h1 id="projectTitle">Project</h1>
+<p class="location" id="projectLocation"></p>
+</div>
+<div class="heading-price">
+<small>Project Price</small>
+<strong id="projectPrice">Price on enquiry</strong>
+</div>
+</section>
+
+<section class="gallery hidden" id="projectGallery" aria-label="Project photos">
+<button class="gallery-main" id="galleryMainButton" type="button" aria-label="View main photo">
+<img id="galleryMainImage" alt="Project main photo">
+<span class="gallery-count" id="galleryCount">View photos</span>
+</button>
+<button id="gallerySideButton1" type="button" aria-label="View project photo 2"><img id="gallerySideImage1" alt="Project photo"></button>
+<button id="gallerySideButton2" type="button" aria-label="View project photo 3"><img id="gallerySideImage2" alt="Project photo"></button>
+</section>
+<div class="gallery-empty hidden" id="galleryEmpty">Project images are not available.</div>
+
+<section class="facts" aria-label="Project highlights">
+<div class="fact"><small>Project Type</small><strong id="factType">—</strong></div>
+<div class="fact"><small>Total Units</small><strong id="factUnits">—</strong></div>
+<div class="fact"><small>Towers</small><strong id="factTowers">—</strong></div>
+<div class="fact"><small>Total Floors</small><strong id="factFloors">—</strong></div>
+</section>
+
+<div class="layout">
+<div class="main-column">
+<section class="card">
+<h2 class="section-title">Project Overview</h2>
+<div class="meta-grid" id="overviewGrid"></div>
+</section>
+
+<section class="card" id="configSection">
+<h2 class="section-title">Available BHK Configurations</h2>
+<div class="configuration-grid" id="configurationGrid"></div>
+</section>
+
+<section class="card" id="amenitiesSection">
+<h2 class="section-title">Amenities</h2>
+<div class="amenities-grid" id="amenitiesGrid"></div>
+</section>
+
+<section class="card" id="descriptionSection">
+<h2 class="section-title">About the Project</h2>
+<p class="description" id="projectDescription"></p>
+</section>
+
+<section class="card" id="locationSection">
+<h2 class="section-title">Project Location</h2>
+<p class="description" id="locationDescription"></p>
+<iframe class="map-frame hidden" id="projectMap" title="Project location map" loading="lazy" referrerpolicy="no-referrer" allowfullscreen></iframe>
+<p class="map-note" id="mapNote">Map is provided for general guidance. Confirm the exact location before visiting.</p>
+</section>
+</div>
+
+<aside class="side-column">
+<section class="enquiry-card">
+<h2>Enquire About This Project</h2>
+<p class="subheading">Share your details and preferred configuration.</p>
+<form id="enquiryForm">
+<div class="form-group">
+<label for="customerName">Your Name *</label>
+<input id="customerName" name="name" type="text" autocomplete="name" maxlength="100" required placeholder="Enter your name">
+</div>
+<div class="form-group">
+<label for="customerPhone">Mobile Number *</label>
+<input id="customerPhone" name="phone" type="tel" autocomplete="tel" maxlength="20" required placeholder="Enter mobile number">
+</div>
+<div class="form-group">
+<label for="preferredBhk">Preferred BHK *</label>
+<select id="preferredBhk" name="bhk" required>
+<option value="">Select configuration</option>
+</select>
+</div>
+<button class="btn btn-gold" type="submit">Send Enquiry on WhatsApp</button>
+<p class="enquiry-status" id="enquiryStatus" role="status" aria-live="polite"></p>
+</form>
+<p class="enquiry-note">WhatsApp will open with your enquiry ready to review and send.</p>
+<div class="direct-contact">
+<a href="tel:+917249310062">☎ +91 72493 10062</a>
+<a href="mailto:adhaorealty@gmail.com">✉ adhaorealty@gmail.com</a>
+</div>
+</section>
+
+<div class="trust-note">
+<strong>Before You Decide</strong>
+Verify the project approvals, ownership documents, charges and availability independently before making a payment or commitment.
+</div>
+</aside>
+</div>
 </main>
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project image viewer"><button class="lightbox-close" id="lightboxClose" aria-label="Close viewer" type="button">×</button><button class="lightbox-prev" id="lightboxPrev" aria-label="Previous photo" type="button">‹</button><img id="lightboxImage" alt="Project image"><button class="lightbox-next" id="lightboxNext" aria-label="Next photo" type="button">›</button><div class="lightbox-counter" id="lightboxCounter"></div></div>
-<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="index.html"><img class="footer-logo" src="assets/logoweb.webp" alt="Adhao Realty"></a><p class="footer-about">Adhao Realty helps customers explore residential projects and connect with project representatives.</p></div><div><h3>Quick Links</h3><nav class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="properties.html">All Projects</a><a href="properties.html?city=Pune">Pune</a><a href="properties.html?city=Mumbai">Mumbai</a><a href="contact.html">Contact</a></nav></div><div><h3>Contact</h3><div class="footer-links"><a href="tel:+917249310062">+91 72493 10062</a><a href="mailto:adhaorealty@gmail.com">adhaorealty@gmail.com</a><a href="https://wa.me/917249310062" target="_blank" rel="noopener noreferrer">WhatsApp</a></div></div></div><div class="copyright">© <span id="currentYear"></span> Adhao Realty. All rights reserved.</div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/supabase.js"></script>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project image viewer">
+<button class="lightbox-close" id="lightboxClose" aria-label="Close viewer" type="button">×</button>
+<button class="lightbox-prev" id="lightboxPrev" aria-label="Previous photo" type="button">‹</button>
+<img id="lightboxImage" alt="Project image">
+<button class="lightbox-next" id="lightboxNext" aria-label="Next photo" type="button">›</button>
+<div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="index.html"><img class="footer-logo" src="assets/logoweb.webp" alt="Adhao Realty"></a>
+<p class="footer-about">Adhao Realty helps customers explore residential projects and connect with project representatives.</p>
+</div>
+<div>
+<h3>Quick Links</h3>
+<nav class="footer-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="properties.html">All Projects</a>
+<a href="properties.html?city=Pune">Pune</a>
+<a href="properties.html?city=Mumbai">Mumbai</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+<div>
+<h3>Contact</h3>
+<div class="footer-links">
+<a href="tel:+917249310062">+91 72493 10062</a>
+<a href="mailto:adhaorealty@gmail.com">adhaorealty@gmail.com</a>
+<a href="https://wa.me/917249310062" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+</div>
+</div>
+</div>
+<div class="copyright">© <span id="currentYear"></span> Adhao Realty. All rights reserved.</div>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+
 <script>
 "use strict";
-const WHATSAPP_NUMBER="917249310062";function $(id){return document.getElementById(id)}
+
+const WHATSAPP_NUMBER="917249310062";
+function $(id){return document.getElementById(id)}
+
 const requestedId=new URLSearchParams(window.location.search).get("id");
-let currentProject=null,images=[],imageIndex=0,configurations=[];
+let currentProject=null;
+let images=[];
+let imageIndex=0;
+let configurations=[];
+
 $("currentYear").textContent=new Date().getFullYear();
-function firstValue(obj,keys,fallback=""){for(const key of keys){const value=obj?.[key];if(value!==undefined&&value!==null&&value!=="")return value}return fallback}
-function textValue(value,fallback="Not specified"){if(value===null||value===undefined||value==="")return fallback;if(Array.isArray(value))return value.length?value.join(", "):fallback;if(typeof value==="boolean")return value?"Yes":"No";return String(value)}
-function setText(id,value,fallback="Not specified"){$(id).textContent=textValue(value,fallback)}
+
+function firstValue(obj,keys,fallback=""){
+for(const key of keys){
+const value=obj?.[key];
+if(value!==undefined&&value!==null&&value!=="")return value;
+}
+return fallback;
+}
+
+function textValue(value,fallback="Not specified"){
+if(value===null||value===undefined||value==="")return fallback;
+if(Array.isArray(value))return value.length?value.join(", "):fallback;
+if(typeof value==="boolean")return value?"Yes":"No";
+return String(value);
+}
+
+function setText(id,value,fallback="Not specified"){
+$(id).textContent=textValue(value,fallback);
+}
+
 function clean(value){return String(value??"").trim()}
-function price(value){if(value===null||value===undefined||value==="")return "Price on enquiry";if(typeof value==="number")return "₹"+value.toLocaleString("en-IN");return clean(value)||"Price on enquiry"}
-function area(value,unit="sq. ft."){if(value===null||value===undefined||value==="")return "Not specified";let s=String(value);return unit&&!s.toLowerCase().includes(unit.toLowerCase())?s+" "+unit:s}
-function safeUrl(value){if(typeof value!=="string"||!value.trim())return "";try{const u=new URL(value,location.href);return ["https:","http:"].includes(u.protocol)?u.href:""}catch{return ""}}
-function getImages(project){let list=firstValue(project,["images","gallery","photos","image_urls","property_images"],[]);if(!Array.isArray(list))list=[];let urls=list.map(v=>typeof v==="string"?v:(v&&typeof v==="object"?firstValue(v,["url","image_url","src","publicUrl"],""):"")).map(safeUrl).filter(Boolean);let cover=safeUrl(firstValue(project,["image_url","image","cover_image","thumbnail","photo_url"],""));if(cover)urls.unshift(cover);return [...new Set(urls)]}
-function normalizeList(value){if(Array.isArray(value))return value.map(v=>typeof v==="string"?v:(v&&typeof v==="object"?firstValue(v,["name","title","label","amenity"],""):"")).map(clean).filter(Boolean);if(typeof value==="string")return value.split(/[,;\n]/).map(clean).filter(Boolean);return []}
-function getAmenities(project){return normalizeList(firstValue(project,["amenities","features","facilities","property_amenities"],[]))}
-function getConfigurations(project){const raw=firstValue(project,["bhk_configurations","configurations","unit_configurations","bhk_details","project_configurations","flat_configurations"],[]);if(Array.isArray(raw))return raw.filter(v=>v!==null&&v!==undefined);if(raw&&typeof raw==="object")return Object.entries(raw).map(([label,data])=>typeof data==="object"&&data!==null?{configuration:label,...data}:{configuration:label,details:data});if(typeof raw==="string"&&raw.trim())return raw.split(/[,;\n]/).map(v=>v.trim()).filter(Boolean);return []}
-function configName(c){if(typeof c==="string")return c;return textValue(firstValue(c,["configuration","bhk","type","name","title","bedrooms","unit_type"],"Configuration"))}
-function configField(c,keys,fallback="Not specified"){if(typeof c==="string")return fallback;return textValue(firstValue(c,keys,""),fallback)}
-function renderConfigurations(project){configurations=getConfigurations(project);const grid=$("configurationGrid");grid.replaceChildren();if(!configurations.length){$("configSection").classList.add("hidden");return}$("configSection").classList.remove("hidden");configurations.forEach(c=>{const card=document.createElement("article");card.className="configuration";const h=document.createElement("h3");h.textContent=configName(c);card.append(h);const dl=document.createElement("dl");const rows=[["Carpet area",configField(c,["carpet_area","carpet_area_range","area","area_range","size","sqft"],"")],["Price",configField(c,["price","price_range","starting_price","price_from","price_text"],"")],["Availability",configField(c,["availability","available_units","status"],"")]];rows.forEach(([label,value])=>{if(!value||value==="Not specified")return;const wrap=document.createElement("div"),dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=label;dd.textContent=label==="Price"?price(value):value;wrap.append(dt,dd);dl.append(wrap)});if(!dl.children.length){const p=document.createElement("p");p.className="empty-note";p.textContent="Configuration details not provided.";card.append(p)}else card.append(dl);grid.append(card)});const select=$("preferredBhk");select.replaceChildren(new Option("Select configuration",""));configurations.forEach(c=>select.add(new Option(configName(c),configName(c))))}
-function renderGallery(project){images=getImages(project);const gallery=$("projectGallery"),empty=$("galleryEmpty");if(!images.length){gallery.classList.add("hidden");empty.classList.remove("hidden");return}empty.classList.add("hidden");gallery.classList.remove("hidden");const buttons=[$("galleryMainButton"),$("gallerySideButton1"),$("gallerySideButton2")],imgs=[$("galleryMainImage"),$("gallerySideImage1"),$("gallerySideImage2")];buttons.forEach((button,i)=>{const image=imgs[i];if(images[i]){button.classList.remove("hidden");image.src=images[i];image.alt=textValue(firstValue(project,["title","name"],"Project"))+" photo "+(i+1);image.onerror=()=>button.classList.add("hidden")}else{button.classList.add("hidden");image.removeAttribute("src")}});$("galleryCount").textContent=images.length+" photo"+(images.length===1?"":"s")+" · View all";buttons.forEach((button,i)=>{button.onclick=()=>openViewer(i);button.classList.toggle("hidden",!images[i])})}
-function openViewer(i){if(!images.length)return;imageIndex=(i+images.length)%images.length;updateViewer();$("lightbox").classList.add("open");document.body.classList.add("viewer-open");$("lightboxClose").focus()}
-function updateViewer(){$("lightboxImage").src=images[imageIndex];$("lightboxCounter").textContent=(imageIndex+1)+" / "+images.length;const multi=images.length>1;$("lightboxPrev").classList.toggle("hidden",!multi);$("lightboxNext").classList.toggle("hidden",!multi)}
-function closeViewer(){$("lightbox").classList.remove("open");document.body.classList.remove("viewer-open")}
-function moveViewer(dir){if(!images.length)return;imageIndex=(imageIndex+dir+images.length)%images.length;updateViewer()}
-$("lightboxClose").addEventListener("click",closeViewer);$("lightboxPrev").addEventListener("click",()=>moveViewer(-1));$("lightboxNext").addEventListener("click",()=>moveViewer(1));$("lightbox").addEventListener("click",e=>{if(e.target===$("lightbox"))closeViewer()});document.addEventListener("keydown",e=>{if(!$("lightbox").classList.contains("open"))return;if(e.key==="Escape")closeViewer();if(e.key==="ArrowLeft")moveViewer(-1);if(e.key==="ArrowRight")moveViewer(1)});
-function renderAmenities(project){const grid=$("amenitiesGrid");grid.replaceChildren();const list=getAmenities(project);if(!list.length){$("amenitiesSection").classList.add("hidden");return}$("amenitiesSection").classList.remove("hidden");list.forEach(name=>{const item=document.createElement("div");item.className="amenity";const icon=document.createElement("span");icon.textContent="✓";icon.setAttribute("aria-hidden","true");const label=document.createElement("span");label.textContent=name;item.append(icon,label);grid.append(item)})}
-function addMeta(label,value){if(value===null||value===undefined||value===""||value==="Not specified")return;const item=document.createElement("div");item.className="meta-item";const small=document.createElement("small"),strong=document.createElement("strong");small.textContent=label;strong.textContent=String(value);item.append(small,strong);$("overviewGrid").append(item)}
-function renderProject(project){currentProject=project;const title=firstValue(project,["title","name","property_name","project_name"],"Project Details"),city=firstValue(project,["city"],""),locality=firstValue(project,["locality","area_name","neighbourhood"],""),address=firstValue(project,["address","full_address","location"],""),loc=address||[locality,city].filter(Boolean).join(", ")||"Location details on enquiry",projectType=firstValue(project,["property_type","type","category","project_type"],"Apartment Project"),status=firstValue(project,["status","listing_status","project_status"],""),projectPrice=price(firstValue(project,["price","asking_price","price_text","display_price","starting_price"],""));document.title=title+" | Adhao Realty";setText("breadcrumbProject",title);setText("projectTitle",title);setText("projectLocation",loc);setText("projectPrice",projectPrice);setText("projectTypeBadge",projectType,"Apartment Project");if(status){setText("projectStatusBadge",status);$("projectStatusBadge").classList.remove("hidden")}else $("projectStatusBadge").classList.add("hidden");setText("factType",projectType);setText("factUnits",firstValue(project,["total_units","total_flats","unit_count","total_apartments","apartments_count"],""));setText("factTowers",firstValue(project,["total_towers","tower_count","total_buildings","building_count"],""));setText("factFloors",firstValue(project,["total_floors","number_of_floors","floor_count"],""));$("overviewGrid").replaceChildren();addMeta("Project / Listing ID",firstValue(project,["id","property_id"],requestedId||""));addMeta("Project Category",projectType);addMeta("City",city);addMeta("Locality",locality);const projectArea=firstValue(project,["project_area","total_project_area","area","area_sqft","built_up_area"],"");addMeta("Project Area",projectArea?area(projectArea,firstValue(project,["area_unit","unit"],"sq. ft.")):"");addMeta("Possession",firstValue(project,["possession_date","possession","expected_possession","possession_status"],""));addMeta("Project Status",status);const plotArea=firstValue(project,["plot_area","land_area","total_land_area","site_area"],"");addMeta("Total Plot Area",plotArea?area(plotArea,firstValue(project,["plot_area_unit","land_area_unit"],"sq. ft.")):"");const description=firstValue(project,["description","details","property_description","overview"],"");if(description){$("projectDescription").textContent=description;$("descriptionSection").classList.remove("hidden")}else $("descriptionSection").classList.add("hidden");$("locationDescription").textContent=loc==="Location details on enquiry"?"Location details can be requested from Adhao Realty.":"Project address: "+loc;renderGallery(project);renderConfigurations(project);renderAmenities(project);renderMap(project,loc);$("loadingPanel").classList.add("hidden");$("errorPanel").classList.add("hidden");$("projectPage").classList.remove("hidden")}
-function renderMap(project,locationText){const mapField=firstValue(project,["map_embed_url","map_url","google_maps_url"],"");const iframe=$("projectMap");if(mapField){try{const u=new URL(mapField);if(u.protocol==="https:"&&["www.google.com","google.com","maps.google.com"].includes(u.hostname)){iframe.src=u.href;iframe.classList.remove("hidden");$("mapNote").classList.remove("hidden");return}}catch{}}if(!locationText||locationText==="Location details on enquiry"){iframe.src="about:blank";iframe.classList.add("hidden");$("mapNote").classList.add("hidden");return}iframe.src="https://maps.google.com/maps?q="+encodeURIComponent(locationText+", India")+"&output=embed";iframe.classList.remove("hidden");$("mapNote").classList.remove("hidden")}
-function showError(title,message){$("loadingPanel").classList.add("hidden");$("projectPage").classList.add("hidden");$("errorPanel").classList.remove("hidden");$("errorTitle").textContent=title;$("errorMessage").textContent=message}
-async function loadProject(){if(!requestedId){showError("Project ID Missing","Open this page from a project card using a URL containing ?id=PROJECT_ID.");return}try{const client=window.supabaseClient;if(!client)throw new Error("Supabase client is missing. Check js/supabase.js.");const {data,error}=await client.from("properties").select("*").eq("id",requestedId).eq("is_published",true).maybeSingle();if(error)throw error;if(!data){showError("Project Not Available","The project may be unpublished, removed or the ID may be invalid.");return}renderProject(data)}catch(err){console.error("Project loading error:",err);showError("Unable to Load Project",err?.message||"Check connection and Supabase settings, then try again.")}}
-function enquiryMessage(){const name=clean($("customerName").value),phone=clean($("customerPhone").value),bhk=clean($("preferredBhk").value),title=firstValue(currentProject,["title","name","property_name","project_name"],"Apartment Project"),id=firstValue(currentProject,["id","property_id"],requestedId||"—"),location=firstValue(currentProject,["address","full_address","location"],[firstValue(currentProject,["locality","area_name"],""),firstValue(currentProject,["city"],"")].filter(Boolean).join(", "));return ["Hello Adhao Realty,","","I would like to enquire about this apartment project.","","Project: "+title,"Project ID: "+id,"Location: "+(location||"Not specified"),"Preferred configuration: "+bhk,"","Name: "+name,"Mobile: "+phone,"","Please contact me with more details and availability."].join("\n")}
-$("enquiryForm").addEventListener("submit",e=>{e.preventDefault();if(!e.currentTarget.reportValidity())return;if(clean($("customerPhone").value).replace(/\D/g,"").length<10){$("enquiryStatus").className="enquiry-status error";$("enquiryStatus").textContent="Enter a valid mobile number (at least 10 digits).";return}if(!currentProject){$("enquiryStatus").className="enquiry-status error";$("enquiryStatus").textContent="Project details have not loaded yet.";return}const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(enquiryMessage());$("enquiryStatus").className="enquiry-status success";$("enquiryStatus").textContent="Opening WhatsApp. Review your enquiry and press Send there.";window.open(url,"_blank","noopener,noreferrer")});
-const menuToggle=$("menuToggle"),navLinks=$("navLinks");menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation");menuToggle.textContent=open?"×":"☰"});navLinks.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{navLinks.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");menuToggle.setAttribute("aria-label","Open navigation");menuToggle.textContent="☰"}));
+
+/* =====================================================
+   PRICE FORMATTING - PRICE RANGE SUPPORT
+   Supports min_price, max_price and legacy price fields
+===================================================== */
+
+function price(value){
+if(value===null||value===undefined||value==="")return "Price on enquiry";
+
+const number=Number(value);
+if(Number.isFinite(number)&&number>0){
+return formatIndianPrice(number);
+}
+
+return clean(value)||"Price on enquiry";
+}
+
+function formatIndianPrice(value){
+const number=Number(value);
+if(!Number.isFinite(number)||number<=0)return "Price on enquiry";
+
+if(number>=10000000){
+const crore=number/10000000;
+return "₹"+(Number.isInteger(crore)?crore:crore.toFixed(2).replace(/\.?0+$/,""))+" Cr";
+}
+
+if(number>=100000){
+const lakh=number/100000;
+return "₹"+(Number.isInteger(lakh)?lakh:lakh.toFixed(2).replace(/\.?0+$/,""))+" Lakh";
+}
+
+return "₹"+number.toLocaleString("en-IN");
+}
+
+function getProjectPrice(project){
+const minValue=firstValue(project,["min_price","minimum_price","price_min","starting_price"],null);
+const maxValue=firstValue(project,["max_price","maximum_price","price_max","ending_price"],null);
+const legacyValue=firstValue(project,["price","asking_price","price_text","display_price"],null);
+
+const hasMin=minValue!==null&&minValue!==undefined&&minValue!=="";
+const hasMax=maxValue!==null&&maxValue!==undefined&&maxValue!=="";
+
+if(hasMin&&hasMax){
+const min=Number(minValue);
+const max=Number(maxValue);
+
+if(Number.isFinite(min)&&Number.isFinite(max)){
+if(min===max)return formatIndianPrice(min);
+return formatIndianPrice(min)+" – "+formatIndianPrice(max);
+}
+}
+
+if(hasMin)return "Starting from "+price(minValue);
+if(hasMax)return "Up to "+price(maxValue);
+
+return price(legacyValue);
+}
+
+function getConfigurationPrice(configuration){
+if(!configuration||typeof configuration!=="object")return price(configuration);
+
+const min=firstValue(configuration,["min_price","minimum_price","price_min","starting_price","price_from"],null);
+const max=firstValue(configuration,["max_price","maximum_price","price_max","price_to","price_upto"],null);
+const existing=firstValue(configuration,["price_range","price_text","price"],null);
+
+const hasMin=min!==null&&min!==undefined&&min!=="";
+const hasMax=max!==null&&max!==undefined&&max!=="";
+
+if(hasMin&&hasMax){
+const a=Number(min),b=Number(max);
+if(Number.isFinite(a)&&Number.isFinite(b)){
+if(a===b)return formatIndianPrice(a);
+return formatIndianPrice(a)+" – "+formatIndianPrice(b);
+}
+}
+
+if(hasMin)return "Starting from "+price(min);
+if(hasMax)return "Up to "+price(max);
+return price(existing);
+}
+
+function area(value,unit="sq. ft."){
+if(value===null||value===undefined||value==="")return "Not specified";
+let s=String(value);
+return unit&&!s.toLowerCase().includes(unit.toLowerCase())?s+" "+unit:s;
+}
+
+function safeUrl(value){
+if(typeof value!=="string"||!value.trim())return "";
+try{
+const u=new URL(value,location.href);
+return ["https:","http:"].includes(u.protocol)?u.href:"";
+}catch{return ""}
+}
+
+function getImages(project){
+let list=firstValue(project,["images","gallery","photos","image_urls","property_images"],[]);
+if(!Array.isArray(list))list=[];
+let urls=list.map(v=>typeof v==="string"?v:(v&&typeof v==="object"?firstValue(v,["url","image_url","src","publicUrl"],""):"")).map(safeUrl).filter(Boolean);
+let cover=safeUrl(firstValue(project,["image_url","image","cover_image","thumbnail","photo_url"],""));
+if(cover)urls.unshift(cover);
+return [...new Set(urls)];
+}
+
+function normalizeList(value){
+if(Array.isArray(value)){
+return value.map(v=>typeof v==="string"?v:(v&&typeof v==="object"?firstValue(v,["name","title","label","amenity"],""):"")).map(clean).filter(Boolean);
+}
+if(typeof value==="string")return value.split(/[,;\n]/).map(clean).filter(Boolean);
+return [];
+}
+
+function getAmenities(project){
+return normalizeList(firstValue(project,["amenities","features","facilities","property_amenities"],[]));
+}
+
+function getConfigurations(project){
+const raw=firstValue(project,["bhk_configurations","configurations","unit_configurations","bhk_details","project_configurations","flat_configurations"],[]);
+if(Array.isArray(raw))return raw.filter(v=>v!==null&&v!==undefined);
+if(raw&&typeof raw==="object")return Object.entries(raw).map(([label,data])=>typeof data==="object"&&data!==null?{configuration:label,...data}:{configuration:label,details:data});
+if(typeof raw==="string"&&raw.trim())return raw.split(/[,;\n]/).map(v=>v.trim()).filter(Boolean);
+return [];
+}
+
+function configName(c){
+if(typeof c==="string")return c;
+return textValue(firstValue(c,["configuration","bhk","type","name","title","bedrooms","unit_type"],"Configuration"));
+}
+
+function configField(c,keys,fallback="Not specified"){
+if(typeof c==="string")return fallback;
+return textValue(firstValue(c,keys,""),fallback);
+}
+
+function renderConfigurations(project){
+configurations=getConfigurations(project);
+const grid=$("configurationGrid");
+grid.replaceChildren();
+
+if(!configurations.length){
+$("configSection").classList.add("hidden");
+return;
+}
+
+$("configSection").classList.remove("hidden");
+
+configurations.forEach(c=>{
+const card=document.createElement("article");
+card.className="configuration";
+
+const h=document.createElement("h3");
+h.textContent=configName(c);
+card.append(h);
+
+const dl=document.createElement("dl");
+
+const carpet=configField(c,["carpet_area","carpet_area_range","area","area_range","size","sqft"],"");
+const configurationPrice=getConfigurationPrice(c);
+const availability=configField(c,["availability","available_units","status"],"");
+
+const rows=[
+["Carpet area",carpet],
+["Price",configurationPrice],
+["Availability",availability]
+];
+
+rows.forEach(([label,value])=>{
+if(!value||value==="Not specified")return;
+
+const wrap=document.createElement("div");
+const dt=document.createElement("dt");
+const dd=document.createElement("dd");
+
+dt.textContent=label;
+dd.textContent=value;
+
+wrap.append(dt,dd);
+dl.append(wrap);
+});
+
+if(!dl.children.length){
+const p=document.createElement("p");
+p.className="empty-note";
+p.textContent="Configuration details not provided.";
+card.append(p);
+}else{
+card.append(dl);
+}
+
+grid.append(card);
+});
+
+const select=$("preferredBhk");
+select.replaceChildren(new Option("Select configuration",""));
+configurations.forEach(c=>select.add(new Option(configName(c),configName(c))));
+}
+
+function renderGallery(project){
+images=getImages(project);
+const gallery=$("projectGallery");
+const empty=$("galleryEmpty");
+
+if(!images.length){
+gallery.classList.add("hidden");
+empty.classList.remove("hidden");
+return;
+}
+
+empty.classList.add("hidden");
+gallery.classList.remove("hidden");
+
+const buttons=[$("galleryMainButton"),$("gallerySideButton1"),$("gallerySideButton2")];
+const imgs=[$("galleryMainImage"),$("gallerySideImage1"),$("gallerySideImage2")];
+
+buttons.forEach((button,i)=>{
+const image=imgs[i];
+
+if(images[i]){
+button.classList.remove("hidden");
+image.src=images[i];
+image.alt=textValue(firstValue(project,["title","name"],"Project"))+" photo "+(i+1);
+image.onerror=()=>button.classList.add("hidden");
+}else{
+button.classList.add("hidden");
+image.removeAttribute("src");
+}
+});
+
+$("galleryCount").textContent=images.length+" photo"+(images.length===1?"":"s")+" · View all";
+
+buttons.forEach((button,i)=>{
+button.onclick=()=>openViewer(i);
+button.classList.toggle("hidden",!images[i]);
+});
+}
+
+function openViewer(i){
+if(!images.length)return;
+imageIndex=(i+images.length)%images.length;
+updateViewer();
+$("lightbox").classList.add("open");
+document.body.classList.add("viewer-open");
+$("lightboxClose").focus();
+}
+
+function updateViewer(){
+$("lightboxImage").src=images[imageIndex];
+$("lightboxCounter").textContent=(imageIndex+1)+" / "+images.length;
+const multi=images.length>1;
+$("lightboxPrev").classList.toggle("hidden",!multi);
+$("lightboxNext").classList.toggle("hidden",!multi);
+}
+
+function closeViewer(){
+$("lightbox").classList.remove("open");
+document.body.classList.remove("viewer-open");
+}
+
+function moveViewer(dir){
+if(!images.length)return;
+imageIndex=(imageIndex+dir+images.length)%images.length;
+updateViewer();
+}
+
+$("lightboxClose").addEventListener("click",closeViewer);
+$("lightboxPrev").addEventListener("click",()=>moveViewer(-1));
+$("lightboxNext").addEventListener("click",()=>moveViewer(1));
+$("lightbox").addEventListener("click",e=>{
+if(e.target===$("lightbox"))closeViewer();
+});
+
+document.addEventListener("keydown",e=>{
+if(!$("lightbox").classList.contains("open"))return;
+if(e.key==="Escape")closeViewer();
+if(e.key==="ArrowLeft")moveViewer(-1);
+if(e.key==="ArrowRight")moveViewer(1);
+});
+
+function renderAmenities(project){
+const grid=$("amenitiesGrid");
+grid.replaceChildren();
+const list=getAmenities(project);
+
+if(!list.length){
+$("amenitiesSection").classList.add("hidden");
+return;
+}
+
+$("amenitiesSection").classList.remove("hidden");
+
+list.forEach(name=>{
+const item=document.createElement("div");
+item.className="amenity";
+
+const icon=document.createElement("span");
+icon.textContent="✓";
+icon.setAttribute("aria-hidden","true");
+
+const label=document.createElement("span");
+label.textContent=name;
+
+item.append(icon,label);
+grid.append(item);
+});
+}
+
+function addMeta(label,value){
+if(value===null||value===undefined||value===""||value==="Not specified")return;
+
+const item=document.createElement("div");
+item.className="meta-item";
+
+const small=document.createElement("small");
+const strong=document.createElement("strong");
+
+small.textContent=label;
+strong.textContent=String(value);
+
+item.append(small,strong);
+$("overviewGrid").append(item);
+}
+
+function renderProject(project){
+currentProject=project;
+
+const title=firstValue(project,["title","name","property_name","project_name"],"Project Details");
+const city=firstValue(project,["city"],"");
+const locality=firstValue(project,["locality","area_name","neighbourhood"],"");
+const address=firstValue(project,["address","full_address","location"],"");
+const loc=address||[locality,city].filter(Boolean).join(", ")||"Location details on enquiry";
+const projectType=firstValue(project,["property_type","type","category","project_type"],"Apartment Project");
+const status=firstValue(project,["status","listing_status","project_status"],"");
+const projectPrice=getProjectPrice(project);
+
+document.title=title+" | Adhao Realty";
+setText("breadcrumbProject",title);
+setText("projectTitle",title);
+setText("projectLocation",loc);
+setText("projectPrice",projectPrice);
+setText("projectTypeBadge",projectType,"Apartment Project");
+
+if(status){
+setText("projectStatusBadge",status);
+$("projectStatusBadge").classList.remove("hidden");
+}else{
+$("projectStatusBadge").classList.add("hidden");
+}
+
+setText("factType",projectType);
+setText("factUnits",firstValue(project,["total_units","total_flats","unit_count","total_apartments","apartments_count"],""));
+setText("factTowers",firstValue(project,["total_towers","tower_count","total_buildings","building_count"],""));
+setText("factFloors",firstValue(project,["total_floors","number_of_floors","floor_count"],""));
+
+$("overviewGrid").replaceChildren();
+
+addMeta("Project / Listing ID",firstValue(project,["id","property_id"],requestedId||""));
+addMeta("Project Category",projectType);
+addMeta("City",city);
+addMeta("Locality",locality);
+
+const projectArea=firstValue(project,["project_area","total_project_area","area","area_sqft","built_up_area"],"");
+addMeta("Project Area",projectArea?area(projectArea,firstValue(project,["area_unit","unit"],"sq. ft.")):"");
+
+addMeta("Possession",firstValue(project,["possession_date","possession","expected_possession","possession_status"],""));
+addMeta("Project Status",status);
+
+const plotArea=firstValue(project,["plot_area","land_area","total_land_area","site_area"],"");
+addMeta("Total Plot Area",plotArea?area(plotArea,firstValue(project,["plot_area_unit","land_area_unit"],"sq. ft.")):"");
+
+const description=firstValue(project,["description","details","property_description","overview"],"");
+
+if(description){
+$("projectDescription").textContent=description;
+$("descriptionSection").classList.remove("hidden");
+}else{
+$("descriptionSection").classList.add("hidden");
+}
+
+$("locationDescription").textContent=loc==="Location details on enquiry"
+?"Location details can be requested from Adhao Realty."
+:"Project address: "+loc;
+
+renderGallery(project);
+renderConfigurations(project);
+renderAmenities(project);
+renderMap(project,loc);
+
+$("loadingPanel").classList.add("hidden");
+$("errorPanel").classList.add("hidden");
+$("projectPage").classList.remove("hidden");
+}
+
+function renderMap(project,locationText){
+const mapField=firstValue(project,["map_embed_url","map_url","google_maps_url"],"");
+const iframe=$("projectMap");
+
+if(mapField){
+try{
+const u=new URL(mapField);
+if(u.protocol==="https:"&&["www.google.com","google.com","maps.google.com"].includes(u.hostname)){
+iframe.src=u.href;
+iframe.classList.remove("hidden");
+$("mapNote").classList.remove("hidden");
+return;
+}
+}catch{}
+}
+
+if(!locationText||locationText==="Location details on enquiry"){
+iframe.src="about:blank";
+iframe.classList.add("hidden");
+$("mapNote").classList.add("hidden");
+return;
+}
+
+iframe.src="https://maps.google.com/maps?q="+encodeURIComponent(locationText+", India")+"&output=embed";
+iframe.classList.remove("hidden");
+$("mapNote").classList.remove("hidden");
+}
+
+function showError(title,message){
+$("loadingPanel").classList.add("hidden");
+$("projectPage").classList.add("hidden");
+$("errorPanel").classList.remove("hidden");
+$("errorTitle").textContent=title;
+$("errorMessage").textContent=message;
+}
+
+async function loadProject(){
+if(!requestedId){
+showError("Project ID Missing","Open this page from a project card using a URL containing ?id=PROJECT_ID.");
+return;
+}
+
+try{
+const client=window.supabaseClient;
+if(!client)throw new Error("Supabase client is missing. Check js/supabase.js.");
+
+const {data,error}=await client
+.from("properties")
+.select("*")
+.eq("id",requestedId)
+.eq("is_published",true)
+.maybeSingle();
+
+if(error)throw error;
+
+if(!data){
+showError("Project Not Available","The project may be unpublished, removed or the ID may be invalid.");
+return;
+}
+
+renderProject(data);
+
+}catch(err){
+console.error("Project loading error:",err);
+showError("Unable to Load Project",err?.message||"Check connection and Supabase settings, then try again.");
+}
+}
+
+function enquiryMessage(){
+const name=clean($("customerName").value);
+const phone=clean($("customerPhone").value);
+const bhk=clean($("preferredBhk").value);
+const title=firstValue(currentProject,["title","name","property_name","project_name"],"Apartment Project");
+const id=firstValue(currentProject,["id","property_id"],requestedId||"—");
+const location=firstValue(currentProject,["address","full_address","location"],[firstValue(currentProject,["locality","area_name"],""),firstValue(currentProject,["city"],"")].filter(Boolean).join(", "));
+
+return [
+"Hello Adhao Realty,",
+"",
+"I would like to enquire about this apartment project.",
+"",
+"Project: "+title,
+"Project ID: "+id,
+"Location: "+(location||"Not specified"),
+"Project Price: "+getProjectPrice(currentProject),
+"Preferred configuration: "+bhk,
+"",
+"Name: "+name,
+"Mobile: "+phone,
+"",
+"Please contact me with more details and availability."
+].join("\n");
+}
+
+$("enquiryForm").addEventListener("submit",e=>{
+e.preventDefault();
+if(!e.currentTarget.reportValidity())return;
+
+if(clean($("customerPhone").value).replace(/\D/g,"").length<10){
+$("enquiryStatus").className="enquiry-status error";
+$("enquiryStatus").textContent="Enter a valid mobile number (at least 10 digits).";
+return;
+}
+
+if(!currentProject){
+$("enquiryStatus").className="enquiry-status error";
+$("enquiryStatus").textContent="Project details have not loaded yet.";
+return;
+}
+
+const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(enquiryMessage());
+
+$("enquiryStatus").className="enquiry-status success";
+$("enquiryStatus").textContent="Opening WhatsApp. Review your enquiry and press Send there.";
+
+window.open(url,"_blank","noopener,noreferrer");
+});
+
+const menuToggle=$("menuToggle");
+const navLinks=$("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+const open=navLinks.classList.toggle("open");
+menuToggle.setAttribute("aria-expanded",String(open));
+menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation");
+menuToggle.textContent=open?"×":"☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link=>{
+link.addEventListener("click",()=>{
+navLinks.classList.remove("open");
+menuToggle.setAttribute("aria-expanded","false");
+menuToggle.setAttribute("aria-label","Open navigation");
+menuToggle.textContent="☰";
+});
+});
+
 loadProject();
 </script>
 </body>
