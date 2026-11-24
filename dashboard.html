@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Adhao Realty | Admin Dashboard</title>
+<title>Adhao Realty | Apartment Project Admin Dashboard</title>
 <meta name="robots" content="noindex,nofollow">
 
 <style>
@@ -69,7 +68,7 @@ button{cursor:pointer}
 .photo button{position:absolute;top:5px;right:5px;border:0;border-radius:50%;width:26px;height:26px;background:#c62838;color:white;font-size:18px}
 .photo small{display:block;padding:7px;color:var(--muted);overflow-wrap:anywhere}
 .table-wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:720px}
+table{border-collapse:collapse;width:100%;min-width:980px}
 th,td{padding:13px 15px;text-align:left;border-bottom:1px solid #edf0f4;font-size:12px}
 th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px}
 .thumb{width:58px;height:45px;object-fit:cover;border-radius:4px;vertical-align:middle;margin-right:9px}
@@ -102,20 +101,20 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     <div class="brand">ADHAO<small>REALTY</small></div>
     <nav class="nav">
       <button class="active" data-view="overview">⌂ Dashboard</button>
-      <button data-view="form" id="addNav">＋ Add Property</button>
+      <button data-view="form" id="addNav">＋ Add Apartment Project</button>
       <button data-view="manage">▤ Manage Properties</button>
-      <button data-view="images">▧ Property Images</button>
+      <button data-view="images">▧ Project Images</button>
       <button data-view="settings">⚙ Settings</button>
       <button id="logoutButton">⇥ Logout</button>
     </nav>
-    <div class="sidebar-bottom">ADHAO REALTY<br>Property Management<br>Mumbai · Pune</div>
+    <div class="sidebar-bottom">ADHAO REALTY<br>Apartment Project Management<br>Mumbai · Pune</div>
   </aside>
 
   <main class="main">
     <header class="topbar">
       <div style="display:flex;align-items:center;gap:12px">
         <button class="mobile-menu" id="menuButton" aria-label="Menu">☰</button>
-        <div><h2 id="pageTitle">Dashboard</h2><p>Adhao Realty property administration</p></div>
+        <div><h2 id="pageTitle">Dashboard</h2><p>Adhao Realty apartment project administration</p></div>
       </div>
       <div id="adminEmail">Checking administrator…</div>
     </header>
@@ -123,29 +122,29 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     <div class="content">
       <section class="view active" id="view-overview">
         <div class="heading">
-          <div><h1>Dashboard</h1><p>Manage your real-estate listings.</p></div>
-          <button class="btn gold" data-new>＋ Add Property</button>
+          <div><h1>Dashboard</h1><p>Manage complete apartment buildings and residential projects.</p></div>
+          <button class="btn gold" data-new>＋ Add Apartment Project</button>
         </div>
         <div class="stats">
-          <div class="stat"><small>Total Properties</small><strong id="totalCount">—</strong></div>
-          <div class="stat"><small>Available</small><strong id="availableCount">—</strong></div>
-          <div class="stat"><small>Featured & Published</small><strong id="featuredCount">—</strong></div>
-          <div class="stat"><small>Sold</small><strong id="soldCount">—</strong></div>
+          <div class="stat"><small>Total Projects</small><strong id="totalCount">—</strong></div>
+          <div class="stat"><small>Available Projects</small><strong id="availableCount">—</strong></div>
+          <div class="stat"><small>Featured & Published Projects</small><strong id="featuredCount">—</strong></div>
+          <div class="stat"><small>Projects Sold</small><strong id="soldCount">—</strong></div>
         </div>
         <div class="panel">
-          <div class="panel-head"><h3>Recent Properties</h3><p>Recently added or updated listings</p></div>
+          <div class="panel-head"><h3>Recent Properties</h3><p>Recently added or updated apartment projects</p></div>
           <div id="recentTable" class="empty">Loading…</div>
         </div>
       </section>
 
       <section class="view" id="view-manage">
         <div class="heading">
-          <div><h1>Manage Properties</h1><p>Edit, delete and review your listings.</p></div>
-          <button class="btn gold" data-new>＋ Add Property</button>
+          <div><h1>Manage Apartment Projects</h1><p>Edit, delete and review complete apartment project listings.</p></div>
+          <button class="btn gold" data-new>＋ Add Apartment Project</button>
         </div>
         <div class="panel">
           <div class="form-grid">
-            <div class="field"><label for="searchInput">Search</label><input id="searchInput" placeholder="Title, area, address…"></div>
+            <div class="field"><label for="searchInput">Search</label><input id="searchInput" placeholder="Project name, area, address, configuration…" ></div>
             <div class="field"><label for="cityFilter">City</label>
               <select id="cityFilter"><option value="">All Cities</option><option>Mumbai</option><option>Pune</option></select>
             </div>
@@ -156,77 +155,83 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
 
       <section class="view" id="view-form">
         <div class="heading">
-          <div><h1 id="formHeading">Add Property</h1><p>Complete the information to publish a listing.</p></div>
+          <div><h1 id="formHeading">Add Apartment Project</h1><p>Add or update a complete apartment building or residential project for sale.</p></div>
         </div>
         <div class="panel">
-          <div class="panel-head"><h3>Property Information</h3><p>Fields marked * are required.</p></div>
+          <div class="panel-head"><h3>Apartment Project Information</h3><p>Enter details for the complete building or residential project, not an individual flat. Fields marked * are required.</p></div>
           <div id="formNotice" class="notice" role="status"></div>
           <form id="propertyForm">
             <input type="hidden" id="propertyId">
 
             <div class="form-grid">
               <div class="field full">
-                <label for="propertyTitle">Property Title *</label>
-                <input id="propertyTitle" required maxlength="180" placeholder="e.g. 2-BHK Flat in Wakad">
+                <label for="propertyTitle">Project / Building Name *</label>
+                <input id="propertyTitle" required maxlength="180" placeholder="e.g. Residential Apartment Project in Wakad">
               </div>
 
               <div class="field">
-                <label for="propertyType">Property Type *</label>
+                <label for="propertyType">Project Type *</label>
                 <select id="propertyType" required>
-                  <option>Residential</option><option>Commercial</option><option>Plot</option><option>Luxury</option>
+                  <option value="Apartment Project">Apartment Project</option><option value="Residential Building">Residential Building</option><option value="Commercial Building">Commercial Building</option><option value="Mixed-use Project">Mixed-use Project</option><option value="Development Plot">Development Plot</option>
                 </select>
               </div>
               <div class="field">
-                <label for="listingType">Transaction *</label>
-                <select id="listingType" required><option>Sale</option><option>Rent</option><option>Lease</option></select>
+                <label for="listingType">Project Transaction *</label>
+                <select id="listingType" required><option value="Sale">Complete Project / Building Sale</option><option value="Lease">Complete Project Lease</option></select>
               </div>
               <div class="field">
                 <label for="propertyCity">City *</label>
                 <select id="propertyCity" required><option>Mumbai</option><option>Pune</option></select>
               </div>
               <div class="field">
-                <label for="propertyLocation">Area / Locality *</label>
+                <label for="propertyLocation">Project Area / Locality *</label>
                 <input id="propertyLocation" required placeholder="e.g. Alandi, Wakad, Bandra">
               </div>
               <div class="field full">
-                <label for="fullAddress">Full Property Address</label>
+                <label for="fullAddress">Complete Project Address</label>
                 <textarea id="fullAddress" placeholder="Building, street, locality, city, state, PIN code"></textarea>
               </div>
               <div class="field">
-                <label for="propertyPrice">Price in INR *</label>
-                <input id="propertyPrice" type="number" min="0" step="1" required placeholder="5500000">
+                <label for="propertyPrice">Total Project Price in INR *</label>
+                <input id="propertyPrice" type="number" min="0" step="1" required placeholder="e.g. 150000000">
               </div>
               <div class="field">
-                <label for="propertyStatus">Availability *</label>
+                <label for="propertyStatus">Project Availability *</label>
                 <select id="propertyStatus" required><option>Available</option><option>Reserved</option><option>Sold</option></select>
               </div>
               <div class="field">
-                <label for="areaSqft">Carpet / Built-up Area (sq. ft.)</label>
+                <label for="areaSqft">Total Built-up Area (sq. ft.)</label>
                 <input id="areaSqft" type="number" min="0" step="0.01">
               </div>
               <div class="field">
-                <label for="bedrooms">Bedrooms</label>
-                <input id="bedrooms" type="number" min="0" max="100">
+                <label for="totalUnits">Total Apartments / Units</label>
+                <input id="totalUnits" type="number" min="0" step="1" placeholder="e.g. 240">
+                <p class="help">Total number of apartments/units in the complete project.</p>
               </div>
               <div class="field">
-                <label for="bathrooms">Bathrooms</label>
-                <input id="bathrooms" type="number" min="0" max="100">
+                <label for="totalTowers">Total Towers / Buildings</label>
+                <input id="totalTowers" type="number" min="0" step="1" placeholder="e.g. 4">
               </div>
               <div class="field">
-                <label for="parking">Parking</label>
-                <input id="parking" placeholder="e.g. 1 Covered, 2 Open, No Parking">
+                <label for="projectConfiguration">Project Configuration</label>
+                <input id="projectConfiguration" maxlength="250" placeholder="e.g. 1, 2 and 3 BHK apartments">
+                <p class="help">Describe the unit mix in the project; this does not mean an individual flat is being listed.</p>
               </div>
               <div class="field">
-                <label for="floorNumber">Floor / Total Floors</label>
-                <input id="floorNumber" placeholder="e.g. 5th of 12">
+                <label for="totalFloors">Total Floors</label>
+                <input id="totalFloors" type="number" min="0" step="1" placeholder="e.g. 22">
               </div>
               <div class="field">
-                <label for="furnishing">Furnishing</label>
-                <select id="furnishing"><option value="">Not specified</option><option>Unfurnished</option><option>Semi-Furnished</option><option>Fully Furnished</option></select>
+                <label for="plotArea">Total Plot / Land Area (sq. ft.)</label>
+                <input id="plotArea" type="number" min="0" step="0.01" placeholder="e.g. 85000">
+              </div>
+              <div class="field">
+                <label for="parking">Total Parking Details</label>
+                <input id="parking" placeholder="e.g. 80 covered parking spaces">
               </div>
 
               <div class="field full">
-                <label for="googleMapsUrl">Google Maps Location URL</label>
+                <label for="googleMapsUrl">Project Google Maps Location URL</label>
                 <input id="googleMapsUrl" type="url" placeholder="Paste the Google Maps share link">
                 <p class="help">Google Maps mein property pin open karo → Share → Copy link → yahan paste karo.</p>
               </div>
@@ -243,17 +248,17 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
                 <p class="help">Coordinates can be copied from the dropped pin in Google Maps. Verify that the pin is the property's actual location.</p>
               </div>
               <div class="field full">
-                <label for="amenities">Amenities (one per line)</label>
+                <label for="amenities">Project Amenities (one per line)</label>
                 <textarea id="amenities" placeholder="Gated Community&#10;Parking&#10;Lift&#10;Security&#10;Green Spaces&#10;Gym"></textarea>
               </div>
               <div class="field full">
-                <label for="description">Property Description</label>
-                <textarea id="description" maxlength="10000" placeholder="Property details, nearby facilities, connectivity and other important information"></textarea>
+                <label for="description">Complete Project Description</label>
+                <textarea id="description" maxlength="10000" placeholder="Describe the complete apartment project, buildings, total units, location, connectivity, facilities and sale terms."></textarea>
               </div>
               <div class="field full">
-                <label for="propertyImages">Upload Multiple Property Photos</label>
+                <label for="propertyImages">Upload Apartment Project Photos</label>
                 <input id="propertyImages" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
-                <p class="help">Maximum 12 photos per property, 5 MB per image. Existing photos are shown below. Removing a photo from the gallery removes it from the listing but does not delete its storage file.</p>
+                <p class="help">Maximum 12 photos per project, 5 MB per image. Existing photos are shown below. Removing a photo from the gallery removes it from the listing but does not delete its storage file.</p>
                 <div id="imagePreview" class="gallery" style="margin-top:14px"></div>
               </div>
               <div class="field full checks">
@@ -263,14 +268,14 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
             </div>
             <div class="form-actions">
               <button type="button" class="btn outline" id="cancelForm">Cancel</button>
-              <button type="submit" class="btn gold" id="saveButton">Save Property</button>
+              <button type="submit" class="btn gold" id="saveButton">Save Project</button>
             </div>
           </form>
         </div>
       </section>
 
       <section class="view" id="view-images">
-        <div class="heading"><div><h1>Property Images</h1><p>Review images attached to listings.</p></div></div>
+        <div class="heading"><div><h1>Project Images</h1><p>Review images attached to apartment project listings.</p></div></div>
         <div class="panel"><div id="imageGallery" class="form-grid"><div class="empty">Loading images…</div></div></div>
       </section>
 
@@ -330,7 +335,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
   function navigate(name) {
     document.querySelectorAll(".view").forEach(v => v.classList.toggle("active",v.id === "view-" + name));
     document.querySelectorAll("[data-view]").forEach(b => b.classList.toggle("active",b.dataset.view === name));
-    const titles = {overview:"Dashboard",manage:"Manage Properties",form:$("propertyId").value ? "Edit Property" : "Add Property",images:"Property Images",settings:"Settings"};
+    const titles = {overview:"Dashboard",manage:"Manage Properties",form:$("propertyId").value ? "Edit Apartment Project" : "Add Apartment Project",images:"Project Images",settings:"Settings"};
     $("pageTitle").textContent = titles[name] || "Dashboard";
     $("sidebar").classList.remove("open");
     if (name === "manage") renderTable("manageTable", properties);
@@ -385,19 +390,21 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     if (!container) return;
 
     if (!rows.length) {
-      container.innerHTML = '<div class="empty">No properties found. Use Add Property to create a listing.</div>';
+      container.innerHTML = '<div class="empty">No apartment projects found. Use Add Project to create a listing.</div>';
       return;
     }
 
     container.innerHTML = `
       <div class="table-wrap"><table>
-        <thead><tr><th>Property</th><th>Location</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead>
+        <thead><tr><th>Apartment Project</th><th>Location</th><th>Units / Towers</th><th>Total Area</th><th>Total Project Price</th><th>Status</th><th>Actions</th></tr></thead>
         <tbody>${rows.map(p=>{
           const image = Array.isArray(p.image_urls) ? p.image_urls.find(Boolean) : "";
           return `<tr>
             <td>${image ? `<img class="thumb" src="${escapeHTML(image)}" alt="">` : ""}
               <strong>${escapeHTML(p.title)}</strong><br>${escapeHTML(p.property_type)}</td>
             <td>${escapeHTML(p.city)}, ${escapeHTML(p.location)}</td>
+            <td>${escapeHTML(p.total_units ?? "—")} units<br>${escapeHTML(p.total_towers ?? "—")} towers</td>
+            <td>${escapeHTML(p.area_sqft ? Number(p.area_sqft).toLocaleString("en-IN") + " sq. ft." : "—")}</td>
             <td>${escapeHTML(priceText(p.price,p.listing_type))}</td>
             <td><span class="status">${escapeHTML(p.status || "Draft")}</span></td>
             <td><button class="action" data-edit="${escapeHTML(p.id)}">Edit</button>
@@ -405,7 +412,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
           </tr>`;
         }).join("")}</tbody>
       </table></div>
-      <div style="padding:13px;color:#738094">${rows.length} properties shown</div>`;
+      <div style="padding:13px;color:#738094">${rows.length} projects shown</div>`;
 
     container.querySelectorAll("[data-edit]").forEach(b=>b.addEventListener("click",()=>{
       const p = properties.find(item=>String(item.id)===b.dataset.edit);
@@ -413,7 +420,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     }));
     container.querySelectorAll("[data-delete]").forEach(b=>b.addEventListener("click",async()=>{
       const p = properties.find(item=>String(item.id)===b.dataset.delete);
-      if (!p || !confirm("Permanently delete the listing '" + p.title + "'?")) return;
+      if (!p || !confirm("Permanently delete the project listing '" + p.title + "'?")) return;
       b.disabled = true;
       const {error} = await supabaseClient.from("properties").delete().eq("id",p.id);
       if (error) {alert("Delete failed: " + error.message);b.disabled=false;return;}
@@ -425,7 +432,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     const q = $("searchInput").value.trim().toLowerCase();
     const city = $("cityFilter").value;
     const filtered = properties.filter(p=>{
-      const text = [p.title,p.location,p.city,p.full_address,p.property_type].join(" ").toLowerCase();
+      const text = [p.title,p.location,p.city,p.full_address,p.property_type,p.project_configuration,p.total_units,p.total_towers].join(" ").toLowerCase();
       return (!q || text.includes(q)) && (!city || p.city===city);
     });
     renderTable("manageTable",filtered);
@@ -436,8 +443,8 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
   function resetForm() {
     $("propertyForm").reset();
     $("propertyId").value = "";
-    $("formHeading").textContent = "Add Property";
-    $("saveButton").textContent = "Save Property";
+    $("formHeading").textContent = "Add Apartment Project";
+    $("saveButton").textContent = "Save Project";
     $("imagePreview").innerHTML = "";
     $("propertyImages").value = "";
     currentImages = [];
@@ -457,11 +464,12 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     $("propertyPrice").value = p.price ?? "";
     $("propertyStatus").value = p.status || "Available";
     $("areaSqft").value = p.area_sqft ?? "";
-    $("bedrooms").value = p.bedrooms ?? "";
-    $("bathrooms").value = p.bathrooms ?? "";
+    $("totalUnits").value = p.total_units ?? p.total_flats ?? p.number_of_units ?? "";
+    $("totalTowers").value = p.total_towers ?? p.tower_count ?? p.total_buildings ?? "";
+    $("projectConfiguration").value = p.project_configuration || p.configuration || "";
+    $("totalFloors").value = p.total_floors ?? p.number_of_floors ?? "";
+    $("plotArea").value = p.plot_area ?? p.land_area ?? p.site_area ?? "";
     $("parking").value = p.parking || "";
-    $("floorNumber").value = p.floor_number || "";
-    $("furnishing").value = p.furnishing || "";
     $("googleMapsUrl").value = p.google_maps_url || "";
     $("latitude").value = p.latitude ?? "";
     $("longitude").value = p.longitude ?? "";
@@ -470,8 +478,8 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     $("isFeatured").checked = p.is_featured === true;
     $("isPublished").checked = p.is_published === true;
     currentImages = Array.isArray(p.image_urls) ? [...p.image_urls] : [];
-    $("formHeading").textContent = "Edit Property";
-    $("saveButton").textContent = "Update Property";
+    $("formHeading").textContent = "Edit Apartment Project";
+    $("saveButton").textContent = "Update Project";
     renderImagePreview();
     updateMapPreview();
   }
@@ -484,9 +492,9 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
       card.className = "photo";
       const img = document.createElement("img");
       img.src = url;
-      img.alt = "Property image " + (index+1);
+      img.alt = "Project image " + (index+1);
       const caption = document.createElement("small");
-      caption.textContent = index===0 ? "Cover photo" : "Photo " + (index+1);
+      caption.textContent = index===0 ? "Project cover photo" : "Project photo " + (index+1);
       const remove = document.createElement("button");
       remove.type = "button";
       remove.textContent = "×";
@@ -514,7 +522,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
   $("propertyImages").addEventListener("change",event=>{
     const files = Array.from(event.target.files || []);
     if (currentImages.length + files.length > 12) {
-      notice("Maximum 12 photos per property.");
+      notice("Maximum 12 photos per project.");
       event.target.value = "";
       pendingFiles = [];
       renderImagePreview();
@@ -526,7 +534,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
         event.target.value = "";pendingFiles=[];renderImagePreview();return;
       }
       if (file.size > 5*1024*1024) {
-        notice("Each image must be 5 MB or smaller: " + file.name);
+        notice("Each project image must be 5 MB or smaller: " + file.name);
         event.target.value = "";pendingFiles=[];renderImagePreview();return;
       }
     }
@@ -574,7 +582,7 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
       const price = Number($("propertyPrice").value);
       if (!Number.isFinite(price) || price < 0) throw new Error("Enter a valid price.");
 
-      if (currentImages.length + pendingFiles.length > 12) throw new Error("Maximum 12 photos per property.");
+      if (currentImages.length + pendingFiles.length > 12) throw new Error("Maximum 12 photos per project.");
 
       const uploaded = await uploadImages(id);
       const mapUrl = $("googleMapsUrl").value.trim() || null;
@@ -590,12 +598,13 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
         full_address:$("fullAddress").value.trim() || null,
         price,
         status:$("propertyStatus").value,
-        bedrooms:$("bedrooms").value==="" ? null : Number($("bedrooms").value),
-        bathrooms:$("bathrooms").value==="" ? null : Number($("bathrooms").value),
+        total_units:$("totalUnits").value==="" ? null : Number($("totalUnits").value),
+        total_towers:$("totalTowers").value==="" ? null : Number($("totalTowers").value),
+        project_configuration:$("projectConfiguration").value.trim() || null,
+        total_floors:$("totalFloors").value==="" ? null : Number($("totalFloors").value),
+        plot_area:$("plotArea").value==="" ? null : Number($("plotArea").value),
         area_sqft:$("areaSqft").value==="" ? null : Number($("areaSqft").value),
         parking:$("parking").value.trim() || null,
-        floor_number:$("floorNumber").value.trim() || null,
-        furnishing:$("furnishing").value || null,
         google_maps_url:mapUrl,
         latitude:lat==="" ? null : Number(lat),
         longitude:lng==="" ? null : Number(lng),
@@ -616,14 +625,14 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
       resetForm();
       await loadProperties();
       navigate("manage");
-      alert(editing ? "Property updated successfully." : "Property added successfully.");
+      alert(editing ? "Apartment project updated successfully." : "Apartment project added successfully.");
 
     } catch(error) {
       console.error(error);
       notice(error.message || "Unable to save property.");
     } finally {
       button.disabled = false;
-      button.textContent = $("propertyId").value ? "Update Property" : "Save Property";
+      button.textContent = $("propertyId").value ? "Update Project" : "Save Project";
     }
   });
 
@@ -632,14 +641,14 @@ th{background:#fafbfc;color:var(--muted);text-transform:uppercase;font-size:10px
     if (!container) return;
     const items = properties.flatMap(p=>(Array.isArray(p.image_urls)?p.image_urls:[]).map(url=>({url,title:p.title,id:p.id})));
     if (!items.length) {
-      container.innerHTML = '<div class="empty">No property images uploaded yet.</div>';
+      container.innerHTML = '<div class="empty">No apartment project images uploaded yet.</div>';
       return;
     }
     container.innerHTML = items.map(item=>`
       <div class="image-card">
         <img src="${escapeHTML(item.url)}" alt="">
         <h4>${escapeHTML(item.title)}</h4>
-        <button class="btn outline" data-image-edit="${escapeHTML(item.id)}">Edit Property</button>
+        <button class="btn outline" data-image-edit="${escapeHTML(item.id)}">Edit Apartment Project</button>
       </div>`).join("");
     container.querySelectorAll("[data-image-edit]").forEach(button=>button.addEventListener("click",()=>{
       const p=properties.find(item=>String(item.id)===button.dataset.imageEdit);
